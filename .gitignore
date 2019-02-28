@@ -1,3 +1,6 @@
+my.env
+now_secrets.sh
+
 # Logs
 logs
 *.log
