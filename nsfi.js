@@ -16,6 +16,8 @@ const bodyParser = require('body-parser');
 
 const TOKEN_ENCRYPTION_KEY = process.env.TOKEN_ENCRYPTION_KEY;
 
+const SESSION_KEY = process.env.SESSION_KEY || '2466c1cc-3bed-11e9-a4de-53cf880a6d1a-2d2ea702-3bed-11e9-8842-ef5457fba264';
+
 if (!TOKEN_ENCRYPTION_KEY) { console.error('TOKEN_ENCRYPTION_KEY missing, cannot start'); process.exit(); }
 
 const Auth = require('./lib/Auth.js')(TOKEN_ENCRYPTION_KEY);
@@ -23,8 +25,9 @@ const FIPHR = require('./lib/FIPHR')(Auth);
 
 // cookieSession config
 app.use(cookieSession({
-    maxAge: 24 * 60 * 60 * 1000, // One day in milliseconds
-    keys: ['randomstringhere']
+    maxAge: 60 * 60 * 1000, //One hour
+    keys: [SESSION_KEY], // Key used to verify the session data, set this for production
+    httpOnly: true
 }));
 
 app.use(passport.initialize()); // Used to initialize passport
