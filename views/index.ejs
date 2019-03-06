@@ -1,5 +1,32 @@
-<ul>
-    <li><a href="/auth/kanta">Login</a></li>
-    <li><a href="/loggedin">Secret</a></li>
-    <li><a href="/logout">Logout</a></li>
-</ul>
+<!doctype html>
+
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+
+   <title>Nightscout.fi</title>
+   <meta name="description" content="Nightscout.fi">
+   <meta name="author" content="SensoTrend">
+
+   <% include style %>
+</head>
+
+<body>
+   <div id='container'>
+      <div id='maintitle'>Nightscout.fi</div>
+      <div>
+         <p>Nightscout.fi on Kelan Omatietovarantoon kytketty palvelu,<br>
+            jonka avulla käyttää Nightscout-sovelluksia yhdessä Omatietovarannon kanssa.</p>
+      </div>
+
+      <div id='login'>
+         <a href="/auth/kanta"><button style="font-size: 40px;" class="button-success pure-button">Kirjaudu sisälle</button></a></li>
+      </div>
+      <br><br>
+      <% include footer %>
+   </div>
+
+</body>
+
+</html>

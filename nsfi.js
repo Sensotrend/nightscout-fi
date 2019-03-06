@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const path = require('path');
 
 const cookieSession = require('cookie-session');
 const axios = require('axios');
@@ -13,8 +14,46 @@ const app = decorateApp(express());
 
 const bodyParser = require('body-parser');
 
+const expressmarkdown = require('express-markdown-reloaded');
+const marked = require('marked');
+
 const env = require('./lib/env')();
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// !!!IMPORTANT: place this before static or similar middleware
+app.use('/public',expressmarkdown({
+    directory: path.join(__dirname,'/public'),
+    caseSensitive: app.get('case sensitive routing'),
+    view: 'markdown',
+    includerawtext: false,
+    loadepiceditor: false,
+    marked: {
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: true,
+        smartLists: true,
+        smartypants: false,
+        highlight: function (code) {
+            return highlightjs.highlightAuto(code).value;
+        }
+    },
+    context: {
+        title: 'Nightscout.fi'
+    }
+}));
+
+
+/*
+app.use(require('express-markdown-reloaded')({
+    directory: __dirname + '/public',
+    view: 'markdown',
+}));
+*/
 // cookieSession config
 app.use(cookieSession({
     maxAge: 60 * 60 * 1000, //One hour
@@ -34,7 +73,6 @@ passport.serializeUser((user, done) => {
 
 // Used to decode the received cookie and persist session
 passport.deserializeUser((user, done) => {
-    console.log('deserializeUser');
     done(null, user);
 });
 
@@ -43,7 +81,7 @@ async function isUserAuthenticated(req, res, next) {
     if (req.user) {
         next();
     } else {
-        res.send('You must login!');
+        res.redirect('/');
     }
 }
 
@@ -51,22 +89,19 @@ async function isUserAuthenticated(req, res, next) {
 // USER FACING URLS
 
 app.getAsync('/', async (req, res) => {
-    console.log(req.headers);
+//    console.log(req.headers);
     res.render('index.ejs');
 });
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
-    console.log(req.user);
-    
     let user = await env.userProvider.findUserById(req.user.userid);
-    console.log('Got user', user);
     res.render('secret.ejs', {user: user});
 });
 
 // Logout route
 app.get('/logout', (req, res) => {
     req.logout(); 
-    res.redirect('/');
+    res.render('loggedout.ejs');
 });
 
 // OAUTH
