@@ -90,7 +90,11 @@ async function isUserAuthenticated(req, res, next) {
 
 app.getAsync('/', async (req, res) => {
 //    console.log(req.headers);
-    res.render('index.ejs');
+    if (req.user) {
+        res.redirect('/loggedin');
+    } else {
+        res.render('index.ejs');
+    }
 });
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
