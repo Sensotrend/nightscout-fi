@@ -4,7 +4,6 @@ const path = require('path');
 
 const cookieSession = require('cookie-session');
 const axios = require('axios');
-const nanoid = require('nanoid');
 
 const Mongo = require('./lib/Mongo.js')();
 
@@ -90,11 +89,7 @@ async function isUserAuthenticated(req, res, next) {
 
 app.getAsync('/', async (req, res) => {
 //    console.log(req.headers);
-    if (req.user) {
-        res.redirect('/loggedin');
-    } else {
-        res.render('index.ejs');
-    }
+    res.render('index.ejs');
 });
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
@@ -111,7 +106,7 @@ app.get('/logout', (req, res) => {
 // OAUTH
 
 app.get('/auth/kanta', passport.authenticate('oauth2', {
-    state: nanoid(), // TODO actually store this in session to validate it
+    state: env.randomString(), // TODO actually store this in session to validate it
     scope: ['offline_access', 'patient/Observation.read', 'patient/MedicationAdministration.read', 'patient/Observation.write', 'patient/MedicationAdministration.write' ] // Used to specify the required data
 }));
 
@@ -126,3 +121,7 @@ app.listen(process.env.PORT, () => {
 let NSRestService = require('./lib/NSRESTService')(env);
 
 app.use('/api/v1', NSRestService);
+
+let TidepoolRESTService = require('./lib/TidepoolRESTService')(env);
+
+console.log('TidepoolRESTService started');
