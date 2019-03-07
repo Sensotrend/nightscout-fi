@@ -114,14 +114,18 @@ app.get('/auth/kanta/callback', passport.authenticate('oauth2'), function (req, 
     res.redirect('/loggedin');
 });
 
-app.listen(process.env.PORT, () => {
-    console.log('Server Started!');
-});
-
 let NSRestService = require('./lib/NSRESTService')(env);
 
 app.use('/api/v1', NSRestService);
 
 let TidepoolRESTService = require('./lib/TidepoolRESTService')(env);
 
+app.use('/tpupload', TidepoolRESTService.uploadApp);
+app.use('/tpapi', TidepoolRESTService.APIapp);
+app.use('/tpdata', TidepoolRESTService.dataApp);
+
 console.log('TidepoolRESTService started');
+
+app.listen(process.env.PORT, () => {
+    console.log('Server Started!');
+});
