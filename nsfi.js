@@ -93,7 +93,12 @@ app.getAsync('/', async (req, res) => {
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
     let user = await env.userProvider.findUserById(req.user.userid);
-    res.render('secret.ejs', {user: user});
+
+    let pageEnv = {
+        apiUrl: env.apiURL
+    };
+
+    res.render('secret.ejs', {user: user, pageEnv: pageEnv});
 });
 
 // Logout route
