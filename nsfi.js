@@ -95,7 +95,7 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
     let user = await env.userProvider.findUserById(req.user.userid);
 
     let pageEnv = {
-        apiUrl: env.apiURL
+        apiURL: env.apiURL
     };
 
     res.render('secret.ejs', {user: user, pageEnv: pageEnv});
