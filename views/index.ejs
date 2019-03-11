@@ -20,8 +20,12 @@
             jonka avulla käyttää Nightscout-sovelluksia yhdessä Omatietovarannon kanssa.</p>
       </div>
 
-      <div id='login'>
+      <div id='login'></div>
+      <%if (!pageEnv.hideLogin) { %>
          <a href="/auth/kanta"><button style="font-size: 40px;" class="button-success pure-button">Kirjaudu sisälle</button></a></li>
+      <% } else { %>
+         Palvelu on vielä kehityksen alla, sisäänkirjautuminen on toistaiseksi kytketty pois päältä.
+      <% } %>
       </div>
       <br><br>
       <% include footer %>
