@@ -14,7 +14,7 @@
         "express": "^4.16.4",
         "express-markdown-reloaded": "^0.2.1",
         "express-session": "^1.15.6",
-        "fhir-kit-client": "git://github.com/sulkaharo/fhir-kit-client.git#return_full_response_v2",
+        "fhir-kit-client": "git://github.com/sulkaharo/fhir-kit-client.git#return_full_response_v3",
         "fs-extra": "^7.0.1",
         "jsonwebtoken": "^8.4.0",
         "lodash": "^4.17.11",
