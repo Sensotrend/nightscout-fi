@@ -1,6 +1,6 @@
 {
     "name": "NS_FHIR_BRIDGE",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Nightscout REST API provider for FHIR PHRs",
     "dependencies": {
         "@awaitjs/express": "^0.2.0",
