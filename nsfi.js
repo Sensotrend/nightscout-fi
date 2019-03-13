@@ -15,7 +15,7 @@ const {
 } = require('@awaitjs/express');
 const app = decorateApp(express());
 
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
 const expressmarkdown = require('express-markdown-reloaded');
 const marked = require('marked');
@@ -138,6 +138,11 @@ app.use('/tpapi', TidepoolRESTService.APIapp);
 app.use('/tpdata', TidepoolRESTService.dataApp);
 
 console.log('TidepoolRESTService started');
+
+let NightscoutViewConsentService = require('./lib/NightscoutConsentService.js')(env);
+app.use('/nsconsent', NightscoutViewConsentService);
+
+console.log('Epic Smart Service started');
 
 app.listen(process.env.PORT, () => {
    console.log('Server Started!');

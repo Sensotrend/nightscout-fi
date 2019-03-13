@@ -4,6 +4,7 @@
     "description": "Nightscout REST API provider for FHIR PHRs",
     "dependencies": {
         "@awaitjs/express": "^0.2.0",
+        "@sendgrid/mail": "^6.3.1",
         "async-csv": "^2.0.0",
         "axios": "^0.18.0",
         "basic-auth": "^2.0.1",
@@ -12,6 +13,7 @@
         "ejs": "^2.6.1",
         "express": "^4.16.4",
         "express-markdown-reloaded": "^0.2.1",
+        "express-session": "^1.15.6",
         "fhir-kit-client": "git://github.com/sulkaharo/fhir-kit-client.git#return_full_response",
         "fs-extra": "^7.0.1",
         "jsonwebtoken": "^8.4.0",
@@ -25,6 +27,7 @@
         "passport-oauth2": "^1.4.0",
         "passport-oauth2-refresh": "^1.1.0",
         "promise-parallel-throttle": "^3.3.0",
+        "simple-oauth2": "^2.2.1",
         "stjs": "0.0.5",
         "uuid": "^3.3.2",
         "yargs": "^12.0.5"
