@@ -2,6 +2,7 @@
     "name": "NS_FHIR_BRIDGE",
     "version": "0.1.2",
     "description": "Nightscout REST API provider for FHIR PHRs",
+    "repository": "https://github.com/sensotrend/nightscout-fi",
     "dependencies": {
         "@awaitjs/express": "^0.2.0",
         "@sendgrid/mail": "^6.3.1",
@@ -33,6 +34,7 @@
         "yargs": "^12.0.5"
     },
     "scripts": {
+        "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
         "start": "node nsfi.js"
     }
 }
