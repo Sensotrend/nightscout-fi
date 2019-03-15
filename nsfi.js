@@ -4,10 +4,9 @@ const path = require('path');
 
 //const cookieSession = require('cookie-session');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 const axios = require('axios');
-
-const Mongo = require('./lib/Mongo.js')();
 
 const {
    decorateApp
@@ -73,7 +72,8 @@ app.use(session({
       maxAge: 60000
    }
    , resave: true
-   , saveUninitialized: true
+   //, saveUninitialized: true
+   , store: new MongoStore({ mongooseConnection: env.mongo.getConnection() })
 }));
 
 
