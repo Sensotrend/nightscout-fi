@@ -2,7 +2,9 @@ const express = require('express');
 const passport = require('passport');
 const path = require('path');
 
-const cookieSession = require('cookie-session');
+//const cookieSession = require('cookie-session');
+const session = require('express-session');
+
 const axios = require('axios');
 
 const Mongo = require('./lib/Mongo.js')();
@@ -57,11 +59,23 @@ app.use(require('express-markdown-reloaded')({
 }));
 */
 // cookieSession config
+/*
 app.use(cookieSession({
    maxAge: 60 * 60 * 1000, //One hour
    keys: [env.session_key], // Key used to verify the session data, set this for production
    httpOnly: true
 }));
+*/
+
+app.use(session({
+   secret: env.session_key
+   , cookie: {
+      maxAge: 60000
+   }
+   , resave: true
+   , saveUninitialized: true
+}));
+
 
 app.use(passport.initialize()); // Used to initialize passport
 app.use(passport.session()); // Used to persist login sessions
