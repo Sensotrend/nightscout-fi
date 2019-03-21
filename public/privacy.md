@@ -12,7 +12,7 @@ Rekisteriä koskeviin kysymyksiin vastataan osoitteessa info@nightscout.fi.
 ## Henkilötietojen käsittelyn tarkoitus
 Henkilötietojen käsittelyn ensisijaisena tarkoituksena ovat palvelun toteuttaminen sekä rekisterinpitäjän ja asiakkaan välisen asiakassuhteen ylläpitäminen ja poikkeustilanteista tiedottaminen.
 
-Asiakkaan erillisen suostumuksen myötä henkilötietoja voidaan käsitellä myös palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämistä, markkinointia ja analysointia sekä muuta vastaavaa käyttötarkoitusta varten. Käsittely voi perustua myös laista johtuviin tehtäviin tai asiakkaan rekisterinpitäjälle antamaan toimeksiantoon.
+Asiakkaan erillisellä suostumuksella henkilötietoja voidaan käsitellä myös palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihin vastaaviin käyttötarkoituksiin. Käsittely voi perustua myös laista johtuviin tehtäviin tai asiakkaan rekisterinpitäjälle antamaan toimeksiantoon.
 
 Selvennykseksi kerrotaan, että Nightscout Connect -palveluun ei tallenneta asiakkaan terveys- tai hyvinvointitietoja, vaan ainoastaan käyttöavaimet (access token), joiden avulla palvelu pääsee kirjoittamaan tietoja Omakannan Omatietovarantoon ja lukemaan niitä sieltä.
 
@@ -23,7 +23,7 @@ Henkilötietoja käsitellään tietosuoja-asetuksen mukaisesti.
 - Käyttöavaimet (access token), jotka luodaan palveluiden liitosprosessissa ja joiden avulla tietoa voidaan kirjoittaa Omakannan Omatietovarantoon ja lukea sieltä.
 - Internet-palvelimen tekniset lokit ja tiedot palvelun käytöstä.
 - Mahdollinen viestintälupa sen erikseen antaneilta asiakkailta palvelun kehitykseen liittyvää viestintää varten ja luvan myöntämisen ajankohta.
-- Mahdollinen tietojen käyttölupa palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämistä, markkinointia ja analysointia sekä muuta vastaavaa käyttötarkoitusta varten ja luvan myöntämisen ajankohta.
+- Mahdollinen tietojen käyttölupa palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihin vastaaviin käyttötarkoituksiin ja luvan myöntämisen ajankohta.
 - Mahdolliset muut asiakkaan suostumuksella kerättävät tiedot.
 
 ## Säännönmukaiset tietolähteet
@@ -43,7 +43,7 @@ Rekisterinpitäjän henkilötietojen käsittelyn tietoturvallisuus sekä henkil�
 ## Tarkastusoikeus ja tietojen korjaaminen
 Asiakkaalla on oikeus tarkistaa, mitä häntä koskevia tietoja Nightscout Connect -palvelun asiakasrekisteriin on tallennettu. Tarkistuspyyntö tulee tehdä kirjallisesti osoitteeseen info@nightscout.fi.
 
-Asiakas voi pyytää rekisterinpitäjää korjaamaan omia perustietojaan. Pyyntö tulee tehdä tulee tehdä kirjallisesti osoitteeseen info@nightscout.fi. Asiakkaan tulee esittää tiedon korjaamiseksi tarpeelliset seikat ja asiakkaan yksilöintiin tarvittavat tiedot. Näitä tietoja kysytään lisää tarvittaessa.
+Asiakas voi pyytää rekisterinpitäjää korjaamaan omia perustietojaan. Pyyntö tulee tehdä kirjallisesti osoitteeseen info@nightscout.fi. Asiakkaan tulee esittää tiedon korjaamiseksi tarpeelliset seikat ja asiakkaan yksilöintiin tarvittavat tiedot. Näitä tietoja kysytään lisää tarvittaessa.
 
 Palvelun avulla on mahdollista tallentaa tietoja myös Omakannan Omatietovarantoon. Sinne tallennettuja tietoja hallinnoidaan Omatietovarannon oman tietosuojakäytännön mukaisesti. Mikäli Omatietovarantoon on tallentunut virheellisiä tietoja Nightscout Connect -palvelussa olleen virheen seurauksena, Nightscout Connect -palvelun rekisterinpitäjä tekee parhaansa korjatakseen virheelliset tiedot.
 
@@ -53,4 +53,4 @@ Asiakas voi koska vain lopettaa asiakkuutensa poistamalla asiakastilinsä palvel
 Palvelun avulla on mahdollista tallentaa tietoja myös Omakannan Omatietovarantoon. Sinne tallennettuihin tietoihin sovelletaan Omatietovarannon tietosuojakäytäntöjä.
 
 ## Suostumukset ja kiellot
-Asiakas voi erikseen antaa rekisterinpitäjälle viestintäluvan ja luvan käyttää tietojaan palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämistä, markkinointia ja analysointia sekä muuta vastaavaa käyttötarkoitusta varten. Muussa tapauksessa asiakkaan tietoja ei käytetä muuhun kuin muuhun suoraan viestintään kuin poikkeustilanteista tiedottamiseen.
+Asiakas voi erikseen antaa rekisterinpitäjälle viestintäluvan ja luvan käyttää tietojaan palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihun vastaaviin käyttötarkoituksiin. Muussa tapauksessa asiakkaan tietoja ei käytetä muuhun kuin suoraan viestintään sekä poikkeustilanteista tiedottamiseen.
