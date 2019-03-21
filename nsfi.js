@@ -1,39 +1,33 @@
-const express = require('express');
-const passport = require('passport');
-const path = require('path');
+import cookieSession from 'cookie-session';
+import { decorateApp } from '@awaitjs/express';
+import express from 'express';
+import expressmarkdown from 'express-markdown-reloaded';
+import { initialize, session, use, serializeUser, deserializeUser, authenticate } from 'passport';
+import { join } from 'path';
+import { Renderer } from 'marked';
 
-const cookieSession = require('cookie-session');
-const axios = require('axios');
+import ENV from './lib/env';
+import NSRESTService from './lib/NSRESTService';
+import TidepoolRESTService from './lib/TidepoolRESTService';
 
-const Mongo = require('./lib/Mongo.js')();
+const env = ENV();
+const nSRestService = NSRESTService(env);
+const tidepoolRESTService = TidepoolRESTService(env);
 
-const {
-   decorateApp
-} = require('@awaitjs/express');
-const {
-   wrap
-} = require('@awaitjs/express');
 const app = decorateApp(express());
 
-const bodyParser = require('body-parser');
-
-const expressmarkdown = require('express-markdown-reloaded');
-const marked = require('marked');
-
-const env = require('./lib/env')();
-
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // !!!IMPORTANT: place this before static or similar middleware
 app.use('/public', expressmarkdown({
-   directory: path.join(__dirname, '/public')
+   directory: join(__dirname, '/public')
    , caseSensitive: app.get('case sensitive routing')
    , view: 'markdown'
    , includerawtext: false
    , loadepiceditor: false
    , marked: {
-      renderer: new marked.Renderer()
+      renderer: new Renderer()
       , gfm: true
       , tables: true
       , breaks: false
@@ -50,12 +44,6 @@ app.use('/public', expressmarkdown({
    }
 }));
 
-/*
-app.use(require('express-markdown-reloaded')({
-    directory: __dirname + '/public',
-    view: 'markdown',
-}));
-*/
 // cookieSession config
 app.use(cookieSession({
    maxAge: 60 * 60 * 1000, //One hour
@@ -63,18 +51,18 @@ app.use(cookieSession({
    httpOnly: true
 }));
 
-app.use(passport.initialize()); // Used to initialize passport
-app.use(passport.session()); // Used to persist login sessions
+app.use(initialize()); // Used to initialize passport
+app.use(session()); // Used to persist login sessions
 
-passport.use(env.PassportStrategy);
+use(env.PassportStrategy);
 
 // Used to stuff a piece of information into a cookie
-passport.serializeUser((user, done) => {
+serializeUser((user, done) => {
    done(null, user);
 });
 
 // Used to decode the received cookie and persist session
-passport.deserializeUser((user, done) => {
+deserializeUser((user, done) => {
    done(null, user);
 });
 
@@ -87,9 +75,7 @@ async function isUserAuthenticated (req, res, next) {
    }
 }
 
-
 // USER FACING URLS
-
 app.getAsync('/', async (req, res) => {
    let pageEnv = {
       hideLogin: env.hideLogin
@@ -117,25 +103,19 @@ app.get('/logout', (req, res) => {
 });
 
 // OAUTH
-
-app.get('/auth/kanta', passport.authenticate('oauth2', {
+app.get('/auth/kanta', authenticate('oauth2', {
    state: env.randomString(), // TODO actually store this in session to validate it
    scope: ['offline_access', 'patient/Observation.read', 'patient/MedicationAdministration.read', 'patient/Observation.write', 'patient/MedicationAdministration.write'] // Used to specify the required data
 }));
 
-app.get('/auth/kanta/callback', passport.authenticate('oauth2'), function (req, res) {
+app.get('/auth/kanta/callback', authenticate('oauth2'), function (req, res) {
    res.redirect('/loggedin');
 });
 
-let NSRestService = require('./lib/NSRESTService')(env);
-
-app.use('/api/v1', NSRestService);
-
-let TidepoolRESTService = require('./lib/TidepoolRESTService')(env);
-
-app.use('/tpupload', TidepoolRESTService.uploadApp);
-app.use('/tpapi', TidepoolRESTService.APIapp);
-app.use('/tpdata', TidepoolRESTService.dataApp);
+app.use('/api/v1', nSRestService);
+app.use('/tpupload', tidepoolRESTService.uploadApp);
+app.use('/tpapi', tidepoolRESTService.APIapp);
+app.use('/tpdata', tidepoolRESTService.dataApp);
 
 console.log('TidepoolRESTService started');
 
