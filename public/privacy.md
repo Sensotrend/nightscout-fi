@@ -1,5 +1,5 @@
 # Tietosuojaseloste
-Versio 1.0, 20.3.2019
+Versio 1.0, 22.3.2019
 
 ## Rekisterin nimi
 Nightscout Connect -palvelun asiakasrekisteri
@@ -23,7 +23,7 @@ Henkilötietoja käsitellään tietosuoja-asetuksen mukaisesti.
 - Käyttöavaimet (access token), jotka luodaan palveluiden liitosprosessissa ja joiden avulla tietoa voidaan kirjoittaa Omakannan Omatietovarantoon ja lukea sieltä.
 - Internet-palvelimen tekniset lokit ja tiedot palvelun käytöstä.
 - Mahdollinen viestintälupa sen erikseen antaneilta asiakkailta palvelun kehitykseen liittyvää viestintää varten ja luvan myöntämisen ajankohta.
-- Mahdollinen tietojen käyttölupa palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihin vastaaviin käyttötarkoituksiin ja luvan myöntämisen ajankohta.
+- Mahdolliset tietojen käyttöluvat palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihin vastaaviin käyttötarkoituksiin ja lupien myöntämisen ajankohta.
 - Mahdolliset muut asiakkaan suostumuksella kerättävät tiedot.
 
 ## Säännönmukaiset tietolähteet
@@ -53,4 +53,4 @@ Asiakas voi koska vain lopettaa asiakkuutensa poistamalla asiakastilinsä palvel
 Palvelun avulla on mahdollista tallentaa tietoja myös Omakannan Omatietovarantoon. Sinne tallennettuihin tietoihin sovelletaan Omatietovarannon tietosuojakäytäntöjä.
 
 ## Suostumukset ja kiellot
-Asiakas voi erikseen antaa rekisterinpitäjälle viestintäluvan ja luvan käyttää tietojaan palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihun vastaaviin käyttötarkoituksiin. Muussa tapauksessa asiakkaan tietoja ei käytetä muuhun kuin suoraan viestintään sekä poikkeustilanteista tiedottamiseen.
+Asiakas voi erikseen antaa rekisterinpitäjälle viestintäluvan ja tapauskohtaisesti lupia käyttää tietojaan palvelun käytön, asiakaspalvelun ja liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihun vastaaviin käyttötarkoituksiin. Muussa tapauksessa asiakkaan tietoja ei käytetä muuhun kuin poikkeustilanteista tiedottamiseen.
