@@ -1,22 +1,19 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import session from 'express-session';
+import MongoStoreModule from 'connect-mongo';
+import expressmarkdown from 'express-markdown-reloaded';
+import marked from 'marked';
+import { decorateApp } from '@awaitjs/express';
 
-//const cookieSession = require('cookie-session');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+import envModule from './lib/env';
+import NSRestService from './lib/NSRESTService';
+import NightscoutViewConsentService from './lib/NightscoutConsentService.js';
+import TidepoolRESTService from './lib/TidepoolRESTService';
 
-const {
-   decorateApp
-} = require('@awaitjs/express');
-
+const env = envModule();
+const MongoStore = MongoStoreModule(session);
 const app = decorateApp(express());
-
-//const bodyParser = require('body-parser');
-
-const expressmarkdown = require('express-markdown-reloaded');
-const marked = require('marked');
-
-const env = require('./lib/env')();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -52,8 +49,10 @@ app.use(session({
       maxAge: 60000
    }
    , resave: true
-   //, saveUninitialized: true
-   , store: new MongoStore({ mongooseConnection: env.mongo.getConnection() })
+      //, saveUninitialized: true
+   , store: new MongoStore({
+      mongooseConnection: env.mongo.getConnection()
+   })
 }));
 
 // Middleware to check if the user is authenticated
@@ -71,7 +70,9 @@ app.getAsync('/', async (req, res) => {
    let pageEnv = {
       hideLogin: env.hideLogin
    };
-   res.render('index.ejs', {pageEnv: pageEnv});
+   res.render('index.ejs', {
+      pageEnv: pageEnv
+   });
 });
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
@@ -100,23 +101,23 @@ app.use('/fiphr', env.userProvider);
 
 ////
 
-let NSRestService = require('./lib/NSRESTService')(env);
+let nsrest = NSRestService(env);
+app.use('/api/v1', nsrest);
 
-app.use('/api/v1', NSRestService);
+let tidepoolService = TidepoolRESTService(env);
 
-let TidepoolRESTService = require('./lib/TidepoolRESTService')(env);
-
-app.use('/tpupload', TidepoolRESTService.uploadApp);
-app.use('/tpapi', TidepoolRESTService.APIapp);
-app.use('/tpdata', TidepoolRESTService.dataApp);
+app.use('/tpupload', tidepoolService.uploadApp);
+app.use('/tpapi', tidepoolService.APIapp);
+app.use('/tpdata', tidepoolService.dataApp);
 
 console.log('TidepoolRESTService started');
 
-let NightscoutViewConsentService = require('./lib/NightscoutConsentService.js')(env);
-app.use('/nsconsent', NightscoutViewConsentService);
+let nightscoutService = NightscoutViewConsentService(env);
+
+app.use('/nsconsent', nightscoutService);
 
 console.log('Epic Smart Service started');
 
 app.listen(process.env.PORT, () => {
-   console.log('Server Started!');
+         console.log('Server Started!');
 });
