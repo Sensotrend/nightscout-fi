@@ -1,19 +1,14 @@
 const express = require('express');
-const passport = require('passport');
 const path = require('path');
 
 //const cookieSession = require('cookie-session');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-const axios = require('axios');
-
 const {
    decorateApp
 } = require('@awaitjs/express');
-const {
-   wrap
-} = require('@awaitjs/express');
+
 const app = decorateApp(express());
 
 //const bodyParser = require('body-parser');
@@ -51,21 +46,6 @@ app.use('/public', expressmarkdown({
    }
 }));
 
-/*
-app.use(require('express-markdown-reloaded')({
-    directory: __dirname + '/public',
-    view: 'markdown',
-}));
-*/
-// cookieSession config
-/*
-app.use(cookieSession({
-   maxAge: 60 * 60 * 1000, //One hour
-   keys: [env.session_key], // Key used to verify the session data, set this for production
-   httpOnly: true
-}));
-*/
-
 app.use(session({
    secret: env.session_key
    , cookie: {
@@ -76,31 +56,14 @@ app.use(session({
    , store: new MongoStore({ mongooseConnection: env.mongo.getConnection() })
 }));
 
-
-app.use(passport.initialize()); // Used to initialize passport
-app.use(passport.session()); // Used to persist login sessions
-
-passport.use(env.PassportStrategy);
-
-// Used to stuff a piece of information into a cookie
-passport.serializeUser((user, done) => {
-   done(null, user);
-});
-
-// Used to decode the received cookie and persist session
-passport.deserializeUser((user, done) => {
-   done(null, user);
-});
-
 // Middleware to check if the user is authenticated
 async function isUserAuthenticated (req, res, next) {
-   if (req.user) {
+   if (req.session.user) {
       next();
    } else {
       res.redirect('/');
    }
 }
-
 
 // USER FACING URLS
 
@@ -112,7 +75,8 @@ app.getAsync('/', async (req, res) => {
 });
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
-   let user = await env.userProvider.findUserById(req.user.userid);
+
+   let user = await env.userProvider.findUserById(req.session.user.userid);
 
    let pageEnv = {
       apiURL: env.apiURL
@@ -130,16 +94,11 @@ app.get('/logout', (req, res) => {
    res.render('loggedout.ejs');
 });
 
-// OAUTH
+/// Kanta authentication
 
-app.get('/auth/kanta', passport.authenticate('oauth2', {
-   state: env.randomString(), // TODO actually store this in session to validate it
-   scope: ['offline_access', 'patient/Observation.read', 'patient/MedicationAdministration.read', 'patient/Observation.write', 'patient/MedicationAdministration.write'] // Used to specify the required data
-}));
+app.use('/fiphr', env.userProvider);
 
-app.get('/auth/kanta/callback', passport.authenticate('oauth2'), function (req, res) {
-   res.redirect('/loggedin');
-});
+////
 
 let NSRestService = require('./lib/NSRESTService')(env);
 
