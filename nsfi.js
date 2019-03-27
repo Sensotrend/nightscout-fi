@@ -11,14 +11,17 @@ import NSRestService from './lib/NSRESTService';
 import NightscoutViewConsentService from './lib/NightscoutConsentService.js';
 import TidepoolRESTService from './lib/TidepoolRESTService';
 
+import FIPHR from './lib/oauthproviders/FIPHR.js';
+
 const env = envModule();
+env.setOauthProvider(FIPHR(env));
+
 const MongoStore = MongoStoreModule(session);
 const app = decorateApp(express());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// !!!IMPORTANT: place this before static or similar middleware
 app.use('/public', expressmarkdown({
    directory: path.join(__dirname, '/public')
    , caseSensitive: app.get('case sensitive routing')
@@ -48,8 +51,8 @@ app.use(session({
    , cookie: {
       maxAge: 60000
    }
-   , resave: true
-      //, saveUninitialized: true
+   , resave: false
+   , saveUninitialized: false
    , store: new MongoStore({
       mongooseConnection: env.mongo.getConnection()
    })
@@ -97,7 +100,7 @@ app.get('/logout', (req, res) => {
 
 /// Kanta authentication
 
-app.use('/fiphr', env.userProvider);
+app.use('/fiphr', env.oauthProvider);
 
 ////
 
