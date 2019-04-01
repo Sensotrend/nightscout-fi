@@ -8,7 +8,7 @@
   "language": "en",
   "text": {
     "status": "extensions",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Code: Home glucose sensor reading<br />Time: {{time_fhir}}<br />Device: {{deviceId}} (via Sensotrend Connect)<br />Result: {{valueMmol}} mmol/l</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br />Aika: {{time_fhir}}<br />Device: {{deviceId}} (via Sensotrend Connect)<br />Tulos: {{valueMmol}} mmol/l</div>"
   },
   "identifier": [
     {
