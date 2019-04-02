@@ -51,7 +51,6 @@ describe('convert_data', function () {
 
       let ns_sample = [{
             "device": "MDT-554"
-            , "date": 1550143850509
             , "carbs": 15
             , "insulin": 1.3
             , "created_at": "2019-04-01T10:26:23+03:00"
@@ -76,8 +75,11 @@ describe('convert_data', function () {
 
       let records2 = await DataConverter.convert(records, options);
 
+      console.log('records2', records2);
+
       records2[0].carbs.should.equal(15);
       records2[1].insulin.should.equal(1.3);
+      records2[0].created_at.should.equal(ns_sample[0].created_at);
    });
 
 

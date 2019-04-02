@@ -2,13 +2,13 @@
   "resourceType": "Observation",
   "meta": {
     "profile": [
-      "http://phr.kanta.fi/StructureDefinition/fiphr-bloodglucose-stu3-modified20190128"
+      "http://phr.kanta.fi/StructureDefinition/fiphr-bloodglucose-stu3"
     ]
   },
-  "language": "en",
+  "language": "fi",
   "text": {
     "status": "extensions",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Code: Home glucometer reading<br />Device: {{deviceId}} (via Sensotrend Connect)<br />Time: {{time_fhir}}<br />Result: {{valueMmol}} mmol/l</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Verensokerimittaus<br />Laite: {{deviceId}} (via Sensotrend Connect)<br />Aika: {{time_fhir}}<br />Tulos: {{valueMmol}} mmol/l</div>"
   },
   "identifier": [
     {
@@ -32,7 +32,12 @@
       {
         "system": "http://loinc.org",
         "code": "14743-9",
-        "display": "Glucose [Moles/volume] in Capillary blood by Glucometer"
+        "display": "Verensokeri verensokerimittarilla"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "15074-8",
+        "display": "Verensokeri"
       }
     ]
   },

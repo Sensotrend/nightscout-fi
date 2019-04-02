@@ -49,6 +49,6 @@
     },
     "text": {
         "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Arvioitu hiilihydraattimäärä: {{carbs}} g<br />Device: {{deviceId}} (via Sensotrend Connect)</div>"
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Arvioitu hiilihydraattimäärä: {{carbs}} g<br />Laite: {{deviceId}} (via Sensotrend Connect)</div>"
     }
 }

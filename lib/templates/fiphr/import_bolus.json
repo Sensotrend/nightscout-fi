@@ -5,10 +5,10 @@
       "http://phr.kanta.fi/StructureDefinition/fiphr-medicationadministration-stu3"
     ]
   },
-  "language": "en",
+  "language": "fi",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Bolus, lyhytvaikutteinen insuliini<br />Time: 20.11.2017 11:46<br />Dose: {{insulin}} IU<br />Device: {{deviceId}} (via Sensotrend Connect)</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Bolus, lyhytvaikutteinen insuliini<br />Aika: 20.11.2017 11:46<br />Annos: {{insulin}} IU<br />Laite: {{deviceId}} (via Sensotrend Connect)</div>"
   },
   "identifier": [
     {
