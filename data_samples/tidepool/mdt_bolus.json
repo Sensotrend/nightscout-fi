@@ -1,0 +1,10 @@
+{"time":"2019-01-26T18:49:35.000Z",
+    "timezoneOffset":120,
+    "clockDriftOffset":-3000,
+    "conversionOffset":0,
+    "deviceTime":"2019-01-26T20:49:35",
+    "deviceId":"MedT-554-450960",
+    "type":"bolus",
+    "subType":"normal",
+    "normal":0.1,
+    "payload":{"logIndices":[1541]}}
