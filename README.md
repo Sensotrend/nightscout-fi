@@ -14,9 +14,9 @@ This repository contains a server that implements several Nighscout Connect func
 * Run the server with 'sh start.sh'
 * Access the site at 'http://localhost:1300'
 
-# Unit tests
+# Unit tests & code coverage reporting
 
-The repository uses 'make' and Mocha to run unit tests found in the /tests. The tests expect to find a Mongo server running on localhost on port 27017 (default) without authentication ('brew install mongodb'). Run the tests with 'make test'.
+The repository uses nyc and Mocha to run unit tests found in the /tests. The tests expect to find a Mongo server running on localhost on port 27017 (default) without authentication ('brew install mongodb'). Run the tests with 'npm test'. Run code coverage report by running 'npm run-script coverage'. Get full HTML output with 'npm run-script coverage-html'.
 
 # Using Tidepool client with the Tidepool server
 

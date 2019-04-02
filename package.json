@@ -33,11 +33,43 @@
       "yargs": "^12.0.5"
    },
    "devDependencies": {
-      "benv": "^3.3.0",
+      "env-cmd": "^8.0.2",
       "istanbul": "^0.4.5",
       "mocha": "^5.2.0",
+      "nyc": "^13.3.0",
       "should": "^13.2.3",
-      "supertest": "^3.4.2"
+      "source-map-support": "^0.5.11",
+      "supertest": "^4.0.2"
+   },
+   "esm": {
+      "cjs": true,
+      "sourceMap": false,
+      "cache":false
+   },
+   "nyc": {
+      "all": false,
+      "sourceMap": false,
+      "instrument": true,
+      "cache": false,
+      "include":
+      [
+         "lib/**/*.js",
+         "*.js"
+      ],
+      "exclude" :
+      [
+         "coverage/**",
+         "packages/*/test/**",
+         "test/**",
+         "test{,-*}.js",
+         "**/*{.,-}test.js",
+         "**/__tests__/**",
+         "**/node_modules/**",
+         "**/babel.config.js"
+       ],
+      "require": [
+         "esm"
+      ]
    },
    "engines": {
       "node": "^10.8.0 || ^8.15.0",
@@ -45,6 +77,9 @@
    },
    "scripts": {
       "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
-      "start": "node nsfi.js"
+      "start": "node nsfi.js",
+      "test": "env-cmd ./test.env mocha --exit --require esm tests/*.test.js",
+      "coverage": "env-cmd ./test.env nyc mocha --exit --require esm tests/*.test.js",
+      "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html && open coverage/index.html"
    }
 }

@@ -1,14 +1,12 @@
-'use strict';
-
 import MongoModule from '../lib/Mongo.js';
 import nanoid from 'nanoid';
 import envModule from '../lib/env';
+import should from 'should';
 
 const Mongo = MongoModule();
 const env = envModule();
 let Auth = env.userProvider;
 
-import should from 'should';
 
 describe('mongodb_users', function () {
 
@@ -45,6 +43,8 @@ describe('mongodb_users', function () {
       console.log('u7:', u7);
 
       Auth.decryptRefreshToken(u7).should.equal('barx');
+
+      //Mongo.closeConnection();
 
    });
 
