@@ -44,6 +44,15 @@ describe('convert_data', function () {
       let records2 = await DataConverter.convert(records, options);
 
       records2[0].sgv.should.equal(177);
+
+      // Test the date is the same to one second precision
+
+      let testDate = Math.floor(ns_sample[0].date / 1000);
+      let testDate2 = Math.floor(records2[0].date / 1000);
+      
+      testDate.should.equal(testDate2);
+      
+      //records2[0].date.should.equal(testDate);
    });
 
 
