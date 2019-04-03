@@ -16,7 +16,7 @@ $(document).ready(function () {
       if (validate()) {
          $.ajax({
             type: "POST"
-            , url: "permissionrequest"
+            , url: "../permissionrequest"
             , data: form.serialize()
             , dataType: "json"
          }).done(function (data) {

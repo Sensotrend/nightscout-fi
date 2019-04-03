@@ -1,0 +1,17 @@
+{
+   "time": "{{_ISODate}}"
+   , "timezoneOffset": "{{_timezoneOffset}}"
+   , "conversionOffset": 0
+   , "deviceTime": "{{_ISODate}}"
+   , "deviceId": "{{deviceId}}"
+   , "type": "cbg"
+   , "value": "{{valueQuantity.value}}"
+   , "units": "{{valueQuantity.unit}}"
+   , "payload": {
+      "trend": "Flat"
+      , "internalTime": "2018-10-22T15:32:43"
+      , "transmitterTimeSeconds": 887679
+      , "noiseMode": "Clean"
+   }
+   , "guid": "{{id}}"
+}
