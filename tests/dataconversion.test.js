@@ -8,22 +8,20 @@ describe('convert_data', function () {
    it('should convert Nightscout CGM record to FIPHR and back', async function () {
 
       let ns_sample = [{
-            "_id": "5c655105763fe276981ff0c2"
-            , "device": "xDrip-DexcomG5"
-            , "date": 1550143850509
-            , "dateString": "2019-02-14T13:30:50.509+0200"
-            , "sgv": 177
-            , "delta": 1.5
-            , "direction": "Flat"
-            , "type": "sgv"
-            , "filtered": 195071.0394182456
-            , "unfiltered": 196842.65552921052
-            , "rssi": 100
-            , "noise": 1
-            , "sysTime": "2019-02-14T13:30:50.509+0200"
-         }
-    ];
-
+         "_id": "5c655105763fe276981ff0c2"
+         , "device": "xDrip-DexcomG5"
+         , "date": 1550143850509
+         , "dateString": "2019-02-14T13:30:50.509+0200"
+         , "sgv": 177
+         , "delta": 1.5
+         , "direction": "Flat"
+         , "type": "sgv"
+         , "filtered": 195071.0394182456
+         , "unfiltered": 196842.65552921052
+         , "rssi": 100
+         , "noise": 1
+         , "sysTime": "2019-02-14T13:30:50.509+0200"
+         }];
 
       let options = {
          source: 'nightscout'
@@ -44,28 +42,20 @@ describe('convert_data', function () {
       let records2 = await DataConverter.convert(records, options);
 
       records2[0].sgv.should.equal(177);
-
-      // Test the date is the same to one second precision
-
-      let testDate = Math.floor(ns_sample[0].date / 1000);
-      let testDate2 = Math.floor(records2[0].date / 1000);
-      
-      testDate.should.equal(testDate2);
-      
-      //records2[0].date.should.equal(testDate);
+      records2[0].date.should.equal(ns_sample[0].date);
    });
 
 
    it('should convert Nightscout bolus wizard record to FIPHR and back', async function () {
 
       let ns_sample = [{
-            "device": "MDT-554"
-            , "carbs": 15
-            , "insulin": 1.3
-            , "created_at": "2019-04-01T10:26:23+03:00"
-            , "eventType": "Meal Bolus"
-  }
-  ];
+         "device": "MDT-554"
+         , "carbs": 15
+         , "insulin": 1.3
+         , "created_at": "2019-04-01T10:26:23+03:00"
+         , "eventType": "Meal Bolus"
+      }];
+
       let options = {
          source: 'nightscout'
          , target: 'fiphr'
@@ -91,25 +81,23 @@ describe('convert_data', function () {
       records2[0].created_at.should.equal(ns_sample[0].created_at);
    });
 
-
    it('should convert Nightscout data to Tidepool and back', async function () {
 
       let ns_sample = [{
-            "_id": "5c655105763fe276981ff0c2"
-            , "device": "xDrip-DexcomG5"
-            , "date": 1550143850509
-            , "dateString": "2019-02-14T13:30:50.509+0200"
-            , "sgv": 177
-            , "delta": 1.5
-            , "direction": "Flat"
-            , "type": "sgv"
-            , "filtered": 195071.0394182456
-            , "unfiltered": 196842.65552921052
-            , "rssi": 100
-            , "noise": 1
-            , "sysTime": "2019-02-14T13:30:50.509+0200"
-       }
-  ];
+         "_id": "5c655105763fe276981ff0c2"
+         , "device": "xDrip-DexcomG5"
+         , "date": 1550143850509
+         , "dateString": "2019-02-14T13:30:50.509+0200"
+         , "sgv": 177
+         , "delta": 1.5
+         , "direction": "Flat"
+         , "type": "sgv"
+         , "filtered": 195071.0394182456
+         , "unfiltered": 196842.65552921052
+         , "rssi": 100
+         , "noise": 1
+         , "sysTime": "2019-02-14T13:30:50.509+0200"
+       }];
 
 
       let options = {
@@ -131,13 +119,6 @@ describe('convert_data', function () {
       };
 
       let records2 = await DataConverter.convert(records, options);
-
-      console.log('records2', records2);
-
-
       records2[0].sgv.should.equal(177);
    });
-
-
-
 });
