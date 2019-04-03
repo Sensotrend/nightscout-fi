@@ -19,6 +19,8 @@ env.setOauthProvider(FIPHR(env));
 const MongoStore = MongoStoreModule(session);
 const app = decorateApp(express());
 
+app.env = env;
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -124,3 +126,5 @@ console.log('Epic Smart Service started');
 app.listen(process.env.PORT, () => {
          console.log('Server Started!');
 });
+
+export default app;

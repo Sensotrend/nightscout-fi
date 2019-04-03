@@ -1,0 +1,12 @@
+[{"time":"2014-12-24T09:16:00.000Z",
+    "timezoneOffset":120,
+    "conversionOffset":0,
+    "deviceTime":"2014-12-24T11:16:00",
+    "deviceId":"Bayer6300-1C00A03",
+    "type":"smbg",
+    "value":5.1,
+    "units":"mmol/L",
+    "payload":{"logIndices":[1]},
+    "uploadId":"upid_64c4418df72d",
+    "guid":"f2e8151a-699e-4195-9d48-b7077318e860"}
+]

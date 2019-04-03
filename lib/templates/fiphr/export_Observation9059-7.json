@@ -1,0 +1,9 @@
+{
+    "time": "{{_ISODate}}",
+    "timezoneOffset": "{{_timezoneOffset}}",
+    "deviceTime": "{{_ISODate}}",
+    "deviceId": "{{deviceId}}",
+    "type": "wizard",
+    "carbInput": "{{valueQuantity.value}}",
+    "guid": "{{id}}"
+}

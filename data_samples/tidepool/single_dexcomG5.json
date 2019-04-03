@@ -1,0 +1,18 @@
+[
+    {"time":"2018-10-22T06:32:42.000Z",
+    "timezoneOffset":120,
+    "clockDriftOffset":0,
+    "conversionOffset":0,
+    "deviceTime":"2018-10-22T08:32:42",
+    "deviceId":"DexG5MobRec_SM74021055",
+    "type":"cbg",
+    "value":127,
+    "units":"mg/dL",
+    "payload":{"trend":"Flat",
+    "internalTime":"2018-10-22T15:32:43",
+    "transmitterTimeSeconds":887679,
+    "noiseMode":"Clean",
+    "logIndices":[309454363]},
+    "uploadId":"upid_5bd26e3593d8",
+    "guid":"bb53c910-d03a-4fd6-b589-44260bd7c0d1"}
+]
