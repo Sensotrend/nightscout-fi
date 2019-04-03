@@ -96,7 +96,7 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 
 // Logout route
 app.get('/logout', (req, res) => {
-   req.logout();
+   req.session.destroy();
    res.render('loggedout.ejs');
 });
 
