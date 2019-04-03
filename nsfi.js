@@ -1,31 +1,29 @@
-const express = require('express');
-const passport = require('passport');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import session from 'express-session';
+import MongoStoreModule from 'connect-mongo';
+import expressmarkdown from 'express-markdown-reloaded';
+import marked from 'marked';
+import { decorateApp } from '@awaitjs/express';
 
-const cookieSession = require('cookie-session');
-const axios = require('axios');
+import envModule from './lib/env';
+import NSRestService from './lib/NSRESTService';
+import NightscoutViewConsentService from './lib/NightscoutConsentService.js';
+import TidepoolRESTService from './lib/TidepoolRESTService';
 
-const Mongo = require('./lib/Mongo.js')();
+import FIPHR from './lib/oauthproviders/FIPHR.js';
 
-const {
-   decorateApp
-} = require('@awaitjs/express');
-const {
-   wrap
-} = require('@awaitjs/express');
+const env = envModule();
+env.setOauthProvider(FIPHR(env));
+
+const MongoStore = MongoStoreModule(session);
 const app = decorateApp(express());
 
-const bodyParser = require('body-parser');
-
-const expressmarkdown = require('express-markdown-reloaded');
-const marked = require('marked');
-
-const env = require('./lib/env')();
+app.env = env;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// !!!IMPORTANT: place this before static or similar middleware
 app.use('/public', expressmarkdown({
    directory: path.join(__dirname, '/public')
    , caseSensitive: app.get('case sensitive routing')
@@ -50,43 +48,26 @@ app.use('/public', expressmarkdown({
    }
 }));
 
-/*
-app.use(require('express-markdown-reloaded')({
-    directory: __dirname + '/public',
-    view: 'markdown',
+app.use(session({
+   secret: env.session_key
+   , cookie: {
+      maxAge: 60000
+   }
+   , resave: false
+   , saveUninitialized: false
+   , store: new MongoStore({
+      mongooseConnection: env.mongo.getConnection()
+   })
 }));
-*/
-// cookieSession config
-app.use(cookieSession({
-   maxAge: 60 * 60 * 1000, //One hour
-   keys: [env.session_key], // Key used to verify the session data, set this for production
-   httpOnly: true
-}));
-
-app.use(passport.initialize()); // Used to initialize passport
-app.use(passport.session()); // Used to persist login sessions
-
-passport.use(env.PassportStrategy);
-
-// Used to stuff a piece of information into a cookie
-passport.serializeUser((user, done) => {
-   done(null, user);
-});
-
-// Used to decode the received cookie and persist session
-passport.deserializeUser((user, done) => {
-   done(null, user);
-});
 
 // Middleware to check if the user is authenticated
 async function isUserAuthenticated (req, res, next) {
-   if (req.user) {
+   if (req.session.user) {
       next();
    } else {
       res.redirect('/');
    }
 }
-
 
 // USER FACING URLS
 
@@ -94,11 +75,14 @@ app.getAsync('/', async (req, res) => {
    let pageEnv = {
       hideLogin: env.hideLogin
    };
-   res.render('index.ejs', {pageEnv: pageEnv});
+   res.render('index.ejs', {
+      pageEnv: pageEnv
+   });
 });
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
-   let user = await env.userProvider.findUserById(req.user.userid);
+
+   let user = await env.userProvider.findUserById(req.session.user.userid);
 
    let pageEnv = {
       apiURL: env.apiURL
@@ -112,33 +96,35 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 
 // Logout route
 app.get('/logout', (req, res) => {
-   req.logout();
+   req.session.destroy();
    res.render('loggedout.ejs');
 });
 
-// OAUTH
+/// Kanta authentication
 
-app.get('/auth/kanta', passport.authenticate('oauth2', {
-   state: env.randomString(), // TODO actually store this in session to validate it
-   scope: ['offline_access', 'patient/Observation.read', 'patient/MedicationAdministration.read', 'patient/Observation.write', 'patient/MedicationAdministration.write'] // Used to specify the required data
-}));
+app.use('/fiphr', env.oauthProvider);
 
-app.get('/auth/kanta/callback', passport.authenticate('oauth2'), function (req, res) {
-   res.redirect('/loggedin');
-});
+////
 
-let NSRestService = require('./lib/NSRESTService')(env);
+let nsrest = NSRestService(env);
+app.use('/api/v1', nsrest);
 
-app.use('/api/v1', NSRestService);
+let tidepoolService = TidepoolRESTService(env);
 
-let TidepoolRESTService = require('./lib/TidepoolRESTService')(env);
-
-app.use('/tpupload', TidepoolRESTService.uploadApp);
-app.use('/tpapi', TidepoolRESTService.APIapp);
-app.use('/tpdata', TidepoolRESTService.dataApp);
+app.use('/tpupload', tidepoolService.uploadApp);
+app.use('/tpapi', tidepoolService.APIapp);
+app.use('/tpdata', tidepoolService.dataApp);
 
 console.log('TidepoolRESTService started');
 
+let nightscoutService = NightscoutViewConsentService(env);
+
+app.use('/nsconsent', nightscoutService);
+
+console.log('Epic Smart Service started');
+
 app.listen(process.env.PORT, () => {
-   console.log('Server Started!');
+         console.log('Server Started!');
 });
+
+export default app;

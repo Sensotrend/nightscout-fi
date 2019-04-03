@@ -5,5 +5,7 @@
     "keep-array-indentation": true,
     "space_after_named_function": true,
     "space_after_anon_function": true,
-    "end_with_newline": true
+    "end_with_newline": true,
+    "brace_style": "collapse,preserve-inline",
+    "space_in_brace" : true
   }
