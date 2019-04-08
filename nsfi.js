@@ -9,6 +9,7 @@ import { decorateApp } from '@awaitjs/express';
 import envModule from './lib/env';
 import NSRestService from './lib/NSRESTService';
 import NightscoutViewConsentService from './lib/NightscoutConsentService.js';
+import EmailVerificationService from './lib/EmailVerificationService.js';
 import TidepoolRESTService from './lib/TidepoolRESTService';
 
 import FIPHR from './lib/oauthproviders/FIPHR.js';
@@ -84,14 +85,18 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 
    let user = await env.userProvider.findUserById(req.session.user.userid);
 
-   let pageEnv = {
-      apiURL: env.apiURL
-   };
+   if (!user.email) {
+      res.redirect('/emailverification/generateRequest');
+   } else {
+      let pageEnv = {
+         apiURL: env.apiURL
+      };
 
-   res.render('secret.ejs', {
-      user: user
-      , pageEnv: pageEnv
-   });
+      res.render('secret.ejs', {
+         user: user
+         , pageEnv: pageEnv
+      });
+   }
 });
 
 // Logout route
@@ -121,10 +126,16 @@ let nightscoutService = NightscoutViewConsentService(env);
 
 app.use('/nsconsent', nightscoutService);
 
-console.log('Epic Smart Service started');
+console.log('Nightscout access consent Service started');
+
+let emailService = EmailVerificationService(env);
+
+app.use('/emailverification', emailService);
+
+console.log('Email verification Service started');
 
 app.listen(process.env.PORT, () => {
-         console.log('Server Started!');
+   console.log('Server Started!');
 });
 
 export default app;
