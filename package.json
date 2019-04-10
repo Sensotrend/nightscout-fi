@@ -81,6 +81,6 @@
       "test": "env-cmd ./test.env mocha --timeout 3000 --exit --require esm tests/*.test.js",
       "coverage": "env-cmd ./test.env nyc mocha ---timeout 3000 --exit --require esm tests/*.test.js",
       "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html",
-      "dev": "env-cmd ./my.env PORT=1300 nodemon -r esm nsfi.js"
+      "dev": "env-cmd ./my.env nodemon -r esm nsfi.js"
    }
 }
