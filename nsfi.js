@@ -108,6 +108,7 @@ app.use('/fiphr', env.oauthProvider);
 
 let nsrest = NSRestService(env);
 app.use('/api/v1', nsrest);
+app.use('/pebble', nsrest);
 
 let tidepoolService = TidepoolRESTService(env);
 
