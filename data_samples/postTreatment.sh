@@ -1,0 +1,1 @@
+node createFreshTreatment.js | curl -v -d "$(</dev/stdin)" -H "accept: application/json" -H "Content-Type: application/json" -X POST http://$NSFI_SECRET@localhost:1300/api/v1/treatments
