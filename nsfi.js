@@ -124,8 +124,14 @@ app.use('/nsconsent', nightscoutService);
 
 console.log('Epic Smart Service started');
 
+app.getAsync('*', async (req, res) => {
+
+   console.log('Unhandled URL', req.originalUrl);
+
+});
+
 app.listen(process.env.PORT, () => {
-         console.log('Server Started!');
+   console.log('Server Started!');
 });
 
 export default app;
