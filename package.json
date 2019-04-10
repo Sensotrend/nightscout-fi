@@ -78,9 +78,9 @@
    "scripts": {
       "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
       "start": "node -r esm nsfi.js",
-      "test": "env-cmd ./test.env mocha --timeout 8000 --exit --require esm tests/*.test.js",
-      "coverage": "env-cmd ./test.env nyc mocha ---timeout 8000 -exit --require esm tests/*.test.js",
+      "test": "env-cmd ./test.env mocha --timeout 3000 --exit --require esm tests/*.test.js",
+      "coverage": "env-cmd ./test.env nyc mocha ---timeout 3000 --exit --require esm tests/*.test.js",
       "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html",
-      "dev": "env $(cat my.env) PORT=1300 nodemon -r esm nsfi.js"
+      "dev": "env-cmd ./my.env PORT=1300 nodemon -r esm nsfi.js"
    }
 }
