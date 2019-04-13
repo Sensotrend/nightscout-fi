@@ -43,7 +43,9 @@
       #maintitle {
          font-weight: bold;
          max-width: 800px;
-         font-size: 100px;
+         font-size: 65px;
+         padding-top: 30px;
+         padding-bottom: 20px;
       }
    
       #subtitle {
@@ -57,7 +59,6 @@
       }
    
       #container {
-         padding-top: 100px;
          max-width: 800px;
          margin: auto;
       }
@@ -97,6 +98,12 @@
          background: rgb(66, 184, 221);
          /* this is a light blue */
       }
+
+      button.large {
+        font-size: 30px;
+        padding: 0.3em 1em;
+        margin: 2em;
+      }
    
       ul#navigation {
          display: inline;
@@ -120,31 +127,31 @@
   </head>
   <body>
     <div id='container'>
-      <div id='maintitle'>Nightscout.fi</div>
-        <div>
-          <p>Nightscout Connect on Kanta-palveluihin kytketty palvelu,
-            jonka avulla Nightscout-sovelluksia voi käyttää
-            <a href="https://www.kanta.fi/web/guest/hyvinvointitiedot">Omatietovarannon</a>
-            kanssa.</p>
-          <p>Nightscout-sovellukset ovat avoimen lähdekoodin kehittäjäyhteisön luomia sovelluksia.
-            Sovellusten tarkoitus on helpottaa elämää diabeteksen kanssa.
-            Nämä sovellukset eivät tyypillisesti ole virallisia terveydenhuollon laitteita,
-            vaan kansalaiset käyttävät näitä omalla vastuullaan.
-            Lisätietoa Nightscout-sovelluksista löytyy sivustolta
-            <a href="http://www.nightscout.info/">nightscout.info</a>
-            sekä esimerkiksi suomenkielisestä Facebook-ryhmästä
-            <a href="https://www.facebook.com/groups/nightscoutsuomi/">
-              Nightscout Suomi (Finland) Virallinen
-            </a>.
-          </p>
-          <p>Nightscout Connect -palvelun avulla sovellusten käyttöönotto helpottuu, kun
-            niiden vaatimaa palvelinta ei tarvitse pystyttää ja ylläpitää itse.
-          </p>
-          <p>Tulevaisuudessa palvelun avulla on myös mahdollista jakaa Nightscout-sovellusten
-            keräämä tieto esimerkiksi lääkärin ja hoitajan kanssa.
-          </p>
-          </div>
+      <div id='maintitle'>Nightscout Connect</div>
         <noscript>
+          <div>
+            <p>Nightscout Connect on Kanta-palveluihin kytketty palvelu,
+              jonka avulla Nightscout-sovelluksia voi käyttää
+              <a href="https://www.kanta.fi/web/guest/hyvinvointitiedot">Omatietovarannon</a>
+              kanssa.</p>
+            <p>Nightscout-sovellukset ovat avoimen lähdekoodin kehittäjäyhteisön luomia sovelluksia.
+              Sovellusten tarkoitus on helpottaa elämää diabeteksen kanssa.
+              Nämä sovellukset eivät tyypillisesti ole virallisia terveydenhuollon laitteita,
+              vaan kansalaiset käyttävät näitä omalla vastuullaan.
+              Lisätietoa Nightscout-sovelluksista löytyy sivustolta
+              <a href="http://www.nightscout.info/">nightscout.info</a>
+              sekä esimerkiksi suomenkielisestä Facebook-ryhmästä
+              <a href="https://www.facebook.com/groups/nightscoutsuomi/">
+                Nightscout Suomi (Finland) Virallinen
+              </a>.
+            </p>
+            <p>Nightscout Connect -palvelun avulla sovellusten käyttöönotto helpottuu, kun
+              niiden vaatimaa palvelinta ei tarvitse pystyttää ja ylläpitää itse.
+            </p>
+            <p>Tulevaisuudessa palvelun avulla on myös mahdollista jakaa Nightscout-sovellusten
+              keräämä tieto esimerkiksi lääkärin ja hoitajan kanssa.
+            </p>
+          </div>
           <p>Palvelu tarvitsee toimiakseen selaimen javascript-ominaisuudet.</p>
         </noscript>
         <div id="root"></div>
@@ -153,10 +160,10 @@
     <div id='footer'>
       <ul id="navigation">   
         <li><a href="/">Etusivu</a></li>
-        <li><a href="/public/terms.md">Palvelun käyttöehdot</a></li>
-        <li><a href="/public/privacy.md">Tietosuojaseloste</a></li>
-        <li><a href="/public/guide.md">Käyttöohjeet</a></li>
-        <li><a href="/public/support.md">Käyttötuki</a></li>
+        <li><a href="eula">Käyttöehdot</a></li>
+        <li><a href="privacy">Tietosuojaseloste</a></li>
+        <li><a href="instructions">Ohjeet</a></li>
+        <li><a href="support">Tuki</a></li>
       </ul>
     </div>
   </body>
