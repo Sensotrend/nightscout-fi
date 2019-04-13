@@ -4,6 +4,7 @@ import { server } from '../Api/Api';
 
 class Login extends Component {
   render() {
+    console.log('Server', server, process.env);
     return (
       <div id='login'>
         {process.env.REACT_APP_HIDE_LOGIN
@@ -12,7 +13,7 @@ class Login extends Component {
         )
         : (
           <a href={`${server}/fiphr/launch`}>
-            <button className="button-success pure-button">Kirjaudu</button>
+            <button className="button-success large pure-button">Kirjaudu</button>
           </a>
         )
         }
