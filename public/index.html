@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <meta name="description" content="Nightscout Connect -palvelun avulla voit liittää avoimen
+      lähdekoodin kehittäjäyhteisön Nightscout-sovellukset Omakannan Omatietovarantoon.">
+    <meta name="author" content="Sensotrend Oy">
+    <style media="screen" type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
+   
+      html,
+      body {
+         margin: 0;
+         padding: 0;
+      }
+   
+      body {
+         font-family: 'Ubuntu', sans-serif;
+         background: #FFF;
+         color: #000;
+      }
+   
+      #maintitle {
+         font-weight: bold;
+         max-width: 800px;
+         font-size: 100px;
+      }
+   
+      #subtitle {
+         font-weight: bold;
+         max-width: 800px;
+         font-size: 50px;
+      }
+      #login {
+         max-width: 300px;
+         font-size: 30px;
+      }
+   
+      #container {
+         padding-top: 100px;
+         max-width: 800px;
+         margin: auto;
+      }
+   
+      #footer {
+         text-align: center;
+         max-width: 800px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+   
+      .button-success,
+      .button-error,
+      .button-warning,
+      .button-secondary {
+         color: white;
+         border-radius: 8px;
+         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      }
+   
+      .button-success {
+         background: rgb(28, 184, 65);
+         /* this is a green */
+      }
+   
+      .button-error {
+         background: rgb(202, 60, 60);
+         /* this is a maroon */
+      }
+   
+      .button-warning {
+         background: rgb(223, 117, 20);
+         /* this is an orange */
+      }
+   
+      .button-secondary {
+         background: rgb(66, 184, 221);
+         /* this is a light blue */
+      }
+   
+      ul#navigation {
+         display: inline;
+         /* Any other CSS you want */
+      }
+   
+      ul#navigation li {
+         display: inline;
+      }
+   
+      table {
+         border-collapse: collapse;
+      }
+   
+      table, th, td {
+        border: 1px solid black;
+        padding: 6px;
+      }
+    </style>
+    <title>Nightscout Connect</title>
+  </head>
+  <body>
+    <div id='container'>
+      <div id='maintitle'>Nightscout.fi</div>
+        <div>
+           <p>Nightscout.fi on Kelan Omatietovarantoon kytketty palvelu,<br>
+              jonka avulla käyttää Nightscout-sovelluksia yhdessä Omatietovarannon kanssa.</p>
+        </div>
+        <noscript>
+          <p>Palvelu tarvitsee toimiakseen selaimen javascript-ominaisuudet.</p>
+        </noscript>
+        <div id="root"></div>
+     </div>
+    </div>
+    <div id='footer'>
+      <ul id="navigation">   
+        <li><a href="/">Etusivu</a></li>
+        <li><a href="/public/terms.md">Palvelun käyttöehdot</a></li>
+        <li><a href="/public/privacy.md">Tietosuojaseloste</a></li>
+        <li><a href="/public/guide.md">Käyttöohjeet</a></li>
+        <li><a href="/public/support.md">Käyttötuki</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

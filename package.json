@@ -1,85 +1,96 @@
 {
-   "name": "NS_FHIR_BRIDGE",
-   "version": "0.1.2",
-   "description": "Nightscout REST API provider for FHIR PHRs",
-   "repository": "https://github.com/sensotrend/nightscout-fi",
-   "dependencies": {
-      "@awaitjs/express": "^0.2.0",
-      "@sendgrid/mail": "^6.3.1",
-      "async-csv": "^2.0.0",
-      "axios": "^0.18.0",
-      "basic-auth": "^2.0.1",
-      "body-parser": "^1.18.3",
-      "connect-mongo": "^2.0.3",
-      "cookie-session": "^2.0.0-beta.3",
-      "ejs": "^2.6.1",
-      "esm": "^3.2.20",
-      "express": "^4.16.4",
-      "express-markdown-reloaded": "^0.2.1",
-      "express-session": "^1.15.6",
-      "fhir-kit-client": "git://github.com/sulkaharo/fhir-kit-client.git#return_full_response_v3",
-      "fs-extra": "^7.0.1",
-      "jsonwebtoken": "^8.4.0",
-      "lodash": "^4.17.11",
-      "marked": "^0.6.1",
-      "moment": "^2.24.0",
-      "mongoose": "^5.4.14",
-      "morgan": "^1.9.1",
-      "nanoid": "^2.0.1",
-      "promise-parallel-throttle": "^3.3.0",
-      "simple-oauth2": "^2.2.1",
-      "stjs": "0.0.5",
-      "uuid": "^3.3.2",
-      "yargs": "^12.0.5"
-   },
-   "devDependencies": {
-      "env-cmd": "^8.0.2",
-      "istanbul": "^0.4.5",
-      "mocha": "^5.2.0",
-      "nyc": "^13.3.0",
-      "should": "^13.2.3",
-      "source-map-support": "^0.5.11",
-      "supertest": "^4.0.2"
-   },
-   "esm": {
-      "cjs": true,
-      "sourceMap": false,
-      "cache":false
-   },
-   "nyc": {
-      "all": false,
-      "sourceMap": false,
-      "instrument": true,
-      "cache": false,
-      "include":
-      [
-         "lib/**/*.js",
-         "*.js"
-      ],
-      "exclude" :
-      [
-         "coverage/**",
-         "packages/*/test/**",
-         "test/**",
-         "test{,-*}.js",
-         "**/*{.,-}test.js",
-         "**/__tests__/**",
-         "**/node_modules/**",
-         "**/babel.config.js"
-       ],
-      "require": [
-         "esm"
-      ]
-   },
-   "engines": {
-      "node": "^10.8.0 || ^8.15.0",
-      "npm": "6.x"
-   },
-   "scripts": {
-      "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
-      "start": "node -r esm nsfi.js",
-      "test": "env-cmd ./test.env mocha --exit --require esm tests/*.test.js",
-      "coverage": "env-cmd ./test.env nyc mocha --exit --require esm tests/*.test.js",
-      "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html"
-   }
+  "name": "nightscout-fhir-connect",
+  "version": "0.1.2",
+  "description": "Nightscout REST API provider for FHIR PHRs",
+  "repository": "https://github.com/sensotrend/nightscout-fi",
+  "dependencies": {
+    "@awaitjs/express": "^0.2.0",
+    "@sendgrid/mail": "^6.3.1",
+    "async-csv": "^2.0.0",
+    "axios": "^0.18.0",
+    "basic-auth": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "ejs": "^2.6.1",
+    "esm": "^3.2.20",
+    "express": "^4.16.4",
+    "express-markdown-reloaded": "^0.2.1",
+    "express-session": "^1.15.6",
+    "fhir-kit-client": "git://github.com/sulkaharo/fhir-kit-client.git#return_full_response_v3",
+    "fs-extra": "^7.0.1",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "marked": "^0.6.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.14",
+    "morgan": "^1.9.1",
+    "nanoid": "^2.0.1",
+    "promise-parallel-throttle": "^3.3.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "simple-oauth2": "^2.2.1",
+    "stjs": "0.0.5",
+    "uuid": "^3.3.2",
+    "yargs": "^12.0.5"
+  },
+  "devDependencies": {
+    "env-cmd": "^8.0.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "should": "^13.2.3",
+    "source-map-support": "^0.5.11",
+    "supertest": "^4.0.2"
+  },
+  "esm": {
+    "cjs": true,
+    "sourceMap": false,
+    "cache": false
+  },
+  "nyc": {
+    "all": false,
+    "sourceMap": false,
+    "instrument": true,
+    "cache": false,
+    "include": [
+      "lib/**/*.js",
+      "*.js"
+    ],
+    "exclude": [
+      "coverage/**",
+      "packages/*/test/**",
+      "test/**",
+      "test{,-*}.js",
+      "**/*{.,-}test.js",
+      "**/__tests__/**",
+      "**/node_modules/**",
+      "**/babel.config.js"
+    ],
+    "require": [
+      "esm"
+    ]
+  },
+  "engines": {
+    "node": "^10.8.0 || ^8.15.0",
+    "npm": "6.x"
+  },
+  "scripts": {
+    "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
+    "build": "react-scripts build",
+    "dev": "env $(cat my.env) PORT=1300 node -r esm nsfi.js & react-scripts start",
+    "ui": "react-scripts start",
+    "start": "react-scripts build && node -r esm nsfi.js",
+    "test": "react-scripts test && env-cmd ./test.env mocha --exit --require esm tests/*.test.js",
+    "coverage": "env-cmd ./test.env nyc mocha --exit --require esm tests/*.test.js",
+    "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
