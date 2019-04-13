@@ -83,18 +83,16 @@ app.getAsync('/', async (req, res) => {
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 
-   let user = await env.userProvider.findUserById(req.session.user.userid);
+   const user = await env.userProvider.findUserById(req.session.user.userid);
 
    if (!user.email) {
       res.redirect('/emailverification/generateRequest');
    } else {
-      let pageEnv = {
-         apiURL: env.apiURL
-      };
+      const pageEnv = { apiURL: env.apiURL };
 
       res.render('secret.ejs', {
-         user: user
-         , pageEnv: pageEnv
+         user: user,
+         pageEnv,
       });
    }
 });
