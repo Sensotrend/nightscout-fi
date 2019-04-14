@@ -11,23 +11,18 @@ class Logout extends Component {
   }
 
   componentDidMount() {
-    fetch(`${server}/logout`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      mode: 'no-cors',
-    })
+    fetch(`${server}/logout`)
     .then(res => res.json())
     .then(json => {
       this.setState({
-        initializing: false,
+        processing: false,
         error: false,
       });
     })
     .catch(error => {
       console.error('Unable to log out!', error);
       this.setState({
-        initializing: false,
+        processing: false,
         error,
       });
     });

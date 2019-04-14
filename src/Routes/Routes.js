@@ -30,12 +30,7 @@ class Routes extends Component {
   }
 
   componentDidMount() {
-    fetch(`${server}/fiphr/config`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      mode: 'no-cors',
-    })
+    fetch(`${server}/fiphr/config`)
     .then(res => res.json())
     .then(json => {
       this.setState({
