@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import path from 'path';
 import session from 'express-session';
 import MongoStoreModule from 'connect-mongo';
@@ -60,6 +61,9 @@ app.use(session({
       mongooseConnection: env.mongo.getConnection()
    })
 }));
+
+// TODO: Don't allow in production?
+app.use(cors());
 
 // Middleware to check if the user is authenticated
 async function isUserAuthenticated (req, res, next) {
