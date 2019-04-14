@@ -13,7 +13,7 @@ class Index extends Component {
           href="https://www.kanta.fi/web/guest/hyvinvointitiedot">Omatietovarannon
           </a> kanssa. Lue lisää <a href="instructions">ohjeet-sivulta</a>.
         </p>
-        { config
+        { (config.secret && config.api)
         ? <Settings config={config} />
         : <Login/>
         }
