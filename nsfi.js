@@ -83,7 +83,7 @@ app.getAsync('/', async (req, res) => {
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 
-   const user = await env.userProvider.findUserById(req.session.user.userid);
+   const user = await env.userProvider.findUserById(req.session.user.user_id);
 
    if (!user.email) {
       res.redirect('/emailverification/generateRequest');
@@ -100,7 +100,8 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 // Logout route
 app.get('/logout', (req, res) => {
    req.session.destroy();
-   res.render('loggedout.ejs');
+   // res.render('loggedout.ejs');
+   res.status(200).json({ status: 'OK' });
 });
 
 /// Kanta authentication
