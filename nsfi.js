@@ -116,6 +116,7 @@ app.use('/fiphr', env.oauthProvider);
 
 let nsrest = NSRestService(env);
 app.use('/api/v1', nsrest);
+app.use('/pebble', nsrest);
 
 let tidepoolService = TidepoolRESTService(env);
 
@@ -136,6 +137,12 @@ let emailService = EmailVerificationService(env);
 app.use('/emailverification', emailService);
 
 console.log('Email verification Service started');
+
+app.getAsync('*', async (req, res) => {
+
+   console.log('Unhandled URL', req.originalUrl);
+
+});
 
 app.listen(process.env.PORT, () => {
    console.log('Server Started!');
