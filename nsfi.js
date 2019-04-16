@@ -15,6 +15,9 @@ import TidepoolRESTService from './lib/TidepoolRESTService';
 
 import FIPHR from './lib/oauthproviders/FIPHR.js';
 
+import sgMail from '@sendgrid/mail';
+
+
 const env = envModule();
 env.setOauthProvider(FIPHR(env));
 
@@ -62,7 +65,6 @@ app.use(session({
    })
 }));
 
-
 if(process.env.NODE_ENV != 'production') {
    var corsOptions = {
       origin: 'http://localhost:3000',
@@ -75,7 +77,7 @@ if(process.env.NODE_ENV != 'production') {
 
 // Middleware to check if the user is authenticated
 async function isUserAuthenticated (req, res, next) {
-   if (req.session.user) {
+   if (req.session && req.session.user) {
       next();
    } else {
       res.redirect('/');
@@ -95,6 +97,31 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
          user: user,
          pageEnv,
       });
+   }
+});
+
+app.postAsync('/api/deleteuser', isUserAuthenticated, async function (req, res) {
+
+   const user = await env.userProvider.findUserById(req.session.user.user_id);
+   const email = user.email;
+   const success = await env.userProvider.deleteUser(req.session.user.user_id);
+
+   if (success) {
+
+      sgMail.setApiKey(SENDGRID_API_KEY);
+
+      const msg = {
+         to: email,
+         from: 'info@sensotrend.com',
+         templateId: 'd-98aef7de7c624cd7b931bde0daf67302' // Account deleted template
+      };
+
+      let status = await sgMail.send(msg);
+
+      req.session.destroy();
+      res.send({status: 'OK'});
+   } else {
+      res.send({status: 'FAILED'});
    }
 });
 
