@@ -102,6 +102,11 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 
 app.postAsync('/api/deleteuser', isUserAuthenticated, async function (req, res) {
 
+   if (!req.session || !req.session.user) {
+      res.status(400).json('Not authenticated');
+      return;
+   }
+
    const user = await env.userProvider.findUserById(req.session.user.user_id);
    const email = user.email;
    const success = await env.userProvider.deleteUser(req.session.user.user_id);
