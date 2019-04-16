@@ -18,7 +18,7 @@ import Support from '../Support/Support';
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
 
-const localhostAPI = (origin.match(/^https?:\/\/localhost/))
+const localhostAPI = window.origin && (window.origin.match(/^https?:\/\/localhost/))
 ? `${origin.substring(0, origin.indexOf(':', 7)).replace(/^https/i, 'http')}:8080/api`
 : false;
 
