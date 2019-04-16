@@ -33,9 +33,9 @@ class Settings extends Component {
           </Link>
         </div>
         <div>
-          <a href="logout">
+          <Link to="logout">
             <button className="button-warning large pure-button">Kirjaudu ulos</button>
-          </a>
+          </Link>
         </div>
       </div>
     );
