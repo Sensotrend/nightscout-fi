@@ -22,6 +22,7 @@
       "jsonwebtoken": "^8.4.0",
       "lodash": "^4.17.11",
       "marked": "^0.6.1",
+      "memory-cache": "^0.2.0",
       "moment": "^2.24.0",
       "mongoose": "^5.4.14",
       "morgan": "^1.9.1",
@@ -44,20 +45,18 @@
    "esm": {
       "cjs": true,
       "sourceMap": false,
-      "cache":false
+      "cache": false
    },
    "nyc": {
       "all": false,
       "sourceMap": false,
       "instrument": true,
       "cache": false,
-      "include":
-      [
+      "include": [
          "lib/**/*.js",
          "*.js"
       ],
-      "exclude" :
-      [
+      "exclude": [
          "coverage/**",
          "packages/*/test/**",
          "test/**",
@@ -66,7 +65,7 @@
          "**/__tests__/**",
          "**/node_modules/**",
          "**/babel.config.js"
-       ],
+      ],
       "require": [
          "esm"
       ]
