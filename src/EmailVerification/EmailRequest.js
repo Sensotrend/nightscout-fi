@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import { server } from '../Api/Api';
-import { localhostAPI } from '../Routes/Routes';
+import { fetchConfig } from '../Routes/Routes';
 
 class EmailRequest extends Component {
   constructor(props) {
@@ -24,14 +24,9 @@ class EmailRequest extends Component {
       development: this.development.current.value,
     };
     fetch(`${server}/emailverification/sendverificationrequest`, {
+      ...fetchConfig,
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(data),
-      credentials: localhostAPI ? 'include' : 'same-origin',
-      mode: localhostAPI ? 'cors' : 'same-origin',
-      cache: 'default',
     })
     .then(() => {
       this.setState({

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -26,9 +27,16 @@ class Settings extends Component {
         <p>Palvelun REST rajapinta on applikaatioiden käytössä myös uloskirjautumisen jälkeen.</p>
         <p>Lue palvelun <a href="instructions">käyttöohjeista</a> lisätietoa yhteensopivista
           sovelluksista.</p>
-        <a href="logout">
-          <button className="button-secondary large pure-button">Kirjaudu ulos</button>
-        </a>
+        <div>
+          <Link to="account">
+            <button className="button-secondary large pure-button">Muokkaa tilisi asetuksia</button>
+          </Link>
+        </div>
+        <div>
+          <a href="logout">
+            <button className="button-warning large pure-button">Kirjaudu ulos</button>
+          </a>
+        </div>
       </div>
     );
   }

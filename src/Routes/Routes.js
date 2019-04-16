@@ -18,20 +18,19 @@ import Support from '../Support/Support';
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
 
-export const localhostAPI = window.origin && (window.origin.match(/^https?:\/\/localhost/))
+const { origin } = window;
+export const localhostAPI = origin && (origin.match(/^https?:\/\/localhost/))
 ? `${origin.substring(0, origin.indexOf(':', 7)).replace(/^https/i, 'http')}:8080/api`
 : false;
 
-const getSearchParam = (location, key) => {
-  const query = window.location.search.substring(1);
-  const vars = query.split('&');
-  for (let i = 0; i < vars.length; i += 1) {
-    const pair = vars[i].split('=');
-    if (decodeURIComponent(pair[0]) === key) {
-      return decodeURIComponent(pair[1]);
-    }
-  }
-  return undefined;
+export const fetchConfig = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  credentials: localhostAPI ? 'include' : 'same-origin',
+  mode: localhostAPI ? 'cors' : 'same-origin',
+  cache: 'default',
 };
 
 const ProtectedRoute = ({
@@ -66,16 +65,7 @@ class Routes extends Component {
   }
 
   componentDidMount() {
-    fetch(`${server}/fiphr/config`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: localhostAPI ? 'include' : 'same-origin',
-      mode: localhostAPI ? 'cors' : 'same-origin',
-      cache: 'default',
-    
-    })
+    fetch(`${server}/fiphr/config`, fetchConfig)
     .then(res => {
       switch (res.status) {
         case 200: return res.json();
