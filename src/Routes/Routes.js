@@ -68,7 +68,6 @@ class Routes extends Component {
     };
   }
 
-
   componentDidMount() {
     fetch(`${server}/fiphr/config`, {
       method: 'GET',
@@ -107,28 +106,31 @@ class Routes extends Component {
   componentDidUpdate
 
   render() {
-    const { initializing } = this.state;
+    const { config, initializing } = this.state;
     if (initializing) {
       return <div />;
     }
     // const { location } = this.props;
     const { location } = document;
+    /*
     const api = getSearchParam(location, 'api');
     const secret = getSearchParam(location, 'site');
     const config = { api, secret };
 
-    return (
-      <Router basename={base} forceRefresh={!supportsHistory}>
         <Route
           render={({ location }) => {
             if (api && secret) {
               // clear the parameter
               console.log('Redirecting...', api, secret);
-//              return <Redirect to={{ ...location, search: '' }} />;
+              return <Redirect to={{ ...location, search: '' }} />;
             }
             return null;
           }}
         />
+    */
+
+    return (
+      <Router basename={base} forceRefresh={!supportsHistory}>
         <React.Fragment>
           <Switch>
             <Route path="/eula" component={Eula} />
