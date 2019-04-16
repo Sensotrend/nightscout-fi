@@ -52,7 +52,7 @@ class Account extends Component {
   render() {
     const { config } = this.props;
     const { editEmail, status } = this.state;
-    let email;
+    let emailComponent;
     if (editEmail) {
       const cancelButton = (
         <button
@@ -62,9 +62,9 @@ class Account extends Component {
           Peru
         </button>
       );
-      email = <EmailForm cancelButton={cancelButton} />
+      emailComponent = <EmailForm cancelButton={cancelButton} config={config} />
     } else {
-      email = (
+      emailComponent = (
         <Fragment>
           <p>Sähköpostiosoite: {config.email}</p>
           <Link to="account">
@@ -79,13 +79,13 @@ class Account extends Component {
         </Fragment>
       );
     }
-    let account;
+    let accountComponent;
     switch (status) {
-      case 'deleting': account = <p>Poistetaan...</p>
+      case 'deleting': accountComponent = <p>Poistetaan...</p>
       break;
-      case 'deleted': account = <Redirect to="/deleted" />
+      case 'deleted': accountComponent = <Redirect to="/deleted" />
       break;
-      default: account = (
+      default: accountComponent = (
         <a href="delete">
           <button
             className="button-warning large pure-button"
@@ -101,10 +101,10 @@ class Account extends Component {
       <div id="account">
         <h2>Tilin asetukset</h2>
         <div>
-          {email}
+          {emailComponent}
         </div>
         <div>
-          {account}
+          {accountComponent}
         </div>
       </div>
     );

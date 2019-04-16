@@ -43,7 +43,8 @@ class EmailForm extends Component {
   }
 
   render() {
-    const { cancelButton } = this.props;
+    const { cancelButton, config } = this.props;
+    const { email, notifications, development } = config;
     const { status, error } = this.state;
     const Button = (
       <button
@@ -76,21 +77,44 @@ class EmailForm extends Component {
     }
     return (
       <Fragment>
-        <p>Tarvitsemme sähköpostiosoitteesi voidaksemme tiedottaa kriittisistä vikatilanteista palvelussa.</p>
-        <p>Voit halutessasi saada sähköpostiosoitteeseesi myös tietoja palvelun vähemmän kriittisistä virhetilanteista.</p>
+        <p>Tarvitsemme sähköpostiosoitteesi voidaksemme tiedottaa kriittisistä vikatilanteista
+          palvelussa.</p>
+        <p>Voit halutessasi saada sähköpostiosoitteeseesi myös tietoja palvelun vähemmän
+          kriittisistä virhetilanteista.</p>
         <p>Voit myös ilmaista halusi osallistua palvelun jatkokehitykseen.</p>
         <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
         <form method="POST" action={`${server}/emailverification/sendverificationrequest`}>
           <div>
-            <input type="email" name="email" id="email" ref={this.email} placeholder="sahkopostiosoite@palvelin.com" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              ref={this.email}
+              placeholder="sahkopostiosoite@palvelin.com"
+            >
+              {email}
+            </input>
           </div>
           <div className="checkbox">
-            <input type="checkbox" name="notifications" id="notifications" ref={this.notifications} />
-            <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun vikatilanteista (esimerkiksi verkkoyhteyden tilapäinen katkeaminen).</label>
+            <input
+              type="checkbox"
+              name="notifications"
+              id="notifications"
+              ref={this.notifications} checked={notifications}
+            />
+            <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun
+              vikatilanteista (esimerkiksi verkkoyhteyden tilapäinen katkeaminen).</label>
           </div>
           <div className="checkbox">
-            <input type="checkbox" name="development" id="development" ref={this.development} />
-            <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen palvelun jatkokehitykseen</label>
+            <input
+              type="checkbox"
+              name="development"
+              id="development"
+              ref={this.development}
+              checked={development}
+            />
+            <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen
+              palvelun jatkokehitykseen</label>
           </div>
           <div>
             { cancelButton }
@@ -100,6 +124,10 @@ class EmailForm extends Component {
       </Fragment>
     );
   }
+}
+
+EmailForm.defaultProps = {
+  config: {},
 }
 
 export default EmailForm;
