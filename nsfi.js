@@ -17,6 +17,7 @@ import FIPHR from './lib/oauthproviders/FIPHR.js';
 
 import sgMail from '@sendgrid/mail';
 
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 
 const env = envModule();
 env.setOauthProvider(FIPHR(env));
@@ -101,7 +102,7 @@ app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
    }
 });
 
-app.postAsync('/api/deleteuser', isUserAuthenticated, async function (req, res) {
+app.deleteAsync('/api/deleteuser', async function (req, res) {
 
    if (!req.session || !req.session.user) {
       res.status(400).json('Not authenticated');
