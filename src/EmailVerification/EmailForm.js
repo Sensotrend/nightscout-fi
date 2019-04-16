@@ -20,8 +20,8 @@ class EmailForm extends Component {
     e.preventDefault();
     const data = {
       email: this.email.current.value,
-      notifications: this.notifications.current.value,
-      development: this.development.current.value,
+      notifications: this.notifications.current.checked,
+      development: this.development.current.checked,
     };
     fetch(`${server}/emailverification/sendverificationrequest`, {
       ...fetchConfig,
