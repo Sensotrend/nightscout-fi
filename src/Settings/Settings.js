@@ -9,8 +9,8 @@ class Settings extends Component {
     console.log('API URL', apiURL, process.env);
     return (
       <div id='settings'>
-        <p>Voit liittää Nightscout-sovelluksia Omatietovaranto-tiliisi näillä asetuksilla:</p>
         <table>
+          <caption>Voit liittää Nightscout-sovelluksia Omatietovaranto-tiliisi näillä asetuksilla:</caption>
           <tbody>
             <tr>
               <th>API SECRET</th>
@@ -22,9 +22,11 @@ class Settings extends Component {
             </tr>
           </tbody>
         </table>
-        <p>Pidä salaisuudesta ja osoitteesta hyvää huolta, ettei kukaan ulkopuolinen pääse käsiksi
-          tietoihisi.</p>
-        <p>Palvelun REST rajapinta on applikaatioiden käytössä myös uloskirjautumisen jälkeen.</p>
+        <p>Käsittele osoitetta huolellisesti, ettei kukaan ulkopuolinen pääse käsiksi tietoihisi.</p>
+        <p>Palvelun rajapinta on applikaatioiden käytössä myös uloskirjautumisen jälkeen,
+          eli tiedot virtaavat sovelluksista Omatietovarantoon ja myös toiseen suuntaan, vaikka
+          kirjautuisitkin ulos.
+        </p>
         <p>Lue palvelun <a href="instructions">käyttöohjeista</a> lisätietoa yhteensopivista
           sovelluksista.</p>
         <div>

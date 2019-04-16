@@ -104,7 +104,10 @@ class Account extends Component {
           {emailComponent}
         </div>
         <div>
-          {accountComponent}
+          {!editEmail && accountComponent}
+        </div>
+        <div>
+          <Link to="/"><button className="button-secondary large pure-button">Peru</button></Link>
         </div>
       </div>
     );
