@@ -4,7 +4,7 @@ import Description from './Description';
 
 class Instructions extends Component {
   render() {
-    const { config } = this.props;
+    // const { config } = this.props;
     return (
       <div id='instructions'>
         <Description />
