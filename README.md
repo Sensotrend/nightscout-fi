@@ -18,6 +18,10 @@ This repository contains a server that implements several Nighscout Connect func
 
 The repository uses nyc and Mocha to run unit tests found in the /tests. The tests expect to find a Mongo server running on localhost on port 27017 (default) without authentication ('brew install mongodb'). Run the tests with 'npm test'. Run code coverage report by running 'npm run-script coverage'. Get full HTML output with 'npm run-script coverage-html'.
 
+# Email features
+
+The codebase uses SendGrid to send email for email verification / consent requests. The SendGrid API key for this purpose is configured in SENDGRID_API_KEY env variable. Email template IDs are currently hardcoded -> to be moved to variables if the account used to send email changes.
+
 # Using Tidepool client with the Tidepool server
 
 To run the tidepool client:
