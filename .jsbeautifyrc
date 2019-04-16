@@ -1,7 +1,7 @@
 {
     "indent_size": 3,
     "indent_char": " ",
-    "comma_first": true,
+    "comma_first": false,
     "keep-array-indentation": true,
     "space_after_named_function": true,
     "space_after_anon_function": true,
