@@ -64,7 +64,13 @@ app.use(session({
 
 
 if(process.env.NODE_ENV != 'production') {
-   app.use(cors());
+   var corsOptions = {
+      origin: 'http://localhost:3000',
+      credentials: true,
+      optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    };
+   app.use(cors(corsOptions));
+   app.options('*', cors(corsOptions));
 }
 
 // Middleware to check if the user is authenticated
