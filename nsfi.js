@@ -56,7 +56,7 @@ app.use('/public', expressmarkdown({
 app.use(session({
    secret: env.session_key,
    cookie: {
-      maxAge: 60000
+      maxAge: 30 * 60 * 1000
    },
    resave: false,
    saveUninitialized: false,
