@@ -9,7 +9,7 @@ class Login extends Component {
       <Fragment>
         <Description />
         <div id='login'>
-          {process.env.REACT_APP_HIDE_LOGIN
+          {(document.location.href.indexOf('test') < 0)
           ? (
             <p>Palvelu on vielä kehityksen alla, sisäänkirjautuminen on toistaiseksi kytketty pois päältä.</p>
           )
