@@ -28,6 +28,10 @@
     <style media="screen" type="text/css">
       @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
    
+      html {
+        height: 100%;
+      }
+      
       html,
       body {
          margin: 0;
@@ -38,16 +42,45 @@
          font-family: 'Ubuntu', sans-serif;
          background: #FFF;
          color: #000;
+         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('wrist.png');
+         background-position: center top;
+         background-size: cover;
+         background-repeat: no-repeat;
+         min-height: 100%;
+         height: 100%;
       }
    
       #maintitle {
+        color: white;
          font-weight: bold;
          max-width: 800px;
          font-size: 65px;
-         padding-top: 30px;
          padding-bottom: 20px;
+         margin: 10px 0;  
+      }
+
+      #maintitle img {
+        height: 45px;
+        margin-right: 10px;
+      }
+
+      @media (max-width: 740px) {
+        #maintitle {
+          text-align: center;
+        }
+        #maintitle img {
+          display: block;
+          text-align: center;
+          margin: auto;
+        }
+
       }
    
+      h2 {
+        color: white;
+        font-weight: bolder;
+      }
+
       #subtitle {
          font-weight: bold;
          max-width: 800px;
@@ -60,14 +93,21 @@
    
       #container {
          max-width: 800px;
+         padding: 2em 2em 200px;
          margin: auto;
       }
    
       #footer {
+         position:fixed;
+         left:0px;
+         bottom:0px;
+         height:30px;
+         width:100%;        
          text-align: center;
-         max-width: 800px;
          margin-left: auto;
          margin-right: auto;
+         background-color: white;
+         padding: 1.2em 2em 0.5em;
       }
    
       .button-success,
@@ -124,14 +164,24 @@
          margin: 0.1em 2em;
       }
    
+      table, th, td, caption {
+        color: black;
+        background-color: white;
+        border: 1px solid black;
+        padding: 16px;
+        text-align: left;
+        font-size: 110%;
+      }
+
       table {
-         border-collapse: collapse;
+        border-collapse: collapse;
+        text-align: center;
+        margin: 4.5em auto 2em;
+        width: 100%;
       }
    
-      table, th, td {
-        border: 1px solid black;
-        padding: 6px;
-        text-align: left;
+      caption {
+        border-bottom-width: 0;
       }
 
       input[type="email"] {
@@ -148,12 +198,43 @@
         float: left;
       }
 
+      #index {
+        color: white;
+        /*
+        background-color: rgba(0, 0, 0, 0.6);
+        background-blend-mode: darken;
+        */
+      }
+
+      #index a, #footer a {
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      #index a {
+        color: white;
+      }
+
+      #footer a {
+        color: black;
+      }
+
+      #index a:hover, #index a:active, #index a:focus,
+      #footer a:hover, #footer a:active, #footer a:focus {
+        text-decoration: underline;
+      }
+
+      #index h2 {
+        margin-top: 6em;
+      }
+
+
     </style>
     <title>Nightscout Connect</title>
   </head>
   <body>
     <div id='container'>
-      <div id='maintitle'>Nightscout Connect</div>
+      <h1 id='maintitle'><img src="nightscout.png">Nightscout Connect</h1>
         <noscript>
           <div>
             <p>Nightscout Connect on Kanta-palveluihin kytketty palvelu,
