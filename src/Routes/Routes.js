@@ -40,6 +40,7 @@ const ProtectedRoute = ({
   config,
   ...rest
 }) => {
+  console.log('Processing protected route', { Comp, componentProps, config, ...rest })
   return (
     <Route
       {...rest}
@@ -60,11 +61,7 @@ class Routes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initializing: false,
-      config: {
-        secret: 'test-site-secret',
-        api: 'localhost:1300/api/v1',
-      },
+      initializing: true,
     };
   }
 
@@ -95,10 +92,11 @@ class Routes extends Component {
         config: json,
       });
     })
-    .catch(err => {
-      console.error(err);
+    .catch(error => {
+      console.error(error);
       this.setState({
         initializing: false,
+        error,
       });
     });
   }
@@ -108,26 +106,11 @@ class Routes extends Component {
   render() {
     const { config, initializing } = this.state;
     if (initializing) {
+      console.log('Returning loading route...');
       return <div />;
     }
-    // const { location } = this.props;
-    const { location } = document;
-    /*
-    const api = getSearchParam(location, 'api');
-    const secret = getSearchParam(location, 'site');
-    const config = { api, secret };
 
-        <Route
-          render={({ location }) => {
-            if (api && secret) {
-              // clear the parameter
-              console.log('Redirecting...', api, secret);
-              return <Redirect to={{ ...location, search: '' }} />;
-            }
-            return null;
-          }}
-        />
-    */
+    console.log('Returning routes', this.props);
 
     return (
       <Router basename={base} forceRefresh={!supportsHistory}>
@@ -144,7 +127,7 @@ class Routes extends Component {
             />
             <Route path="/logout" component={Logout} />
             <Route path="/privacy" component={Privacy} />
-            <ProtectedRoute path="/registration" component={EmailRequest} />
+            <ProtectedRoute path="/registration" config={config} component={EmailRequest} />
             <Route path="/support" component={Support} />
             <Redirect from="/" to="/index" />
           </Switch>
