@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { server } from '../Api/Api';
+
 class EmailRequest extends Component {
   render() {
     return (
@@ -9,7 +11,7 @@ class EmailRequest extends Component {
         <p>Voit halutessasi saada sähköpostiosoitteeseesi myös tietoja palvelun vähemmän kriittisistä virhetilanteista.</p>
         <p>Voit myös ilmaista halusi osallistua palvelun jatkokehitykseen.</p>
         <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
-        <form>
+        <form action={`${server}/sendverificationrequest`}>
           <div>
             <input type="email" id="email" placeholder="sahkopostiosoite@palvelin.com"></input>
           </div>
