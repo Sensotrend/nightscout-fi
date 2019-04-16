@@ -62,8 +62,10 @@ app.use(session({
    })
 }));
 
-// TODO: Don't allow in production?
-app.use(cors());
+
+if(process.env.NODE_ENV != 'production') {
+   app.use(cors());
+}
 
 // Middleware to check if the user is authenticated
 async function isUserAuthenticated (req, res, next) {
@@ -73,17 +75,6 @@ async function isUserAuthenticated (req, res, next) {
       res.redirect('/');
    }
 }
-
-// USER FACING URLS
-
-app.getAsync('/', async (req, res) => {
-   let pageEnv = {
-      hideLogin: env.hideLogin
-   };
-   res.render('index.ejs', {
-      pageEnv: pageEnv
-   });
-});
 
 app.getAsync('/loggedin', isUserAuthenticated, async function (req, res) {
 
@@ -138,11 +129,14 @@ app.use('/emailverification', emailService);
 
 console.log('Email verification Service started');
 
-app.getAsync('*', async (req, res) => {
-
-   console.log('Unhandled URL', req.originalUrl);
-
-});
+//production mode
+if(process.env.NODE_ENV === 'production') {
+   app.use(express.static(path.join(__dirname, 'build/')));
+   //
+   app.get('*', (req, res) => {
+     res.sendfile(path.join(__dirname = 'build/index.html'));
+   })
+ }
 
 app.listen(process.env.PORT, () => {
    console.log('Server Started!');
