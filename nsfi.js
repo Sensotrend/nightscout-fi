@@ -30,47 +30,48 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use('/public', expressmarkdown({
-   directory: path.join(__dirname, '/public')
-   , caseSensitive: app.get('case sensitive routing')
-   , view: 'markdown'
-   , includerawtext: false
-   , loadepiceditor: false
-   , marked: {
-      renderer: new marked.Renderer()
-      , gfm: true
-      , tables: true
-      , breaks: false
-      , pedantic: false
-      , sanitize: true
-      , smartLists: true
-      , smartypants: false
-      , highlight: function (code) {
+   directory: path.join(__dirname, '/public'),
+   caseSensitive: app.get('case sensitive routing'),
+   view: 'markdown',
+   includerawtext: false,
+   loadepiceditor: false,
+   marked: {
+      renderer: new marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false,
+      highlight: function (code) {
          return highlightjs.highlightAuto(code).value;
       }
-   }
-   , context: {
+   },
+   context: {
       title: 'Nightscout.fi'
    }
 }));
 
 app.use(session({
-   secret: env.session_key
-   , cookie: {
+   secret: env.session_key,
+   cookie: {
       maxAge: 60000
-   }
-   , resave: false
-   , saveUninitialized: false
-   , store: new MongoStore({
-      mongooseConnection: env.mongo.getConnection()
+   },
+   resave: false,
+   saveUninitialized: false,
+   store: new MongoStore({
+      mongooseConnection: env.mongo.getConnection(),
+      ttl: 30 * 60
    })
 }));
 
-if(process.env.NODE_ENV != 'production') {
+if (process.env.NODE_ENV != 'production') {
    var corsOptions = {
       origin: 'http://localhost:3000',
       credentials: true,
       optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-    };
+   };
    app.use(cors(corsOptions));
    app.options('*', cors(corsOptions));
 }
@@ -124,9 +125,9 @@ app.postAsync('/api/deleteuser', isUserAuthenticated, async function (req, res) 
       let status = await sgMail.send(msg);
 
       req.session.destroy();
-      res.send({status: 'OK'});
+      res.send({ status: 'OK' });
    } else {
-      res.send({status: 'FAILED'});
+      res.send({ status: 'FAILED' });
    }
 });
 
@@ -168,13 +169,13 @@ app.use('/emailverification', emailService);
 console.log('Email verification Service started');
 
 //production mode
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
    app.use(express.static(path.join(__dirname, 'build/')));
    //
    app.get('*', (req, res) => {
-     res.sendfile(path.join(__dirname = 'build/index.html'));
+      res.sendfile(path.join(__dirname = 'build/index.html'));
    })
- }
+}
 
 app.listen(process.env.PORT, () => {
    console.log('Server Started!');
