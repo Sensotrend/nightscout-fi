@@ -91,16 +91,16 @@ class EmailForm extends Component {
               id="email"
               ref={this.email}
               placeholder="sahkopostiosoite@palvelin.com"
-            >
-              {email}
-            </input>
+              defaultValue={email}
+            />
           </div>
           <div className="checkbox">
             <input
               type="checkbox"
               name="notifications"
               id="notifications"
-              ref={this.notifications} checked={notifications}
+              ref={this.notifications}
+              defaultChecked={notifications}
             />
             <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun
               vikatilanteista (esimerkiksi verkkoyhteyden tilapäinen katkeaminen).</label>
@@ -111,7 +111,7 @@ class EmailForm extends Component {
               name="development"
               id="development"
               ref={this.development}
-              checked={development}
+              defaultChecked={development}
             />
             <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen
               palvelun jatkokehitykseen</label>
