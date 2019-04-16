@@ -99,10 +99,18 @@
          /* this is a light blue */
       }
 
-      button.large {
+      button.large, input[type="email"], div.checkbox {
+        margin: 40px;
+        color: darkgrey;
+      }
+
+      div.checkbox {
+        margin: 10px 40px;
+      }
+
+      button.large, input[type="email"] {
         font-size: 30px;
         padding: 0.3em 1em;
-        margin: 2em;
       }
    
       ul#navigation {
@@ -123,6 +131,21 @@
         padding: 6px;
         text-align: left;
       }
+
+      input[type="email"] {
+        width: 100%;
+      }
+
+      label {
+        display: inline-block;
+        margin-left: 40px;
+        width: calc(100% - 80px);
+      }
+
+      input[type="checkbox"] {
+        float: left;
+      }
+
     </style>
     <title>Nightscout Connect</title>
   </head>
