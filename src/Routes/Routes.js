@@ -6,16 +6,21 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import { server } from '../Api/Api';
+import EmailRequest from '../EmailVerification/EmailRequest';
 import Eula from '../Eula/Eula';
 import Instructions from '../Instructions/Instructions';
 import Index from '../Index/Index';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
 import Support from '../Support/Support';
-import EmailRequest from '../EmailVerification/EmailRequest';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
+
+const localhostAPI = (origin.match(/^https?:\/\/localhost/))
+? `${origin.substring(0, origin.indexOf(':', 7)).replace(/^https/i, 'http')}:8080/api`
+: false;
 
 const getSearchParam = (location, key) => {
   const query = window.location.search.substring(1);
@@ -27,6 +32,28 @@ const getSearchParam = (location, key) => {
     }
   }
   return undefined;
+};
+
+const ProtectedRoute = ({
+  component: Comp,
+  componentProps,
+  config,
+  ...rest
+}) => {
+  return (
+    <Route
+      {...rest}
+      render = {cProps => config
+        ? <Comp {...cProps} {...componentProps} />
+        : <Redirect
+          to={{
+            pathname: '/index',
+            state: { from: cProps.location },
+          }}
+        />
+      }
+    />
+  );
 };
 
 class Routes extends Component {
@@ -42,9 +69,17 @@ class Routes extends Component {
   }
 
 
-  /*
   componentDidMount() {
-    fetch(`${server}/fiphr/config`)
+    fetch(`${server}/fiphr/config`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: localhostAPI ? 'include' : 'same-origin',
+      mode: localhostAPI ? 'cors' : 'same-origin',
+      cache: 'default',
+    
+    })
     .then(res => {
       switch (res.status) {
         case 200: return res.json();
@@ -68,7 +103,6 @@ class Routes extends Component {
       });
     });
   }
-  */
 
   componentDidUpdate
 
@@ -108,7 +142,7 @@ class Routes extends Component {
             />
             <Route path="/logout" component={Logout} />
             <Route path="/privacy" component={Privacy} />
-            <Route path="/registration" component={EmailRequest} />
+            <ProtectedRoute path="/registration" component={EmailRequest} />
             <Route path="/support" component={Support} />
             <Redirect from="/" to="/index" />
           </Switch>
