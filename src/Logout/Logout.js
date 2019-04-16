@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { server } from '../Api/Api';
+import { fetchConfig } from '../Routes/Routes';
 
 class Logout extends Component {
   constructor(props) {
@@ -11,9 +12,15 @@ class Logout extends Component {
   }
 
   componentDidMount() {
-    fetch(`${server}/logout`)
-    .then(res => res.json())
-    .then(json => {
+    console.log('Logging out', server);
+    fetch(`${server}/logout`, fetchConfig)
+    .then(res => {
+      const { status } = res;
+      if (status !== 200) {
+        const error = new Error(`Error logging out, status: ${status} ${res.statusText}`);
+        error.response = res;
+        throw error;
+      }
       this.setState({
         processing: false,
         error: false,
