@@ -6,10 +6,45 @@ import { fetchConfig } from '../Routes/Routes';
 class EmailForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.email = React.createRef();
-    this.notifications = React.createRef();
-    this.development = React.createRef();
+    const { config } = this.props;
+    const { email = '', notifications = false, development = false } = config;
+    this.state = { email, notifications, development };
+  }
+
+  createEmail = ({ email, notifications, development }) => {
+    // TODO: implement a different endpoint!
+    return fetch(`${server}/emailverification/sendverificationrequest`, {
+      ...fetchConfig,
+      method: 'POST',
+      body: JSON.stringify({ email, notifications, development }),
+    })
+  }
+
+  editEmail = ({ email, notifications, development }) => {
+    // TODO: implement a different endpoint!
+    return fetch(`${server}/emailverification/sendverificationrequest`, {
+      ...fetchConfig,
+      method: 'POST',
+      body: JSON.stringify({ email, notifications, development }),
+    })
+  }
+  
+  storeSettings = ({ email, notifications, development }) => {
+    // TODO: implement a different endpoint!
+    return fetch(`${server}/emailverification/sendverificationrequest`, {
+      ...fetchConfig,
+      method: 'POST',
+      body: JSON.stringify({ email, notifications, development }),
+    })
+  }
+
+  handleInputChange = (event) => {
+    const { target } = event;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name } = target;
+    this.setState({
+      [name]: value
+    });
   }
 
   submit = (e) => {
@@ -18,16 +53,25 @@ class EmailForm extends Component {
       error: undefined,
     });
     e.preventDefault();
-    const data = {
-      email: this.email.current.value,
-      notifications: this.notifications.current.checked,
-      development: this.development.current.checked,
-    };
-    fetch(`${server}/emailverification/sendverificationrequest`, {
-      ...fetchConfig,
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
+    const { email, notifications, development } = this.state;
+    const emailEdited = email !== this.props.email;
+    let apiCall;
+    if (emailEdited) {
+      let c;
+      if (!this.props.email) {
+        // Need to create a new address
+        c = this.createEmail;
+      } else {
+        // Modify an existing email address
+        c = this.editEmail;
+      }
+      apiCall = () => c({ email, notifications, development });
+    } else {
+      // Just store the new settings
+      // TODO: use a new API endpoint, once it is available.
+      apiCall = () => this.storeSettings({ email, notifications, development });
+    }
+    apiCall()
     .then(() => {
       this.setState({
         status: 'sent',
@@ -43,9 +87,8 @@ class EmailForm extends Component {
   }
 
   render() {
-    const { cancelButton, config } = this.props;
-    const { email, notifications, development } = config;
-    const { status, error } = this.state;
+    const { cancelButton } = this.props;
+    const { email, notifications, development, status, error } = this.state;
     const Button = (
       <button
         className="large primary button-success"
@@ -68,12 +111,18 @@ class EmailForm extends Component {
         action = (
           <Fragment>
             <p className="error">{error.message}</p>
+            { cancelButton }
             { Button }
           </Fragment>
-        )
+        );
       break;
       default:
-        action = Button;
+        action = (
+          <Fragment>
+            { cancelButton }
+            { Button }
+          </Fragment>
+        );
     }
     return (
       <Fragment>
@@ -83,44 +132,45 @@ class EmailForm extends Component {
           kriittisistä virhetilanteista.</p>
         <p>Voit myös ilmaista halusi osallistua palvelun jatkokehitykseen.</p>
         <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
-        <form method="POST" action={`${server}/emailverification/sendverificationrequest`}>
-          <div>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              ref={this.email}
-              placeholder="sahkopostiosoite@palvelin.com"
-              defaultValue={email}
-            />
-          </div>
-          <div className="checkbox">
-            <input
-              type="checkbox"
-              name="notifications"
-              id="notifications"
-              ref={this.notifications}
-              defaultChecked={notifications}
-            />
-            <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun
-              vikatilanteista (esimerkiksi verkkoyhteyden tilapäinen katkeaminen).</label>
-          </div>
-          <div className="checkbox">
-            <input
-              type="checkbox"
-              name="development"
-              id="development"
-              ref={this.development}
-              defaultChecked={development}
-            />
-            <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen
-              palvelun jatkokehitykseen</label>
-          </div>
-          <div>
-            { cancelButton }
-            { action }
-          </div>
-        </form>
+        { status !== 'sent' &&
+          <form method="POST" action={`${server}/emailverification/sendverificationrequest`}>
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="sahkopostiosoite@palvelin.com"
+                value={email}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="checkbox">
+              <input
+                type="checkbox"
+                name="notifications"
+                id="notifications"
+                checked={notifications}
+                onChange={this.handleInputChange}
+              />
+              <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun
+                vikatilanteista (esimerkiksi verkkoyhteyden tilapäinen katkeaminen).</label>
+            </div>
+            <div className="checkbox">
+              <input
+                type="checkbox"
+                name="development"
+                id="development"
+                checked={development}
+                onChange={this.handleInputChange}
+              />
+              <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen
+                palvelun jatkokehitykseen</label>
+            </div>
+            <div>
+              { action }
+            </div>
+          </form>
+        }
       </Fragment>
     );
   }
