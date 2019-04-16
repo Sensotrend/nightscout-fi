@@ -6,6 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Account from '../Account/Account';
+import Deleted from '../Account/Deleted';
 import { server } from '../Api/Api';
 import EmailRequest from '../EmailVerification/EmailRequest';
 import Eula from '../Eula/Eula';
@@ -39,7 +41,6 @@ const ProtectedRoute = ({
   config,
   ...rest
 }) => {
-  console.log('Processing protected route', { Comp, componentProps, config, ...rest })
   return (
     <Route
       {...rest}
@@ -96,16 +97,14 @@ class Routes extends Component {
   render() {
     const { config, initializing } = this.state;
     if (initializing) {
-      console.log('Returning loading route...');
       return <div />;
     }
-
-    console.log('Returning routes', this.props);
-
     return (
       <Router basename={base} forceRefresh={!supportsHistory}>
         <React.Fragment>
           <Switch>
+            <ProtectedRoute path="/account" config={config} component={Account} componentProps={{ config: config }} />
+            <Route path="/deleted" component={Deleted} />
             <Route path="/eula" component={Eula} />
             <Route
               path="/index"
