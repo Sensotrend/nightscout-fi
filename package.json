@@ -27,6 +27,7 @@
       "mongoose": "^5.4.14",
       "morgan": "^1.9.1",
       "nanoid": "^2.0.1",
+      "node-cache": "^4.2.0",
       "promise-parallel-throttle": "^3.3.0",
       "simple-oauth2": "^2.2.1",
       "stjs": "0.0.5",

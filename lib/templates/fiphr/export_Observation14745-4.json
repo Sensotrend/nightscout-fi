@@ -8,4 +8,7 @@
    , "value": "{{valueQuantity.value}}"
    , "units": "{{valueQuantity.unit}}"
    , "guid": "{{id}}"
+   , "delta": "{{_deltammol}}"
+   , "direction": "{{direction}}"
+   , "noise": "{{noise}}"
 }

@@ -13,8 +13,8 @@ describe('convert_data', function () {
          , "date": 1550143850509
          , "dateString": "2019-02-14T13:30:50.509+0200"
          , "sgv": 177
-         , "delta": 1.5
-         , "direction": "Flat"
+         , "delta": 15
+         , "direction": "FortyFiveUp"
          , "type": "sgv"
          , "filtered": 195071.0394182456
          , "unfiltered": 196842.65552921052
@@ -42,6 +42,9 @@ describe('convert_data', function () {
       let records2 = await DataConverter.convert(records, options);
 
       records2[0].sgv.should.equal(177);
+      records2[0].delta.should.equal(15);
+      records2[0].direction.should.equal('FortyFiveUp');
+      records2[0].noise.should.equal(1);
       records2[0].date.should.equal(ns_sample[0].date);
    });
 
