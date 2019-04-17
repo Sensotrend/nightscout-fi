@@ -7,12 +7,14 @@ class Index extends Component {
   render() {
     const { config } = this.props;
     return (
-      <div id="index">
-        { (config && config.secret && config.api)
-        ? <Settings config={config} />
-        : <Login/>
-        }
-      </div>
+      <section className="dark">
+        <div id="index" className="container">
+          { (config && config.secret && config.api)
+          ? <Settings config={config} />
+          : <Login/>
+          }
+        </div>
+      </section>
     );
   }
 }

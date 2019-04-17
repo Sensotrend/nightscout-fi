@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="theme-color" content="#000000" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -22,256 +20,367 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <meta name="description" content="Nightscout Connect -palvelun avulla voit liittää avoimen
+  <meta name="description" content="Nightscout Connect -palvelun avulla voit liittää avoimen
       lähdekoodin kehittäjäyhteisön Nightscout-sovellukset Omakannan Omatietovarantoon.">
-    <meta name="author" content="Sensotrend Oy">
-    <style media="screen" type="text/css">
-      @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
-   
-      html {
-        height: 100%;
-      }
-      
-      html,
-      body {
-         margin: 0;
-         padding: 0;
-      }
-   
-      body {
-         font-family: 'Ubuntu', sans-serif;
-         background: #FFF;
-         color: #000;
-         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('wrist.png');
-         background-position: center top;
-         background-size: cover;
-         background-repeat: no-repeat;
-         min-height: 100%;
-         height: 100%;
-      }
-   
-      #maintitle {
-        color: white;
-         font-weight: bold;
-         max-width: 800px;
-         font-size: 65px;
-         padding-bottom: 20px;
-         margin: 10px 0;  
-      }
+  <meta name="author" content="Sensotrend Oy">
+  <style media="screen" type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
 
-      #maintitle img {
-        height: 45px;
-        margin-right: 10px;
-      }
+    html {
+      height: 100%;
+    }
 
-      @media (max-width: 740px) {
-        #maintitle {
-          text-align: center;
-        }
-        #maintitle img {
-          display: block;
-          text-align: center;
-          margin: auto;
-        }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-      }
-   
-      h2 {
-        color: white;
-        font-weight: bolder;
-      }
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background: #FFF;
+      color: #000;
+      min-height: 100vh;
+      height: 100%;
+      -webkit-perspective: 300px;
+      perspective: 300px;
+      -webkit-perspective-origin-x: 100%;
+      perspective-origin-x: 100%;
+    }
 
-      #subtitle {
-         font-weight: bold;
-         max-width: 800px;
-         font-size: 50px;
-      }
-      #login {
-         max-width: 300px;
-         font-size: 30px;
-      }
-   
-      #container {
-         max-width: 800px;
-         padding: 2em 2em 200px;
-         margin: auto;
-      }
-   
-      #footer {
-         position:fixed;
-         left:0px;
-         bottom:0px;
-         height:30px;
-         width:100%;        
-         text-align: center;
-         margin-left: auto;
-         margin-right: auto;
-         background-color: white;
-         padding: 1.2em 2em 0.5em;
-      }
-   
-      .button-success,
-      .button-error,
-      .button-warning,
-      .button-secondary {
-         color: white;
-         border-radius: 8px;
-         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-      }
-   
-      .button-success {
-         background: rgb(28, 184, 65);
-         /* this is a green */
-      }
-   
-      .button-error {
-         background: rgb(202, 60, 60);
-         /* this is a maroon */
-      }
-   
-      .button-warning {
-         background: rgb(223, 117, 20);
-         /* this is an orange */
-      }
-   
-      .button-secondary {
-         background: rgb(66, 184, 221);
-         /* this is a light blue */
-      }
+    div.image-background {
+      background: #FFF;
+      background: url('wrist.png');
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 120vw;
+    }
 
-      button.large {
-        margin: 40px;
-        color: white;
-      }
+    .dark {
+      background-color: rgba(0, 0, 0, 0.3);
+      color: white;
+    }
 
-      input[type="email"], div.checkbox {
-        margin: 10px 40px;
-        color: black;
-      }
+    .light {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: black;
+    }
 
-      button.large, input[type="email"] {
-        font-size: 30px;
-        padding: 0.3em 1em;
-      }
-   
-      ul#navigation {
-         display: inline;
-         /* Any other CSS you want */
-      }
-   
-      ul#navigation li {
-         display: inline;
-         margin: 0.1em 2em;
-      }
-   
-      table, th, td, caption {
-        color: black;
-        background-color: white;
-        border: 1px solid black;
-        padding: 16px;
-        text-align: left;
-        font-size: 110%;
-      }
+    .solid {
+      background-color: white;
+      color: black;
+    }
 
-      table {
-        border-collapse: collapse;
-        text-align: center;
-        margin: 4.5em auto 2em;
-        width: 100%;
-      }
-   
-      caption {
-        border-bottom-width: 0;
-      }
+    #maintitle {
+      color: white;
+      font-weight: bold;
+      max-width: 800px;
+      font-size: 65px;
+      padding-bottom: 20px;
+      margin: 10px 0;
+    }
 
-      input[type="email"] {
-        width: 100%;
-      }
+    #maintitle img {
+      height: 45px;
+      margin-right: 10px;
+    }
 
-      label {
-        display: inline-block;
-        margin-left: 40px;
-        width: calc(100% - 80px);
-      }
+    h2 {
+      color: white;
+      font-weight: bolder;
+    }
 
-      input[type="checkbox"] {
-        float: left;
-      }
+    #subtitle {
+      font-weight: bold;
+      max-width: 800px;
+      font-size: 50px;
+    }
 
-      #index {
-        color: white;
-        /*
+    #login {
+      max-width: 300px;
+      font-size: 30px;
+    }
+
+    .container {
+      max-width: 800px;
+      padding: 2em 2em 200px;
+      margin: auto;
+    }
+
+    .parallax {
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-bottom: 100px;
+    }
+
+    .parallax__group {
+      position: relative;
+      min-height: 100vh;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+
+    .parallax__layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      -webkit-transform-origin-x: 100%;
+      transform-origin-x: 100%;
+    }
+
+    .parallax__layer--fore {
+      -webkit-transform: translateZ(90px) scale(.7);
+      transform: translateZ(90px) scale(.7);
+      z-index: 1;
+    }
+
+    .parallax__layer--base {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      z-index: 4;
+    }
+
+    .parallax__layer--back {
+      -webkit-transform: translateZ(-300px) scale(2);
+      transform: translateZ(-300px) scale(2);
+      z-index: 3;
+    }
+
+    .parallax__layer--deep {
+      -webkit-transform: translateZ(-600px) scale(3);
+      transform: translateZ(-600px) scale(3);
+      z-index: 2;
+    }
+
+    #footer {
+      position: fixed;
+      left: 0px;
+      bottom: 0px;
+      height: 30px;
+      width: 100%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+      padding: 1.2em 2em 0.5em;
+      z-index: 10;
+    }
+
+    div.actions {
+      transform-style: flat;
+      position: fixed;
+      left: 0px;
+      bottom: 30px;
+      height: 60px;
+      width: 100%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+      padding: 1em;
+      z-index: 10;
+    }
+
+    .button-success,
+    .button-error,
+    .button-warning,
+    .button-secondary {
+      color: white;
+      border-radius: 8px;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-success {
+      background: rgb(28, 184, 65);
+      /* this is a green */
+    }
+
+    .button-error {
+      background: rgb(202, 60, 60);
+      /* this is a maroon */
+    }
+
+    .button-warning {
+      background: rgb(223, 117, 20);
+      /* this is an orange */
+    }
+
+    .button-secondary {
+      background: rgb(66, 184, 221);
+      /* this is a light blue */
+    }
+
+    button.large {
+      margin: 40px;
+      color: white;
+    }
+
+    input[type="email"],
+    div.checkbox {
+      margin: 10px 40px;
+      color: black;
+    }
+
+    button.large,
+    input[type="email"] {
+      font-size: 30px;
+      padding: 0.3em 1em;
+    }
+
+    ul#navigation {
+      display: inline;
+      /* Any other CSS you want */
+    }
+
+    ul#navigation li {
+      display: inline;
+      margin: 0.1em 2em;
+    }
+
+    table,
+    th,
+    td,
+    caption {
+      color: black;
+      background-color: white;
+      border: 1px solid black;
+      padding: 16px;
+      text-align: left;
+      font-size: 110%;
+    }
+
+    table {
+      border-collapse: collapse;
+      text-align: center;
+      margin: 4.5em auto 2em;
+      width: 100%;
+    }
+
+    caption {
+      border-bottom-width: 0;
+    }
+
+    input[type="email"] {
+      width: 100%;
+    }
+
+    label {
+      display: inline-block;
+      margin-left: 40px;
+      width: calc(100% - 80px);
+    }
+
+    input[type="checkbox"] {
+      float: left;
+    }
+
+    #index {
+      color: white;
+      /*
         background-color: rgba(0, 0, 0, 0.6);
         background-blend-mode: darken;
         */
+    }
+
+    #index a,
+    #footer a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #index a {
+      color: white;
+    }
+
+    #footer a {
+      color: black;
+    }
+
+    #index a:hover,
+    #index a:active,
+    #index a:focus,
+    #footer a:hover,
+    #footer a:active,
+    #footer a:focus {
+      text-decoration: underline;
+    }
+
+    #index h2 {
+      margin-top: 6em;
+    }
+
+    @media (max-width: 740px) {
+      #maintitle {
+        text-align: center;
       }
 
-      #index a, #footer a {
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      #index a {
-        color: white;
-      }
-
-      #footer a {
-        color: black;
-      }
-
-      #index a:hover, #index a:active, #index a:focus,
-      #footer a:hover, #footer a:active, #footer a:focus {
-        text-decoration: underline;
+      #maintitle img {
+        display: block;
+        text-align: center;
+        margin: auto;
       }
 
       #index h2 {
-        margin-top: 6em;
+        margin-top: 1em;
       }
 
+    }
+  </style>
+  <title>Nightscout Connect</title>
+</head>
 
-    </style>
-    <title>Nightscout Connect</title>
-  </head>
-  <body>
-    <div id='container'>
-      <h1 id='maintitle'><img src="nightscout.png">Nightscout Connect</h1>
-        <noscript>
-          <div>
-            <p>Nightscout Connect on Kanta-palveluihin kytketty palvelu,
-              jonka avulla Nightscout-sovelluksia voi käyttää
-              <a href="https://www.kanta.fi/web/guest/hyvinvointitiedot">Omatietovarannon</a>
-              kanssa.</p>
-            <p>Nightscout-sovellukset ovat avoimen lähdekoodin kehittäjäyhteisön luomia sovelluksia.
-              Sovellusten tarkoitus on helpottaa elämää diabeteksen kanssa.
-              Nämä sovellukset eivät tyypillisesti ole virallisia terveydenhuollon laitteita,
-              vaan kansalaiset käyttävät näitä omalla vastuullaan.
-              Lisätietoa Nightscout-sovelluksista löytyy sivustolta
-              <a href="http://www.nightscout.info/">nightscout.info</a>
-              sekä esimerkiksi suomenkielisestä Facebook-ryhmästä
-              <a href="https://www.facebook.com/groups/nightscoutsuomi/">
-                Nightscout Suomi (Finland) Virallinen
-              </a>.
-            </p>
-            <p>Nightscout Connect -palvelun avulla sovellusten käyttöönotto helpottuu, kun
-              niiden vaatimaa palvelinta ei tarvitse pystyttää ja ylläpitää itse.
-            </p>
-            <p>Tulevaisuudessa palvelun avulla on myös mahdollista jakaa Nightscout-sovellusten
-              keräämä tieto esimerkiksi lääkärin ja hoitajan kanssa.
-            </p>
+<body>
+  <div class="parallax">
+    <div class="parallax__group">
+      <div class="image-background parallax__layer parallax__layer--back">
+        <div class="dark header">
+          <div class="container">
+            <h1 id='maintitle'><img src="nightscout.png">Nightscout Connect</h1>
           </div>
-          <p>Palvelu tarvitsee toimiakseen selaimen javascript-ominaisuudet.</p>
+        </div>
+        <noscript>
+          <div class="dark">
+            <div class="container">
+              <p>Nightscout Connect on Kanta-palveluihin kytketty palvelu,
+                jonka avulla Nightscout-sovelluksia voi käyttää
+                <a href="https://www.kanta.fi/web/guest/hyvinvointitiedot">Omatietovarannon</a>
+                kanssa.</p>
+              <p>Nightscout-sovellukset ovat avoimen lähdekoodin kehittäjäyhteisön luomia sovelluksia.
+                Sovellusten tarkoitus on helpottaa elämää diabeteksen kanssa.
+                Nämä sovellukset eivät tyypillisesti ole virallisia terveydenhuollon laitteita,
+                vaan kansalaiset käyttävät näitä omalla vastuullaan.
+                Lisätietoa Nightscout-sovelluksista löytyy sivustolta
+                <a href="http://www.nightscout.info/">nightscout.info</a>
+                sekä esimerkiksi suomenkielisestä Facebook-ryhmästä
+                <a href="https://www.facebook.com/groups/nightscoutsuomi/">
+                  Nightscout Suomi (Finland) Virallinen</a>.
+              </p>
+              <p>Nightscout Connect -palvelun avulla sovellusten käyttöönotto helpottuu, kun
+                niiden vaatimaa palvelinta ei tarvitse pystyttää ja ylläpitää itse.
+              </p>
+              <p>Tulevaisuudessa palvelun avulla on myös mahdollista jakaa Nightscout-sovellusten
+                keräämä tieto esimerkiksi lääkärin ja hoitajan kanssa.
+              </p>
+              <p>Palvelu tarvitsee toimiakseen selaimen javascript-ominaisuudet.</p>
+            </div>
+          </div>
         </noscript>
-        <div id="root"></div>
-     </div>
+        <div id="root" class="parallax__layer--base"></div>
+      </div>
     </div>
-    <div id='footer'>
-      <ul id="navigation">   
-        <li><a href="/">Etusivu</a></li>
-        <li><a href="eula">Käyttöehdot</a></li>
-        <li><a href="privacy">Tietosuojaseloste</a></li>
-        <li><a href="instructions">Ohjeet</a></li>
-        <li><a href="support">Tuki</a></li>
-      </ul>
-    </div>
-  </body>
+  </div>
+  <div id='footer'>
+    <ul id="navigation">
+      <li><a href="/">Etusivu</a></li>
+      <li><a href="eula">Käyttöehdot</a></li>
+      <li><a href="privacy">Tietosuojaseloste</a></li>
+      <li><a href="instructions">Ohjeet</a></li>
+      <li><a href="support">Tuki</a></li>
+    </ul>
+  </div>
+</body>
+
 </html>

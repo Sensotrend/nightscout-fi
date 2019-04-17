@@ -8,7 +8,7 @@ class Login extends Component {
     return (
       <Fragment>
         <Description />
-        <div id='login'>
+        <div id="login" className="actions">
           {((document.location.href.indexOf('test') < 0) && (document.location.href.indexOf('localhost') < 0))
           ? (
             <p>Palvelu on vielä kehityksen alla, sisäänkirjautuminen on toistaiseksi kytketty pois päältä.</p>
