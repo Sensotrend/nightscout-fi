@@ -48,6 +48,42 @@ describe('convert_data', function () {
       records2[0].date.should.equal(ns_sample[0].date);
    });
 
+
+   it('should convert Nightscout CGM record to FIPHR and back and not add fields', async function () {
+
+      let ns_sample = [{
+         "_id": "5c655105763fe276981ff0c2"
+         , "device": "xDrip-DexcomG5"
+         , "date": 1550143850509
+         , "dateString": "2019-02-14T13:30:50.509+0200"
+         , "sgv": 177
+         , "type": "sgv"
+         , "sysTime": "2019-02-14T13:30:50.509+0200"
+         }];
+
+      let options = {
+         source: 'nightscout'
+         , target: 'fiphr'
+         , datatypehint: 'entries'
+         , FHIR_userid: '756cbc1a-550c-11e9-ada1-177bad63e16d' // Needed for FHIR conversion
+      };
+
+      let records = await DataConverter.convert(ns_sample, options);
+
+      options = {
+         source: 'fiphr'
+         , target: 'nightscout'
+         , datatypehint: 'entries'
+         , FHIR_userid: '756cbc1a-550c-11e9-ada1-177bad63e16d' // Needed for FHIR conversion
+      };
+
+      let records2 = await DataConverter.convert(records, options);
+
+      should.not.exist(records2[0].delta);
+      should.not.exist(records2[0].direction);
+      should.not.exist(records2[0].noise);
+   });
+
    it('should convert Nightscout bolus wizard record to FIPHR and back', async function () {
 
       let ns_sample = [{
