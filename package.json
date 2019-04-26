@@ -28,6 +28,7 @@
     "mongoose": "^5.4.14",
     "morgan": "^1.9.1",
     "nanoid": "^2.0.1",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.11",
     "promise-parallel-throttle": "^3.3.0",
     "react": "^16.8.6",
@@ -95,7 +96,7 @@
   "browserslist": [
     ">0.2%",
     "not dead",
-    "not ie <= 11",
+    "not ie <= 10",
     "not op_mini all"
   ]
 }

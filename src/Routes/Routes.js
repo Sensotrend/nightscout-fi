@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   Redirect,
   Route,
@@ -13,6 +13,7 @@ import EmailRequest from '../EmailVerification/EmailRequest';
 import Eula from '../Eula/Eula';
 import Instructions from '../Instructions/Instructions';
 import Index from '../Index/Index';
+import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
 import Support from '../Support/Support';
@@ -101,7 +102,7 @@ class Routes extends Component {
     }
     return (
       <Router basename={base} forceRefresh={!supportsHistory}>
-        <React.Fragment>
+        <Fragment>
           <Switch>
             <ProtectedRoute path="/account" config={config} component={Account} componentProps={{ config: config }} />
             <Route path="/deleted" component={Deleted} />
@@ -120,7 +121,8 @@ class Routes extends Component {
             <Route path="/support" component={Support} />
             <Redirect from="/" to="/index" />
           </Switch>
-        </React.Fragment>
+          <Footer />
+        </Fragment>
       </Router>
     );
   }
