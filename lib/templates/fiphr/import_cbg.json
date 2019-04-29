@@ -8,7 +8,7 @@
   "language": "fi",
   "text": {
     "status": "extensions",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br />Aika: {{time_fhir}}<br />Laite: {{deviceId}} (via Sensotrend Connect)<br />Tulos: {{valueMmol}} mmol/l</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br />{{_statusMessage}}<br /></div>"
   },
   "identifier": [
     {
