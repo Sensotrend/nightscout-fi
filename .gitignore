@@ -1,5 +1,6 @@
 my.env*
 now_secrets.sh
+uploads/*
 
 # Logs
 logs
