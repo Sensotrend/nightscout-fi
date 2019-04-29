@@ -7,9 +7,7 @@ class ParallaxBase extends Component {
     const { children } = this.props;
     return (
       <div className="parallax">
-        <div className="parallax__container">
-          { children }
-        </div>
+        {children}
       </div>
     );
   }

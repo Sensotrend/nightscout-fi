@@ -1,6 +1,8 @@
 @import-normalize; /* bring in normalize.css styles */
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700");
 
+@import 'consts';
+
 html {
   height: 100%;
 }
@@ -17,40 +19,14 @@ body {
   color: #000;
   min-height: 100vh;
   height: 100%;
+}
+
+main {
   padding-bottom: 100px;
 }
 
-div.image-background {
-  background: #fff;
-  background: url("wrist.png");
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 120vw;
-}
-
-.dark, #index section:first-of-type {
-  border-top: 3px solid white;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
-  padding: 5em 0;
-}
-
-.light {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: black;
-}
-
-.solid, #index section:nth-of-type(2) {
-  border-top: 3em solid white;
-  border-bottom: 3em solid white;
-  background-color: rgba(255, 255, 255, 0.15);
-  color: black;
-}
-
-.solid {
-  background-color: white;
-  color: black;
+#index section {
+  padding: 0;
 }
 
 h1 {
@@ -77,39 +53,6 @@ h2 {
   max-width: 800px;
   padding: 2em 2em;
   margin: auto;
-}
-
-#actions {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 150px;
-  width: 100%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: white;
-  padding: 0;
-  z-index: 10;
-}
-
-#footer {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  height: 30px;
-  width: 100%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: white;
-  padding: 0 2em 25px;
-  z-index: 10;
-  border-top: 1px solid maroon;
-}
-
-#actions button.large {
-  margin: 20px auto;
 }
 
 .button-success,
@@ -158,11 +101,6 @@ input[type="email"] {
   padding: 0.3em 1em;
 }
 
-ul#navigation li {
-  display: inline;
-  margin: 0.1em 2em;
-}
-
 table,
 th,
 td,
@@ -200,41 +138,15 @@ input[type="checkbox"] {
   float: left;
 }
 
-#index {
-  color: white;
-  font-size: 140%;
+div.image-background {
+  display: none;
 }
 
-#index a,
-#footer a {
-  text-decoration: none;
-  font-weight: bold;
+div.image-inline {
+  display: inherit;
 }
 
-#index a {
-  color: white;
-}
-
-#footer a {
-  color: black;
-}
-
-#index a:hover,
-#index a:active,
-#index a:focus,
-#footer a:hover,
-#footer a:active,
-#footer a:focus {
-  text-decoration: underline;
-}
-
-/*
-#index section {
-  padding: 10em 0;
-}
-*/
-
-@media (max-width: 740px) {
+@media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
   h1 {
     text-align: center;
   }
@@ -246,28 +158,40 @@ input[type="checkbox"] {
     margin: 0 auto 30px;
   }
 
-  #index,
-  #index a,
-  .dark {
-    background-color: white;
-    color: black;
-  }
-
-  #index section {
-    padding: 1em 0;
-    border: none;
-  }
-
   ul#navigation li {
     display: block;
     margin: 1em 2em;
   }
 
-  #footer.open {
-    height: auto;
+  #index {
+    @include black-links;
+  }
+}
+
+@media screen and (min-width: $breakpoint-width) and (orientation: landscape) {
+  div.image-background {
+    background: #fff;
+    background: url("wrist.png");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 150vh;
   }
 
-  #footer.collapsed {
+  #index {
+    @include white-links;
+    color: white;
+    font-size: 150%;
+    header, section {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  div.image-background {
+    display: inherit;
+  }
+
+  div.image-inline {
     display: none;
   }
 }

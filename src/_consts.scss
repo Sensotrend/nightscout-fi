@@ -1,0 +1,41 @@
+$breakpoint-width: 740px;
+$footer-height: 30px;
+
+@mixin links {
+  text-decoration: none;
+  font-weight: bold;
+  &:hover
+  &:active,
+  &:focus,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@mixin white-links {
+  a,
+  a:hover,
+  a:active,
+  a:focus,
+  a:hover,
+  a:active,
+  a:focus {
+    @include links;
+    color: white;
+  }
+}
+
+@mixin black-links {
+  a,
+  a:hover,
+  a:active,
+  a:focus,
+  a:hover,
+  a:active,
+  a:focus {
+    @include links;
+    color: black;
+  }
+}

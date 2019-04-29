@@ -1,0 +1,138 @@
+@import "../consts";
+
+footer {
+  @include black-links;
+
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: $footer-height;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 0 0 25px;
+  z-index: 10;
+  border-top: 1px solid black;
+
+  nav {
+    #menuToggle input,
+    #menuToggle span {
+      display: none;
+    }
+
+    ul {
+      padding: 0;
+
+      li {
+        display: inline;
+        margin: 0.1em 2em;
+      }
+    }
+
+    @media print {
+      display: none;
+    }
+
+    @media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
+      #menuToggle {
+        display: block;
+        position: relative;
+        height: $footer-height;
+
+        -webkit-user-select: none;
+        user-select: none;
+
+        span {
+          display: block;
+          width: 33px;
+          height: 4px;
+          margin: 5px auto 0;
+          position: relative;
+
+          background: darkgray;
+          border-radius: 3px;
+          transform-origin: 2px 2px;
+
+          transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background-color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+            opacity 0.55s ease;
+
+          &:first-of-type {
+            transform-origin: 50% 0%;
+          }
+          &:last-of-type {
+            transform-origin: 50% 100%;
+          }
+        }
+
+        input {
+          display: block;
+          width: 100vw;
+          height: $footer-height;
+          cursor: pointer;
+          position: absolute;
+          z-index: 13;
+
+          opacity: 0; /* hide this */
+
+          -webkit-touch-callout: none;
+
+          &:checked ~ .burgerMenu {
+              border: 3px solid red;
+            transform-origin: 0% 0%;
+            span {
+              opacity: 0;
+              background: black;
+              transform: scale(0.2, 0.2);
+            }
+            span:first-of-type {
+              opacity: 1;
+              transform-origin: 0% 0%;
+              transform: translate(-6px, 0px) rotate(45deg);
+            }
+            span:last-of-type {
+              opacity: 1;
+              transform-origin: 100% 0%;
+              transform: translate(0px, -20px) rotate(-45deg);
+            }
+          }
+
+          &:checked ~ ul {
+            transform: translate(0, -100%);
+          }
+        }
+      }
+
+      .burgerMenu {
+        position: absolute;
+        width: 100%;
+        height: 120px;
+        background-color: white;
+        z-index: 12;
+      }
+
+      #navi {
+        position: absolute;
+        top: $footer-height;
+        background: white;
+        border-top: 1px solid black;
+        padding-bottom: 50px;
+        width: 100%;
+        margin: 0;
+        z-index: 11;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        /* to stop flickering of text in safari */
+        transform-origin: 0% 0%;
+        transform: translate(0, -$footer-height);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.2s cubic-bezier(0.77, 0.2, 0.05, 1);
+
+        li {
+          display: block;
+          margin: 1em 2em;
+        }
+      }
+    }
+  }
+}

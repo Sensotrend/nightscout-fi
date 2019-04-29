@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './actions.scss';
+
 class ActionsMenu extends Component {
 
   render() {
