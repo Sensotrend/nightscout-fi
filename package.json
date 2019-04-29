@@ -15,6 +15,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
     "ejs": "^2.6.1",
+    "env-cmd": "^8.0.2",
     "esm": "^3.2.20",
     "express": "^4.16.4",
     "express-markdown-reloaded": "^0.2.1",
@@ -26,8 +27,10 @@
     "marked": "^0.6.1",
     "moment": "^2.24.0",
     "mongoose": "^5.4.14",
+    "monq": "^0.3.7",
     "morgan": "^1.9.1",
     "nanoid": "^2.0.1",
+    "node-cache": "^4.2.0",
     "nodemon": "^1.18.11",
     "promise-parallel-throttle": "^3.3.0",
     "react": "^16.8.6",
@@ -37,7 +40,6 @@
     "simple-oauth2": "^2.2.1",
     "stjs": "0.0.5",
     "uuid": "^3.3.2",
-    "env-cmd": "^8.0.2",
     "yargs": "^12.0.5"
   },
   "devDependencies": {
@@ -88,7 +90,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "ui": "react-scripts start",
     "start": "react-scripts build && env-cmd ./my.env node -r esm nsfi.js",
-    "test": "env-cmd ./test.env react-scripts test --env=jsdom && env-cmd ./test.env mocha --exit --require esm tests/*.test.js",
+    "test": "env-cmd ./test.env react-scripts test --env=jsdom && env-cmd ./test.env mocha --exit --timeout 8000 --require esm tests/*.test.js",
     "coverage": "env-cmd ./test.env nyc mocha --exit --require esm tests/*.test.js",
     "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html"
   },
@@ -97,5 +99,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "nodemonConfig": {
+    "ignore": [
+      "uploads/*"
+    ]
+  }
 }
