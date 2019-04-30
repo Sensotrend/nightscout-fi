@@ -14,6 +14,7 @@
     "connect-mongo": "^2.0.3",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
+    "cron": "^1.7.1",
     "ejs": "^2.6.1",
     "env-cmd": "^8.0.2",
     "esm": "^3.2.20",
