@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   Redirect,
   Route,
@@ -22,8 +22,8 @@ const supportsHistory = 'pushState' in window.history;
 
 const { origin } = window;
 export const localhostAPI = origin && (origin.match(/^https?:\/\/localhost/))
-? `${origin.substring(0, origin.indexOf(':', 7)).replace(/^https/i, 'http')}:8080/api`
-: false;
+  ? `${origin.substring(0, origin.indexOf(':', 7)).replace(/^https/i, 'http')}:8080/api`
+  : false;
 
 export const fetchConfig = {
   method: 'GET',
@@ -35,6 +35,41 @@ export const fetchConfig = {
   cache: 'default',
 };
 
+// Idle time scripts
+
+const inactivityTimeOut = 10 * 60 * 1000; // 10 minutes
+let inactivitySessionExpireTimeOut;
+let afterIdleCallback;
+
+function clearSessionExpireTimeout() {
+  clearTimeout(inactivitySessionExpireTimeOut);
+}
+
+function resetIdleTimer() {
+  clearSessionExpireTimeout();
+  inactivitySessionExpireTimeOut = window.setTimeout(() => {
+    if (afterIdleCallback) {
+      afterIdleCallback();
+    }
+  }, inactivityTimeOut);
+}
+
+function initIdleTimeCallback(callback) {
+  clearSessionExpireTimeout();
+  afterIdleCallback = () => {
+    document.removeEventListener('click', resetIdleTimer, { capture: true, passive: true });
+    document.removeEventListener('mousemove', resetIdleTimer, { capture: true, passive: true });
+    document.removeEventListener('keypress', resetIdleTimer, { capture: true, passive: true });
+    window.removeEventListener('load', resetIdleTimer, { capture: true, passive: true });
+    callback();
+  };
+  document.addEventListener('click', resetIdleTimer, { capture: true, passive: true });
+  document.addEventListener('mousemove', resetIdleTimer, { capture: true, passive: true });
+  document.addEventListener('keypress', resetIdleTimer, { capture: true, passive: true });
+  window.addEventListener('load', resetIdleTimer, { capture: true, passive: true });
+  resetIdleTimer();
+}
+
 const ProtectedRoute = ({
   component: Comp,
   componentProps,
@@ -44,7 +79,7 @@ const ProtectedRoute = ({
   return (
     <Route
       {...rest}
-      render = {cProps => config
+      render={cProps => config
         ? <Comp {...cProps} {...componentProps} />
         : <Redirect
           to={{
@@ -62,85 +97,107 @@ class Routes extends Component {
     super(props);
     this.state = {
       initializing: true,
-        /*
-      config: {
-        api: 'debug',
-        secret: 'debug',
-        email: 'debug email',
-        notifications: false,
-        development: true,
-      }
-        */
+      /*
+    config: {
+      api: 'debug',
+      secret: 'debug',
+      email: 'debug email',
+      notifications: false,
+      development: true,
+    }
+      */
     };
   }
 
   componentDidMount() {
     fetch(`${server}/fiphr/config`, fetchConfig)
-    .then(res => {
-      switch (res.status) {
-        case 200: return res.json();
-        case 204: return {};
-        default:
-          const error = new Error('Unable to load user config');
-          error.response = res;
-          throw error;
-      }
-    })
-    .then(json => {
-      this.setState({
-        initializing: false,
-        config: json,
+      .then(res => {
+        switch (res.status) {
+          case 200: return res.json();
+          case 204: return {};
+          default:
+            const error = new Error('Unable to load user config');
+            error.response = res;
+            throw error;
+        }
+      })
+      .then(json => {
+        this.setState({
+          initializing: false,
+          config: json,
+        });
+        initIdleTimeCallback(() => {
+          const { config } = this.state;
+          if (config.email || config.status) {
+            // user has logged in...
+            // eslint-disable-next-line no-console
+            console.log('Logout after inactivity'); // TODO: translate
+            this.setState({
+              initializing: false,
+              config: undefined,
+              logout: true,
+            });
+          }
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        this.setState({
+          initializing: false,
+          error,
+        });
       });
-    })
-    .catch(error => {
-      console.error(error);
-      this.setState({
-        initializing: false,
-        error,
-      });
-    });
   }
 
   render() {
-    const { config, initializing } = this.state;
+    const { config, initializing, logout } = this.state;
     if (initializing) {
       return <div />;
     }
     return (
       <Router basename={base} forceRefresh={!supportsHistory}>
-        <Fragment>
-          <Switch>
-            <ProtectedRoute
-              path="/account"
-              config={config}
-              component={Account}
-              componentProps={{ config }}
-            />
-            <Route path="/deleted" component={Deleted} />
-            <Route path="/eula" component={Eula} />
-            <Route
-              path="/index"
-              render={props => <Index {...props} config={config} />}
-            />
-            <Route
-              path="/instructions"
-              render={props => <Instructions {...props} config={config} />}
-            />
-            <Route
-              path="/logout"
-              render={(props) => (<Logout callback={() => this.setState({ config: undefined })} />)}
-            />
-            <Route path="/privacy" component={Privacy} />
-            <ProtectedRoute
-              path="/registration"
-              config={config}
-              component={EmailRequest}
-              componentProps={{ config }}
-            />
-            <Redirect from="/" to="/index" />
-          </Switch>
-          <Footer />
-        </Fragment>
+        <Route
+          render={props => {
+            if (logout && props.location.pathname !== '/logout') {
+              return <Redirect to="/logout" />;
+            }
+            return null;
+          }}
+        />
+        <Switch>
+          <ProtectedRoute
+            path="/account"
+            config={config}
+            component={Account}
+            componentProps={{ config }}
+          />
+          <Route path="/deleted" component={Deleted} />
+          <Route path="/eula" component={Eula} />
+          <Route
+            path="/index"
+            render={props => <Index {...props} config={config} />}
+          />
+          <Route
+            path="/instructions"
+            render={props => <Instructions {...props} config={config} />}
+          />
+          <Route
+            path="/logout"
+            render={(props) => (<Logout callback={() => this.setState({
+              config: undefined,
+              logout: false,
+            })} />)}
+          />
+          <Route path="/privacy" component={Privacy} />
+          <ProtectedRoute
+            path="/registration"
+            config={config}
+            component={EmailRequest}
+            componentProps={{ config }}
+          />
+          <Redirect from="/" to="/index" />
+        </Switch>
+        <Footer />
       </Router>
     );
   }
