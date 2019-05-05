@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Field, ErrorMessage } from 'formik';
 
+import Checkbox from './Checkbox';
+
 class EmailForm extends Component {
   /*
   createEmail = ({ email, notifications, development }) => {
@@ -89,6 +91,7 @@ class EmailForm extends Component {
         <p>Voit halutessasi saada sähköpostiosoitteeseesi myös tietoja palvelun vähemmän
           kriittisistä virhetilanteista.</p>
         <p>Voit myös ilmaista halusi osallistua palvelun jatkokehitykseen.</p>
+        <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
         <table>
             <tbody>
               <tr>
@@ -107,11 +110,9 @@ class EmailForm extends Component {
               <tr>
                 <td>
                   <div className="checkbox">
-                    <Field
-                      type="checkbox"
+                    <Checkbox
                       name="notifications"
                       id="notifications"
-                      checked={config.notifications}
                     />
                     <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun
                 vikatilanteista (esimerkiksi verkkoyhteyden tilapäinen katkeaminen).</label>
@@ -121,11 +122,9 @@ class EmailForm extends Component {
               <tr>
                 <td>
                   <div className="checkbox">
-                    <Field
-                      type="checkbox"
+                    <Checkbox
                       name="development"
                       id="development"
-                      checked={config.development}
                     />
                     <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen
                 palvelun jatkokehitykseen</label>
@@ -134,7 +133,6 @@ class EmailForm extends Component {
               </tr>
             </tbody>
           </table>
-          <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
       </Fragment>
     );
   }

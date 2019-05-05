@@ -101,8 +101,6 @@ class Routes extends Component {
     });
   }
 
-  componentDidUpdate
-
   render() {
     const { config, initializing } = this.state;
     if (initializing) {
@@ -112,7 +110,12 @@ class Routes extends Component {
       <Router basename={base} forceRefresh={!supportsHistory}>
         <Fragment>
           <Switch>
-            <ProtectedRoute path="/account" config={config} component={Account} componentProps={{ config }} />
+            <ProtectedRoute
+              path="/account"
+              config={config}
+              component={Account}
+              componentProps={{ config }}
+            />
             <Route path="/deleted" component={Deleted} />
             <Route path="/eula" component={Eula} />
             <Route
@@ -123,9 +126,17 @@ class Routes extends Component {
               path="/instructions"
               render={props => <Instructions {...props} config={config} />}
             />
-            <Route path="/logout" component={Logout} />
+            <Route
+              path="/logout"
+              render={(props) => (<Logout callback={() => this.setState({ config: undefined })} />)}
+            />
             <Route path="/privacy" component={Privacy} />
-            <ProtectedRoute path="/registration" config={config} component={EmailRequest} />
+            <ProtectedRoute
+              path="/registration"
+              config={config}
+              component={EmailRequest}
+              componentProps={{ config }}
+            />
             <Redirect from="/" to="/index" />
           </Switch>
           <Footer />

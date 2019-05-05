@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Octicon, { CloudDownload, Gear } from '@githubprimer/octicons-react';
 
 import ActionsMenu from '../Actions/ActionsMenu';
 import ParallaxComponent from '../Parallax/ParallaxComponent';
@@ -42,11 +43,17 @@ class Settings extends Component {
         </ParallaxComponent>
         <div id="account">
           <ActionsMenu>
-            <Link to="account">
-              <button className="button-secondary large pure-button">Muokkaa asetuksia</button>
+            <Link to="/account">
+              <button>
+                <Octicon icon={Gear} verticalAlign="middle" size="medium" />
+                <span>Asetukset</span>
+              </button>
             </Link>
             <Link to="logout">
-              <button className="button-warning large pure-button">Kirjaudu ulos</button>
+              <button>
+                <Octicon icon={CloudDownload} verticalAlign="middle" size="medium" />
+                <span>Poistu</span>
+              </button>
             </Link>
           </ActionsMenu>;
         </div>

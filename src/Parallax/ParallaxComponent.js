@@ -28,7 +28,7 @@ class ParallaxComponent extends Component {
 
   componentDidUpdate() {
     const height = getBaseLayerSize();
-    if (height && height !=  this.state.backLayerHeight) {
+    if (height && height !==  this.state.backLayerHeight) {
       this.setState({
         backLayerHeight: height,
       });
@@ -37,7 +37,7 @@ class ParallaxComponent extends Component {
 
   componentDidMount() {
     const height = getBaseLayerSize();
-    if (height && height !=  this.state.backLayerHeight) {
+    if (height && height !==  this.state.backLayerHeight) {
       this.setState({
         backLayerHeight: height,
       });

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Octicon, {CloudUpload} from '@githubprimer/octicons-react';
 
 import { server } from '../Api/Api';
 import ActionsMenu from '../Actions/ActionsMenu';
@@ -24,8 +25,9 @@ class Login extends Component {
                 <p>Palvelu on vielä kehityksen alla, sisäänkirjautuminen on toistaiseksi kytketty pois päältä.</p>
               )
               : (
-                <a href={`${server}/fiphr/launch`}>
-                  <button className="button-success large pure-button">Kirjaudu</button>
+                <a href={`${server}/fiphr/launch`} className="success">
+                  <Octicon icon={CloudUpload} verticalAlign="middle" size="medium" />
+                  <span>Kirjaudu</span>
                 </a>
               )
             }

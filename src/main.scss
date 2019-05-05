@@ -39,8 +39,9 @@ h1 {
 }
 
 h1 img {
-  height: 45px;
+  height: 47px;
   margin-right: 10px;
+  filter: invert(100%);
 }
 
 h2 {
@@ -153,6 +154,12 @@ input[type="checkbox"] {
   float: left;
 }
 
+form td input ~ div {
+  margin: 10px;
+  font-size: 50%;
+  color: red;
+}
+
 @media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
   h1 {
     text-align: center;
@@ -163,5 +170,6 @@ input[type="checkbox"] {
     text-align: center;
     height: 60px;
     margin: 0 auto 30px;
+    filter: invert(0%);
   }
 }

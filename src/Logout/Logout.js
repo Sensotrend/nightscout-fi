@@ -27,6 +27,7 @@ class Logout extends Component {
           processing: false,
           error: false,
         });
+        this.props.callback && this.props.callback();
       })
       .catch(error => {
         console.error('Unable to log out!', error);
