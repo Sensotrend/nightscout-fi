@@ -5,6 +5,8 @@ let sample =
 "date":1550143850509,
 "dateString":"2019-02-14T13:30:50.509+0200",
 "sgv":100,
+"delta": 10,
+"direction": "FortyfiveUp",
 "type":"sgv",
 "filtered":195071.0394182456,
 "unfiltered":196842.65552921052,

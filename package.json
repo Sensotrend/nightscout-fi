@@ -15,7 +15,9 @@
     "connect-mongo": "^2.0.3",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
+    "cron": "^1.7.1",
     "ejs": "^2.6.1",
+    "env-cmd": "^8.0.2",
     "esm": "^3.2.20",
     "express": "^4.16.4",
     "express-markdown-reloaded": "^0.2.1",
@@ -28,9 +30,11 @@
     "marked": "^0.6.1",
     "moment": "^2.24.0",
     "mongoose": "^5.4.14",
+    "monq": "^0.3.7",
     "morgan": "^1.9.1",
     "nanoid": "^2.0.1",
     "node-sass": "^4.11.0",
+    "node-cache": "^4.2.0",
     "nodemon": "^1.18.11",
     "promise-parallel-throttle": "^3.3.0",
     "react": "^16.8.6",
@@ -43,7 +47,6 @@
     "yargs": "^12.0.5"
   },
   "devDependencies": {
-    "env-cmd": "^8.0.2",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "nyc": "^13.3.0",
@@ -84,14 +87,14 @@
     "npm": "6.x"
   },
   "scripts": {
-    "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
+    "__preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon -r esm nsfi.js",
     "client": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "ui": "react-scripts start",
     "start": "react-scripts build && env-cmd ./my.env node -r esm nsfi.js",
-    "test": "env-cmd ./test.env react-scripts test --env=jsdom && env-cmd ./test.env mocha --exit --require esm tests/*.test.js",
+    "test": "env-cmd ./test.env react-scripts test --env=jsdom && env-cmd ./test.env mocha --exit --timeout 8000 --require esm tests/*.test.js",
     "coverage": "env-cmd ./test.env nyc mocha --exit --require esm tests/*.test.js",
     "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html"
   },
@@ -100,5 +103,10 @@
     "not dead",
     "not ie <= 10",
     "not op_mini all"
-  ]
+  ],
+  "nodemonConfig": {
+    "ignore": [
+      "uploads/*"
+    ]
+  }
 }
