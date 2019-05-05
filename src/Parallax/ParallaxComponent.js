@@ -10,7 +10,6 @@ import './parallax.scss';
 export const getBaseLayerSize = () => {
   const baseLayer = document.getElementsByClassName('parallax__layer--base');
   if (baseLayer) {
-    console.log('Found baselayer height', baseLayer[0].scrollHeight);
     return baseLayer[0].scrollHeight;
   }
   return undefined;

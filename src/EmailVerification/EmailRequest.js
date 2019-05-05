@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import Octicon, { CloudUpload } from '@githubprimer/octicons-react';
 
@@ -18,7 +17,7 @@ class EmailRequest extends Component {
   }
 
   render() {
-    const { config, history } = this.props;
+    const { config } = this.props;
     const { sent } = this.state;
 
     return (
