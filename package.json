@@ -5,6 +5,7 @@
   "repository": "https://github.com/sensotrend/nightscout-fi",
   "dependencies": {
     "@awaitjs/express": "^0.2.0",
+    "@githubprimer/octicons-react": "^8.5.0",
     "@sendgrid/mail": "^6.3.1",
     "async-csv": "^2.0.0",
     "axios": "^0.18.0",
