@@ -43,7 +43,7 @@ class Instructions extends Component {
             </ul>
             <h2>Palvelun tukemat tietomuodot</h2>
             <p>Nightscout.fi välittää tällä hetkellä vain verensokeritiedot eri Nightscout-sovelluksien välillä.
-              Palvelu tukee sekä Nightscoutin sensoreiden verensoritietomuotoa että sormenpäämittauksia.
+              Palvelu tukee verensokeritietoa niin sensoreista kuin sormenpäämittauksistakin.
         </p>
           </div>
         </section>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Login from '../Login/Login';
 import Settings from '../Settings/Settings';
-import ParallaxComponent from '../Parallax/ParallaxComponent';
+import './index.scss';
 
 class Index extends Component {
   render() {

@@ -1,9 +1,9 @@
 $breakpoint-width: 740px;
-$footer-height: 30px;
+$footer-height: 56px;
+$actions-height: 94px + $footer-height;
 
 @mixin links {
   text-decoration: none;
-  font-weight: bold;
   &:hover
   &:active,
   &:focus,
@@ -25,6 +25,9 @@ $footer-height: 30px;
     @include links;
     color: white;
   }
+  a {
+    font-weight: bold;
+  }
 }
 
 @mixin black-links {
@@ -37,5 +40,8 @@ $footer-height: 30px;
   a:focus {
     @include links;
     color: black;
+  }
+  a {
+    font-weight: bold;
   }
 }

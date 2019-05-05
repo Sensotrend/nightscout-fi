@@ -1,3 +1,9 @@
+@import '../consts';
+
 #instructions section, #instructions .container {
   padding: 0;
+}
+
+#instructions section:last-of-type {
+  padding-bottom: $actions-height;
 }

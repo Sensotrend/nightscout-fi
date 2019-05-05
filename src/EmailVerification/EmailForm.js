@@ -1,16 +1,8 @@
 import React, { Component, Fragment } from 'react';
-
-import { server } from '../Api/Api';
-import { fetchConfig } from '../Routes/Routes';
+import { Field, ErrorMessage } from 'formik';
 
 class EmailForm extends Component {
-  constructor(props) {
-    super(props);
-    const { config } = this.props;
-    const { email = '', notifications = false, development = false } = config;
-    this.state = { email, notifications, development };
-  }
-
+  /*
   createEmail = ({ email, notifications, development }) => {
     // TODO: implement a different endpoint!
     return fetch(`${server}/emailverification/sendverificationrequest`, {
@@ -28,7 +20,7 @@ class EmailForm extends Component {
       body: JSON.stringify({ email, notifications, development }),
     })
   }
-  
+
   storeSettings = ({ email, notifications, development }) => {
     // TODO: implement a different endpoint!
     return fetch(`${server}/emailverification/sendverificationrequest`, {
@@ -72,58 +64,24 @@ class EmailForm extends Component {
       apiCall = () => this.storeSettings({ email, notifications, development });
     }
     apiCall()
-    .then(() => {
-      this.setState({
-        status: 'sent',
-        error: undefined,
+      .then(() => {
+        this.setState({
+          status: 'sent',
+          error: undefined,
+        });
+      })
+      .catch(error => {
+        this.setState({
+          status: 'error',
+          error,
+        });
       });
-    })
-    .catch(error => {
-      this.setState({
-        status: 'error',
-        error,
-      });
-    });
   }
+  */
 
   render() {
-    const { cancelButton } = this.props;
-    const { email, notifications, development, status, error } = this.state;
-    const Button = (
-      <button
-        className="large primary button-success"
-        type="submit"
-        onClick={this.submit}
-      >
-        Lähetä!
-      </button>
-    );
-
-    let action;
-    switch (status) {
-      case 'sending': 
-        action = (<p>Lähetetään...</p>)
-      break;
-      case 'sent': 
-        action = (<p>Tarkista sähköpostisi.</p>)
-      break;
-      case 'error':
-        action = (
-          <Fragment>
-            <p className="error">{error.message}</p>
-            { cancelButton }
-            { Button }
-          </Fragment>
-        );
-      break;
-      default:
-        action = (
-          <Fragment>
-            { cancelButton }
-            { Button }
-          </Fragment>
-        );
-    }
+    const { config } = this.props;
+    console.log('Form props', config);
     return (
       <Fragment>
         <p>Tarvitsemme sähköpostiosoitteesi voidaksemme tiedottaa kriittisistä vikatilanteista
@@ -131,53 +89,63 @@ class EmailForm extends Component {
         <p>Voit halutessasi saada sähköpostiosoitteeseesi myös tietoja palvelun vähemmän
           kriittisistä virhetilanteista.</p>
         <p>Voit myös ilmaista halusi osallistua palvelun jatkokehitykseen.</p>
-        <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
-        { status !== 'sent' &&
-          <form method="POST" action={`${server}/emailverification/sendverificationrequest`}>
-            <div>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="sahkopostiosoite@palvelin.com"
-                value={email}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <div className="checkbox">
-              <input
-                type="checkbox"
-                name="notifications"
-                id="notifications"
-                checked={notifications}
-                onChange={this.handleInputChange}
-              />
-              <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun
+        <table>
+            <tbody>
+              <tr>
+                <th>Sähköposti</th>
+              </tr>
+              <tr>
+                <td>
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="sahkopostiosoite@palvelin.com"
+                  />
+                  <ErrorMessage name="email" component="div" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className="checkbox">
+                    <Field
+                      type="checkbox"
+                      name="notifications"
+                      id="notifications"
+                      checked={config.notifications}
+                    />
+                    <label htmlFor="notifications">Tahdon saada sähköpostiini tietoja palvelun
                 vikatilanteista (esimerkiksi verkkoyhteyden tilapäinen katkeaminen).</label>
-            </div>
-            <div className="checkbox">
-              <input
-                type="checkbox"
-                name="development"
-                id="development"
-                checked={development}
-                onChange={this.handleInputChange}
-              />
-              <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className="checkbox">
+                    <Field
+                      type="checkbox"
+                      name="development"
+                      id="development"
+                      checked={config.development}
+                    />
+                    <label htmlFor="development">Minulle saa lähettää viestejä ja kysymyksiä liittyen
                 palvelun jatkokehitykseen</label>
-            </div>
-            <div>
-              { action }
-            </div>
-          </form>
-        }
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
       </Fragment>
     );
   }
 }
 
 EmailForm.defaultProps = {
-  config: {},
-}
+  config: {
+    email: '',
+    notifications: false,
+    development: false,
+  },
+};
 
 export default EmailForm;

@@ -10,9 +10,18 @@ export const fore = '--fore';
 class ParallaxLayer extends Component {
 
   render() {
-    const { children, layer, className } = this.props;
+    const { children, layer, className, height } = this.props;
+    let style;
+    if (height) {
+      style = {
+        height
+      };
+    }
     return (
-      <div className={`parallax__layer parallax__layer${layer}${ className ? ` ${className}` : ''}`}>
+      <div
+        className={`parallax__layer parallax__layer${layer}${ className ? ` ${className}` : ''}`}
+        style={style}
+      >
         { children }
       </div>
     );

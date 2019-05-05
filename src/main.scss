@@ -22,10 +22,12 @@ body {
 }
 
 main {
-  padding-bottom: 100px;
+  section:last-of-type {
+    padding-bottom: $actions-height;
+  }
 }
 
-#index section {
+section {
   padding: 0;
 }
 
@@ -43,10 +45,6 @@ h1 img {
 
 h2 {
   font-weight: bolder;
-}
-
-#login {
-  font-size: 30px;
 }
 
 .container {
@@ -95,6 +93,16 @@ div.checkbox {
   color: black;
 }
 
+table input[type="email"],
+div.checkbox {
+  margin: 10px;
+}
+
+table input[type="email"] {
+  width: calc(100% - 60px);
+  width: -webkit-fill-available;
+}
+
 button.large,
 input[type="email"] {
   font-size: 30px;
@@ -116,8 +124,11 @@ caption {
 table {
   border-collapse: collapse;
   text-align: center;
-  margin: 4.5em auto 2em;
+  margin: 2em auto;
   width: 100%;
+  &:first-child {
+    margin-top: 4.5em;
+  }
 }
 
 caption {
@@ -134,16 +145,12 @@ label {
   width: calc(100% - 80px);
 }
 
+table label {
+  font-size: 1.2rem;
+}
+
 input[type="checkbox"] {
   float: left;
-}
-
-div.image-background {
-  display: none;
-}
-
-div.image-inline {
-  display: inherit;
 }
 
 @media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
@@ -156,42 +163,5 @@ div.image-inline {
     text-align: center;
     height: 60px;
     margin: 0 auto 30px;
-  }
-
-  ul#navigation li {
-    display: block;
-    margin: 1em 2em;
-  }
-
-  #index {
-    @include black-links;
-  }
-}
-
-@media screen and (min-width: $breakpoint-width) and (orientation: landscape) {
-  div.image-background {
-    background: #fff;
-    background: url("wrist.png");
-    background-position: center top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 150vh;
-  }
-
-  #index {
-    @include white-links;
-    color: white;
-    font-size: 150%;
-    header, section {
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-  }
-
-  div.image-background {
-    display: inherit;
-  }
-
-  div.image-inline {
-    display: none;
   }
 }

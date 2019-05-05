@@ -16,7 +16,6 @@ import Index from '../Index/Index';
 import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
-import Support from '../Support/Support';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
@@ -63,6 +62,15 @@ class Routes extends Component {
     super(props);
     this.state = {
       initializing: true,
+        /*
+      config: {
+        api: 'debug',
+        secret: 'debug',
+        email: 'debug email',
+        notifications: false,
+        development: true,
+      }
+        */
     };
   }
 
@@ -104,7 +112,7 @@ class Routes extends Component {
       <Router basename={base} forceRefresh={!supportsHistory}>
         <Fragment>
           <Switch>
-            <ProtectedRoute path="/account" config={config} component={Account} componentProps={{ config: config }} />
+            <ProtectedRoute path="/account" config={config} component={Account} componentProps={{ config }} />
             <Route path="/deleted" component={Deleted} />
             <Route path="/eula" component={Eula} />
             <Route
@@ -118,7 +126,6 @@ class Routes extends Component {
             <Route path="/logout" component={Logout} />
             <Route path="/privacy" component={Privacy} />
             <ProtectedRoute path="/registration" config={config} component={EmailRequest} />
-            <Route path="/support" component={Support} />
             <Redirect from="/" to="/index" />
           </Switch>
           <Footer />

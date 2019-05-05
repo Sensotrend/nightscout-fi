@@ -2,11 +2,14 @@
 
 footer {
   @include black-links;
+  a {
+    font-weight: normal;
+  }
 
   position: fixed;
   left: 0px;
   bottom: 0px;
-  height: $footer-height;
+  height: 30px;
   width: 100%;
   text-align: center;
   margin-left: auto;

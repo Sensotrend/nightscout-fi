@@ -1,8 +1,7 @@
+@import '../consts';
+
 .parallax {
   perspective: 1px;
-  /*
-  overflow: hidden;
-  */
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
@@ -10,7 +9,7 @@
 
 .parallax__container {
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -52,3 +51,54 @@
   transform: translateZ(-600px) scale(3);
   z-index: 2;
 }
+
+div.image-background {
+  display: none;
+}
+
+div.image-inline {
+  display: inherit;
+}
+
+@media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
+  .parallax {
+    @include black-links;
+  }
+}
+
+@media screen and (min-width: $breakpoint-width) and (orientation: landscape) {
+  div.image-background {
+    background: #fff;
+    background: url("../picnic.png");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
+  }
+
+  .parallax {
+    @include white-links;
+    color: white;
+    font-size: 150%;
+    background: url("../picnic.png");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    header, section {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    section:last-of-type {
+      padding-bottom: $actions-height;
+    }
+  }
+
+  div.image-background {
+    display: inherit;
+  }
+
+  div.image-inline {
+    display: none;
+  }
+}
+

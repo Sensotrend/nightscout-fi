@@ -1,10 +1,12 @@
 @import "../consts";
 
+$visible-height: $actions-height - $footer-height;
+
 #actions {
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 120px + $footer-height;
+  height: $actions-height;
   width: 100%;
   text-align: center;
   margin-left: auto;
@@ -13,10 +15,20 @@
   padding: 0;
   z-index: 10;
   button.large {
-    margin: 20px auto;
+    margin: 20px;
     cursor: pointer;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: darkgray;
+    margin: $visible-height / 2.5;
   }
   @media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
     border-top: 1px solid black;
+    p {
+      margin: 1em;
+    }
+  
   }
 }

@@ -35,7 +35,6 @@ class Description extends Component {
               sovellusten tuottamien analyysien avulla. Tietojen tallentaminen kannattaa aloittaa
               jo nyt!
             </p>
-            <p>Lue lisää <a href="instructions">ohjeet-sivulta</a>.</p>
           </div>
         </section>
       </Fragment>
