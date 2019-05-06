@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
+import ParallaxComponent from '../Parallax/ParallaxComponent';
 import { server } from '../Api/Api';
 import { fetchConfig } from '../Routes/Routes';
+import '../Index/index.scss';
 
 class Logout extends Component {
   constructor(props) {
@@ -14,31 +16,32 @@ class Logout extends Component {
   componentDidMount() {
     console.log('Logging out', server);
     fetch(`${server}/logout`, fetchConfig)
-    .then(res => {
-      const { status } = res;
-      if (status !== 200) {
-        const error = new Error(`Error logging out, status: ${status} ${res.statusText}`);
-        error.response = res;
-        throw error;
-      }
-      this.setState({
-        processing: false,
-        error: false,
+      .then(res => {
+        const { status } = res;
+        if (status !== 200) {
+          const error = new Error(`Error logging out, status: ${status} ${res.statusText}`);
+          error.response = res;
+          throw error;
+        }
+        this.setState({
+          processing: false,
+          error: false,
+        });
+        this.props.callback && this.props.callback();
+      })
+      .catch(error => {
+        console.error('Unable to log out!', error);
+        this.setState({
+          processing: false,
+          error,
+        });
       });
-    })
-    .catch(error => {
-      console.error('Unable to log out!', error);
-      this.setState({
-        processing: false,
-        error,
-      });
-    });
   }
 
   render() {
     const { error, processing } = this.state;
     let contents;
-    
+
     if (error) {
       contents = <p className="error">Uloskirjautumisessa tapahtui virhe! Sulje selain varmuuden vuoksi.</p>;
     } else if (processing) {
@@ -47,9 +50,15 @@ class Logout extends Component {
       contents = <p>Olet kirjautunut ulos.</p>;
     }
     return (
-      <div id="logout">
-        { contents }
-      </div>
+      <main id="logout">
+        <ParallaxComponent>
+          <section>
+            <div className="container">
+              {contents}
+            </div>
+          </section>
+        </ParallaxComponent>
+      </main>
     );
   }
 }

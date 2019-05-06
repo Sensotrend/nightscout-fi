@@ -1,11 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+
+import Header from '../Header/Header';
 
 class Privacy extends Component {
   render() {
     return (
-      <div id='privacy'>
-        <h2>Tietosuojaseloste</h2>
-      </div>
+      <Fragment>
+        <Header />
+        <main id='privacy'>
+          <div className="container">
+            <h2>Tietosuoja</h2>
+          </div>
+        </main>
+      </Fragment>
     );
   }
 }

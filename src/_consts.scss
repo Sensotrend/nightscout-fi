@@ -1,0 +1,47 @@
+$breakpoint-width: 740px;
+$footer-height: 56px;
+$actions-height: 94px + $footer-height;
+
+@mixin links {
+  text-decoration: none;
+  &:hover
+  &:active,
+  &:focus,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@mixin white-links {
+  a,
+  a:hover,
+  a:active,
+  a:focus,
+  a:hover,
+  a:active,
+  a:focus {
+    @include links;
+    color: white;
+  }
+  a {
+    font-weight: bold;
+  }
+}
+
+@mixin black-links {
+  a,
+  a:hover,
+  a:active,
+  a:focus,
+  a:hover,
+  a:active,
+  a:focus {
+    @include links;
+    color: black;
+  }
+  a {
+    font-weight: bold;
+  }
+}
