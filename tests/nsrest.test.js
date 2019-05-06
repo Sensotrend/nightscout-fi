@@ -5,9 +5,6 @@ import uuidv4 from 'uuid/v4';
 import _FHIRClient from '../lib/FHIRClient';
 import { exist } from '../node_modules/should/should.js';
 
-import * as _sampleData from './fhir_data.json';
-const sampleData = _sampleData.default;
-
 const env = nsfi.env;
 const Auth = env.userProvider;
 const siteid = 'foo';
@@ -42,19 +39,6 @@ describe('NS_REST_API & FHIRClient test', function () {
          const results = await FHIRClient.createRecords(testPatient);
          patient = results.records[0];
 
-         const patientRef = 'Patient/' + patient.id;
-
-         console.log('sampledata', sampleData);
-
-         sampleData.forEach(element => {
-            element.subject.reference = patientRef;
-            element.performer[0].reference = patientRef;
-         });
-
-         console.log('CREATING SAMPLE DATA');
-         const results2 = await FHIRClient.createRecords(sampleData);
-
-         console.log('results2', results2);
       } catch (error) {
          console.error(error);
          false.should.equal(true);
