@@ -1,0 +1,302 @@
+[
+   {
+      "resourceType": "Observation",
+      "id": "1894493",
+      "meta": {
+         "versionId": "1",
+         "lastUpdated": "2019-04-29T12:47:45.133+00:00",
+         "profile": [
+            "http://phr.kanta.fi/StructureDefinition/fiphr-bloodglucose-stu3"
+          ]
+      },
+      "language": "fi",
+      "text": {
+         "status": "extensions",
+         "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br/>Aika: 2019-02-14T13:30:50.509+02:00<br/>Laite: xDrip-DexcomG5 (via Sensotrend Connect)<br/>Tulos: 9.82 mmol/l<br/>Muutos: 0.08 mmol/l<br/>Suunta: Flat<br/>Mittauslaatu: 1<br/></div>"
+      },
+      "identifier": [
+         {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:34231a59-0653-5a73-979a-195ebfec2276"
+          }
+        ],
+      "status": "final",
+      "category": [
+         {
+            "coding": [
+               {
+                  "system": "http://hl7.org/fhir/observation-category",
+                  "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+      "code": {
+         "coding": [
+            {
+               "system": "http://loinc.org",
+               "code": "14745-4",
+               "display": "Kudossokeri"
+            }
+          ]
+      },
+      "subject": {
+         "reference": "Patient/1710136"
+      },
+      "effectiveDateTime": "2019-02-14T13:30:50.509+02:00",
+      "issued": "2019-02-14T13:30:50.509+02:00",
+      "performer": [
+         {
+            "reference": "Patient/1710136"
+          }
+        ],
+      "valueQuantity": {
+         "value": 9.82,
+         "unit": "mmol/l",
+         "system": "http://unitsofmeasure.org",
+         "code": "mmol/L"
+      }
+    },
+   {
+
+      "resourceType": "Observation",
+      "id": "1894333",
+      "meta": {
+         "versionId": "1",
+         "lastUpdated": "2019-04-29T06:42:41.878+00:00",
+         "profile": [
+            "http://phr.kanta.fi/StructureDefinition/fiphr-sd-macronutrientintake-stu3"
+          ]
+      },
+      "language": "fi",
+      "text": {
+         "status": "generated",
+         "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Arvioitu hiilihydraattimäärä: 15 g<br/>Laite: MDT-554 (via Sensotrend Connect)</div>"
+      },
+      "identifier": [
+         {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:ac2ee2bf-2c09-5e0b-a4b2-89cefb47b2a6"
+          }
+        ],
+      "status": "final",
+      "category": [
+         {
+            "coding": [
+               {
+                  "system": "http://phr.kanta.fi/CodeSystem/fiphr-cs-observationcategory",
+                  "code": "nutrition",
+                  "display": "Ravintosisältö"
+              }
+            ]
+          }
+        ],
+      "code": {
+         "coding": [
+            {
+               "system": "http://loinc.org",
+               "code": "9059-7",
+               "display": "Arvioitu hiilihydraattimäärä"
+            }
+          ]
+      },
+      "subject": {
+         "reference": "Patient/1710136"
+      },
+      "effectiveDateTime": "2019-04-01T11:21:28.000+03:00",
+      "issued": "2019-04-01T11:21:28.000+03:00",
+      "performer": [
+         {
+            "reference": "Patient/1710136"
+          }
+        ],
+      "valueQuantity": {
+         "value": 15,
+         "unit": "g",
+         "system": "http://unitsofmeasure.org",
+         "code": "g"
+      }
+
+    },
+   {
+
+      "resourceType": "Observation",
+      "id": "1894332",
+      "meta": {
+         "versionId": "1",
+         "lastUpdated": "2019-04-29T06:42:40.783+00:00",
+         "profile": [
+            "http://phr.kanta.fi/StructureDefinition/fiphr-bloodglucose-stu3"
+          ]
+      },
+      "language": "fi",
+      "text": {
+         "status": "extensions",
+         "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br/>Aika: 2019-02-14T13:30:50.509+02:00<br/>Laite: xDrip-DexcomG5 (via Sensotrend Connect)<br/>Tulos: 9.82 mmol/l<br/>Muutos: 0.08 mmol/l<br/>Suunta: Flat<br/>Mittauslaatu: 1<br/></div>"
+      },
+      "identifier": [
+         {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:872aa4a9-7b95-5143-975d-b3ac77040adf"
+          }
+        ],
+      "status": "final",
+      "category": [
+         {
+            "coding": [
+               {
+                  "system": "http://hl7.org/fhir/observation-category",
+                  "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+      "code": {
+         "coding": [
+            {
+               "system": "http://loinc.org",
+               "code": "14745-4",
+               "display": "Kudossokeri"
+            }
+          ]
+      },
+      "subject": {
+         "reference": "Patient/1710136"
+      },
+      "effectiveDateTime": "2019-02-14T13:30:50.509+02:00",
+      "issued": "2019-02-14T13:30:50.509+02:00",
+      "performer": [
+         {
+            "reference": "Patient/1710136"
+          }
+        ],
+      "valueQuantity": {
+         "value": 9.82,
+         "unit": "mmol/l",
+         "system": "http://unitsofmeasure.org",
+         "code": "mmol/L"
+      }
+
+    },
+   {
+
+      "resourceType": "Observation",
+      "id": "1710920",
+      "meta": {
+         "versionId": "1",
+         "lastUpdated": "2019-04-03T13:28:03.727+00:00",
+         "profile": [
+            "http://phr.kanta.fi/StructureDefinition/fiphr-sd-macronutrientintake-stu3"
+          ]
+      },
+      "language": "fi",
+      "text": {
+         "status": "generated",
+         "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Arvioitu hiilihydraattimäärä: 15 g<br/>Laite: MDT-554 (via Sensotrend Connect)</div>"
+      },
+      "identifier": [
+         {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:60f706c8-f821-56e5-9980-44dfd40c14e8"
+          }
+        ],
+      "status": "final",
+      "category": [
+         {
+            "coding": [
+               {
+                  "system": "http://phr.kanta.fi/CodeSystem/fiphr-cs-observationcategory",
+                  "code": "nutrition",
+                  "display": "Ravintosisältö"
+              }
+            ]
+          }
+        ],
+      "code": {
+         "coding": [
+            {
+               "system": "http://loinc.org",
+               "code": "9059-7",
+               "display": "Arvioitu hiilihydraattimäärä"
+            }
+          ]
+      },
+      "subject": {
+         "reference": "Patient/1710136"
+      },
+      "effectiveDateTime": "2019-04-01T11:21:28.000+03:00",
+      "issued": "2019-04-01T11:21:28.000+03:00",
+      "performer": [
+         {
+            "reference": "Patient/1710136"
+          }
+        ],
+      "valueQuantity": {
+         "value": 15,
+         "unit": "g",
+         "system": "http://unitsofmeasure.org",
+         "code": "g"
+      }
+
+    },
+   {
+
+      "resourceType": "Observation",
+      "id": "1710919",
+      "meta": {
+         "versionId": "1",
+         "lastUpdated": "2019-04-03T13:28:03.005+00:00",
+         "profile": [
+            "http://phr.kanta.fi/StructureDefinition/fiphr-bloodglucose-stu3"
+          ]
+      },
+      "language": "fi",
+      "text": {
+         "status": "extensions",
+         "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br/>Aika: 2019-02-14T13:30:50.509+02:00<br/>Laite: xDrip-DexcomG5 (via Sensotrend Connect)<br/>Tulos: 9.82 mmol/l</div>"
+      },
+      "identifier": [
+         {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:bd7a3fd1-1c0d-57f6-9beb-145f82fcae3b"
+          }
+        ],
+      "status": "final",
+      "category": [
+         {
+            "coding": [
+               {
+                  "system": "http://hl7.org/fhir/observation-category",
+                  "code": "vital-signs"
+              }
+            ]
+          }
+        ],
+      "code": {
+         "coding": [
+            {
+               "system": "http://loinc.org",
+               "code": "14745-4",
+               "display": "Kudossokeri"
+            }
+          ]
+      },
+      "subject": {
+         "reference": "Patient/1710136"
+      },
+      "effectiveDateTime": "2019-02-14T13:30:50.509+02:00",
+      "issued": "2019-02-14T13:30:50.509+02:00",
+      "performer": [
+         {
+            "reference": "Patient/1710136"
+          }
+        ],
+      "valueQuantity": {
+         "value": 9.82,
+         "unit": "mmol/l",
+         "system": "http://unitsofmeasure.org",
+         "code": "mmol/L"
+      }
+
+    }
+  ]
