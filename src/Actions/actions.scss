@@ -1,0 +1,120 @@
+@import "../consts";
+
+$visible-height: $actions-height - $footer-height;
+
+#actions {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: $actions-height;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 0;
+  z-index: 10;
+  a {
+    @include links;
+  }
+
+  a, button {
+    display: inline-block;
+    padding: 20px;
+    color: #444;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:hover,
+    &:active,
+    &:focus {
+      color: black;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    svg {
+      display: block;
+    }
+    span {
+      font-size: 12px;
+      font-weight: bold;
+      display: block;
+    }
+  }
+
+  a button {
+    padding: 0;
+  }
+
+  button {
+    border: none;
+    background: none;
+  }
+
+  a.success, button.success {
+    &:hover,
+    &:active,
+    &:focus,
+    &:hover,
+    &:active,
+    &:focus {
+      color: rgb(5, 140, 25);
+    }
+  }
+  
+  a.danger, button.danger {
+    &:hover,
+    &:active,
+    &:focus,
+    &:hover,
+    &:active,
+    &:focus {
+      color:red;
+    }
+  }
+  
+  a:disabled, button:disabled {
+    color: gray;
+    text-decoration: none;
+    cursor: not-allowed;
+    &:hover,
+    &:active,
+    &:focus,
+    &:hover,
+    &:active,
+    &:focus {
+      color: gray;
+    }
+  }
+
+
+  button.large {
+    margin: 20px;
+    cursor: pointer;
+    &.round {
+      border: 3px solid black;
+      height: 70px;
+      width: 70px;
+      overflow: hidden;
+      border-radius: 50%;
+      padding: 0;
+      color: black;
+      background: none;
+    }
+  }
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: darkgray;
+    margin: $visible-height / 2.5;
+  }
+  @media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
+    border-top: 1px solid black;
+    p {
+      margin: 1em;
+    }
+  
+  }
+}
