@@ -65,6 +65,20 @@ describe('NS_REST_API & FHIRClient test', function () {
          "rssi": 100,
          "noise": 1,
          "sysTime": "2019-02-14T13:30:50.509+0200"
+      },{
+         "_id": "5c655105763fe276981ff0c2",
+         "device": "xDrip-DexcomG5",
+         "date": 1550143851509,
+         "dateString": "2019-02-14T13:30:51.509+0200",
+         "sgv": 180,
+         "delta": 1.5,
+         "direction": "Flat",
+         "type": "sgv",
+         "filtered": 195071.0394182456,
+         "unfiltered": 196842.65552921052,
+         "rssi": 100,
+         "noise": 1,
+         "sysTime": "2019-02-14T13:30:50.509+0200"
       }];
 
       await request(nsfi)
@@ -81,7 +95,8 @@ describe('NS_REST_API & FHIRClient test', function () {
          .expect(200)
          .then(response => {
             console.log('response.body', response.body);
-            response.body[0].sgv.should.equal(177);
+            response.body[0].date.should.equal(1550143851509);
+            response.body[0].sgv.should.equal(180);
          });
    });
 
@@ -96,7 +111,13 @@ describe('NS_REST_API & FHIRClient test', function () {
          "date": 1550143850509,
          "carbs": 15,
          "created_at": "2019-04-01T11:21:28+03:00"
-   }];
+      },{
+         "_id": "5c655105763fe276981ff0c2",
+         "device": "MDT-554",
+         "date": 1554106889000,
+         "carbs": 20,
+         "created_at": "2019-04-01T11:21:29+03:00"
+      }];
 
       await request(nsfi)
          .post('/api/v1/treatments')
@@ -112,7 +133,8 @@ describe('NS_REST_API & FHIRClient test', function () {
          .expect(200)
          .then(response => {
             console.log('response.body', response.body);
-            response.body[0].carbs.should.equal(15);
+            response.body[0].date.should.equal(1554106889000);
+            response.body[0].carbs.should.equal(20);
          });
    });
 
