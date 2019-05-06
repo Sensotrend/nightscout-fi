@@ -1,0 +1,104 @@
+@import '../consts';
+
+.parallax {
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+.parallax__container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.parallax__group {
+  perspective: 300px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__layer--fore {
+  -webkit-transform: translateZ(90px) scale(0.7);
+  transform: translateZ(90px) scale(0.7);
+  z-index: 1;
+}
+
+.parallax__layer--base {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 4;
+}
+
+.parallax__layer--back {
+  -webkit-transform: translateZ(-300px) scale(2);
+  transform: translateZ(-300px) scale(2);
+  z-index: 3;
+}
+
+.parallax__layer--deep {
+  -webkit-transform: translateZ(-600px) scale(3);
+  transform: translateZ(-600px) scale(3);
+  z-index: 2;
+}
+
+div.image-background {
+  display: none;
+}
+
+div.image-inline {
+  display: inherit;
+}
+
+@media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
+  .parallax {
+    @include black-links;
+  }
+}
+
+@media screen and (min-width: $breakpoint-width) and (orientation: landscape) {
+  div.image-background {
+    background: #fff;
+    background: url("../picnic.png");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
+  }
+
+  .parallax {
+    @include white-links;
+    color: white;
+    font-size: 150%;
+    background: url("../picnic.png");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    header, section {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    section:last-of-type {
+      padding-bottom: $actions-height;
+    }
+  }
+
+  div.image-background {
+    display: inherit;
+  }
+
+  div.image-inline {
+    display: none;
+  }
+}
+

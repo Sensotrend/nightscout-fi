@@ -1,0 +1,54 @@
+@import '../consts';
+
+#login {
+  font-size: 30px;
+}
+
+input[type="email"],
+div.checkbox {
+  margin: 10px 40px;
+  color: black;
+}
+
+button.large,
+input[type="email"] {
+  font-size: 30px;
+  padding: 0.3em 1em;
+}
+
+table,
+th,
+td,
+caption {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  padding: 16px;
+  text-align: left;
+  font-size: 110%;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  margin: 4.5em auto 2em;
+  width: 100%;
+}
+
+caption {
+  border-bottom-width: 0;
+}
+
+input[type="email"] {
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  margin-left: 40px;
+  width: calc(100% - 80px);
+}
+
+input[type="checkbox"] {
+  float: left;
+}

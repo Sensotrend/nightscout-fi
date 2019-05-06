@@ -1,0 +1,175 @@
+@import-normalize; /* bring in normalize.css styles */
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700");
+
+@import 'consts';
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  background: #fff;
+  color: #000;
+  min-height: 100vh;
+  height: 100%;
+}
+
+main {
+  section:last-of-type {
+    padding-bottom: $actions-height;
+  }
+}
+
+section {
+  padding: 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 65px;
+  padding-bottom: 20px;
+  margin: 10px 0;
+}
+
+h1 img {
+  height: 47px;
+  margin-right: 10px;
+  filter: invert(100%);
+}
+
+h2 {
+  font-weight: bolder;
+}
+
+.container {
+  max-width: 800px;
+  padding: 2em 2em;
+  margin: auto;
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+  color: white;
+  border-radius: 8px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+  background: rgb(28, 184, 65);
+  /* this is a green */
+}
+
+.button-error {
+  background: rgb(202, 60, 60);
+  /* this is a maroon */
+}
+
+.button-warning {
+  background: rgb(223, 117, 20);
+  /* this is an orange */
+}
+
+.button-secondary {
+  background: rgb(66, 184, 221);
+  /* this is a light blue */
+}
+
+button.large {
+  margin: 40px;
+  color: white;
+}
+
+input[type="email"],
+div.checkbox {
+  margin: 10px 40px;
+  color: black;
+}
+
+table input[type="email"],
+div.checkbox {
+  margin: 10px;
+}
+
+table input[type="email"] {
+  width: calc(100% - 60px);
+  width: -webkit-fill-available;
+}
+
+button.large,
+input[type="email"] {
+  font-size: 30px;
+  padding: 0.3em 1em;
+}
+
+table,
+th,
+td,
+caption {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  padding: 16px;
+  text-align: left;
+  font-size: 110%;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  margin: 2em auto;
+  width: 100%;
+  &:first-child {
+    margin-top: 4.5em;
+  }
+}
+
+caption {
+  border-bottom-width: 0;
+}
+
+input[type="email"] {
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  margin-left: 40px;
+  width: calc(100% - 80px);
+}
+
+table label {
+  font-size: 1.2rem;
+}
+
+input[type="checkbox"] {
+  float: left;
+}
+
+form td input ~ div {
+  margin: 10px;
+  font-size: 50%;
+  color: red;
+}
+
+@media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
+  h1 {
+    text-align: center;
+  }
+
+  h1 img {
+    display: block;
+    text-align: center;
+    height: 60px;
+    margin: 0 auto 30px;
+    filter: invert(0%);
+  }
+}
