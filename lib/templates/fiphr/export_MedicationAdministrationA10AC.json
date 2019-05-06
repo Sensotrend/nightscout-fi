@@ -6,5 +6,6 @@
     "type": "bolus",
     "subType": "normal",
     "insulin": "{{dosage.dose.value}}",
+    "normal": "{{dosage.dose.value}}",
     "guid": "{{id}}"
 }
