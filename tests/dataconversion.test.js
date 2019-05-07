@@ -37,6 +37,9 @@ describe('convert_data', function () {
       let records2 = await DataConverter.convert(records, options);
 
       records2[0].normal.should.equal(0.1);
+      records2[0].deviceId.should.equal("MedT-554-450960");
+      records2[0].time.should.equal("2019-01-26T18:49:35.000Z");
+
    });
 
    it('should convert Nightscout CGM record to FIPHR and back', async function () {
@@ -76,6 +79,7 @@ describe('convert_data', function () {
       let records2 = await DataConverter.convert(records, options);
 
       records2[0].sgv.should.equal(177);
+      records2[0].type.should.equal("sgv");
       records2[0].delta.should.equal(15);
       records2[0].direction.should.equal('FortyFiveUp');
       records2[0].noise.should.equal(1);
@@ -149,7 +153,7 @@ describe('convert_data', function () {
       console.log('records2', records2);
 
       records2[0].carbs.should.equal(15);
-      //records2[1].insulin.should.equal(1.3);
+      records2[1].insulin.should.equal(1.3);
       records2[0].created_at.should.equal(ns_sample[0].created_at);
    });
 
@@ -237,8 +241,9 @@ describe('convert_data', function () {
 
       console.log('TIDE TO FHIR', records2);
 
-
+      records2[0].valueQuantity.value.should.equal(FHIRCarbEntry.valueQuantity.value);
       records2[0].effectiveDateTime.should.equal(FHIRCarbEntry.effectiveDateTime);
+      records2[0].code.coding[0].code.should.equal("9059-7");
 
    });
 
@@ -281,5 +286,10 @@ describe('convert_data', function () {
 
       let records2 = await DataConverter.convert(records, options);
       records2[0].sgv.should.equal(177);
+      records2[0].delta.should.equal(1.5);
+      records2[0].noise.should.equal(1);
+      records2[0].direction.should.equal("Flat");
+      records2[0].device.should.equal("xDrip-DexcomG5");
+
    });
 });
