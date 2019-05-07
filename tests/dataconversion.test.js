@@ -8,16 +8,16 @@ describe('convert_data', function () {
    it('should convert Tidepool bolus record to FIPHR and back', async function () {
 
       let tidepool_sample = [{
-            "time": "2019-01-26T18:49:35.000Z",
-            "timezoneOffset": 120,
-            "clockDriftOffset": -3000,
-            "conversionOffset": 0,
-            "deviceTime": "2019-01-26T20:49:35",
-            "deviceId": "MedT-554-450960",
-            "type": "bolus",
-            "subType": "normal",
-            "normal": 0.1,
-            "payload": { "logIndices": [1541] }
+         "time": "2019-01-26T18:49:35.000Z",
+         "timezoneOffset": 120,
+         "clockDriftOffset": -3000,
+         "conversionOffset": 0,
+         "deviceTime": "2019-01-26T20:49:35",
+         "deviceId": "MedT-554-450960",
+         "type": "bolus",
+         "subType": "normal",
+         "normal": 0.1,
+         "payload": { "logIndices": [1541] }
          }];
 
       let options = {
@@ -41,6 +41,38 @@ describe('convert_data', function () {
       records2[0].time.should.equal("2019-01-26T18:49:35.000Z");
 
    });
+
+   it('should skip old records', async function () {
+
+      let tidepool_sample = [{
+         "time": "2017-01-26T18:49:35.000Z",
+         "timezoneOffset": 120,
+         "clockDriftOffset": -3000,
+         "conversionOffset": 0,
+         "deviceTime": "2017-01-26T20:49:35",
+         "deviceId": "MedT-554-450960",
+         "type": "bolus",
+         "subType": "normal",
+         "normal": 0.1,
+         "payload": { "logIndices": [1541] }
+         }];
+
+      let skipData = {
+         "MedT-554-450960": new Date('2019-05-03T05:09:15.000+00:00')
+      };
+
+      let options = {
+         source: 'tidepool',
+         target: 'fiphr',
+         skipRecordsUsingDates: skipData,
+         FHIR_userid: '756cbc1a-550c-11e9-ada1-177bad63e16d' // Needed for FHIR conversion
+      };
+
+      let records = await DataConverter.convert(tidepool_sample, options);
+      records.length.should.equal(0);
+
+   });
+
 
    it('should convert Nightscout CGM record to FIPHR and back', async function () {
 
