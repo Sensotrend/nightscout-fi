@@ -97,6 +97,7 @@ describe('NS_REST_API & FHIRClient test', function () {
             console.log('response.body', response.body);
             response.body[0].date.should.equal(1550143851509);
             response.body[0].sgv.should.equal(180);
+            response.body[0].device.should.equal("xDrip-DexcomG5");
          });
    });
 
@@ -135,6 +136,7 @@ describe('NS_REST_API & FHIRClient test', function () {
             console.log('response.body', response.body);
             response.body[0].date.should.equal(1554106889000);
             response.body[0].carbs.should.equal(20);
+            response.body[0].device.should.equal("MDT-554");
          });
    });
 

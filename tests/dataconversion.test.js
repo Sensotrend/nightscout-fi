@@ -5,8 +5,6 @@ const DataConverter = _DataConverter();
 
 describe('convert_data', function () {
 
-
-
    it('should convert Tidepool bolus record to FIPHR and back', async function () {
 
       let tidepool_sample = [{

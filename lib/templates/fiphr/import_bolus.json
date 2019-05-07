@@ -39,9 +39,9 @@
     }
   ],
   "dosage": {
-    "text": "Lyhytvaikutteinen insuliini, {{normal}} yksikköä",
+    "text": "Lyhytvaikutteinen insuliini, {{insulin}} yksikköä",
      "dose": {
-      "value": "{{normal}}",
+      "value": "{{insulin}}",
       "unit": "U",
       "system": "http://unitsofmeasure.org",
       "code": "U"
