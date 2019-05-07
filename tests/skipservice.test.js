@@ -22,15 +22,18 @@ describe('device last uploaded date service', function () {
          'testDevice2': new Date("2018-01-26T18:49:35.000Z"),
       };
 
-      const patientRef = "abcdefg";
+      const patientRef = nanoid();
+      
       await env.lastSeenService.updateDates(patientRef, testData);
 
       const latestDeviceDates = await env.lastSeenService.getLatestDates(patientRef);
+      
       latestDeviceDates.testDevice1.toISOString().should.equal("2017-01-26T18:49:35.000Z");
 
       await env.lastSeenService.updateDates(patientRef, testData2);
 
       const latestDeviceDates2 = await env.lastSeenService.getLatestDates(patientRef);
+
       latestDeviceDates2.testDevice1.toISOString().should.equal("2018-01-26T18:49:35.000Z");
       latestDeviceDates2.testDevice2.toISOString().should.equal("2018-01-26T18:49:35.000Z");
 
