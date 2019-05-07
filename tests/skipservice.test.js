@@ -11,7 +11,38 @@ let Auth = env.userProvider;
 
 describe('device last uploaded date service', function () {
 
+
+   it('should not find nonexistent profiles', async function () {
+
+      const testData = {
+         'testDevice1': new Date("2017-01-26T18:49:35.000Z")
+      };
+
+      const patientRef = nanoid();
+      
+      const latestDeviceDates = await env.lastSeenService.getLatestDates(patientRef);
+      
+      latestDeviceDates.should.equal(false);
+
+   });
+
    it('should persist profiles', async function () {
+
+      const testData = {
+         'testDevice1': new Date("2017-01-26T18:49:35.000Z")
+      };
+
+      const patientRef = nanoid();
+
+      await env.lastSeenService.updateDates(patientRef, testData);
+
+      const latestDeviceDates = await env.lastSeenService.getLatestDates(patientRef);
+      
+      latestDeviceDates.testDevice1.toISOString().should.equal("2017-01-26T18:49:35.000Z");
+
+   });
+
+   it('should persist and update profiles', async function () {
 
       const testData = {
          'testDevice1': new Date("2017-01-26T18:49:35.000Z")
@@ -23,7 +54,7 @@ describe('device last uploaded date service', function () {
       };
 
       const patientRef = nanoid();
-      
+
       await env.lastSeenService.updateDates(patientRef, testData);
 
       const latestDeviceDates = await env.lastSeenService.getLatestDates(patientRef);
