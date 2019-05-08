@@ -65,7 +65,7 @@ describe('NS_REST_API & FHIRClient test', function () {
          "rssi": 100,
          "noise": 1,
          "sysTime": "2019-02-14T13:30:50.509+0200"
-      },{
+      }, {
          "_id": "5c655105763fe276981ff0c2",
          "device": "xDrip-DexcomG5",
          "date": 1550143851509,
@@ -112,7 +112,7 @@ describe('NS_REST_API & FHIRClient test', function () {
          "date": 1550143850509,
          "carbs": 15,
          "created_at": "2019-04-01T11:21:28+03:00"
-      },{
+      }, {
          "_id": "5c655105763fe276981ff0c2",
          "device": "MDT-554",
          "date": 1554106889000,
@@ -140,4 +140,26 @@ describe('NS_REST_API & FHIRClient test', function () {
          });
    });
 
+   it('should provide the /devicestatus API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+
+      await request(nsfi)
+         .post('/api/v1/devicestatus')
+         .send({ device: "testDevice", status: 1 })
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+   });
+
+   it('should provide the /status API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+
+      await request(nsfi)
+         .get('/api/v1/status')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+   });
 });
