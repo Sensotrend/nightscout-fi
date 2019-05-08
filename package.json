@@ -96,7 +96,7 @@
     "start": "react-scripts build && env-cmd ./my.env node -r esm nsfi.js",
     "test": "env-cmd ./test.env react-scripts test --env=jsdom && env-cmd ./test.env mocha --exit --timeout 8000 --require esm tests/*.test.js",
     "coverage": "env-cmd ./test.env nyc mocha --exit --timeout 8000 --require esm tests/*.test.js",
-    "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html"
+    "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html && nyc report --reporter text-lcov > coverage/codecov.log"
   },
   "browserslist": [
     ">0.2%",
