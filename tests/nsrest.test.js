@@ -133,11 +133,32 @@ describe('NS_REST_API & FHIRClient test', function () {
          .expect('Content-Type', /json/)
          .expect(200)
          .then(response => {
-            console.log('response.body', response.body);
             response.body[0].date.should.equal(1554106889000);
             response.body[0].carbs.should.equal(20);
             response.body[0].device.should.equal("MDT-554");
          });
+
+      await request(nsfi)
+         .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$gt\]=2019-01-01T11%3A30%3A17.694Z')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            response.body[0].date.should.equal(1554106889000);
+            response.body[0].carbs.should.equal(20);
+            response.body[0].device.should.equal("MDT-554");
+         });
+
+      await request(nsfi)
+         .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$lt\]=2019-01-01T11%3A30%3A17.694Z')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            console.log('response.body', response.body);
+            response.body.length.should.equal(0);
+         });
+
    });
 
    it('should provide the /devicestatus API', async function () {
