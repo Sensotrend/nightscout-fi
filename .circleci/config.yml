@@ -1,6 +1,4 @@
 version: 2.1 # use CircleCI 2.1
-orbs:
-  codecov: codecov/codecov@1.0.2
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     working_directory: ~/nightscout.fi # directory where steps will run
@@ -37,5 +35,3 @@ jobs: # a collection of steps
           prefix: coverage
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results.xml
-      - codecov/upload:
-          file: coverage/codecov.log
