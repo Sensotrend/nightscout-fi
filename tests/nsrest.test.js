@@ -161,6 +161,28 @@ describe('NS_REST_API & FHIRClient test', function () {
 
    });
 
+   it('should provide the /verifyauth API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+
+      await request(nsfi)
+         .get('/api/v1/verifyauth')
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            response.body.message.should.equal("UNAUTHORIZED");
+         });
+
+      await request(nsfi)
+         .get('/api/v1/verifyauth')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            response.body.message.should.equal("OK");
+         });
+   });
+
    it('should provide the /devicestatus API', async function () {
 
       const u = await Auth.createUser(patient.id, siteid, pw, new Date());
