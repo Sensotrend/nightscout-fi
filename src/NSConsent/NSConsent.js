@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EmailRequest from './EmailRequest';
 import ConsentGrantForm from './ConsentGrantForm';
+import Error from './Error';
 
 import {
   Route,
@@ -17,6 +18,7 @@ class NSConsent extends Component {
         <Switch>
           <Route path={"/nsconsent/grant"} component={ConsentGrantForm} />
           <Route path={"/nsconsent/request"} component={EmailRequest} />
+          <Route path={"/nsconsent/error"} component={Error} />
         </Switch>
      )
   }
