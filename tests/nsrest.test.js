@@ -65,7 +65,7 @@ describe('NS_REST_API & FHIRClient test', function () {
          "rssi": 100,
          "noise": 1,
          "sysTime": "2019-02-14T13:30:50.509+0200"
-      },{
+      }, {
          "_id": "5c655105763fe276981ff0c2",
          "device": "xDrip-DexcomG5",
          "date": 1550143851509,
@@ -97,6 +97,7 @@ describe('NS_REST_API & FHIRClient test', function () {
             console.log('response.body', response.body);
             response.body[0].date.should.equal(1550143851509);
             response.body[0].sgv.should.equal(180);
+            response.body[0].device.should.equal("xDrip-DexcomG5");
          });
    });
 
@@ -111,7 +112,7 @@ describe('NS_REST_API & FHIRClient test', function () {
          "date": 1550143850509,
          "carbs": 15,
          "created_at": "2019-04-01T11:21:28+03:00"
-      },{
+      }, {
          "_id": "5c655105763fe276981ff0c2",
          "device": "MDT-554",
          "date": 1554106889000,
@@ -132,10 +133,76 @@ describe('NS_REST_API & FHIRClient test', function () {
          .expect('Content-Type', /json/)
          .expect(200)
          .then(response => {
-            console.log('response.body', response.body);
             response.body[0].date.should.equal(1554106889000);
             response.body[0].carbs.should.equal(20);
+            response.body[0].device.should.equal("MDT-554");
+         });
+
+      await request(nsfi)
+         .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$gt\]=2019-01-01T11%3A30%3A17.694Z')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            response.body[0].date.should.equal(1554106889000);
+            response.body[0].carbs.should.equal(20);
+            response.body[0].device.should.equal("MDT-554");
+         });
+
+      await request(nsfi)
+         .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$lt\]=2019-01-01T11%3A30%3A17.694Z')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            console.log('response.body', response.body);
+            response.body.length.should.equal(0);
+         });
+
+   });
+
+   it('should provide the /verifyauth API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+
+      await request(nsfi)
+         .get('/api/v1/verifyauth')
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            response.body.message.should.equal("UNAUTHORIZED");
+         });
+
+      await request(nsfi)
+         .get('/api/v1/verifyauth')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            response.body.message.should.equal("OK");
          });
    });
 
+   it('should provide the /devicestatus API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+
+      await request(nsfi)
+         .post('/api/v1/devicestatus')
+         .send({ device: "testDevice", status: 1 })
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+   });
+
+   it('should provide the /status API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+
+      await request(nsfi)
+         .get('/api/v1/status')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+   });
 });

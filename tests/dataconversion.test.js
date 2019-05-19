@@ -5,21 +5,19 @@ const DataConverter = _DataConverter();
 
 describe('convert_data', function () {
 
-
-
    it('should convert Tidepool bolus record to FIPHR and back', async function () {
 
       let tidepool_sample = [{
-            "time": "2019-01-26T18:49:35.000Z",
-            "timezoneOffset": 120,
-            "clockDriftOffset": -3000,
-            "conversionOffset": 0,
-            "deviceTime": "2019-01-26T20:49:35",
-            "deviceId": "MedT-554-450960",
-            "type": "bolus",
-            "subType": "normal",
-            "normal": 0.1,
-            "payload": { "logIndices": [1541] }
+         "time": "2019-01-26T18:49:35.000Z",
+         "timezoneOffset": 120,
+         "clockDriftOffset": -3000,
+         "conversionOffset": 0,
+         "deviceTime": "2019-01-26T20:49:35",
+         "deviceId": "MedT-554-450960",
+         "type": "bolus",
+         "subType": "normal",
+         "normal": 0.1,
+         "payload": { "logIndices": [1541] }
          }];
 
       let options = {
@@ -39,7 +37,42 @@ describe('convert_data', function () {
       let records2 = await DataConverter.convert(records, options);
 
       records2[0].normal.should.equal(0.1);
+      records2[0].deviceId.should.equal("MedT-554-450960");
+      records2[0].time.should.equal("2019-01-26T18:49:35.000Z");
+
    });
+
+   it('should skip old records', async function () {
+
+      let tidepool_sample = [{
+         "time": "2017-01-26T18:49:35.000Z",
+         "timezoneOffset": 120,
+         "clockDriftOffset": -3000,
+         "conversionOffset": 0,
+         "deviceTime": "2017-01-26T20:49:35",
+         "deviceId": "MedT-554-450960",
+         "type": "bolus",
+         "subType": "normal",
+         "normal": 0.1,
+         "payload": { "logIndices": [1541] }
+         }];
+
+      let skipData = {
+         "MedT-554-450960": new Date('2019-05-03T05:09:15.000+00:00')
+      };
+
+      let options = {
+         source: 'tidepool',
+         target: 'fiphr',
+         skipRecordsUsingDates: skipData,
+         FHIR_userid: '756cbc1a-550c-11e9-ada1-177bad63e16d' // Needed for FHIR conversion
+      };
+
+      let records = await DataConverter.convert(tidepool_sample, options);
+      records.length.should.equal(0);
+
+   });
+
 
    it('should convert Nightscout CGM record to FIPHR and back', async function () {
 
@@ -78,6 +111,7 @@ describe('convert_data', function () {
       let records2 = await DataConverter.convert(records, options);
 
       records2[0].sgv.should.equal(177);
+      records2[0].type.should.equal("sgv");
       records2[0].delta.should.equal(15);
       records2[0].direction.should.equal('FortyFiveUp');
       records2[0].noise.should.equal(1);
@@ -151,7 +185,7 @@ describe('convert_data', function () {
       console.log('records2', records2);
 
       records2[0].carbs.should.equal(15);
-      //records2[1].insulin.should.equal(1.3);
+      records2[1].insulin.should.equal(1.3);
       records2[0].created_at.should.equal(ns_sample[0].created_at);
    });
 
@@ -239,8 +273,9 @@ describe('convert_data', function () {
 
       console.log('TIDE TO FHIR', records2);
 
-
+      records2[0].valueQuantity.value.should.equal(FHIRCarbEntry.valueQuantity.value);
       records2[0].effectiveDateTime.should.equal(FHIRCarbEntry.effectiveDateTime);
+      records2[0].code.coding[0].code.should.equal("9059-7");
 
    });
 
@@ -283,5 +318,10 @@ describe('convert_data', function () {
 
       let records2 = await DataConverter.convert(records, options);
       records2[0].sgv.should.equal(177);
+      records2[0].delta.should.equal(1.5);
+      records2[0].noise.should.equal(1);
+      records2[0].direction.should.equal("Flat");
+      records2[0].device.should.equal("xDrip-DexcomG5");
+
    });
 });
