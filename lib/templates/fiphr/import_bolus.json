@@ -2,7 +2,7 @@
   "resourceType": "MedicationAdministration",
   "meta": {
     "profile": [
-      "http://phr.kanta.fi/StructureDefinition/fiphr-medicationadministration-stu3"
+      "http://phr.kanta.fi/StructureDefinition/fiphr-sd-insulindosing-stu3"
     ]
   },
   "language": "fi",
@@ -20,8 +20,8 @@
   "medicationCodeableConcept": {
     "coding": [
       {
-        "system": "urn:oid:1.2.246.537.6.55",
-        "code": "A10AC",
+        "system": "http://phr.kanta.fi/CodeSystem/fiphr-cs-insulincode",
+        "code": "ins-short-fast",
         "display": "Lyhytvaikutteinen insuliini"
       }
     ],
@@ -39,9 +39,9 @@
     }
   ],
   "dosage": {
-    "text": "Lyhytvaikutteinen insuliini, {{normal}} yksikköä",
+    "text": "Lyhytvaikutteinen insuliini, {{insulin}} yksikköä",
      "dose": {
-      "value": "{{normal}}",
+      "value": "{{insulin}}",
       "unit": "U",
       "system": "http://unitsofmeasure.org",
       "code": "U"
