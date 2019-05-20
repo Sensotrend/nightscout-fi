@@ -39,7 +39,7 @@
     "node-cache": "^4.2.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.0",
-    "openid-client": "^2.5.0",
+    "openid-client": "git://github.com/sulkaharo/node-openid-client.git#id_token_not_mandatory",
     "promise-parallel-throttle": "^3.3.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -89,7 +89,7 @@
     ]
   },
   "engines": {
-    "node": "^10.8.0 || ^8.15.0",
+    "node": "^12.2.0",
     "npm": "6.x"
   },
   "scripts": {
