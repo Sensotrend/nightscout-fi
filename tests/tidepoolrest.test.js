@@ -15,6 +15,9 @@ const FHIRClient = _FHIRClient(fhirserver);
 
 const UUID = uuidv4();
 
+const d = new Date();
+const tokenExpiryTimeInFuture = new Date (d.getTime() + 100000);
+
 const testPatient = {
    "resourceType": "Patient",
    "text": {
@@ -47,7 +50,7 @@ describe('Tidepool API testing', function () {
 
    it('should authenticate over Tidepool API and upload a CGM record', async function () {
 
-      let u = await Auth.createUser(patient.id, siteid, pw, new Date()); // sub, access_token, refresh_token,token_expiry_date
+      let u = await Auth.createUser(patient.id, siteid, pw, tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
 
       u.email = "foo@bar.com";
 
@@ -106,7 +109,7 @@ describe('Tidepool API testing', function () {
 
    it('should authenticate over Tidepool API and upload pump data as a dataset', async function () {
 
-      let u = await Auth.createUser(patient.id, siteid, pw, new Date()); // sub, access_token, refresh_token,token_expiry_date
+      let u = await Auth.createUser(patient.id, siteid, pw, tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
 
       u.email = "foo@bar.com";
 
