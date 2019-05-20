@@ -29,6 +29,10 @@ const testPatient = {
    ]
 };
 
+
+const d = new Date();
+const d2 = new Date (d.getTime() + 100000);
+
 let patient;
 
 describe('NS_REST_API & FHIRClient test', function () {
@@ -47,7 +51,7 @@ describe('NS_REST_API & FHIRClient test', function () {
 
    it('should provide the /entries API to load sample data', async function () {
 
-      const u = await Auth.createUser(patient.id, siteid, pw, new Date()); // sub, access_token, refresh_token,token_expiry_date
+      const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
 
       console.log('User for ENTRIES API TEST', u);
 
@@ -104,7 +108,7 @@ describe('NS_REST_API & FHIRClient test', function () {
 
    it('should provide the /treatments API', async function () {
 
-      const u = await Auth.createUser(patient.id, siteid, pw, new Date()); // sub, access_token, refresh_token,token_expiry_date
+      const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
 
       let ns_sample = [{
          "_id": "5c655105763fe276981ff0c2",
@@ -163,7 +167,7 @@ describe('NS_REST_API & FHIRClient test', function () {
 
    it('should provide the /verifyauth API', async function () {
 
-      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+      const u = await Auth.createUser(patient.id, siteid, pw, d2);
 
       await request(nsfi)
          .get('/api/v1/verifyauth')
@@ -185,7 +189,7 @@ describe('NS_REST_API & FHIRClient test', function () {
 
    it('should provide the /devicestatus API', async function () {
 
-      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+      const u = await Auth.createUser(patient.id, siteid, pw, d2);
 
       await request(nsfi)
          .post('/api/v1/devicestatus')
@@ -197,7 +201,7 @@ describe('NS_REST_API & FHIRClient test', function () {
 
    it('should provide the /status API', async function () {
 
-      const u = await Auth.createUser(patient.id, siteid, pw, new Date());
+      const u = await Auth.createUser(patient.id, siteid, pw, d2);
 
       await request(nsfi)
          .get('/api/v1/status')
