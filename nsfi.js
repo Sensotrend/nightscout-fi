@@ -144,7 +144,7 @@ app.get('/logout', (req, res) => {
 /// Kanta authentication
 
 app.use('/fiphr', env.oauthProvider);
-
+app.use('/auth/kanta', env.oauthProvider);
 ////
 
 let nsrest = NSRestService(env);
