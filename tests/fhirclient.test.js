@@ -21,12 +21,13 @@ const testPatient = {
    ]
 };
 
-describe('FHIClient', function () {
+describe('FHIRClient', function () {
 
    it('should create a sample patient', async function () {
       try {
          console.log('CREATING PATIENT');
          const results = await FHIRClient.createRecords(testPatient);
+         console.log('patient results', results);
          const patient = results.records[0];
          patient.identifier[0].value.should.equal(patient_identifier);
       } catch (error) {
