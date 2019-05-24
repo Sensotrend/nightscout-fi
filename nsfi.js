@@ -12,7 +12,6 @@ import NSRestService from './lib/NSRESTService';
 import NightscoutViewConsentService from './lib/NightscoutConsentService.js';
 import EmailVerificationService from './lib/EmailVerificationService.js';
 import TidepoolRESTService from './lib/TidepoolRESTService';
-import DeviceLastSeenService from './lib/RecordSkipManager';
 
 import FIPHR from './lib/oauthproviders/FIPHR.js';
 
@@ -22,7 +21,6 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 
 const env = envModule();
 env.setOauthProvider(FIPHR(env));
-env.lastSeenService = DeviceLastSeenService(env);
 
 const MongoStore = MongoStoreModule(session);
 const app = decorateApp(express());
@@ -157,19 +155,19 @@ app.use('/tpupload', tidepoolService.uploadApp);
 app.use('/tpapi', tidepoolService.APIapp);
 app.use('/tpdata', tidepoolService.dataApp);
 
-console.log('TidepoolRESTService started');
+env.logger.info('TidepoolRESTService started');
 
 let nightscoutService = NightscoutViewConsentService(env);
 
 app.use('/nsconsent', nightscoutService);
 
-console.log('Nightscout access consent Service started');
+env.logger.info('Nightscout access consent Service started');
 
 let emailService = EmailVerificationService(env);
 
 app.use('/emailverification', emailService);
 
-console.log('Email verification Service started');
+env.logger.info('Email verification Service started');
 
 //production mode
 if (process.env.NODE_ENV === 'production') {
@@ -181,7 +179,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(process.env.PORT, () => {
-   console.log('Server Started!');
+   env.logger.info('Server Started!');
 });
 
 export default app;

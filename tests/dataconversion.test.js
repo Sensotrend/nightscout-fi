@@ -1,7 +1,9 @@
 import _DataConverter from '../lib/DataFormatConverter';
 import should from 'should';
+import envModule from '../lib/env';
+const env = envModule();
 
-const DataConverter = _DataConverter();
+const DataConverter = _DataConverter(env);
 
 describe('convert_data', function () {
 
