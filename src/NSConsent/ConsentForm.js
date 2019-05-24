@@ -1,15 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { Field, ErrorMessage } from 'formik';
-import qs from 'query-string';
 
 import Checkbox from './Checkbox';
 
 class ConsentForm extends Component {
   
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     const { config } = this.props;
