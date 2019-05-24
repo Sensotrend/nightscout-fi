@@ -3,8 +3,6 @@ import cors from 'cors';
 import path from 'path';
 import session from 'express-session';
 import MongoStoreModule from 'connect-mongo';
-import expressmarkdown from 'express-markdown-reloaded';
-import marked from 'marked';
 import { decorateApp } from '@awaitjs/express';
 
 import envModule from './lib/env';
@@ -29,30 +27,6 @@ app.env = env;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-app.use('/public', expressmarkdown({
-   directory: path.join(__dirname, '/public'),
-   caseSensitive: app.get('case sensitive routing'),
-   view: 'markdown',
-   includerawtext: false,
-   loadepiceditor: false,
-   marked: {
-      renderer: new marked.Renderer(),
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: true,
-      smartLists: true,
-      smartypants: false,
-      highlight: function (code) {
-         return highlightjs.highlightAuto(code).value;
-      }
-   },
-   context: {
-      title: 'Nightscout.fi'
-   }
-}));
 
 app.use(session({
    secret: env.session_key,
