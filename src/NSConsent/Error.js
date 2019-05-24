@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import qs from 'query-string';
 
-import { server } from '../Api/Api';
-import ConsentForm from './ConsentForm';
-import ActionsMenu from '../Actions/ActionsMenu';
 import ParallaxComponent from '../Parallax/ParallaxComponent';
-import { fetchConfig } from '../Routes/Routes';
 
 class ConsentError extends Component {
   constructor(props) {
@@ -16,8 +12,6 @@ class ConsentError extends Component {
   }
 
   render() {
-    let { config } = this.props;
-    const { sent } = this.state;
 
     const {  message } = qs.parse(this.props.location.search, { ignoreQueryPrefix: true });
 

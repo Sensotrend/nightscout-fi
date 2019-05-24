@@ -21,7 +21,7 @@ class ConsentGrantForm extends Component {
     let { config } = this.props;
     const { sent } = this.state;
 
-    const { grantid, message } = qs.parse(this.props.location.search, { ignoreQueryPrefix: true });
+    const { grantid } = qs.parse(this.props.location.search, { ignoreQueryPrefix: true });
 
     console.log("GRANT FORM");
 
@@ -67,7 +67,7 @@ class ConsentGrantForm extends Component {
             }).then((results) => {
               console.log('results', results);
               setSubmitting(false);
-              if (results.status == 200) {
+              if (results.status === 200) {
                 this.setState({
                   sent: true,
                   });
