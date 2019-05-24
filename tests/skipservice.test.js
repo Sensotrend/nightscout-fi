@@ -1,10 +1,8 @@
-import MongoModule from '../lib/Mongo.js';
 import nanoid from 'nanoid';
 import envModule from '../lib/env';
 //import skipService from '../lib/RecordSkipManager';
 import should from 'should';
 
-const Mongo = MongoModule();
 const env = envModule();
 let Auth = env.userProvider;
 

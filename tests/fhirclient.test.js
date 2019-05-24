@@ -1,8 +1,11 @@
 import uuidv4 from 'uuid/v4';
 import _FHIRClient from '../lib/FHIRClient';
 
-const fhirserver = "http://hapi.fhir.org/baseDstu3";
-const FHIRClient = _FHIRClient(fhirserver);
+import envModule from '../lib/env';
+const env = envModule();
+
+const URL = "http://hapi.fhir.org/baseDstu3";
+const FHIRClient = _FHIRClient(URL, {env});
 
 const UUID = uuidv4();
 const patient_identifier = "urn:uuid:" + UUID;
