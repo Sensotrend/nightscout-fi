@@ -11,7 +11,7 @@ const siteid = 'foo';
 const pw = 'bar';
 
 const fhirserver = "http://hapi.fhir.org/baseDstu3";
-const FHIRClient = _FHIRClient(fhirserver);
+const FHIRClient = _FHIRClient(fhirserver, { env });
 
 const UUID = uuidv4();
 
@@ -31,7 +31,7 @@ const testPatient = {
 
 
 const d = new Date();
-const d2 = new Date (d.getTime() + 100000);
+const d2 = new Date(d.getTime() + 100000);
 
 let patient;
 
@@ -142,6 +142,33 @@ describe('NS_REST_API & FHIRClient test', function () {
             response.body[0].device.should.equal("MDT-554");
          });
 
+   });
+
+   it('should support created_at queries for the /treatments API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
+
+      let ns_sample = [{
+         "_id": "5c655105763fe276981ff0c2",
+         "device": "MDT-554",
+         "date": 1550143850509,
+         "carbs": 15,
+         "created_at": "2019-04-01T11:21:28+03:00"
+      }, {
+         "_id": "5c655105763fe276981ff0c2",
+         "device": "MDT-554",
+         "date": 1554106889000,
+         "carbs": 20,
+         "created_at": "2019-04-01T11:21:29+03:00"
+      }];
+
+      await request(nsfi)
+         .post('/api/v1/treatments')
+         .send(ns_sample)
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+
       await request(nsfi)
          .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$gt\]=2019-01-01T11%3A30%3A17.694Z')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
@@ -162,7 +189,6 @@ describe('NS_REST_API & FHIRClient test', function () {
             console.log('response.body', response.body);
             response.body.length.should.equal(0);
          });
-
    });
 
    it('should provide the /verifyauth API', async function () {
