@@ -152,6 +152,16 @@ if (process.env.NODE_ENV === 'production') {
    })
 }
 
+app.use(function(err, req, res, next) {
+   if (err.type && err.type == 'entity.parse.failed') {
+      res.status(400).send('JSON parsing failed for your request'); 
+   } else {
+      env.logger.error(err);
+      env.logger.error(err.stack);
+      res.status(500).send('There was a problem handling your request'); 
+   }
+ });
+
 app.listen(process.env.PORT, () => {
    env.logger.info('Server Started!');
 });
