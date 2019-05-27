@@ -69,7 +69,7 @@ div.image-inline {
 @media screen and (min-width: $breakpoint-width) and (orientation: landscape) {
   div.image-background {
     background: #fff;
-    background: url("../picnic.png");
+    background: url("../picnic.jpg");
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -80,7 +80,7 @@ div.image-inline {
     @include white-links;
     color: white;
     font-size: 150%;
-    background: url("../picnic.png");
+    background: url("../picnic.jpg");
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
