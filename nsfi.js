@@ -3,8 +3,6 @@ import cors from 'cors';
 import path from 'path';
 import session from 'express-session';
 import MongoStoreModule from 'connect-mongo';
-import expressmarkdown from 'express-markdown-reloaded';
-import marked from 'marked';
 import { decorateApp } from '@awaitjs/express';
 
 import envModule from './lib/env';
@@ -29,30 +27,6 @@ app.env = env;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-app.use('/public', expressmarkdown({
-   directory: path.join(__dirname, '/public'),
-   caseSensitive: app.get('case sensitive routing'),
-   view: 'markdown',
-   includerawtext: false,
-   loadepiceditor: false,
-   marked: {
-      renderer: new marked.Renderer(),
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: true,
-      smartLists: true,
-      smartypants: false,
-      highlight: function (code) {
-         return highlightjs.highlightAuto(code).value;
-      }
-   },
-   context: {
-      title: 'Nightscout.fi'
-   }
-}));
 
 app.use(session({
    secret: env.session_key,
@@ -177,6 +151,16 @@ if (process.env.NODE_ENV === 'production') {
       res.sendfile(path.join(__dirname = 'build/index.html'));
    })
 }
+
+app.use(function(err, req, res, next) {
+   if (err.type && err.type == 'entity.parse.failed') {
+      res.status(400).send('JSON parsing failed for your request'); 
+   } else {
+      env.logger.error(err);
+      env.logger.error(err.stack);
+      res.status(500).send('There was a problem handling your request'); 
+   }
+ });
 
 app.listen(process.env.PORT, () => {
    env.logger.info('Server Started!');
