@@ -11,6 +11,8 @@ import NightscoutViewConsentService from './lib/NightscoutConsentService.js';
 import EmailVerificationService from './lib/EmailVerificationService.js';
 import TidepoolRESTService from './lib/TidepoolRESTService';
 
+import BootEvent from './lib/bootevent.js';
+
 import FIPHR from './lib/oauthproviders/FIPHR.js';
 
 import sgMail from '@sendgrid/mail';
@@ -19,6 +21,8 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 
 const env = envModule();
 env.setOauthProvider(FIPHR(env));
+
+BootEvent(env);
 
 const MongoStore = MongoStoreModule(session);
 const app = decorateApp(express());

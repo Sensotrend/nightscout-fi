@@ -103,6 +103,18 @@ describe('NS_REST_API & FHIRClient test', function () {
             response.body[0].sgv.should.equal(180);
             response.body[0].device.should.equal("xDrip-DexcomG5");
          });
+
+      await request(nsfi)
+         .get('/api/v1/entries?count=1&find\[date\]\[\$eq\]=1550143851509')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            console.log('response.body', response.body);
+            response.body[0].date.should.equal(1550143851509);
+            response.body[0].sgv.should.equal(180);
+            response.body[0].device.should.equal("xDrip-DexcomG5");
+         });
    });
 
 
@@ -231,6 +243,18 @@ describe('NS_REST_API & FHIRClient test', function () {
 
       await request(nsfi)
          .get('/api/v1/status')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+   });
+
+
+   it('should provide the /pebble API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, d2);
+
+      await request(nsfi)
+         .get('/api/v1/pebble')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
          .expect('Content-Type', /json/)
          .expect(200);
