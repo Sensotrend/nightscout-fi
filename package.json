@@ -42,7 +42,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "sensotrend-converter": "git@github.com:sensotrend/sensotrend-converter#master",
+    "sensotrend-converter": "file:modules/sensotrend-converter",
     "simple-oauth2": "^2.2.1",
     "stjs": "0.0.5",
     "ts-loader": "^6.0.2",
@@ -95,7 +95,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "__preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
+    "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon -r esm nsfi.js",
     "client": "react-scripts start",
