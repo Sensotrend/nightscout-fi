@@ -1,0 +1,23 @@
+[
+   {
+      "_id": "5c655s105763fe76981ff0c2",
+      "device": "xDrip-DexcomG5",
+      "dateString": "2017-01-01T01:00:00.00+0200",
+      "mbg":150,
+      "type":"calibration"
+},
+{
+    "_id": "5c655105763e276s981ff0c2",
+    "device": "xDrip-DexcomG5",
+    "dateString": "2017-01-02T01:00:00.00+0200",
+    "mbg":150,
+    "type":"calibration"
+},
+{
+    "_id": "5c65510763fe276981fff0c2",
+    "device": "xDrip-DexcomG5",
+    "dateString": "2017-01-03T01:00:00.00+0200",
+    "mbg":150,
+    "type":"calibration"
+}
+]

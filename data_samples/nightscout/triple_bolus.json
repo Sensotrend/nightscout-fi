@@ -1,0 +1,23 @@
+[
+   {
+      "_id": "5c655105763fe276981ff0c2",
+      "device": "MDT-554",
+      "insulin": 1,
+      "created_at": "2017-01-01T01:00:00.00+0200",
+      "eventType": "Meal Bolus"
+   },
+   {
+      "_id": "5c655105763fe226981ff0c2",
+      "device": "MDT-554",
+      "insulin": 2,
+      "created_at": "2017-01-02T01:00:00.00+0200",
+      "eventType": "Meal Bolus"
+   },
+   {
+      "_id": "5c655105763fe276981ff0c2",
+      "device": "MDT-554",
+      "insulin": 3,
+      "created_at": "2017-01-03T01:00:00.00+0200",
+      "eventType": "Meal Bolus"
+   }
+]
