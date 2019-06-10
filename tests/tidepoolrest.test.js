@@ -1,4 +1,4 @@
-import nsfi from '../nsfi.js';
+import nsfi from '../lib/server.js';
 
 import request from 'supertest';
 import uuidv4 from 'uuid/v4';

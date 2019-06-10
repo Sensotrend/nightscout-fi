@@ -1,0 +1,3 @@
+[submodule "modules/sensotrend-converter"]
+	path = modules/sensotrend-converter
+	url = git@github.com:sensotrend/sensotrend-converter

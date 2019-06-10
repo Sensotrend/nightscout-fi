@@ -1,7 +1,8 @@
 {
       "_id": "5c655105763fe276981ff0c2"
-      , "device": "xDrip-DexcomG5"
+      , "device": "MDT-554"
       , "date": 1550143850509
       , "carbs": 15
       , "created_at": "2019-04-01T11:21:28+03:00"
+      , "eventType": "Meal Bolus"
 }
