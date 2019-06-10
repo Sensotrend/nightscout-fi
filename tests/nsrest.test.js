@@ -1,7 +1,8 @@
-import nsfi from '../nsfi.js';
-
 import request from 'supertest';
 import uuidv4 from 'uuid/v4';
+import moment from 'moment';
+
+import nsfi from '../lib/server.js';
 import _FHIRClient from '../lib/FHIRClient';
 import { exist } from '../node_modules/should/should.js';
 
@@ -55,6 +56,64 @@ describe('NS_REST_API & FHIRClient test', function () {
 
       console.log('User for ENTRIES API TEST', u);
 
+      const now = moment();
+      const FIVE_MIN_AGO = moment(now.valueOf() - 60*5*1000);
+
+      console.log('now() for ENTRIES API TEST', now.valueOf(), now.toISOString());
+      console.log('FIVE_MIN_AGO for ENTRIES API TEST', FIVE_MIN_AGO.valueOf(), FIVE_MIN_AGO.toISOString());
+
+      let ns_sample = [{
+         "device": "xDrip-DexcomG5",
+         "date": now.valueOf(),
+         "dateString": now.toISOString(true),
+         "sgv": 177,
+         "delta": 1.5,
+         "direction": "Flat",
+         "type": "sgv",
+         "filtered": 195071.0394182456,
+         "unfiltered": 196842.65552921052,
+         "rssi": 100,
+         "noise": 1
+      }, {
+         "device": "xDrip-DexcomG5",
+         "date": FIVE_MIN_AGO.valueOf(),
+         "dateString": FIVE_MIN_AGO.toISOString(true),
+         "sgv": 180,
+         "delta": 1.5,
+         "direction": "Flat",
+         "type": "sgv",
+         "filtered": 195071.0394182456,
+         "unfiltered": 196842.65552921052,
+         "rssi": 100,
+         "noise": 1
+      }];
+
+      await request(nsfi)
+         .post('/api/v1/entries')
+         .send(ns_sample)
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+
+      await request(nsfi)
+         .get('/api/v1/entries')
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            console.log('response.body', response.body);
+            response.body[0].date.should.equal(now.valueOf());
+            response.body[0].sgv.should.equal(177);
+            response.body[0].device.should.equal("xDrip-DexcomG5");
+         });
+
+   });
+
+
+   it('should provide date filters on /entries API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
+
       let ns_sample = [{
          "_id": "5c655105763fe276981ff0c2",
          "device": "xDrip-DexcomG5",
@@ -86,24 +145,12 @@ describe('NS_REST_API & FHIRClient test', function () {
       }];
 
       await request(nsfi)
-         .post('/api/v1/entries')
-         .send(ns_sample)
-         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
-
-      await request(nsfi)
-         .get('/api/v1/entries')
-         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200)
-         .then(response => {
-            console.log('response.body', response.body);
-            response.body[0].date.should.equal(1550143851509);
-            response.body[0].sgv.should.equal(180);
-            response.body[0].device.should.equal("xDrip-DexcomG5");
-         });
-
+      .post('/api/v1/entries')
+      .send(ns_sample)
+      .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+      .expect('Content-Type', /json/)
+      .expect(200);
+      
       await request(nsfi)
          .get('/api/v1/entries?count=1&find\[date\]\[\$eq\]=1550143851509')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
@@ -122,19 +169,22 @@ describe('NS_REST_API & FHIRClient test', function () {
 
       const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
 
+      const now = moment();
+      const FIVE_MIN_AGO = moment(now.valueOf() - 60*5*1000);
+
       let ns_sample = [{
-         "_id": "5c655105763fe276981ff0c2",
          "device": "MDT-554",
-         "date": 1550143850509,
+         "date": now.valueOf(),
          "carbs": 15,
-         "created_at": "2019-04-01T11:21:28+03:00"
+         "created_at": now.toISOString(true)
       }, {
-         "_id": "5c655105763fe276981ff0c2",
          "device": "MDT-554",
-         "date": 1554106889000,
+         "date": FIVE_MIN_AGO.valueOf(),
          "carbs": 20,
-         "created_at": "2019-04-01T11:21:29+03:00"
+         "created_at": FIVE_MIN_AGO.toISOString(true)
       }];
+
+      console.log('ns_sample for /treatment test', ns_sample);
 
       await request(nsfi)
          .post('/api/v1/treatments')
@@ -149,8 +199,9 @@ describe('NS_REST_API & FHIRClient test', function () {
          .expect('Content-Type', /json/)
          .expect(200)
          .then(response => {
-            response.body[0].date.should.equal(1554106889000);
-            response.body[0].carbs.should.equal(20);
+            console.log('response to /treatment query', response.body);
+            response.body[0].date.should.equal(now.valueOf());
+            response.body[0].carbs.should.equal(15);
             response.body[0].device.should.equal("MDT-554");
          });
 
@@ -182,7 +233,7 @@ describe('NS_REST_API & FHIRClient test', function () {
          .expect(200);
 
       await request(nsfi)
-         .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$gt\]=2019-01-01T11%3A30%3A17.694Z')
+         .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$gt\]=2019-01-01T11%3A30%3A17.694Z&find\[created_at\]\[\$lt\]=2019-05-01T11%3A30%3A17.694Z')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
          .expect('Content-Type', /json/)
          .expect(200)
