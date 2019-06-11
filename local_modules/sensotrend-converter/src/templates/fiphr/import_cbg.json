@@ -1,0 +1,55 @@
+{
+  "resourceType": "Observation",
+  "meta": {
+    "profile": [
+      "http://phr.kanta.fi/StructureDefinition/fiphr-bloodglucose-stu3"
+    ]
+  },
+  "language": "fi",
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br />{{_statusMessage}}<br /></div>"
+  },
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:uuid:{{guid}}"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/observation-category",
+          "code": "vital-signs"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "14745-4",
+        "display": "Kudossokeri"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/{{patientId}}"
+  },
+  "effectiveDateTime": "{{time_fhir}}",
+  "issued": "{{time_fhir}}",
+  "performer": [
+    {
+      "reference": "Patient/{{patientId}}"
+    }
+  ],
+  "valueQuantity": {
+    "value": "{{valueMmol}}",
+    "unit": "mmol/l",
+    "system": "http://unitsofmeasure.org",
+    "code": "mmol/L"
+  }
+}

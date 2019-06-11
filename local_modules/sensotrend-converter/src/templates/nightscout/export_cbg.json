@@ -1,0 +1,11 @@
+{
+   "_id": "{{guid}}"
+   , "device": "{{deviceId}}"
+   , "date": "{{_timestamp}}"
+   , "dateString": "{{time}}"
+   , "sgv": "{{_valuemgdl}}"
+   , "delta": 1000
+   , "direction": "FortyFiveUp"
+   , "type": "sgv"
+   , "sysTime": "{{time}}"
+}

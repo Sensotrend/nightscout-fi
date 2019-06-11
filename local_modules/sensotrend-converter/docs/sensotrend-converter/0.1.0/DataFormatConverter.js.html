@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DataFormatConverter.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ConversionService.html">ConversionService</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ConversionService.html#convert">convert</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ConversionService.html#registerFormatProcessor">registerFormatProcessor</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="DataFormatConverter.html">DataFormatConverter</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="DataFormatConverter.html#exportRecords">exportRecords</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="DataFormatConverter.html#getRecordTime">getRecordTime</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="DataFormatConverter.html#importRecords">importRecords</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="DataFormatConverter.html#loadTemplate">loadTemplate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="DataFormatConverter.html#templatePath">templatePath</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="FIPHRDataProcessor.html">FIPHRDataProcessor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FIPHRDataProcessor.html#getRecordTime">getRecordTime</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="NightscoutDataProcessor.html">NightscoutDataProcessor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NightscoutDataProcessor.html#getRecordTime">getRecordTime</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TidepoolDataProcessor.html">TidepoolDataProcessor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TidepoolDataProcessor.html#getRecordTime">getRecordTime</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#DefaultConversionService">DefaultConversionService</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">DataFormatConverter.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import path from 'path';
+import fs from 'fs-extra';
+import NodeCache from 'node-cache';
+
+/**
+ * Converter class that supports some specific data format
+ */
+export class DataFormatConverter {
+    /**
+     * Logger class for the converter. If provided, the logger must provide the following
+     * functions.
+     * 
+     * @typedef {Object} Logger
+     * @property {function} debug Called for debug-level logging
+     * @property {function} info Called for info-level logging
+     * @property {function} error Called for error-level logging
+     */
+
+    /**
+     * 
+     * @param {Logger} [logger] Optional, used for logging. If not provided, the Javascript
+     * console will be used instead.    
+     */
+    constructor(logger) {
+        this.logger = logger;
+        this.cache = new NodeCache();
+        this.templateDirectory = __dirname;
+    }
+
+    /**
+     * Returns a Date object representing the record date
+     * Classes that implement a DataFormatConverter MUST implement this method
+     * @param {Object} record record
+     */
+    getRecordTime(record) {
+        throw new Error('Implementation for getRecordTime() is missing');
+    }
+
+    /**
+     * Import records from the format this conveter supports and output in the intermediate
+     * Tidepool wire format
+     * @param {Array} input Array of input objects
+     * @param {Object} options Options for converting the data
+     */
+    importRecords(input, options) {
+        throw new Error('Implementation for importRecords() is missing');
+    }
+
+    /**
+     * Export records from the intermediate Tidepool format to the format supported by
+     * this converter
+     * @param {Array} input Array of input objects
+     * @param {Object} options Options for converting the data
+     */
+    exportRecords(input, options) {
+        throw new Error('Implementation for exportRecords() is missing');
+    }
+
+    /**
+     * Implementations of a DataFormatConverter that use loadTemplate() MUST
+     * implement this function and return the directory that contains the
+     * template files as a result (possibly __dirname)
+     */
+    templatePath() {
+        return this.templateDirectory;
+    }
+
+    /**
+     * Load a stjs template file from current directory
+     * 
+     * @param {String} objectType String identifier for data type
+     */
+    async loadTemplate(objectType) {
+
+        const cached = this.cache.get(objectType);
+        if (cached) {
+            return cached;
+        }
+
+        let filePath = path.resolve(this.templatePath(), objectType + '.json');
+        this.logger.debug("Loading template from: " +  filePath);
+        let template;
+
+        try {
+            const result = await fs.stat(filePath); // will fail if file does not exist
+            if (await fs.exists(filePath)) {
+                template = await fs.readFile(filePath, 'utf8');
+            }
+        } catch (error) {
+            this.logger.error('Data conversion error: template for object type "' + objectType + '" not found');
+            return false;
+        }
+
+        const parsed = JSON.parse(template);
+        this.cache.set(objectType, parsed);
+
+        return parsed;
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Mon Jun 03 2019 15:03:55 GMT+0300 (Eastern European Summer Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

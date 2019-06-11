@@ -1,0 +1,14 @@
+{
+   "time": "{{_ISODate}}"
+   , "timezoneOffset": "{{_timezoneOffset}}"
+   , "conversionOffset": 0
+   , "deviceTime": "{{_ISODate}}"
+   , "deviceId": "{{deviceId}}"
+   , "type": "cbg"
+   , "value": "{{valueQuantity.value}}"
+   , "units": "{{valueQuantity.unit}}"
+   , "guid": "{{id}}"
+   , "delta": "{{#? _deltammol}}"
+   , "direction": "{{#? direction}}"
+   , "noise": "{{#? noise}}"
+}

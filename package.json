@@ -43,7 +43,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "sensotrend-converter": "file:modules/sensotrend-converter",
+    "sensotrend-converter": "file:local_modules/sensotrend-converter",
     "simple-oauth2": "^2.2.1",
     "stjs": "0.0.5",
     "ts-loader": "^6.0.2",
@@ -96,7 +96,8 @@
     "npm": "6.x"
   },
   "scripts": {
-    "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules && git submodule init && git submodule update --remote",
+    "preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules",
+    "_preinstall": "echo 'Removing node_modules to force clean install' && rm -rf node_modules && git submodule init && git submodule update --remote",
     "_postinstall": "react-scripts build",
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon esmloader.js",

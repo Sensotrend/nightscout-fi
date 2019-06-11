@@ -1,0 +1,50 @@
+{
+  "resourceType": "MedicationAdministration",
+  "meta": {
+    "profile": [
+      "http://phr.kanta.fi/StructureDefinition/fiphr-sd-insulindosing-stu3"
+    ]
+  },
+  "language": "fi",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Bolus, lyhytvaikutteinen insuliini<br />Aika: 20.11.2017 11:46<br />Annos: {{insulin}} IU<br />Laite: {{deviceId}} (via {{_converter}})</div>"
+  },
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:uuid:{{guid}}"
+    }
+  ],
+  "status": "completed",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://phr.kanta.fi/CodeSystem/fiphr-cs-insulincode",
+        "code": "ins-short-fast",
+        "display": "Lyhytvaikutteinen insuliini"
+      }
+    ],
+    "text": "Lyhytvaikutteinen insuliini"
+  },
+  "subject": {
+    "reference": "Patient/{{patientId}}"
+  },
+  "effectiveDateTime": "{{time_fhir}}",
+  "performer": [
+    {
+      "actor": {
+         "reference": "Patient/{{patientId}}"
+	   }
+    }
+  ],
+  "dosage": {
+    "text": "Lyhytvaikutteinen insuliini, {{insulin}} yksikköä",
+     "dose": {
+      "value": "{{insulin}}",
+      "unit": "U",
+      "system": "http://unitsofmeasure.org",
+      "code": "U"
+    }
+  }
+}
