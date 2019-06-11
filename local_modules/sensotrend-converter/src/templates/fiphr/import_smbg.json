@@ -1,0 +1,60 @@
+{
+  "resourceType": "Observation",
+  "meta": {
+    "profile": [
+      "http://phr.kanta.fi/StructureDefinition/fiphr-bloodglucose-stu3"
+    ]
+  },
+  "language": "fi",
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Verensokerimittaus<br />Laite: {{deviceId}} (via {{_converter}})<br />Aika: {{time_fhir}}<br />Tulos: {{valueMmol}} mmol/l</div>"
+  },
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:uuid:{{guid}}"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/observation-category",
+          "code": "vital-signs"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "14743-9",
+        "display": "Verensokeri verensokerimittarilla"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "15074-8",
+        "display": "Verensokeri"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/{{patientId}}"
+  },
+  "effectiveDateTime": "{{time_fhir}}",
+  "issued": "{{time_fhir}}",
+  "performer": [
+    {
+      "reference": "Patient/{{patientId}}"
+    }
+  ],
+  "valueQuantity": {
+    "value": "{{valueMmol}}",
+    "unit": "mmol/l",
+    "system": "http://unitsofmeasure.org",
+    "code": "mmol/L"
+  }
+}
