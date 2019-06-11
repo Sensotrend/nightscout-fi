@@ -1,0 +1,54 @@
+{
+    "resourceType": "Observation",
+    "meta": {
+        "profile": "http://phr.kanta.fi/StructureDefinition/fiphr-sd-macronutrientintake-stu3"
+    },
+    "language": "fi",
+    "identifier": [
+        {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:{{guid}}"
+        }
+    ],
+    "status": "final",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://phr.kanta.fi/CodeSystem/fiphr-cs-observationcategory",
+                    "code": "nutrition",
+                    "display": "Ravintosisältö"
+                }
+            ]
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "9059-7",
+                "display": "Arvioitu hiilihydraattimäärä"
+            }
+        ]
+    },
+    "subject": {
+        "reference": "Patient/{{patientId}}"
+    },
+    "effectiveDateTime": "{{time_fhir}}",
+    "issued": "{{time_fhir}}",
+    "performer": [
+        {
+            "reference": "Patient/{{patientId}}"
+        }
+    ],
+    "valueQuantity": {
+        "value": "{{carbInput}}",
+        "unit": "g",
+        "system": "http://unitsofmeasure.org",
+        "code": "g"
+    },
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Arvioitu hiilihydraattimäärä: {{carbInput}} g<br />Laite: {{deviceId}} (via {{_converter}})</div>"
+    }
+}
