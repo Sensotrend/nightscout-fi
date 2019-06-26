@@ -22,6 +22,7 @@
     "env-cmd": "^8.0.2",
     "esm": "^3.2.23",
     "express": "^4.17.1",
+    "express-cls-hooked": "^0.3.8",
     "express-session": "^1.16.1",
     "fhir-kit-client": "git://github.com/sulkaharo/fhir-kit-client.git#backward-compatible",
     "forever": "^1.0.0",
