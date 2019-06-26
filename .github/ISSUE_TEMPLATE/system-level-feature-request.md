@@ -35,6 +35,17 @@ NOTE 3 Examples include:
 – audit trail, and
 – communication integrity,
 – system security/malware protection.
+It's a good practice to go through the OWASP top 10 list, https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet, that currently consists of the following items:
+A1 Injection
+A2 Weak authentication and session management
+A3 XSS
+A4 Insecure Direct Object References
+A5 Security Misconfiguration
+A6 Sensitive Data Exposure
+A7 Missing Function Level Access Control
+A8 Cross Site Request Forgery
+A9 Using Components with Known Vulnerabilities
+A10 Unvalidated Redirects and Forwards
 f) user interface requirements implemented by software;
 NOTE 4 Examples include those related to:
 – support for manual operations,
