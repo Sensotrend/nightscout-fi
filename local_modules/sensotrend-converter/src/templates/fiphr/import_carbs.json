@@ -17,7 +17,7 @@
                 {
                     "system": "http://phr.kanta.fi/CodeSystem/fiphr-cs-observationcategory",
                     "code": "nutrition",
-                    "display": "Ravintosisältö"
+                    "display": "Ravitsemus"
                 }
             ]
         }
