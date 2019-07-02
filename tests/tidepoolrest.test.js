@@ -48,7 +48,7 @@ describe('Tidepool API testing', function () {
       }
    });
 
-   it('should authenticate over Tidepool API and upload a CGM record',  async () => {
+   it('should authenticate over Tidepool API and upload a CGM record', async function () {
 
       let u = await Auth.createUser(patient.id, siteid, pw, tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
 
@@ -107,7 +107,7 @@ describe('Tidepool API testing', function () {
 
    });
 
-   it('should authenticate over Tidepool API and upload pump data as a dataset',  async () => {
+   it('should authenticate over Tidepool API and upload pump data as a dataset', async function () {
 
       let u = await Auth.createUser(patient.id, siteid, pw, tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
 
