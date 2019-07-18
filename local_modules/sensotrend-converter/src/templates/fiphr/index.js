@@ -157,7 +157,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
 
       const textArray = [];
 
-      textArray.push("Aika: " + time.format('D.M.YYYY H:mm'));
+      textArray.push("Aika: " + time.format('D.M.YYYY H:mm:ss'));
       textArray.push("Laite: " + entry.deviceId + ' (via ' + entry._converter + ')');
 
       // ensure records with a BG value have mmol values available
@@ -176,7 +176,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
 
             if (entry.delta) {
                entry.deltaMmol = entry.delta;
-               textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(1) : "?") + " mmol/l");
+               textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(2) : "?") + " mmol/l");
             }
          }
       }
