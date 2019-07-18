@@ -170,7 +170,6 @@ export class FIPHRDataProcessor extends DataFormatConverter {
          entry.valueMmol = Math.round((entry.value / 18.0156) * 100) / 100;
          if (!isNaN(entry.delta)) {
             entry.deltaMmol = Math.round((entry.delta / 18.0156) * 100) / 100;
-            textArray.push("Muutos: " + entry.deltaMmol + " mmol/l");
          }
       } else {
          entry.valueMmol = entry.value;
