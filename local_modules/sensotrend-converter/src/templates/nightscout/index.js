@@ -40,6 +40,7 @@ export class NightscoutDataProcessor extends DataFormatConverter {
 
       if (record.created_at) {
          time = moment.parseZone(record.created_at);
+         console.log('Parsed created_at', record.created_at, time);
       } else {
          // Prefer the millisecond field for the date for entries
          // but parse the time zone from the string when available
@@ -48,6 +49,7 @@ export class NightscoutDataProcessor extends DataFormatConverter {
          if (!date && dateString) {
             time.utcOffset(moment.parseZone(dateString).utcOffset());
          }
+         console.log('Parsed date/dateString', date, dateString, time);
       }
 
       let type = "";
