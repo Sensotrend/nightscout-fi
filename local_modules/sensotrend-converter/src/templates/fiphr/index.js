@@ -155,12 +155,9 @@ export class FIPHRDataProcessor extends DataFormatConverter {
          entry.insulin = sourceData.normal;
       }
 
-
-      let narrative = `Aika: <time datetime="${
-         entry.time_fhir
-      }">${
+      let narrative = `Aika: ${
          time.format('D.M.YYYY H:mm')
-      }</time><br />Laite: ${
+      }<br />Laite: ${
          entry.deviceId
       } (via ${
          entry._converter
