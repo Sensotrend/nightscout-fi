@@ -155,41 +155,45 @@ export class FIPHRDataProcessor extends DataFormatConverter {
          entry.insulin = sourceData.normal;
       }
 
-      const textArray = [];
 
-      textArray.push("Aika: " + time.format('D.M.YYYY H:mm'));
-      textArray.push("Laite: " + entry.deviceId + ' (via ' + entry._converter + ')');
-
-      // ensure records with a BG value have mmol values available
-      if (entry.value && entry.units) {
-         if (entry.units == 'mg/dL') {
-            entry.valueMmol = Math.round((entry.value / 18.0156) * 100) / 100;
-            textArray.push("Tulos: " + entry.valueMmol + " mmol/l");
-
-            if (entry.delta) {
-               entry.deltaMmol = Math.round((entry.delta / 18.0156) * 100) / 100;
-               textArray.push("Muutos: " + entry.deltaMmol + " mmol/l");
-            }
-         } else {
-            entry.valueMmol = entry.value;
-            textArray.push("Tulos: " + entry.valueMmol) + " mmol/l";
-
-            if (entry.delta) {
-               entry.deltaMmol = entry.delta;
-               textArray.push("Muutos: " + entry.deltaMmol + " mmol/l");
-            }
+      let narrative = `Aika: <time datetime="${
+         entry.time_fhir
+      }">${
+         time.format('D.M.YYYY H:mm')
+      }</time><br />Laite: ${
+         entry.deviceId
+      } (via ${
+         entry._converter
+      })<br />`;
+      // ensure records with a mg/dl value also have the mmol value available
+      if (entry.units == 'mg/dL') {
+         entry.valueMmol = Math.round((entry.value / 18.0156) * 100) / 100;
+         if (!isNaN(entry.delta)) {
+            entry.deltaMmol = Math.round((entry.delta / 18.0156) * 100) / 100;
+            textArray.push("Muutos: " + entry.deltaMmol + " mmol/l");
+         }
+      } else {
+         entry.valueMmol = entry.value;
+         if (!isNaN(entry.delta)) {
+            entry.deltaMmol = entry.delta;
          }
       }
-
+      narrative += `Tulos: ${entry.valueMmol.toFixed(1)} mmol/l<br />`;
+      if (!isNaN(entry.deltaMmol)) {
+         narrative += `Muutos: ${entry.deltaMmol.toFixed(2)} mmol/l`;
+      }
+      /*
+       * Leave these out for the time being...
+       *
       if (entry.direction) {
-         textArray.push("Suunta: " + entry.direction);
+         narrative += `Suunta: ${entry.direction}`;
       }
 
       if (entry.noise) {
-         textArray.push("Mittauslaatu: " + entry.noise);
+         narrative += `Mittauslaatu: ${entry.noise}`;
       }
-
-      entry._statusMessage = textArray.join('<br />');
+      */
+     entry._statusMessage = narrative;
 
       return entry;
    }
