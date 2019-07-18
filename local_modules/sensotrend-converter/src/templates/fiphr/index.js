@@ -158,7 +158,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       let narrative = `Aika: ${
          time.format('D.M.YYYY')
       } ${
-         +time.format('H') + sourceData.timezoneOffset
+         +time.format('H') + (sourceData.timezoneOffset)
       }:${
          time.format('mm:ss')
       }<br />Laite: ${
@@ -194,6 +194,8 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       }
       */
      entry._statusMessage = narrative;
+
+      console.log('Enriched object', JSON.stringify(sourceData), JSON.stringify(entry));
 
       return entry;
    }
