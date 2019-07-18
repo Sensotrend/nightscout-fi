@@ -46,7 +46,7 @@ export class NightscoutDataProcessor extends DataFormatConverter {
          // but parse the time zone from the string when available
          const { date, dateString } = record;
          time = date ? moment(date) : moment.parseZone(dateString);
-         if (!date && dateString) {
+         if (date && dateString) {
             time.utcOffset(moment.parseZone(dateString).utcOffset());
          }
          console.log('Parsed date/dateString', date, dateString, time);
