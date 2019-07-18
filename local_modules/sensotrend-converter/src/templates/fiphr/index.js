@@ -156,7 +156,11 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       }
 
       let narrative = `Aika: ${
-         time.format('D.M.YYYY H:mm')
+         time.format('D.M.YYYY')
+      } ${
+         +time.format(H) + sourceData.timezoneOffset
+      }:${
+         time.format('mm:SS')
       }<br />Laite: ${
          entry.deviceId
       } (via ${
