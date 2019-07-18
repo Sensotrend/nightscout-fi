@@ -177,7 +177,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
             entry.deltaMmol = entry.delta;
          }
       }
-      narrative += `Tulos: ${entry.valueMmol.toFixed(1)} mmol/l<br />`;
+      narrative += `Tulos: ${entry.valueMmol ? entry.valueMmol.toFixed(1) : '?'} mmol/l<br />`;
       if (!isNaN(entry.deltaMmol)) {
          narrative += `Muutos: ${entry.deltaMmol.toFixed(2)} mmol/l`;
       }
