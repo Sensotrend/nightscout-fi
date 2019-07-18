@@ -156,7 +156,11 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       }
 
       let narrative = `Aika: ${
-         time.format('D.M.YYYY H:mm')
+         time.format('D.M.YYYY')
+      } ${
+         +time.format('H') + sourceData.timezoneOffset
+      }:${
+         time.format('mm:SS')
       }<br />Laite: ${
          entry.deviceId
       } (via ${
@@ -174,7 +178,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
             entry.deltaMmol = entry.delta;
          }
       }
-      narrative += `Tulos: ${entry.valueMmol ? entry.valueMmol.toFixed(1) : '?'} mmol/l<br />`;
+      narrative += `Tulos: ${entry.valueMmol ? entry.valueMmol : '?'} mmol/l<br />`;
       if (!isNaN(entry.deltaMmol)) {
          narrative += `Muutos: ${entry.deltaMmol.toFixed(2)} mmol/l`;
       }
