@@ -57,7 +57,7 @@ describe('NS_REST_API & FHIRClient test', function () {
       console.log('User for ENTRIES API TEST', u);
 
       const now = moment();
-      const FIVE_MIN_AGO = moment(now.valueOf() - 60 * 5 * 1000);
+      const FIVE_MIN_AGO = moment(now.valueOf() - 60*5*1000);
 
       console.log('now() for ENTRIES API TEST', now.valueOf(), now.toISOString());
       console.log('FIVE_MIN_AGO for ENTRIES API TEST', FIVE_MIN_AGO.valueOf(), FIVE_MIN_AGO.toISOString());
@@ -145,12 +145,12 @@ describe('NS_REST_API & FHIRClient test', function () {
       }];
 
       await request(nsfi)
-         .post('/api/v1/entries')
-         .send(ns_sample)
-         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
-
+      .post('/api/v1/entries')
+      .send(ns_sample)
+      .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+      .expect('Content-Type', /json/)
+      .expect(200);
+      
       await request(nsfi)
          .get('/api/v1/entries?count=1&find\[date\]\[\$eq\]=1550143851509')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
@@ -170,7 +170,7 @@ describe('NS_REST_API & FHIRClient test', function () {
       const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
 
       const now = moment();
-      const FIVE_MIN_AGO = moment(now.valueOf() - 60 * 5 * 1000);
+      const FIVE_MIN_AGO = moment(now.valueOf() - 60*5*1000);
 
       let ns_sample = [{
          "device": "MDT-554",
@@ -276,7 +276,7 @@ describe('NS_REST_API & FHIRClient test', function () {
          });
    });
 
-   it('should provide the /devicestatus POST API', async function () {
+   it('should provide the /devicestatus API', async function () {
 
       const u = await Auth.createUser(patient.id, siteid, pw, d2);
 
@@ -286,19 +286,6 @@ describe('NS_REST_API & FHIRClient test', function () {
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
          .expect('Content-Type', /json/)
          .expect(200);
-
-   });
-
-   it('should provide the /devicestatus GET API', async function () {
-
-      const u = await Auth.createUser(patient.id, siteid, pw, d2);
-
-      await request(nsfi)
-         .get('/api/v1/devicestatus')
-         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
-
    });
 
    it('should provide the /status API', async function () {

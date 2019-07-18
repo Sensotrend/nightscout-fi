@@ -138,7 +138,8 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       let entry = sourceData; //_.cloneDeep(sourceData);
 
       entry.patientId = patientReference;
-      entry.time_fhir = moment(sourceData.time).utcOffset(sourceData.timezoneOffset).toISOString(true);
+      const time = moment(sourceData.time).utcOffset(sourceData.timezoneOffset);
+      entry.time_fhir = time.toISOString(true);
 
       let id = entry.type + ':' + entry.patientId + ':' + entry.deviceId + ':' + entry.time_fhir;
 
@@ -156,7 +157,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
 
       const textArray = [];
 
-      textArray.push("Aika: " + entry.time_fhir);
+      textArray.push("Aika: " + time.format('D.M.YYYY H:mm'));
       textArray.push("Laite: " + entry.deviceId + ' (via ' + entry._converter + ')');
 
       // ensure records with a BG value have mmol values available
