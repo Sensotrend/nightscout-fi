@@ -160,7 +160,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       } ${
          +time.format('H') + sourceData.timezoneOffset
       }:${
-         time.format('mm:SS')
+         time.format('mm:ss')
       }<br />Laite: ${
          entry.deviceId
       } (via ${
