@@ -49,7 +49,7 @@ export class NightscoutDataProcessor extends DataFormatConverter {
          if (date && dateString) {
             time.utcOffset(moment.parseZone(dateString).utcOffset());
          }
-         console.log('Parsed date/dateString', date, dateString, time);
+         console.log('Parsed date/dateString', date, dateString, time.format());
       }
 
       let type = "";
