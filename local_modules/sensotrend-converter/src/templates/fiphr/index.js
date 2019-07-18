@@ -164,23 +164,23 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       if (entry.value && entry.units) {
          if (entry.units == 'mg/dL') {
             entry.valueMmol = Math.round((entry.value / 18.0156) * 100) / 100;
-            textArray.push("Tulos: " + entry.valueMmol + " mmol/l");
+            textArray.push("Tulos: " + (entry.valueMmol ? entry.valueMmol.toFixed(2) : "?") + " mmol/l");
 
             if (entry.delta) {
                entry.deltaMmol = Math.round((entry.delta / 18.0156) * 100) / 100;
-               textArray.push("Muutos: " + entry.deltaMmol + " mmol/l");
+               textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(2) : "?") + " mmol/l");
             }
          } else {
             entry.valueMmol = entry.value;
-            textArray.push("Tulos: " + entry.valueMmol) + " mmol/l";
+            textArray.push("Tulos: " + (entry.valueMmol ? entry.valueMmol.toFixed(1) : "?") + " mmol/l");
 
             if (entry.delta) {
                entry.deltaMmol = entry.delta;
-               textArray.push("Muutos: " + entry.deltaMmol + " mmol/l");
+               textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(1) : "?") + " mmol/l");
             }
          }
       }
-
+      /*
       if (entry.direction) {
          textArray.push("Suunta: " + entry.direction);
       }
@@ -188,6 +188,7 @@ export class FIPHRDataProcessor extends DataFormatConverter {
       if (entry.noise) {
          textArray.push("Mittauslaatu: " + entry.noise);
       }
+      */
 
       entry._statusMessage = textArray.join('<br />');
 
