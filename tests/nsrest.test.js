@@ -141,7 +141,7 @@ describe('NS_REST_API & FHIRClient test', function () {
          "unfiltered": 196842.65552921052,
          "rssi": 100,
          "noise": 1,
-         "sysTime": "2019-02-14T13:30:50.509+0200"
+         "sysTime": "2019-02-14T13:30:51.509+0200"
       }];
 
       await request(nsfi)

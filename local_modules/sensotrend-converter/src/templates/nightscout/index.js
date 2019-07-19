@@ -38,15 +38,18 @@ export class NightscoutDataProcessor extends DataFormatConverter {
 
       let time;
 
-      if (record.created_at) {
+      if (record.sysTime) {
+         // for xDrip treatments this is the only entry that includes the time zone
+         time = moment.parseZone(record.sysTime);
+      } else if (record.created_at) {
          time = moment.parseZone(record.created_at);
       } else {
          // Prefer the millisecond field for the date for entries
          // but parse the time zone from the string when available
-         const { date, dateString } = record;
-         time = date ? moment(date) : moment.parseZone(dateString);
-         if (date && dateString) {
-            time.utcOffset(moment.parseZone(dateString).utcOffset());
+         const { date, dateString, sysTime } = record;
+         time = date ? moment(date) : moment.parseZone(sysTime || dateString);
+         if (date && (sysTime || dateString)) {
+            time.utcOffset(moment.parseZone(sysTime || dateString).utcOffset());
          }
       }
 
