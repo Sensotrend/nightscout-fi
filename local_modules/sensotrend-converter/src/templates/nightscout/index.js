@@ -46,10 +46,10 @@ export class NightscoutDataProcessor extends DataFormatConverter {
       } else {
          // Prefer the millisecond field for the date for entries
          // but parse the time zone from the string when available
-         const { date, dateString } = record;
-         time = date ? moment(date) : moment.parseZone(dateString);
-         if (date && dateString) {
-            time.utcOffset(moment.parseZone(dateString).utcOffset());
+         const { date, dateString, sysTime } = record;
+         time = date ? moment(date) : moment.parseZone(sysTime || dateString);
+         if (date && (sysTime || dateString)) {
+            time.utcOffset(moment.parseZone(sysTime || dateString).utcOffset());
          }
       }
 
