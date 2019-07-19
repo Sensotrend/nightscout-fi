@@ -4,6 +4,10 @@
         "profile": "http://phr.kanta.fi/StructureDefinition/fiphr-sd-macronutrientintake-stu3"
     },
     "language": "fi",
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Koodi: Arvioitu hiilihydraattimäärä (LOINC 9059-7)<br />Aika: {{formattedDate}}<br />Arvioitu hiilihydraattimäärä: {{carbInput}} g<br />Laite: {{deviceId}} (via {{_converter}})</div>"
+    },
     "identifier": [
         {
             "system": "urn:ietf:rfc:3986",
@@ -46,9 +50,5 @@
         "unit": "g",
         "system": "http://unitsofmeasure.org",
         "code": "g"
-    },
-    "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Koodi: Arvioitu hiilihydraattimäärä (LOINC 9059-7)<br />Aika: {{formattedDate}}<br />Arvioitu hiilihydraattimäärä: {{carbInput}} g<br />Laite: {{deviceId}} (via {{_converter}})</div>"
     }
 }
