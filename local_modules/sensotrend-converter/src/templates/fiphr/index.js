@@ -157,7 +157,8 @@ export class FIPHRDataProcessor extends DataFormatConverter {
 
       const textArray = [];
 
-      textArray.push("Aika: " + time.format('D.M.YYYY H:mm:ss'));
+      entry.formattedDate = time.format('D.M.YYYY H:mm:ss');
+      textArray.push("Aika: " + entry.formattedDate);
       textArray.push("Laite: " + entry.deviceId + ' (via ' + entry._converter + ')');
 
       // ensure records with a BG value have mmol values available

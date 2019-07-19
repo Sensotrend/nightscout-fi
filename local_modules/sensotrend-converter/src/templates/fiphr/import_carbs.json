@@ -49,6 +49,6 @@
     },
     "text": {
         "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Arvioitu hiilihydraattimäärä: {{carbInput}} g<br />Laite: {{deviceId}} (via {{_converter}})</div>"
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Koodi: Arvioitu hiilihydraattimäärä (LOINC 9059-7)<br />Aika: {{formattedDate}}<br />Arvioitu hiilihydraattimäärä: {{carbInput}} g<br />Laite: {{deviceId}} (via {{_converter}})</div>"
     }
 }

@@ -8,7 +8,7 @@
   "language": "fi",
   "text": {
     "status": "extensions",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Verensokerimittaus<br />Laite: {{deviceId}} (via {{_converter}})<br />Aika: {{time_fhir}}<br />Tulos: {{valueMmol}} mmol/l</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Koodi: Verensokeri verensokerimittarilla (LOINC 14743-9)<br />Laite: {{deviceId}} (via {{_converter}})<br />Aika: {{formattedDate}}<br />Tulos: {{valueMmol}} mmol/l</div>"
   },
   "identifier": [
     {
