@@ -157,7 +157,8 @@ export class FIPHRDataProcessor extends DataFormatConverter {
 
       const textArray = [];
 
-      textArray.push("Aika: " + time.format('D.M.YYYY H:mm:ss'));
+      entry.formattedDate = time.format('D.M.YYYY H:mm:ss');
+      textArray.push("Aika: " + entry.formattedDate);
       textArray.push("Laite: " + entry.deviceId + ' (via ' + entry._converter + ')');
 
       // ensure records with a BG value have mmol values available
@@ -165,19 +166,21 @@ export class FIPHRDataProcessor extends DataFormatConverter {
          if (entry.units == 'mg/dL') {
             entry.valueMmol = Math.round((entry.value / 18.0156) * 100) / 100;
             textArray.push("Tulos: " + (entry.valueMmol ? entry.valueMmol.toFixed(2) : "?") + " mmol/l");
-
+            /*
             if (entry.delta) {
                entry.deltaMmol = Math.round((entry.delta / 18.0156) * 100) / 100;
                textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(2) : "?") + " mmol/l");
             }
+            */
          } else {
             entry.valueMmol = entry.value;
             textArray.push("Tulos: " + (entry.valueMmol ? entry.valueMmol.toFixed(1) : "?") + " mmol/l");
-
+            /*
             if (entry.delta) {
                entry.deltaMmol = entry.delta;
                textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(2) : "?") + " mmol/l");
             }
+            */
          }
       }
       /*

@@ -8,7 +8,7 @@
   "language": "fi",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Bolus, lyhytvaikutteinen insuliini<br />Aika: 20.11.2017 11:46<br />Annos: {{insulin}} IU<br />Laite: {{deviceId}} (via {{_converter}})</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Koodi: Lyhytvaikutteinen insuliini (ins-short-fast)<br />Aika: {{formattedDate}}<br />Annos: {{insulin}} IU<br />Laite: {{deviceId}} (via {{_converter}})</div>"
   },
   "identifier": [
     {

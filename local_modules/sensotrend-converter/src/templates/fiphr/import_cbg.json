@@ -8,7 +8,7 @@
   "language": "fi",
   "text": {
     "status": "extensions",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kudossokeri<br />{{_statusMessage}}<br /></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Koodi: Kudossokeri (LOINC 14745-4)<br />{{_statusMessage}}<br /></div>"
   },
   "identifier": [
     {
