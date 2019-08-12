@@ -166,19 +166,21 @@ export class FIPHRDataProcessor extends DataFormatConverter {
          if (entry.units == 'mg/dL') {
             entry.valueMmol = Math.round((entry.value / 18.0156) * 100) / 100;
             textArray.push("Tulos: " + (entry.valueMmol ? entry.valueMmol.toFixed(2) : "?") + " mmol/l");
-
+            /*
             if (entry.delta) {
                entry.deltaMmol = Math.round((entry.delta / 18.0156) * 100) / 100;
                textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(2) : "?") + " mmol/l");
             }
+            */
          } else {
             entry.valueMmol = entry.value;
             textArray.push("Tulos: " + (entry.valueMmol ? entry.valueMmol.toFixed(1) : "?") + " mmol/l");
-
+            /*
             if (entry.delta) {
                entry.deltaMmol = entry.delta;
                textArray.push("Muutos: " + (entry.deltaMmol ? entry.deltaMmol.toFixed(2) : "?") + " mmol/l");
             }
+            */
          }
       }
       /*
