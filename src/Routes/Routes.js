@@ -16,6 +16,7 @@ import Index from '../Index/Index';
 import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
+import NSConsent from '../NSConsent/NSConsent';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
@@ -92,6 +93,21 @@ const ProtectedRoute = ({
   );
 };
 
+const renderMergedProps = (component, ...rest) => {
+  const finalProps = Object.assign({}, ...rest);
+  return (
+    React.createElement(component, finalProps)
+  );
+}
+
+const PropsRoute = ({ component, ...rest }) => {
+  return (
+    <Route {...rest} render={routeProps => {
+      return renderMergedProps(component, routeProps, rest);
+    }}/>
+  );
+}
+
 class Routes extends Component {
   constructor(props) {
     super(props);
@@ -107,6 +123,7 @@ class Routes extends Component {
     }
       */
     };
+    this.props = props;
   }
 
   componentDidMount() {
@@ -151,56 +168,79 @@ class Routes extends Component {
 
   render() {
     const { config, initializing, logout } = this.state;
+    console.log(this.state);
     if (initializing) {
       return <div />;
     }
+
     return (
-      <Router basename={base} forceRefresh={!supportsHistory}>
-        <Route
-          render={props => {
-            if (logout && props.location.pathname !== '/logout') {
-              return <Redirect to="/logout" />;
-            }
-            return null;
-          }}
-        />
-        <Switch>
-          <ProtectedRoute
-            path="/account"
-            config={config}
-            component={Account}
-            componentProps={{ config }}
-          />
-          <Route path="/deleted" component={Deleted} />
-          <Route path="/eula" component={Eula} />
-          <Route
-            path="/index"
-            render={props => <Index {...props} config={config} />}
-          />
-          <Route
-            path="/instructions"
-            render={props => <Instructions {...props} config={config} />}
-          />
-          <Route
-            path="/logout"
-            render={(props) => (<Logout callback={() => this.setState({
-              config: undefined,
-              logout: false,
-            })} />)}
-          />
-          <Route path="/privacy" component={Privacy} />
-          <ProtectedRoute
-            path="/registration"
-            config={config}
-            component={EmailRequest}
-            componentProps={{ config }}
-          />
-          <Redirect from="/" to="/index" />
-        </Switch>
-        <Footer />
+      <Router>
+       <Switch>
+         <Route path="/nsconsent/" component={NSConsent} />
+         <PropsRoute path="/" component = {NSFi}
+            state={this.state}
+            render={props => <NSFi {...props} config={config} />}/>
+       </Switch>
       </Router>
-    );
+    )
+  
   }
+}
+
+class NSFi extends Component {
+
+  render() {
+
+  const { config, initializing, logout } = this.props.state;
+
+  return (
+    <Router basename={base} forceRefresh={!supportsHistory}>
+      <Route
+        render={props => {
+          if (logout && props.location.pathname !== '/logout') {
+            return <Redirect to="/logout" />;
+          }
+          return null;
+        }}
+      />
+      <Switch>
+        <ProtectedRoute
+          path="/account"
+          config={config}
+          component={Account}
+          componentProps={{ config }}
+        />
+        <Route path="/deleted" component={Deleted} />
+        <Route path="/eula" component={Eula} />
+        <Route
+          path="/index"
+          render={props => <Index {...props} config={config} />}
+        />
+        <Route
+          path="/instructions"
+          render={props => <Instructions {...props} config={config} />}
+        />
+        <Route
+          path="/logout"
+          render={(props) => (<Logout callback={() => this.setState({
+            config: undefined,
+            logout: false,
+          })} />)}
+        />
+        <Route path="/privacy" component={Privacy} />
+        
+        <ProtectedRoute
+          path="/registration"
+          config={config}
+          component={EmailRequest}
+          componentProps={{ config }}
+        />
+        <Redirect from="/" to="/index" />
+      </Switch>
+      <Footer />
+    </Router>
+  );
+}
 }
 
 export default Routes;
