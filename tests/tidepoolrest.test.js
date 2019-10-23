@@ -157,6 +157,20 @@ describe('Tidepool API testing', function () {
             "interstitialSignal": 24.51,
             "logIndices": [2184580913]
          }
+      }, {
+         "time": "2018-12-18T18:00:02.000Z",
+         "timezoneOffset": 180,
+         "clockDriftOffset": 0,
+         "conversionOffset": 0,
+         "deviceTime": "2018-12-18T21:00:02",
+         "deviceId": "MMT-1711:NG1112288H",
+         "type": "cbg",
+         "value": 101,
+         "units": "mg/dL",
+         "payload": {
+            "interstitialSignal": 24.51,
+            "logIndices": [2184580913]
+         }
       }];
 
       const finalize = { "dataState": "closed" };
