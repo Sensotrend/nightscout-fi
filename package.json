@@ -41,7 +41,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^3.0.1",
-    "sensotrend-converter": "file:local_modules/sensotrend-converter",
+    "sensotrend-converter": "https://github.com/Sensotrend/sensotrend-converter.git",
     "simple-oauth2": "^2.2.1",
     "stjs": "0.0.5",
     "ts-loader": "^6.0.4",
