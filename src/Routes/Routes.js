@@ -167,7 +167,7 @@ class Routes extends Component {
   }
 
   render() {
-    const { config, initializing, logout } = this.state;
+    const { config, initializing } = this.state;
     console.log(this.state);
     if (initializing) {
       return <div />;
@@ -191,7 +191,7 @@ class NSFi extends Component {
 
   render() {
 
-  const { config, initializing, logout } = this.props.state;
+  const { config, logout } = this.props.state;
 
   return (
     <Router basename={base} forceRefresh={!supportsHistory}>
