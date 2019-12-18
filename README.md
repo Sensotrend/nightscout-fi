@@ -34,14 +34,17 @@ The Kanta PHR sandbox environment requires a test version of the Finnish citizen
 * If you want to test things out, especially to see how the Kanta PHR API works, the easiest way is to download and use a Nightscout app like [xDrip+](https://github.com/NightscoutFoundation/xDrip), set it up to upload data to your own installation, and create measurements manually. Note that you can even do this locally on your own computer - just have both your computer and the mobile be connected to the same WLAN and use the computer's IP address. For instance, `https://_3dqGSi8cPfZtzT6hG@localhost:1300/api/v1/` could become `https://_3dqGSi8cPfZtzT6hG@192.168.1.68:1300/api/v1/`. You can enter that URL as the `Base URL` in the `Nightscout Sync (REST-API)` settting in xDrip menu.
 
 ![xDrip app](doc_images/xDrip.png "xDrip app")
+
 You can enter data manually using the syringe icon on the top right corner of the app.
 
 ![Blood glucose entry](doc_images/xDrip-bloodglucose.png "Blood glucose entry")
 ![Carbohydrate intake entry](doc_images/xDrip-carbs.png "Carbohydrate intake entry")
 ![Insulin intake entry](doc_images/xDrip-insulin.png "Insulin intake entry")
+
 You can enter blood glucose, carbohydrate intake, or insulin dosing data.
 
 ![xDrip confirmation](doc_images/xDrip-confirm.png "xDrip confirmation")
+
 After entering a value, you need to confirm the entry by pressing the green plus sign.
 
 If you have a suitable device, you can also use the [Sensotrend Uploader](https://github.com/Sensotrend/sensotrend-uploader) app, or the original Tidepool Uploader (see [below](#using-tidepool-client-with-the-tidepool-server)).
