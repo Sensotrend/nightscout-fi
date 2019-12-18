@@ -5,6 +5,7 @@ This repository contains a server that implements several Nightscout Connect fun
 1. Nightscout.fi, a service that allows users to create an account to expose a Nightscout REST API to the Kanta PHR's Omatietovaranto
 2. A simplified version of the Tidepool server, which allows users to upload data from their devices to Omatietovaranto using the Tidepool Uploader
 3. Nightscout Consent Service, a SMART on FHIR application that implements a consent flow for asking the permission to view a Nightscout instance
+(overview.png)
 
 # Setting up
 
