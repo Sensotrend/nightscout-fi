@@ -11,6 +11,7 @@ class Privacy extends Component {
           <section>
             <div className="container">
               <h2>Tietosuoja</h2>
+              <small>Päivitetty 30.12.2019</small>
               <p>
                 Tällä sivulla kerromme, miten ja miksi keräämme Sinua koskevia tietoja Nightscout
                 Connect -palvelun käyttäjänä ja miten huolehdimme yksityisyydestäsi
@@ -24,19 +25,33 @@ class Privacy extends Component {
                 avulla.
               </p>
               <p>
-                Keräämme Sinusta seuraavia tietoja:
+                Keräämme seuraavia tietoja:
                 <ul>
-                  <li>Nimi ja sähköpostiosoite.</li>
-                  <li>Internet-palvelimen tekniset lokit ja tiedot palvelun käytöstä.</li>
-                  <li>Käyttöavaimet (access token), jotka luodaan palveluiden liitosprosessissa ja
-                    joiden avulla tietoa voidaan kirjoittaa ulkoisten palveluntarjoajien
-                  rekistereihin ja lukea niistä.</li>
-                  <li>Mahdollinen viestintälupa sen erikseen antaneilta asiakkailta palvelun
-                  kehitykseen liittyvää viestintää varten sekä luvan myöntämisen ajankohta.</li>
-                  <li>Mahdollinen tietojen käyttölupa palvelun käytön, asiakaspalvelun ja
-                    liiketoiminnan kehittämiseen, markkinointiin ja analysointiin sekä muihin
-                  vastaaviin käyttötarkoituksiin sekä luvan myöntämisen ajankohta.</li>
-                  <li>Mahdolliset muut asiakkaan suostumuksella kerättävät tiedot.</li>
+                  <li>
+                    Sähköpostiosoitteesi palvelun käyttöön liittyvistä poikkeustilanteista
+                    (esimerkiksi palvelun virheellisen toiminnan aiheuttama vaaratilanne tai
+                    tietovuoto) ilmoittamiseen.
+                  </li>
+                  <li>
+                    Internet-palvelimen tekniset lokit palvelun toiminnan luotettavuuden
+                    seuraamiseksi ja mahdollisten virhetilanteiden selvittämiseksi.
+                  </li>
+                  <li>
+                    Käyttöavain (access token), joka luodaan Omatietovarannon liitosprosessissa ja
+                    jonka avulla tietoa voidaan kirjoittaa Omatietovarantoon ja lukea sieltä.
+                  </li>
+                  <li>
+                    Mahdollinen vikatilanneilmoituslupa, mikäli olet sen erikseen antanut, sekä
+                    luvan myöntämisen ajankohta, palvelun vikatilanteista ilmoittamista varten.
+                  </li>
+                  <li>
+                    Mahdollinen viestintälupa, mikäli olet sen erikseen antanut, sekä luvan
+                    myöntämisen ajankohta, kyselyihin ja viestintään palvelun toiminnallisuuden,
+                    asiakaspalvelun ja liiketoiminnan kehittämiseen sekä muihin vastaaviin
+                    käyttötarkoituksiin.
+                  </li>
+                  <li>Mahdolliset muut itsesi erikseen antaman suostumuksesi perusteella kerättävät
+                    tiedot.</li>
                 </ul>
               </p>
 
@@ -54,13 +69,13 @@ class Privacy extends Component {
                 yksityisyytesi suojan vakavasti ja keräämme sekä käsittelemme tietojasi ainoastaan,
                 kun palvelun toteuttaminen sitä vaatii.
               </p>
-              <p>Tietojasi ei käytetä automatisoituun päätöksentekoon tai profilointiin.</p>
+              <p>Tietojasi ei käytetä automatisoituun päätöksentekoon eikä profilointiin.</p>
 
               <h2>Automaattinen tietojen kerääminen</h2>
               <p>
-                Tiedot, joita kerätään automaattisesti:
+                Tiedot, joita keräämme automaattisesti:
       				  <ul>
-                  <li>Internet-palvelimen tekniset lokit ja tiedot palvelun käytöstä</li>
+                  <li>Internet-palvelimen tekniset lokit</li>
                   <li>Käyttöavaimet (access token)</li>
                 </ul>
               </p>
@@ -68,7 +83,7 @@ class Privacy extends Component {
               <h2>Miten varmistamme henkilötiedon tietosuojan?</h2>
               <p>
                 Noudatamme EU:n yleiseen tietosuoja-asetuksen (GDPR) vaatimia asianmukaisia
-                organisatorisia ja tietoteknisiä toimia henkilötietojesi suojaamiseksi. Jokainen
+                hallinnollisia ja tietoteknisiä toimia henkilötietojesi suojaamiseksi. Jokainen
                 IT-järjestelmämme arvioidaan tietoturvan näkökulmasta ja tietoturvakäytäntöjämme
                 kehitetään jatkuvasti.
               </p>
