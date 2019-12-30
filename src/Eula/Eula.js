@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-import Description from '../Instructions/Description';
 import Header from '../Header/Header';
 
 class Eula extends Component {
@@ -9,10 +8,10 @@ class Eula extends Component {
       <Fragment>
         <Header />
         <main id='eula'>
-          <Description />
           <section>
             <div className="container">
               <h2>Käyttöehdot</h2>
+              <small>Päivitetty 30.12.2019</small>
               <h3>Palvelun kuvaus</h3>
               <p>Nightscout Connect -palvelu mahdollistaa tietojen tallentamisen avoimen
                 lähdekoodin kehittäjäyhteisön Nightscout-sovelluksista Omakannan

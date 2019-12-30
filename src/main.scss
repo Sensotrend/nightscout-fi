@@ -41,6 +41,10 @@ h1 {
 h1 img {
   height: 47px;
   margin-right: 10px;
+}
+
+#index h1 img,
+#registration h1 img {
   filter: invert(100%);
 }
 
@@ -48,10 +52,24 @@ h2 {
   font-weight: bolder;
 }
 
+h3 {
+  margin-top: 2em;
+}
+
 .container {
   max-width: 800px;
   padding: 2em 2em;
   margin: auto;
+}
+
+figure {
+  margin: 1em 0;
+}
+
+figure img {
+  width: 100%;
+  margin: 1em 0;
+  border: 2px solid gray;
 }
 
 .button-success,
