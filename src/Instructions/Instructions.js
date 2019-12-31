@@ -27,7 +27,7 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="functionality">
           <div className="container">
             <h2>Palvelun toiminta</h2>
             <p>
@@ -40,7 +40,7 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="apps">
           <div className="container">
             <h2>Testatut sovellukset</h2>
             <p>
@@ -84,7 +84,7 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="data">
           <div className="container">
             <h2>Palvelun tukemat tietomuodot</h2>
             <p>
@@ -94,7 +94,7 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="usage">
           <div className="container">
             <h2>Käyttöohjeet</h2>
             <p>
@@ -112,7 +112,7 @@ class Instructions extends Component {
               URL</code> ja <code>API_SECRET</code> -asetukset saat tästä Nightscout.fi-palvelusta.
             </p>
 
-            <h3>Palvelun käyttöönotto</h3>
+            <h3 id="onboarding">Palvelun käyttöönotto</h3>
             <p>
               Palvelun käyttöönottoon liittyy 5 vaihetta:
               <ol>
@@ -161,7 +161,7 @@ class Instructions extends Component {
               -valinnan avulla.
             </p>
 
-            <h3>Asetusten muokkaaminen</h3>
+            <h3 id="settings">Asetusten muokkaaminen</h3>
             <p>
               Voit koska tahansa muokata rekisteröimääsi sähköpostiosoitetta ja siihen liittyviä
               asetuksiasi.
@@ -196,7 +196,7 @@ class Instructions extends Component {
               aktivoituu. Siihen asti edellinen vahvistettu osoite pysyy voimassa.
             </p>
 
-            <h3>Palvelun käytön lopettaminen</h3>
+            <h3 id="remove">Palvelun käytön lopettaminen</h3>
             <p>
               Voit koska tahansa lopettaa palvelun käytön ja poistaa kaikki tietosi palvelusta.
               <ol>
@@ -229,7 +229,7 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="questions">
           <div className="container">
             <h2>Lisäkysymykset</h2>
             <p>Jäikö jokin asia vielä askarruttamaan? Ole rohkeasti yhteydessä osoitteeseen <a
