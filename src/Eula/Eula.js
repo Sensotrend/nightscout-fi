@@ -10,9 +10,9 @@ class Eula extends Component {
         <main id='eula'>
           <section>
             <div className="container">
-              <h2>Käyttöehdot</h2>
+              <h2 id="kayttoehdot">Käyttöehdot</h2>
               <small>Päivitetty 30.12.2019</small>
-              <h3>Palvelun kuvaus</h3>
+              <h3 id="palvelunkuvaus">Palvelun kuvaus</h3>
               <p>Nightscout Connect -palvelu mahdollistaa tietojen tallentamisen avoimen
                 lähdekoodin kehittäjäyhteisön Nightscout-sovelluksista Omakannan
                 Omatietovarantoon.</p>
@@ -24,7 +24,7 @@ class Eula extends Component {
                 oikeellisuus tulee aina tarkistaa alkuperäisistä lähteistä. Älä koskaan tee
                 muutoksia hoitoosi ottamatta ensin yhteyttä omaan diabeteshoitajaasi tai
                 -lääkäriisi tai muuhun terveydenhuollon ammattilaiseen.</p>
-              <h3>Käyttöehtojen soveltaminen</h3>
+              <h3 id="kayttoehtojensoveltaminen">Käyttöehtojen soveltaminen</h3>
               <p>Nämä käyttöehdot ovat sopimus Sinun ja palveluntuottajan (Sensotrend Oy, Y-tunnus
                 2606155-7) välillä.</p>
               <p>Pyydämme Sinua lukemaan käyttöehdot huolellisesti ennen palvelun
@@ -34,7 +34,7 @@ class Eula extends Component {
                 Sensotrendin kotisivuilta tai palvelusta. Mikäli jatkat palvelun käyttöä
                 käyttöehtojen muuttamisen jälkeen, sitoudut noudattamaan muutettuja
                 käyttöehtoja.</p>
-              <h3>Yleiset käyttöehdot</h3>
+              <h3 id="yleisetkayttoehdot">Yleiset käyttöehdot</h3>
               <p>Käyttääksesi palvelua tulee sinun ensin rekisteröityä sen käyttäjäksi.
                 Rekisteröityessäsi sitoudut antamaan vain itseäsi koskevia totuudenmukaisia tietoja
                 ja käyttämään palvelua vain omien tietojesi käsittelyyn.</p>
@@ -67,7 +67,7 @@ class Eula extends Component {
                 internet-sivustoihin ja kolmansien osapuolien tuottamiin materiaaleihin ja
                 sovelluksiin. Sensotrend Oy ei ole vastuussa mistään näiden sivustojen tai
                 aineistojen sisällöstä, jollei toisin mainita.</p>
-              <h3>Henkilötiedot ja tietosuoja</h3>
+              <h3 id="henkilotiedotjatietosuoja">Henkilötiedot ja tietosuoja</h3>
               <p>Sensotrendin tietosuojaseloste on voimassa olevan tietosuoja-asetuksen (GDPR)
                 mukainen. Henkilötietojen suojaamisessa noudatetaan Sensotrendin
                 henkilötietosuojakäytäntöä.</p>
@@ -76,7 +76,7 @@ class Eula extends Component {
               <p>Tiedoistasi saattaa joskus olla hyötyä esimerkiksi tutkimuskäytössä. Mikäli
                 tällaisia käyttötarkoituksia ilmenee, kysymme aina ensin Sinulta lupaa tietojesi
                 luovuttamiseen. Mitään tietojasi ei luovuteta ilman lupaasi.</p>
-              <h3>Vastuunrajoitukset</h3>
+              <h3 id="vastuunrajoitukset">Vastuunrajoitukset</h3>
               <p>Sinulle asiakkaana kuuluvat aina Suomen pakottavan lainsäädännön mukaiset
                 oikeudet. Lainsäädännön sallimissa puitteissa Sensotrendin palvelu luovutetaan
                 käytettäväksi sellaisena kuin sitä kulloinkin tuotetaan, ilman Sensotrendin
@@ -96,7 +96,7 @@ class Eula extends Component {
                 tiedot niiden alkuperäisistä lähteistä, ennen kuin teet mitään muutoksia hoitoosi.
                 Älä koskaan tee muutoksia hoitoosi neuvottelematta ensin oman hoitohenkilökuntasi
                 kanssa.</p>
-              <h3>Käyttöehtojen ja palvelun muutokset</h3>
+              <h3 id="kayttoehtojenjapalvelunmuutokset">Käyttöehtojen ja palvelun muutokset</h3>
               <p>Palvelua kehitetään ja sen toiminnallisuutta ja sisältöä muokataan ja parannetaan
                 jatkuvasti. Sensotrend varaa oikeuden milloin tahansa muuttaa aineistoa ja palvelun
                 käyttöehtoja, saatavuutta taikka muita sen ominaisuuksia oman harkintansa
@@ -105,7 +105,9 @@ class Eula extends Component {
                 tahansa. Jatkamalla palvelun käyttöä ehtomuutoksen voimaanastumisen jälkeen
                 sitoudut uusiin ehtoihin. Tarkista kulloinkin voimassaolevat käyttöehdot
                 palvelusta.</p>
-              <h3>Sovellettava laki ja erimielisyyksien ratkaisu</h3>
+              <h3 id="sovellettavalakijaerimielisyyksienratkaisu">
+                Sovellettava laki ja erimielisyyksien ratkaisu
+              </h3>
               <p>Palvelun käyttämiseen ja näihin käyttöehtoihin sovelletaan Suomen lakia
                 kansainvälistä lainvalintaa koskevista säännöistä ja periaatteista riippumatta.</p>
               <p>Sopimuksesta mahdollisesti aiheutuvat erimielisyydet ratkaistaan ensisijaisesti
