@@ -10,14 +10,14 @@ class Privacy extends Component {
         <main id='privacy'>
           <section>
             <div className="container">
-              <h2>Tietosuoja</h2>
+              <h2 id="tietosuoja">Tietosuoja</h2>
               <small>Päivitetty 30.12.2019</small>
               <p>
                 Tällä sivulla kerromme, miten ja miksi keräämme Sinua koskevia tietoja Nightscout
                 Connect -palvelun käyttäjänä ja miten huolehdimme yksityisyydestäsi
               </p>
 
-              <h2>Mitä tietoja keräämme?</h2>
+              <h2 id="mitatietojakeraamme">Mitä tietoja keräämme?</h2>
               <p>
                 Keräämme Sinusta ainoastaan ne tiedot, jotka palvelun toteuttamisen kannalta ovat
                 olennaisia. Terveystietojasi emme tallenna lainkaan, vaan ainoastaan välitämme ne
@@ -55,14 +55,14 @@ class Privacy extends Component {
                 </ul>
               </p>
 
-              <h2>Miksi keräämme tietoja?</h2>
+              <h2 id="miksikeraammetietoja">Miksi keräämme tietoja?</h2>
               <p>
                 Keräämme tietoa Sinulle arvokkaan palvelun toteuttamiseksi sekä kehittääksemme
                 palveluitamme paremmin diabetikoiden, heidän läheistensä ja heitä hoitavien
                 ammattilaisten tarpeita vastaaviksi.
               </p>
 
-              <h2>Miten keräämme ja käsittelemme tietoja?</h2>
+              <h2 id="mitenkeraammejakasittelemmetietoja">Miten keräämme ja käsittelemme tietoja?</h2>
               <p>
                 Palvelun teknistä toteuttamista vaatiman automaattisen tiedonkeruun lisäksi keräämme
                 henkilötioetoja ainoastaan silloin, kun palvelu kysyy Sinulta tietojasi. Otamme
@@ -71,7 +71,7 @@ class Privacy extends Component {
               </p>
               <p>Tietojasi ei käytetä automatisoituun päätöksentekoon eikä profilointiin.</p>
 
-              <h2>Automaattinen tietojen kerääminen</h2>
+              <h2 id="automaattinentietojenkeraaminen">Automaattinen tietojen kerääminen</h2>
               <p>
                 Tiedot, joita keräämme automaattisesti:
       				  <ul>
@@ -80,7 +80,9 @@ class Privacy extends Component {
                 </ul>
               </p>
 
-              <h2>Miten varmistamme henkilötiedon tietosuojan?</h2>
+              <h2 id="mitenvarmistammehenkilotiedontietosuojan">
+                Miten varmistamme henkilötiedon tietosuojan?
+              </h2>
               <p>
                 Noudatamme EU:n yleiseen tietosuoja-asetuksen (GDPR) vaatimia asianmukaisia
                 hallinnollisia ja tietoteknisiä toimia henkilötietojesi suojaamiseksi. Jokainen
@@ -88,7 +90,7 @@ class Privacy extends Component {
                 kehitetään jatkuvasti.
               </p>
 
-              <h2>Oikeutesi palvelun käyttäjänä</h2>
+              <h2 id="oikeutesipalvelunkayttajana">Oikeutesi palvelun käyttäjänä</h2>
               <p>
                 Sinulla on kaikki EU:n yleisen tietosuoja-asetuksen mukaiset oikeudet, kuten oikeus
                 tietojesi tarkastamiseen ja mahdollisten virheiden oikaisuus. Palvelun luonteen
@@ -101,14 +103,14 @@ class Privacy extends Component {
                 yhteystiedot löydät alta.
               </p>
 
-              <h2>Yhteystiedot</h2>
+              <h2 id="yhteystiedot">Yhteystiedot</h2>
               <p>Sensotrend Oy, 2606155-7, Koulukatu 16 B 41, 33200 Tampere.</p>
               <p>
                 Tietosuojavastaava Hannu Hyttinen, <a
                 href="mailto:privacy@sensotrend.com">privacy@sensotrend.com</a>.
               </p>
 
-              <h2>Muutokset ja päivitykset</h2>
+              <h2 id="muutoksetjapaivitykset">Muutokset ja päivitykset</h2>
               <p>
                 Sensotrend Oy pidättää itsellään oikeuden tehdä muutoksia tähän
                 tietosuojalausekkeeseen tarvittaessa.

@@ -27,7 +27,7 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="functionality">
           <div className="container">
             <h2>Palvelun toiminta</h2>
             <p>
@@ -40,9 +40,9 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="safety">
           <div className="container">
-            <h2>Testatut sovellukset</h2>
+            <h2>Tuoteturvallisuus</h2>
             <p>
               <strong>
                 Huomaathan, että palvelun yhteydessä käytettävät Nightscout-sovellukset eivät
@@ -51,7 +51,17 @@ class Instructions extends Component {
                 käyttöönsä itse ja joita eivät koske markkinoille tuotuja terveydenhuollon laitteita
                 koskevat lait ja asetukset ja joiden käyttö on itse kunkin kansalaisen omalla
                 vastuulla.
-              </strong>              
+              </strong>
+            </p>
+            <p>
+              <strong>
+                Laitteen virallisuudesta riippumatta muistathan toki aina myös oman vastuusi
+                insuliinin annostelussa. Glukoosisensorin toiminta saattaa häiriintyä eri syistä ja
+                tiedonsiirrossa saattaa olla ongelmia. Älä koskaan tee annostelupäätöstä ainoastaan
+                kudosglukoosisensorin lukeman perusteella. Mikäli sensorin antama lukema poikkeaa
+                odotettavissa olevasta arvosta tai mikäli se ei vastaa tuntemuksiasi, varmistathan
+                aina verensokerin tason verensokerimittarilla.
+              </strong>
             </p>
             <p>Ja varmuuden vuoksi vielä samma på svenska.</p>
             <p>
@@ -63,6 +73,21 @@ class Instructions extends Component {
                 reglerna för officiellt marknadsförda vårdapparater.             
               </strong>
             </p>
+            <p>
+              <strong>
+                Oavsett vårdapparatens officiellhet måste du naturligtvis alltid tänka på ditt eget
+                ansvar för insulinleverans. Glukosesensorn kan fungera felaktigt av olika skäl och
+                kommunikationsproblem kan uppstå. Ta aldrig ett doseringsbeslut enbart på grundval
+                av en vävnadsglukossensoravläsning. Om sensoravläsningen skiljer sig från det
+                förväntade värdet eller om det inte stämmer med dina sinnen, kontrollera din
+                blodsockernivån med en blodsockermätare.                
+              </strong>
+            </p>
+          </div>
+        </section>
+        <section id="apps">
+          <div className="container">
+            <h2>Testatut sovellukset</h2>
             <p>
               Palvelu on testattu toimivaksi seuraavilla sovelluksilla:
               <ul>
@@ -84,17 +109,17 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="data">
           <div className="container">
             <h2>Palvelun tukemat tietomuodot</h2>
             <p>
               Nightscout.fi välittää tällä hetkellä verensokeritiedot, hiilihydraattiarviot ja
-              insuliiniannokset eri Nightscout-sovellusten ja Omatietovarannnon välillä. Palvelu
+              insuliiniannokset eri Nightscout-sovellusten ja Omatietovarannon välillä. Palvelu
               tukee verensokeritietoa niin sensoreista kuin sormenpäämittauksistakin.
             </p>
           </div>
         </section>
-        <section>
+        <section id="usage">
           <div className="container">
             <h2>Käyttöohjeet</h2>
             <p>
@@ -112,7 +137,7 @@ class Instructions extends Component {
               URL</code> ja <code>API_SECRET</code> -asetukset saat tästä Nightscout.fi-palvelusta.
             </p>
 
-            <h3>Palvelun käyttöönotto</h3>
+            <h3 id="onboarding">Palvelun käyttöönotto</h3>
             <p>
               Palvelun käyttöönottoon liittyy 5 vaihetta:
               <ol>
@@ -161,7 +186,7 @@ class Instructions extends Component {
               -valinnan avulla.
             </p>
 
-            <h3>Asetusten muokkaaminen</h3>
+            <h3 id="settings">Asetusten muokkaaminen</h3>
             <p>
               Voit koska tahansa muokata rekisteröimääsi sähköpostiosoitetta ja siihen liittyviä
               asetuksiasi.
@@ -196,7 +221,7 @@ class Instructions extends Component {
               aktivoituu. Siihen asti edellinen vahvistettu osoite pysyy voimassa.
             </p>
 
-            <h3>Palvelun käytön lopettaminen</h3>
+            <h3 id="remove">Palvelun käytön lopettaminen</h3>
             <p>
               Voit koska tahansa lopettaa palvelun käytön ja poistaa kaikki tietosi palvelusta.
               <ol>
@@ -229,7 +254,16 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section>
+        <section id="participate">
+          <div className="container">
+            <h2>Osallistu palvelun kehitykseen</h2>
+            <p>Tätä palvelua kehitetään avoimena lähdekoodina ja olet erittäin tervetullut
+              osallistumaan kehitykseen GitHubissa. Ks. <a
+              href="https://github.com/Sensotrend/nightscout-fi">nightscout-fi</a>.
+            </p>
+          </div>
+        </section>
+        <section id="questions">
           <div className="container">
             <h2>Lisäkysymykset</h2>
             <p>Jäikö jokin asia vielä askarruttamaan? Ole rohkeasti yhteydessä osoitteeseen <a
