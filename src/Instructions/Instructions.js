@@ -89,7 +89,7 @@ class Instructions extends Component {
             <h2>Palvelun tukemat tietomuodot</h2>
             <p>
               Nightscout.fi välittää tällä hetkellä verensokeritiedot, hiilihydraattiarviot ja
-              insuliiniannokset eri Nightscout-sovellusten ja Omatietovarannnon välillä. Palvelu
+              insuliiniannokset eri Nightscout-sovellusten ja Omatietovarannon välillä. Palvelu
               tukee verensokeritietoa niin sensoreista kuin sormenpäämittauksistakin.
             </p>
           </div>
