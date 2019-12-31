@@ -7,6 +7,10 @@ This repository contains a server that implements several Nightscout Connect fun
 3. Nightscout Consent Service, a SMART on FHIR application that implements a consent flow for asking the permission to view a Nightscout instance
 ![Overview](doc_images/overview.png "Overview")
 
+For data transformations, this project uses an independently published repository [sensotrend-converter](https://github.com/Sensotrend/sensotrend-converter).
+
+A live deployment of the service is at https://connect.nightscout.fi/.
+
 # Setting up
 
 * Clone the repository

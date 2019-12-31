@@ -229,6 +229,15 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
+        <section id="participate">
+          <div className="container">
+            <h2>Osallistu palvelun kehitykseen</h2>
+            <p>Tätä palvelua kehitetään avoimena lähdekoodina ja olet erittäin tervetullut
+              osallistumaan kehitykseen GitHubissa. Ks. <a
+              href="https://github.com/Sensotrend/nightscout-fi">nightscout-fi</a>.
+            </p>
+          </div>
+        </section>
         <section id="questions">
           <div className="container">
             <h2>Lisäkysymykset</h2>
