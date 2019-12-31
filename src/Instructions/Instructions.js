@@ -40,9 +40,9 @@ class Instructions extends Component {
             </p>
           </div>
         </section>
-        <section id="apps">
+        <section id="safety">
           <div className="container">
-            <h2>Testatut sovellukset</h2>
+            <h2>Tuoteturvallisuus</h2>
             <p>
               <strong>
                 Huomaathan, että palvelun yhteydessä käytettävät Nightscout-sovellukset eivät
@@ -51,7 +51,17 @@ class Instructions extends Component {
                 käyttöönsä itse ja joita eivät koske markkinoille tuotuja terveydenhuollon laitteita
                 koskevat lait ja asetukset ja joiden käyttö on itse kunkin kansalaisen omalla
                 vastuulla.
-              </strong>              
+              </strong>
+            </p>
+            <p>
+              <strong>
+                Laitteen virallisuudesta riippumatta muistathan toki aina myös oman vastuusi
+                insuliinin annostelussa. Glukoosisensorin toiminta saattaa häiriintyä eri syistä ja
+                tiedonsiirrossa saattaa olla ongelmia. Älä koskaan tee annostelupäätöstä ainoastaan
+                kudosglukoosisensorin lukeman perusteella. Mikäli sensorin antama lukema poikkeaa
+                odotettavissa olevasta arvosta tai mikäli se ei vastaa tuntemuksiasi, varmistathan
+                aina verensokerin tason verensokerimittarilla.
+              </strong>
             </p>
             <p>Ja varmuuden vuoksi vielä samma på svenska.</p>
             <p>
@@ -63,6 +73,21 @@ class Instructions extends Component {
                 reglerna för officiellt marknadsförda vårdapparater.             
               </strong>
             </p>
+            <p>
+              <strong>
+                Oavsett vårdapparatens officiellhet måste du naturligtvis alltid tänka på ditt eget
+                ansvar för insulinleverans. Glukosesensorn kan fungera felaktigt av olika skäl och
+                kommunikationsproblem kan uppstå. Ta aldrig ett doseringsbeslut enbart på grundval
+                av en vävnadsglukossensoravläsning. Om sensoravläsningen skiljer sig från det
+                förväntade värdet eller om det inte stämmer med dina sinnen, kontrollera din
+                blodsockernivån med en blodsockermätare.                
+              </strong>
+            </p>
+          </div>
+        </section>
+        <section id="apps">
+          <div className="container">
+            <h2>Testatut sovellukset</h2>
             <p>
               Palvelu on testattu toimivaksi seuraavilla sovelluksilla:
               <ul>
