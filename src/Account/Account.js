@@ -19,27 +19,32 @@ class Account extends Component {
   }
 
   deleteAccount = (e) => {
-    this.setState({
-      isDeleting: true,
-      error: undefined,
-    });
-    e.preventDefault();
-    fetch(`${server}/api/deleteuser`, {
-      ...fetchConfig,
-      method: 'DELETE',
-    })
-      .then(() => {
+    window.setTimeout(() => {
+      const confirmed = window.confirm('Tahdotko varmasti poistaa kaikki tietosi ja lopettaa palvelun käytön?');
+      if (confirmed) {
         this.setState({
-          isDeleting: false,
+          isDeleting: true,
           error: undefined,
         });
-      })
-      .catch(error => {
-        this.setState({
-          isDeleting: false,
-          error,
+        e.preventDefault();
+        fetch(`${server}/api/deleteuser`, {
+          ...fetchConfig,
+          method: 'DELETE',
+        })
+        .then(() => {
+          this.setState({
+            isDeleting: false,
+            error: undefined,
+          });
+        })
+        .catch(error => {
+          this.setState({
+            isDeleting: false,
+            error,
+          });
         });
-      });
+      }
+    }, 0);
   }
 
   render() {

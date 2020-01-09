@@ -1,9 +1,11 @@
 @import '../consts';
 
-#instructions section, #instructions .container {
-  padding: 0;
+#instructions section#kanta,
+#instructions section#kanta .container {
+  padding-bottom: 0;
 }
 
-#instructions section:last-of-type {
-  padding-bottom: $actions-height;
+#instructions section#future,
+#instructions section#future .container {
+  padding-top: 0;
 }
