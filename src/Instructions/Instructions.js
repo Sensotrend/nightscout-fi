@@ -93,12 +93,13 @@ class Instructions extends Component {
               <ul>
                 <li>
                   <a href="https://jamorham.github.io/#xdrip-plus"
-                  target="_new">xDrip</a>, versiot 2019.05.18 ja 2019.12.22: tiedon tallentaminen
-                  ja näyttäminen Nightscout Follower -moodissa
+                  target="_blank" rel="noopener noreferrer">xDrip</a>, versiot 2019.05.18 ja
+                  2019.12.22: tiedon tallentaminen ja näyttäminen Nightscout Follower -moodissa
                 </li>
                 <li>
                   <a href="http://stephenblackwasalreadytaken.github.io/NightWatch/"
-                  target="_new">Nightwatch</a> v2.0.4_2: tiedon näyttäminen</li>
+                  target="_blank" rel="noopener noreferrer">Nightwatch</a> v2.0.4_2: tiedon
+                  näyttäminen</li>
               </ul>
               Nightscout-sovellusten ekosysteemi on varsin kirjava ja palvelu saattaa toimia tai
               olla toimimatta lukuisten muidenkin sovellusten ja versioiden kanssa. Pyrimme
@@ -144,10 +145,10 @@ class Instructions extends Component {
                 <li id="signin">
                   <figure>
                     <figcaption>
-                      Aloita < a href={`${server}/fiphr/launch`} target="_blank">kirjautumalla
-                      Omatietovarantoon</a>.
+                      Aloita <a href={`${server}/fiphr/launch`} target="_blank"
+                      rel="noopener noreferrer">kirjautumalla Omatietovarantoon</a>.
                     </figcaption>
-                    <img src={auth2Image} />
+                    <img alt="Ruutukaappaus vahvasta tunnistautumisesta" src={auth2Image} />
                   </figure>
                 </li>
                 <li>
@@ -156,7 +157,7 @@ class Instructions extends Component {
                       Salli Nightscout.fi-sovelluksen lukea ja kirjoittaa tietoja puolestasi
                       Omatietovarantoon.
                     </figcaption>
-                    <img src={consentImage} />
+                    <img alt="Ruutukaappaus Omatietovarannon luvituksesta" src={consentImage} />
                   </figure>
                 </li>
                 <li>
@@ -166,7 +167,7 @@ class Instructions extends Component {
                       esimerkiksi vakavan virhetilanteen tai tietovuodon yhteydessä. Halutessasi
                       voit saada sähköpostiosoitteeseesi myös tietoa palvelunn kehittymisestä.
                     </figcaption>
-                    <img src={emailRegImage} />
+                    <img alt="Ruutukaappaus sähköpostiosoitteen kysymisestä" src={emailRegImage} />
                   </figure>
                 </li>
                 <li>
@@ -175,7 +176,7 @@ class Instructions extends Component {
                       Saat palvelulta omat <code>REST API URL</code> ja <code>API_SECRET</code> -
                       asetuksesi, jotka voit antaa käyttämillesi Nightscout-sovelluksille.
                     </figcaption>
-                    <img src={credentialsImage} />
+                    <img  alt="Ruutukaappaus palvelun näkymästä" src={credentialsImage} />
                   </figure>
                 </li>
               </ol>
@@ -198,7 +199,7 @@ class Instructions extends Component {
                       Päädyttyäsi takaisin Nightscout Connect -näkymään,
                       valitse <strong>Asetukset</strong>.
                     </figcaption>
-                    <img src={settingsImage} />
+                    <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
                   </figure>
                 </li>
                 <li>
@@ -207,7 +208,7 @@ class Instructions extends Component {
                       Asetukset-näkymässä pääset vaihtamaan rekisteröimääsi sähköpostiosoitetta ja
                       asetuksiasi postin käyttämiseksi.
                     </figcaption>
-                    <img src={preferencesImage} />
+                    <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={preferencesImage} />
                   </figure>
                 </li>
               </ol>
@@ -232,7 +233,7 @@ class Instructions extends Component {
                       Päädyttyäsi takaisin Nightscout Connect -näkymään,
                       valitse <strong>Asetukset</strong>.
                     </figcaption>
-                    <img src={settingsImage} />
+                    <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
                   </figure>
                 </li>
                 <li>
@@ -241,7 +242,7 @@ class Instructions extends Component {
                       Asetukset-näkymässä valitse <strong>Poista tili</strong> ja vahvista
                       valintasi.
                     </figcaption>
-                    <img src={removeImage} />
+                    <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={removeImage} />
                   </figure>
                 </li>
               </ol>
