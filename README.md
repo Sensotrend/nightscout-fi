@@ -2,9 +2,10 @@
 
 This repository contains a server that implements several Nightscout Connect functionalities for diabetes related data translation and transfer.
 
-1. Nightscout.fi, a service that allows users to create an account to expose a Nightscout REST API to the Kanta PHR's Omatietovaranto
-2. A simplified version of the Tidepool server, which allows users to upload data from their devices to Omatietovaranto using the Tidepool Uploader
-3. Nightscout Consent Service, a SMART on FHIR application that implements a consent flow for asking the permission to view a Nightscout instance
+1. Nightscout.fi, a service that allows users to create an account to expose a Nightscout REST API to the [Kanta PHR  (Omatietovaranto)](https://kanta.fi/phr)
+2. A simplified version of the Tidepool server, which allows users to upload data from their devices to Omatietovaranto using the [Tidepool Uploader](https://github.com/tidepool-org/uploader) or the [Sensotrend uploader](https://github.com/Sensotrend/sensotrend-uploader) derived from it
+3. Nightscout Consent Service, a skeleton implementation for a SMART on FHIR application that allows the Nightscout view to be vieweed inside an EHR, using a single-sign-on mechanism. The service also implements a consent flow where the Nightscout user can give a consent for the healthcare professional or a clinic to view the data from the Nightscout installation.
+
 ![Overview](doc_images/overview.png "Overview")
 
 For data transformations, this project uses an independently published repository [sensotrend-converter](https://github.com/Sensotrend/sensotrend-converter).
@@ -27,7 +28,7 @@ The repository uses nyc and Mocha to run unit tests found in the /tests. The tes
 
 The codebase uses SendGrid to send email for email verification / consent requests. The SendGrid API key for this purpose is configured in the `SENDGRID_API_KEY` env variable. Email template IDs are currently hardcoded -> to be moved to variables if the account used to send email changes.
 
-If you don't want to use the email registration process, you can search for `site_secret` property in the JSON in the log message produced by the server during the first step of the authentication.
+You don't need to go through the email registration process. Instead, you can announce a fake email address, like `tester@example.com`, and then look for the `buttonURL` property in the JSON in the log message produced by the server during the first step of the authentication. Copying that URL (something like `http://localhost:1300/emailverification/verifyemail/1t439M2igU-LxddtUZ`) to the browser and accessing the page "validates" the email address and activates the account.
 
 # Authenticating with Kanta PHR
 
