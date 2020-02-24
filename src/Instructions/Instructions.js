@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Description from './Description';
 import Header from '../Header/Header';
 import { server } from '../Api/Api';
+import { loginEnabled } from '../Login/Login';
 import auth2Image from '../tunnistautuminen-2.png';
 import consentImage from '../luvitus.png';
 import emailRegImage from '../rekisteröityminen.png';
@@ -145,8 +146,26 @@ class Instructions extends Component {
                 <li id="signin">
                   <figure>
                     <figcaption>
-                      Aloita <a href={`${server}/fiphr/launch`} target="_blank"
-                      rel="noopener noreferrer">kirjautumalla Omatietovarantoon</a>.
+                      {loginEnabled
+                      ? (
+                        <Fragment>
+                          Aloita <a href={`${server}/fiphr/launch`} target="_blank"
+                          rel="noopener noreferrer">kirjautumalla Omatietovarantoon</a>.
+
+                        </Fragment>
+                      )
+                      : (
+                        <Fragment>
+                          <s>Aloita kirjautumalla Omatietovarantoon.</s>
+                          <p>
+                            <em>
+                              Palvelu on vielä kehityskäytössä ja julkinen sisäänkirjautuminen on
+                              poistettu käytöstä. Voit kuitenkin tutustua käyttöönoton vaiheisin
+                              alla.
+                            </em>
+                          </p>
+                        </Fragment>
+                      )}
                     </figcaption>
                     <img alt="Ruutukaappaus vahvasta tunnistautumisesta" src={auth2Image} />
                   </figure>
