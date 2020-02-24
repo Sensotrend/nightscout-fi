@@ -1,6 +1,6 @@
 {
   "name": "nightscout-fhir-connect",
-  "version": "0.1.2",
+  "version": "1.2.1-alpha",
   "description": "Nightscout REST API provider for FHIR PHRs",
   "repository": "https://github.com/sensotrend/nightscout-fi",
   "dependencies": {
