@@ -21,7 +21,7 @@
     "esm": "^3.2.23",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "fhir-kit-client": "git://github.com/sulkaharo/fhir-kit-client.git#backward-compatible",
+    "fhir-kit-client": "git://github.com/mrinnetmaki/fhir-kit-client.git#error-handling",
     "forever": "^2.0.0",
     "formik": "^1.5.8",
     "fs-extra": "^7.0.1",
