@@ -17,7 +17,7 @@ const Settings = ({ config }) => {
       console.log('QR code creation', { err, url });
       setQrImage(url);
     });
-  }, []);
+  }, [dataString]);
 
   return (
     <main id="settings">
