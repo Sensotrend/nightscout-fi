@@ -11,6 +11,8 @@ import credentialsImage from '../tunnukset.png';
 import settingsImage from '../asetukset.png';
 import preferencesImage from '../muokkaus.png';
 import removeImage from '../lopetus.png';
+import ceImage from '../ce.svg';
+import manufacturerImage from '../manufacturer.svg';
 import './instructions.scss';
 
 class Instructions extends Component {
@@ -19,6 +21,11 @@ class Instructions extends Component {
     return (
       <main id='instructions'>
         <Header />
+        <section id="version">
+          <div className="container">
+            <p><small>Versio 1.0, päivitetty 17.3.2020</small></p>
+          </div>
+        </section>
         <Description />
         <section id="future">
           <div className="container">
@@ -289,6 +296,33 @@ class Instructions extends Component {
             <p>Jäikö jokin asia vielä askarruttamaan? Ole rohkeasti yhteydessä osoitteeseen <a
               href="mailto:info@sensotrend.com">info@sensotrend.com</a>, niin selvitetään asia!
             </p>
+          </div>
+        </section>
+        <section id="productinfo">
+          <div className="container">
+            <h2>Tuotetiedot</h2>
+            <div>
+              <img src={ceImage} />
+              <p>
+                Nightscout Connect on luokan I lääkinnällinen laite. Ks. <a
+                href={`${
+                  process.env.PUBLIC_URL
+                }/EU_Declaration_of_Conformity_-_Nightscout_Connect.pdf`}>
+                  vaatimustenmukaisuusvakuutus
+                </a>.
+              </p>
+            </div>
+            <div>
+              <img src={manufacturerImage} />
+              <div>
+                <p>Valmistaja:</p>
+                <address>
+                  Sensotrend Oy<br />
+                  Koulukatu 16 B 41<br />
+                  33200 Tampere<br />
+                </address>
+              </div>
+            </div>
           </div>
         </section>
       </main>
