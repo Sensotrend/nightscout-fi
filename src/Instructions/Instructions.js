@@ -78,7 +78,7 @@ class Instructions extends Component {
                 tjänsten vanligtvis inte är officiellt marknadsförda vårdapparater, utan
                 applikationer skapade av en open source -utvecklingssamhället, som varje användare
                 implementerar för sig själv på egen risk och som inte omfattas av lagarna och
-                reglerna för officiellt marknadsförda vårdapparater.             
+                reglerna för officiellt marknadsförda vårdapparater.
               </strong>
             </p>
             <p>
@@ -88,7 +88,7 @@ class Instructions extends Component {
                 kommunikationsproblem kan uppstå. Ta aldrig ett doseringsbeslut enbart på grundval
                 av en vävnadsglukossensoravläsning. Om sensoravläsningen skiljer sig från det
                 förväntade värdet eller om det inte stämmer med dina sinnen, kontrollera din
-                blodsockernivån med en blodsockermätare.                
+                blodsockernivån med en blodsockermätare.
               </strong>
             </p>
           </div>
@@ -96,24 +96,24 @@ class Instructions extends Component {
         <section id="apps">
           <div className="container">
             <h2>Testatut sovellukset</h2>
-            <p>
-              Palvelu on testattu toimivaksi seuraavilla sovelluksilla:
-              <ul>
-                <li>
-                  <a href="https://jamorham.github.io/#xdrip-plus"
+            <p>Palvelu on testattu toimivaksi seuraavilla sovelluksilla:</p>
+            <ul>
+              <li>
+                <a href="https://jamorham.github.io/#xdrip-plus"
                   target="_blank" rel="noopener noreferrer">xDrip</a>, versiot 2019.05.18 ja
                   2019.12.22: tiedon tallentaminen ja näyttäminen Nightscout Follower -moodissa
                 </li>
-                <li>
-                  <a href="http://stephenblackwasalreadytaken.github.io/NightWatch/"
+              <li>
+                <a href="http://stephenblackwasalreadytaken.github.io/NightWatch/"
                   target="_blank" rel="noopener noreferrer">Nightwatch</a> v2.0.4_2: tiedon
                   näyttäminen</li>
-              </ul>
+            </ul>
+            <p>
               Nightscout-sovellusten ekosysteemi on varsin kirjava ja palvelu saattaa toimia tai
               olla toimimatta lukuisten muidenkin sovellusten ja versioiden kanssa. Pyrimme
               ylläpitämään sovelluslistaa tällä sivulla. Jos olet itse todentanut jonkin
               sovelluksen version toimivuuden, olethan yhteydessä osoitteeseen <a
-              href="mailto:info@sensotrend.com">info@sensotrend.com</a>, niin lisäämme tiedon
+                href="mailto:info@sensotrend.com">info@sensotrend.com</a>, niin lisäämme tiedon
               tänne. Kiitokset jo etukäteen!
             </p>
           </div>
@@ -133,9 +133,9 @@ class Instructions extends Component {
             <h2>Käyttöohjeet</h2>
             <p>
               Tietoa Nightscout sovelluksista löytyy osoitteesta <a
-              href="http://www.nightscout.info/">nightscout.info</a> sekä esimerkiksi
+                href="http://www.nightscout.info/">nightscout.info</a> sekä esimerkiksi
               suomenkielisestä <a
-              href="https://www.facebook.com/groups/nightscoutsuomi/">Facebook-ryhmästä</a>.
+                href="https://www.facebook.com/groups/nightscoutsuomi/">Facebook-ryhmästä</a>.
             </p>
             <p>
               Seuratessasi näitä ohjeita huomaathan, että Nightscout.fi-palvelua käyttäessäsi sinun
@@ -149,15 +149,16 @@ class Instructions extends Component {
             <h3 id="onboarding">Palvelun käyttöönotto</h3>
             <p>
               Palvelun käyttöönottoon liittyy 5 vaihetta:
-              <ol>
-                <li id="signin">
-                  <figure>
-                    <figcaption>
-                      {loginEnabled
+            </p>
+            <ol>
+              <li id="signin">
+                <figure>
+                  <figcaption>
+                    {loginEnabled
                       ? (
                         <Fragment>
                           Aloita <a href={`${server}/fiphr/launch`} target="_blank"
-                          rel="noopener noreferrer">kirjautumalla Omatietovarantoon</a>.
+                            rel="noopener noreferrer">kirjautumalla Omatietovarantoon</a>.
 
                         </Fragment>
                       )
@@ -173,40 +174,39 @@ class Instructions extends Component {
                           </p>
                         </Fragment>
                       )}
+                  </figcaption>
+                  <img alt="Ruutukaappaus vahvasta tunnistautumisesta" src={auth2Image} />
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <figcaption>
+                    Salli Nightscout.fi-sovelluksen lukea ja kirjoittaa tietoja puolestasi
+                    Omatietovarantoon.
                     </figcaption>
-                    <img alt="Ruutukaappaus vahvasta tunnistautumisesta" src={auth2Image} />
-                  </figure>
-                </li>
-                <li>
-                  <figure>
-                    <figcaption>
-                      Salli Nightscout.fi-sovelluksen lukea ja kirjoittaa tietoja puolestasi
-                      Omatietovarantoon.
+                  <img alt="Ruutukaappaus Omatietovarannon luvituksesta" src={consentImage} />
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <figcaption>
+                    Kerro sähköpostiosoitteesi, jotta voimme tarvittaessa olla yhteydessä sinuun,
+                    esimerkiksi vakavan virhetilanteen tai tietovuodon yhteydessä. Halutessasi
+                    voit saada sähköpostiosoitteeseesi myös tietoa palvelunn kehittymisestä.
                     </figcaption>
-                    <img alt="Ruutukaappaus Omatietovarannon luvituksesta" src={consentImage} />
-                  </figure>
-                </li>
-                <li>
-                  <figure>
-                    <figcaption>
-                      Kerro sähköpostiosoitteesi, jotta voimme tarvittaessa olla yhteydessä sinuun,
-                      esimerkiksi vakavan virhetilanteen tai tietovuodon yhteydessä. Halutessasi
-                      voit saada sähköpostiosoitteeseesi myös tietoa palvelunn kehittymisestä.
-                    </figcaption>
-                    <img alt="Ruutukaappaus sähköpostiosoitteen kysymisestä" src={emailRegImage} />
-                  </figure>
-                </li>
-                <li>
-                  <figure>
-                    <figcaption>
-                      Saat palvelulta omat <code>REST API URL</code> ja <code>API_SECRET</code> -
+                  <img alt="Ruutukaappaus sähköpostiosoitteen kysymisestä" src={emailRegImage} />
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <figcaption>
+                    Saat palvelulta omat <code>REST API URL</code> ja <code>API_SECRET</code> -
                       asetuksesi, jotka voit antaa käyttämillesi Nightscout-sovelluksille.
                     </figcaption>
-                    <img  alt="Ruutukaappaus palvelun näkymästä" src={credentialsImage} />
-                  </figure>
-                </li>
-              </ol>
-            </p>
+                  <img alt="Ruutukaappaus palvelun näkymästä" src={credentialsImage} />
+                </figure>
+              </li>
+            </ol>
             <p>
               Syötettyäsi asetukset Nightscout-sovelluksille data alkaa virrata sovellusten ja
               Omatietovarannon välillä. Voit nyt kirjautua ulos palvelusta <strong>Poistu</strong>
@@ -217,28 +217,28 @@ class Instructions extends Component {
             <p>
               Voit koska tahansa muokata rekisteröimääsi sähköpostiosoitetta ja siihen liittyviä
               asetuksiasi.
-              <ol>
-                <li>Aloita kirjautumalla Omatietovarantoon kuten <a href="#signin">yllä</a>.</li>
-                <li>
-                  <figure>
-                    <figcaption>
-                      Päädyttyäsi takaisin Nightscout Connect -näkymään,
+            </p>
+            <ol>
+              <li>Aloita kirjautumalla Omatietovarantoon kuten <a href="#signin">yllä</a>.</li>
+              <li>
+                <figure>
+                  <figcaption>
+                    Päädyttyäsi takaisin Nightscout Connect -näkymään,
                       valitse <strong>Asetukset</strong>.
                     </figcaption>
-                    <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
-                  </figure>
-                </li>
-                <li>
-                  <figure>
-                    <figcaption>
-                      Asetukset-näkymässä pääset vaihtamaan rekisteröimääsi sähköpostiosoitetta ja
-                      asetuksiasi postin käyttämiseksi.
+                  <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <figcaption>
+                    Asetukset-näkymässä pääset vaihtamaan rekisteröimääsi sähköpostiosoitetta ja
+                    asetuksiasi postin käyttämiseksi.
                     </figcaption>
-                    <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={preferencesImage} />
-                  </figure>
-                </li>
-              </ol>
-            </p>
+                  <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={preferencesImage} />
+                </figure>
+              </li>
+            </ol>
             <p>
               Valitse lopuksi näkymästä <strong>Tallenna</strong>.
             </p>
@@ -251,28 +251,28 @@ class Instructions extends Component {
             <h3 id="remove">Palvelun käytön lopettaminen</h3>
             <p>
               Voit koska tahansa lopettaa palvelun käytön ja poistaa kaikki tietosi palvelusta.
-              <ol>
-                <li>Aloita kirjautumalla Omatietovarantoon kuten <a href="#signin">yllä</a>.</li>
-                <li>
-                  <figure>
-                    <figcaption>
-                      Päädyttyäsi takaisin Nightscout Connect -näkymään,
+            </p>
+            <ol>
+              <li>Aloita kirjautumalla Omatietovarantoon kuten <a href="#signin">yllä</a>.</li>
+              <li>
+                <figure>
+                  <figcaption>
+                    Päädyttyäsi takaisin Nightscout Connect -näkymään,
                       valitse <strong>Asetukset</strong>.
                     </figcaption>
-                    <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
-                  </figure>
-                </li>
-                <li>
-                  <figure>
-                    <figcaption>
-                      Asetukset-näkymässä valitse <strong>Poista tili</strong> ja vahvista
+                  <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <figcaption>
+                    Asetukset-näkymässä valitse <strong>Poista tili</strong> ja vahvista
                       valintasi.
                     </figcaption>
-                    <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={removeImage} />
-                  </figure>
-                </li>
-              </ol>
-            </p>
+                  <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={removeImage} />
+                </figure>
+              </li>
+            </ol>
             <p>
               Käyttäjätilisi ja kaikki tietosi on nyt poistettu palvelusta. Huomaathan, että
               palvelun kautta Omatietovarantoon tallennetut tiedot pysyvät edelleen
@@ -286,7 +286,7 @@ class Instructions extends Component {
             <h2>Osallistu palvelun kehitykseen</h2>
             <p>Tätä palvelua kehitetään avoimena lähdekoodina ja olet erittäin tervetullut
               osallistumaan kehitykseen GitHubissa. Ks. <a
-              href="https://github.com/Sensotrend/nightscout-fi">nightscout-fi</a>.
+                href="https://github.com/Sensotrend/nightscout-fi">nightscout-fi</a>.
             </p>
           </div>
         </section>
@@ -302,18 +302,18 @@ class Instructions extends Component {
           <div className="container">
             <h2>Tuotetiedot</h2>
             <div>
-              <img src={ceImage} />
+              <img src={ceImage} alt="CE"/>
               <p>
                 Nightscout Connect on luokan I lääkinnällinen laite. Ks. <a
-                href={`${
-                  process.env.PUBLIC_URL
-                }/EU_Declaration_of_Conformity_-_Nightscout_Connect.pdf`}>
+                  href={`${
+                    process.env.PUBLIC_URL
+                    }/EU_Declaration_of_Conformity_-_Nightscout_Connect.pdf`}>
                   vaatimustenmukaisuusvakuutus
                 </a>.
               </p>
             </div>
             <div>
-              <img src={manufacturerImage} />
+              <img src={manufacturerImage} alt="" />
               <div>
                 <p>Valmistaja:</p>
                 <address>
