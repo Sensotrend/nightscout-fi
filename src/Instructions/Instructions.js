@@ -23,7 +23,7 @@ class Instructions extends Component {
         <Header />
         <section id="version">
           <div className="container">
-            <p><small>Versio 1.0, päivitetty 17.3.2020</small></p>
+            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 17.3.2020</small></p>
           </div>
         </section>
         <Description />
