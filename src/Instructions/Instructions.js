@@ -23,7 +23,7 @@ class Instructions extends Component {
         <Header />
         <section id="version">
           <div className="container">
-            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 17.3.2020</small></p>
+            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 19.3.2020</small></p>
           </div>
         </section>
         <Description />
@@ -302,7 +302,7 @@ class Instructions extends Component {
           <div className="container">
             <h2>Tuotetiedot</h2>
             <div>
-              <img src={ceImage} alt="CE"/>
+              <img src={ceImage} alt="CE" />
               <p>
                 Nightscout Connect on luokan I lääkinnällinen laite. Ks. <a
                   href={`${
@@ -313,15 +313,12 @@ class Instructions extends Component {
               </p>
             </div>
             <div>
-              <img src={manufacturerImage} alt="" />
-              <div>
-                <p>Valmistaja:</p>
-                <address>
-                  Sensotrend Oy<br />
-                  Koulukatu 16 B 41<br />
-                  33200 Tampere<br />
-                </address>
-              </div>
+              <img src={manufacturerImage} alt="Valmistaja" />
+              <address>
+                Sensotrend Oy<br />
+                Koulukatu 16 B 41<br />
+                33200 Tampere<br />
+              </address>
             </div>
           </div>
         </section>
