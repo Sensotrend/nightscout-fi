@@ -168,7 +168,6 @@ class Routes extends Component {
 
   render() {
     const { config, initializing } = this.state;
-    console.log(this.state);
     if (initializing) {
       return <div />;
     }
