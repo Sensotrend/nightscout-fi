@@ -1,6 +1,6 @@
 {
   "name": "nightscout-fhir-connect",
-  "version": "1.2.3-alpha",
+  "version": "1.2.5-alpha",
   "description": "Nightscout REST API provider for FHIR PHRs",
   "repository": "https://github.com/sensotrend/nightscout-fi",
   "dependencies": {
@@ -42,7 +42,7 @@
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
-    "sensotrend-converter": "git+https://github.com/Sensotrend/sensotrend-converter.git",
+    "sensotrend-converter": "git://github.com/Sensotrend/sensotrend-converter.git#alpha",
     "simple-oauth2": "^2.5.2",
     "stjs": "0.0.5",
     "ts-loader": "^6.2.1",
