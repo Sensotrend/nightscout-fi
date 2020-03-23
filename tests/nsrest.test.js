@@ -4,7 +4,6 @@ import moment from 'moment';
 
 import nsfi from '../lib/server.js';
 import _FHIRClient from '../lib/FHIRClient';
-import { exist } from '../node_modules/should/should.js';
 
 const env = nsfi.env;
 const Auth = env.userProvider;
@@ -162,7 +161,50 @@ describe('NS_REST_API & FHIRClient test', function () {
             response.body[0].sgv.should.equal(180);
             response.body[0].device.should.equal("xDrip-DexcomG5");
          });
+
    });
+
+   it('should provide date filters and count limit on /entries API', async function () {
+
+      const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
+
+      let ns_sample = [
+         {"device":"xDrip-LimiTTer","date":1584971679705,"dateString":"2020-03-23T15:54:39.705+0200","sgv":156,"delta":11.074,"direction":"SingleUp","type":"sgv","filtered":155176.45895,"unfiltered":155176.45895,"rssi":100,"noise":1,"sysTime":"2020-03-23T15:54:39.705+0200"},
+         {"device":"xDrip-LimiTTer","date":1584971979813,"dateString":"2020-03-23T15:59:39.813+0200","sgv":168,"delta":12.092,"direction":"SingleUp","type":"sgv","filtered":166235.28165,"unfiltered":166235.28165,"rssi":100,"noise":1,"sysTime":"2020-03-23T15:59:39.813+0200"},
+         {"device":"xDrip-LimiTTer","date":1584972280018,"dateString":"2020-03-23T16:04:40.018+0200","sgv":176,"delta":7.844,"direction":"FortyFiveUp","type":"sgv","filtered":173411.7517,"unfiltered":173411.7517,"rssi":100,"noise":1,"sysTime":"2020-03-23T16:04:40.018+0200"},
+         {"device":"xDrip-LimiTTer","date":1584972579734,"dateString":"2020-03-23T16:09:39.734+0200","sgv":182,"delta":5.539,"direction":"FortyFiveUp","type":"sgv","filtered":178470.57484999998,"unfiltered":178470.57484999998,"rssi":100,"noise":1,"sysTime":"2020-03-23T16:09:39.734+0200"},
+         {"device":"xDrip-LimiTTer","date":1584972879642,"dateString":"2020-03-23T16:14:39.642+0200","sgv":181,"delta":-0.901,"direction":"Flat","type":"sgv","filtered":177647.04549999998,"unfiltered":177647.04549999998,"rssi":100,"noise":1,"sysTime":"2020-03-23T16:14:39.642+0200"},
+         {"device":"xDrip-LimiTTer","date":1584973179456,"dateString":"2020-03-23T16:19:39.456+0200","sgv":183,"delta":1.545,"direction":"Flat","type":"sgv","filtered":179058.8101,"unfiltered":179058.8101,"rssi":100,"noise":1,"sysTime":"2020-03-23T16:19:39.456+0200"},
+         {"device":"xDrip-LimiTTer","date":1584973479565,"dateString":"2020-03-23T16:24:39.565+0200","sgv":178,"delta":-4.759,"direction":"Flat","type":"sgv","filtered":174705.86925,"unfiltered":174705.86925,"rssi":100,"noise":1,"sysTime":"2020-03-23T16:24:39.565+0200"},
+         {"device":"xDrip-LimiTTer","date":1584973779574,"dateString":"2020-03-23T16:29:39.574+0200","sgv":168,"delta":-9.393,"direction":"FortyFiveDown","type":"sgv","filtered":166117.6346,"unfiltered":166117.6346,"rssi":100,"noise":1,"sysTime":"2020-03-23T16:29:39.574+0200"},
+         {"device":"xDrip-LimiTTer","date":1584974079485,"dateString":"2020-03-23T16:34:39.485+0200","sgv":158,"delta":-10.684,"direction":"SingleDown","type":"sgv","filtered":156352.92945,"unfiltered":156352.92945,"rssi":100,"noise":1,"sysTime":"2020-03-23T16:34:39.485+0200"},
+         {"device":"xDrip-LimiTTer","date":1584974516551,"dateString":"2020-03-23T16:41:56.551+0200","sgv":135,"delta":-11.067,"direction":"Flat","type":"sgv","filtered":135647.04864999998,"unfiltered":135647.04864999998,"rssi":100,"noise":0,"sysTime":"2020-03-23T16:41:56.551+0200"},
+         {"device":"xDrip-LimiTTer","date":1584974816551,"dateString":"2020-03-23T16:46:56.551+0200","sgv":120,"delta":-11.067,"direction":"Flat","type":"sgv","filtered":121882.34379999999,"unfiltered":121882.34379999999,"rssi":100,"noise":0,"sysTime":"2020-03-23T16:46:56.551+0200"},
+         {"device":"xDrip-LimiTTer","date":1584975116551,"dateString":"2020-03-23T16:51:56.551+0200","sgv":105,"delta":-11.067,"direction":"Flat","type":"sgv","filtered":108235.286,"unfiltered":108235.286,"rssi":100,"noise":0,"sysTime":"2020-03-23T16:51:56.551+0200"},
+         {"device":"xDrip-LimiTTer","date":1584975956551,"dateString":"2020-03-23T17:05:56.551+0200","sgv":67,"delta":-11.067,"direction":"SingleDown","type":"sgv","filtered":73176.4651,"unfiltered":73176.4651,"rssi":100,"noise":1,"sysTime":"2020-03-23T17:05:56.551+0200"},
+         {"device":"xDrip-LimiTTer","date":1584976256551,"dateString":"2020-03-23T17:10:56.551+0200","sgv":57,"delta":-11.067,"direction":"SingleDown","type":"sgv","filtered":63882.34815,"unfiltered":63882.34815,"rssi":100,"noise":1,"sysTime":"2020-03-23T17:10:56.551+0200"},
+         {"device":"xDrip-LimiTTer","date":1584976556551,"dateString":"2020-03-23T17:15:56.551+0200","sgv":45,"delta":-11.067,"direction":"SingleDown","type":"sgv","filtered":53764.70185,"unfiltered":53764.70185,"rssi":100,"noise":1,"sysTime":"2020-03-23T17:15:56.551+0200"}
+      ];
+
+      await request(nsfi)
+      .post('/api/v1/entries')
+      .send(ns_sample)
+      .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+      .expect('Content-Type', /json/)
+      .expect(200);
+      
+      await request(nsfi)
+         .get('/api/v1/entries/sgv.json?count=6') // This is what the Nightscout OSX menubar app queries for
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200)
+         .then(response => {
+            console.log('response.body', response.body);
+            response.body.length.should.equal(6);
+            response.body[0].date.should.be.a.Number().above(response.body[1].date).and.aboveOrEqual(1584976556551);
+         });
+   });
+
 
 
    it('should provide the /treatments API', async function () {
