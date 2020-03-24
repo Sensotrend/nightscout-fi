@@ -1,6 +1,6 @@
 {
   "name": "nightscout-fhir-connect",
-  "version": "1.2.16-poolprax",
+  "version": "1.2.17-poolprax",
   "description": "Nightscout REST API provider for FHIR PHRs",
   "repository": "https://github.com/sensotrend/nightscout-fi",
   "dependencies": {
