@@ -85,27 +85,26 @@ describe('Tidepool API testing', function () {
          }
      ];
 
-      let results = await request(nsfi)
+      const results = await request(nsfi)
          .post('/tpapi/auth/login')
          .auth(u.email, u.site_secret)
          .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200); // .expect('Content-Type', /json/)
 
       const HEADER = "x-tidepool-session-token";
 
       const authHeader = results.headers[HEADER]
       const userID = results.body.userid;
 
-      results = await request(nsfi)
+      const { body } = await request(nsfi)
          .post('/tpupload/data/' + userID)
          .set({ 'x-tidepool-session-token': authHeader })
          .send(tide_sample)
          .expect('Content-Type', /json/)
          .expect(200);
 
-      console.log('GOT VALID DATA', results.body);
+      body.success.should.equal(1);
 
-      results.body.success.should.equal(1);
    });
 
    it('should authenticate over Tidepool API and upload pump data as a dataset', async function () {
@@ -204,8 +203,6 @@ describe('Tidepool API testing', function () {
          .send(data)
          .expect('Content-Type', /json/)
          .expect(200);
-
-      console.log('GOT VALID DATA', results.body);
 
       results = await request(nsfi)
          .put('/tpdata/v1/datasets/' + uploadId)
