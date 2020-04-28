@@ -166,7 +166,34 @@ describe('NS_REST_API & FHIRClient test', function () {
 
    it('should provide date filters and count limit on /entries API', async function () {
 
-      const u = await Auth.createUser(patient.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
+      // create a new patient
+      let patient2;
+      const UUID_2 = uuidv4();
+
+      const testPatient2 = {
+         "resourceType": "Patient",
+         "text": {
+            "status": "generated",
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>urn:uuid:" + UUID + "</td></tr></tbody></table></div>"
+         },
+         "identifier": [
+            {
+               "system": "urn:ietf:rfc:3986",
+               "value": "urn:uuid:" + UUID_2
+           }
+         ]
+      };
+      
+      try {
+         console.log('CREATING ANOTHER PATIENT');
+         const results = await FHIRClient.createRecords(testPatient2);
+         patient2 = results.records[0];
+      } catch (error) {
+         console.error(error);
+         false.should.equal(true);
+      }
+
+      const u2 = await Auth.createUser(patient2.id, siteid, pw, d2); // sub, access_token, refresh_token,token_expiry_date
 
       let ns_sample = [
          {"device":"xDrip-LimiTTer","date":1584971679705,"dateString":"2020-03-23T15:54:39.705+0200","sgv":156,"delta":11.074,"direction":"SingleUp","type":"sgv","filtered":155176.45895,"unfiltered":155176.45895,"rssi":100,"noise":1,"sysTime":"2020-03-23T15:54:39.705+0200"},
@@ -189,19 +216,20 @@ describe('NS_REST_API & FHIRClient test', function () {
       await request(nsfi)
       .post('/api/v1/entries')
       .send(ns_sample)
-      .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+      .set({ 'api-secret': u2.site_secret, 'Accept': 'application/json' })
       .expect('Content-Type', /json/)
       .expect(200);
       
       await request(nsfi)
-         .get('/api/v1/entries/sgv.json?count=6') // This is what the Nightscout OSX menubar app queries for
-         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         // .get('/api/v1/entries/sgv.json?count=6') // This is what the Nightscout OSX menubar app queries for
+         .get('/api/v1/entries/sgv.json?count=6&find\[date\]\[\$gt\]=1584971679000')
+         .set({ 'api-secret': u2.site_secret, 'Accept': 'application/json' })
          .expect('Content-Type', /json/)
          .expect(200)
          .then(response => {
             console.log('response.body', response.body);
             response.body.length.should.equal(6);
-            response.body[0].date.should.be.a.Number().above(response.body[1].date).and.aboveOrEqual(1584976556551);
+            response.body[0].date.should.be.a.Number().above(response.body[1].date).and.equal(1584976556551);
          });
    });
 
