@@ -9,7 +9,7 @@ class Index extends Component {
     const { config } = this.props;
     return (
       <main id="index">
-        {(config && config.secret && config.api)
+        {(config && config.email)
           ? <Settings config={config} />
           : <Login />
         }
