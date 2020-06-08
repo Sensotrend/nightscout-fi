@@ -86,11 +86,11 @@ class EmailForm extends Component {
     console.log('Form props', config);
     return (
       <Fragment>
-        <p>Tarvitsemme sähköpostiosoitteesi voidaksemme tiedottaa kriittisistä vikatilanteista
-          palvelussa.</p>
+        <p>Sähköpostiosoitteesi toimii käyttäjätunnuksenasi. Tarvitsemme sähköpostiosoitteesi myös
+          voidaksemme tiedottaa kriittisistä vikatilanteista palvelussa.</p>
         <p>Voit halutessasi saada sähköpostiosoitteeseesi myös tietoja palvelun vähemmän
           kriittisistä virhetilanteista.</p>
-        <p>Voit myös ilmaista halusi osallistua palvelun jatkokehitykseen.</p>
+        <p>Voit lisäksi ilmaista halusi osallistua palvelun jatkokehitykseen.</p>
         <p><a href="privacy">Tietosuojaseloste</a> kertoo tarkemmin tietojesi käytöstä.</p>
         <table>
             <tbody>
@@ -103,6 +103,16 @@ class EmailForm extends Component {
                     type="email"
                     name="email"
                     placeholder="sahkopostiosoite@palvelin.com"
+                  />
+                  <ErrorMessage name="email" component="div" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Field
+                    type="password"
+                    name="password"
+                    placeholder="************"
                   />
                   <ErrorMessage name="email" component="div" />
                 </td>

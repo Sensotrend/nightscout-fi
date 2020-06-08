@@ -93,21 +93,6 @@ const ProtectedRoute = ({
   );
 };
 
-const renderMergedProps = (component, ...rest) => {
-  const finalProps = Object.assign({}, ...rest);
-  return (
-    React.createElement(component, finalProps)
-  );
-}
-
-const PropsRoute = ({ component, ...rest }) => {
-  return (
-    <Route {...rest} render={routeProps => {
-      return renderMergedProps(component, routeProps, rest);
-    }}/>
-  );
-}
-
 class Routes extends Component {
   constructor(props) {
     super(props);
@@ -174,23 +159,20 @@ class Routes extends Component {
 
     return (
       <Router>
-       <Switch>
-         <Route path="/nsconsent/" component={NSConsent} />
-         <PropsRoute path="/" component = {NSFi}
-            state={this.state}
-            render={props => <NSFi {...props} config={config} />}/>
-       </Switch>
+        <Route>
+          <SensotrendConnect config={config} state={this.state} />
+        </Route>
       </Router>
-    )
-  
+    );
   }
 }
 
-class NSFi extends Component {
+class SensotrendConnect extends Component {
 
   render() {
 
-  const { config, logout } = this.props.state;
+  const { config, state } = this.props;
+  const { logout } = state;
 
   return (
     <Router basename={base} forceRefresh={!supportsHistory}>
@@ -221,7 +203,7 @@ class NSFi extends Component {
         />
         <Route
           path="/logout"
-          render={(props) => (<Logout callback={() => this.setState({
+          render={() => (<Logout callback={() => this.setState({
             config: undefined,
             logout: false,
           })} />)}

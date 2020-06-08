@@ -23,28 +23,27 @@ class Instructions extends Component {
         <Header />
         <section id="version">
           <div className="container">
-            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 19.3.2020</small></p>
+            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 8.6.2020</small></p>
           </div>
         </section>
         <Description />
-        <section id="future">
-          <div className="container">
-            <p>
-              Tulevaisuudessa palvelun avulla on myös mahdollista jakaa Nightscout-sovellusten
-              keräämä tieto esimerkiksi lääkärin ja hoitajan kanssa.
-            </p>
-          </div>
-        </section>
         <section id="functionality">
           <div className="container">
             <h2>Palvelun toiminta</h2>
             <p>
-              Nightscout.fi tarjoaa itse toteutettua Nightscout-palvelua vastaavan rajapinnan
-              tiedon tallentantamista ja hakemista varten, mutta tallentaa tiedot
-              Omatietovarantoon, jolloin käyttäjä voi ottaa palvelun käyttöönsä helposti. Palvelu
-              ei tarjoa näkymää tietoon, vaan tarvitset tiedon tallentamiseen ja näyttämiseen
-              Nightscout-yhteensopivan sovelluksen, kuten xDrip-mobiilisovelluksen tai esimerkiksi
-              Android Wear Nightwatch sovelluksen älykelloon.
+              Palvelua käyttääksesi sinulla tulee olla käytössäsi tili Kanta-palveluihin kuuluvassa
+              Omatietovarannossa.
+            </p>
+            <p>
+              Voit liittää Sensotrend Connect -palvelun Omatietovarantoon. Tämän jälkeen voit
+              siirtää tietoja Omatietovarantoon <a
+                href="#SensotrendUploader">Sensotrend Uploader -sovelluksella</a>.
+            </p>
+            <p>
+              Jos käytössäsi on Medtronicin 640G tai 670G -insuliinipumppujärjestelmä,
+              voit halutessasi lisäksi käyttää <a
+                href="#SensotrendMobileMedtronicUploader">Sensotrend Mobile Medtronic Uploader
+              -sovellusta</a>.
             </p>
           </div>
         </section>
@@ -52,79 +51,119 @@ class Instructions extends Component {
           <div className="container">
             <h2>Tuoteturvallisuus</h2>
             <p>
-              <strong>
-                Huomaathan, että palvelun yhteydessä käytettävät Nightscout-sovellukset eivät
-                tyypillisesti ole virallisesti markkinoille tuotuja terveydenhuollon laitteita, vaan
-                avoimen lähdekoodin kehittäjäyhteisön luomia sovelluksia, jotka kukin käyttäjä ottaa
-                käyttöönsä itse ja joita eivät koske markkinoille tuotuja terveydenhuollon laitteita
-                koskevat lait ja asetukset ja joiden käyttö on itse kunkin kansalaisen omalla
-                vastuulla.
-              </strong>
+              Teemme kaikkemme, jotta tiedot siirtyisivät laitteista Omatietovarantoon oikeassa
+              muodossa ja testaamme palvelun toiminnan huolellisesti kaikilla niillä laitteilla,
+              joita meillä on käytettävissämme palvelun kehityksessä.
+            </p>
+            <p>
+              Ennen palvelun julkistusta sitä ovat testanneet myös useat vapaaehtoiset alpha- ja
+              beta-testiryhmiemme jäsenet.
             </p>
             <p>
               <strong>
-                Laitteen virallisuudesta riippumatta muistathan toki aina myös oman vastuusi
-                insuliinin annostelussa. Glukoosisensorin toiminta saattaa häiriintyä eri syistä ja
-                tiedonsiirrossa saattaa olla ongelmia. Älä koskaan tee annostelupäätöstä ainoastaan
-                kudosglukoosisensorin lukeman perusteella. Mikäli sensorin antama lukema poikkeaa
-                odotettavissa olevasta arvosta tai mikäli se ei vastaa tuntemuksiasi, varmistathan
-                aina verensokerin tason verensokerimittarilla.
+                Muistathan joka tapauksessa aina myös oman vastuusi insuliinin annostelussa.
+                Esimerkiksi glukoosisensorin toiminta saattaa häiriintyä eri syistä ja
+                tiedonsiirrossa saattaa esiintyä ongelmia. Älä koskaan tee annostelupäätöstä
+                ainoastaan kudosglukoosisensorin lukeman perusteella. Mikäli sensorin antama lukema
+                poikkeaa odotettavissa olevasta arvosta tai mikäli se ei vastaa tuntemuksiasi,
+                varmistathan aina verensokerin tason verensokerimittarilla.
               </strong>
             </p>
             <p>Ja varmuuden vuoksi vielä samma på svenska.</p>
             <p>
               <strong>
-                Vänligen observera att Nightscout-applikationer som används i samband med den här
-                tjänsten vanligtvis inte är officiellt marknadsförda vårdapparater, utan
-                applikationer skapade av en open source -utvecklingssamhället, som varje användare
-                implementerar för sig själv på egen risk och som inte omfattas av lagarna och
-                reglerna för officiellt marknadsförda vårdapparater.
-              </strong>
-            </p>
-            <p>
-              <strong>
-                Oavsett vårdapparatens officiellhet måste du naturligtvis alltid tänka på ditt eget
-                ansvar för insulinleverans. Glukosesensorn kan fungera felaktigt av olika skäl och
-                kommunikationsproblem kan uppstå. Ta aldrig ett doseringsbeslut enbart på grundval
-                av en vävnadsglukossensoravläsning. Om sensoravläsningen skiljer sig från det
-                förväntade värdet eller om det inte stämmer med dina sinnen, kontrollera din
-                blodsockernivån med en blodsockermätare.
+                Du måste alltid tänka på ditt eget ansvar för insulinleverans. Glukosesensorn kan
+                fungera felaktigt av olika skäl och kommunikationsproblem kan uppstå. Ta aldrig ett
+                doseringsbeslut enbart på grundval av en vävnadsglukossensoravläsning. Om
+                sensoravläsningen skiljer sig från det förväntade värdet eller om det inte stämmer
+                med dina sinnen, kontrollera din blodsockernivån med en blodsockermätare.
               </strong>
             </p>
           </div>
         </section>
         <section id="apps">
           <div className="container">
-            <h2>Testatut sovellukset</h2>
-            <p>Palvelu on testattu toimivaksi seuraavilla sovelluksilla:</p>
-            <ul>
-              <li>
-                <a href="https://jamorham.github.io/#xdrip-plus"
-                  target="_blank" rel="noopener noreferrer">xDrip</a>, versiot 2019.05.18 ja
-                  2019.12.22: tiedon tallentaminen ja näyttäminen Nightscout Follower -moodissa
-                </li>
-              <li>
-                <a href="http://stephenblackwasalreadytaken.github.io/NightWatch/"
-                  target="_blank" rel="noopener noreferrer">Nightwatch</a> v2.0.4_2: tiedon
-                  näyttäminen</li>
-            </ul>
-            <p>
-              Nightscout-sovellusten ekosysteemi on varsin kirjava ja palvelu saattaa toimia tai
-              olla toimimatta lukuisten muidenkin sovellusten ja versioiden kanssa. Pyrimme
-              ylläpitämään sovelluslistaa tällä sivulla. Jos olet itse todentanut jonkin
-              sovelluksen version toimivuuden, olethan yhteydessä osoitteeseen <a
-                href="mailto:info@sensotrend.com">info@sensotrend.com</a>, niin lisäämme tiedon
-              tänne. Kiitokset jo etukäteen!
-            </p>
+            <h2>Yhteensopivat sovellukset ja laitteet</h2>
+            <p></p>
+            <article id="SensotrendUploader">
+              <h3>Sensotrend Uploader</h3>
+              <p>
+                Sensotrend Uploader on tietokoneelle asennettava sovellus, joka purkaa tiedot
+                laitteista USB-kaapelin välityksellä.
+              </p>
+              <h4>Sensotrend Uploaderin tukemat laitteet</h4>
+              <h5>Verensokerimittarit</h5>
+              <ul>
+                <li>Abbott Freestyle Freedom Lite</li>
+                <li>Abbott Freestyle Lite</li>
+                <li>Abbott Precision Xtra</li>
+                <li>Accu-Chek Aviva Connect</li>
+                <li>Accu-Chek Guide</li>
+                <li>Accu-Chek Guide Me</li>
+                <li>Ascensia (Bayer) Contour Next</li>
+                <li>Ascensia (Bayer) Contour Next Link</li>
+                <li>Ascensia (Bayer) Contour Next Link 2.4</li>
+                <li>Ascensia (Bayer) Contour Next One</li>
+                <li>Ascensia (Bayer) Contour Next USB</li>
+                <li>Ascensia (Bayer) Contour USB</li>
+                <li>CareSens Dual BLE *</li>
+                <li>CareSens N Premier BLE *</li>
+                <li>OneTouch Ultra 2</li>
+                <li>OneTouch UltraMini</li>
+                <li>OneTouch Verio</li>
+                <li>OneTouch Verio Flex</li>
+                <li>OneTouch Verio IQ</li>
+              </ul>
+              <h5>Jatkuvatoimiset glukoosisensorit</h5>
+              <ul>
+                <li>Abbott Freestyle Libre</li>
+                <li>Abbott Freestyle Libre Pro</li>
+                <li>Dexcom G4</li>
+                <li>Dexcom G5</li>
+                <li>Dexcom G6</li>
+                <li>Medtronic Guardian</li>
+                <li>Medtronic Enlite</li>
+              </ul>
+              <h5>Insuliinipumput</h5>
+              <ul>
+                <li>Animas Ping</li>
+                <li>Animas Vibe</li>
+                <li>Insulet Omnipod</li>
+                <li>Insulet Omnipod DASH</li>
+                <li>Medtronic Minimed 523</li>
+                <li>Medtronic Minimed 530Gs</li>
+                <li>Medtronic Minimed 554</li>
+                <li>Medtronic Minimed 640G</li>
+                <li>Medtronic Minimed 670G</li>
+                <li>Medtronic Minimed 723</li>
+                <li>Medtronic Minimed 754</li>
+                <li>Tandem t:flex</li>
+                <li>Tandem t:slim</li>
+                <li>Tandem t:slim G4</li>
+                <li>Tandem t:slim X2</li>
+              </ul>
+            </article>
+            <article id="SensotrendMobileMedtronicUploader">
+              <h3>Sensotrend Mobile Medtronic Uploader</h3>
+              <p>
+                Sensotrend Mobile Medtronic Uploader on Android-puhelimiin asennettava
+                mobiilisovellus, joka siirtää tiedot Medtronicin Minimed 640G - ja 670G
+                -insuliinipumppujärjestelmistä USB-OTG-tiedonsiirtokaapelin avulla.
+              </p>
+            </article>
           </div>
         </section>
         <section id="data">
           <div className="container">
             <h2>Palvelun tukemat tietomuodot</h2>
             <p>
-              Nightscout.fi välittää tällä hetkellä verensokeritiedot, hiilihydraattiarviot ja
-              insuliiniannokset eri Nightscout-sovellusten ja Omatietovarannon välillä. Palvelu
-              tukee verensokeritietoa niin sensoreista kuin sormenpäämittauksistakin.
+              Sensotrend Connect välittää tällä hetkellä Omatietovarantoon verensokeritiedot,
+              hiilihydraattiarviot ja insuliiniannokset.
+            </p>
+            <p>
+              Osallistumme aktiivisesti Omatietovarannon tukiprojektiin, jossa tietosisältöä
+              kehitetään. Pyrimme jatkossa esimerkiksi tallentamaan lisää tietoa myös laitteista
+              ja niiden asetuksista.
             </p>
           </div>
         </section>
@@ -190,9 +229,9 @@ class Instructions extends Component {
               <li>
                 <figure>
                   <figcaption>
-                    Kerro sähköpostiosoitteesi, jotta voimme tarvittaessa olla yhteydessä sinuun,
-                    esimerkiksi vakavan virhetilanteen tai tietovuodon yhteydessä. Halutessasi
-                    voit saada sähköpostiosoitteeseesi myös tietoa palvelunn kehittymisestä.
+                    Syötä käyttäjätunnukseksesi sähköpostiosoitteesi, jota käytämme myös
+                    tarvittaessa ollaksemme yhteydessä sinuun, esimerkiksi vakavan virhetilanteen
+                    tai tietovuodon yhteydessä. Syötä myös haluamasi salasana.
                     </figcaption>
                   <img alt="Ruutukaappaus sähköpostiosoitteen kysymisestä" src={emailRegImage} />
                 </figure>
@@ -200,17 +239,20 @@ class Instructions extends Component {
               <li>
                 <figure>
                   <figcaption>
-                    Saat palvelulta omat <code>REST API URL</code> ja <code>API_SECRET</code> -
-                      asetuksesi, jotka voit antaa käyttämillesi Nightscout-sovelluksille.
-                    </figcaption>
+                    Vahvistettuasi sähköpostiosoitteesi tunnuksesi on aktivoitu
+                  </figcaption>
                   <img alt="Ruutukaappaus palvelun näkymästä" src={credentialsImage} />
                 </figure>
               </li>
             </ol>
             <p>
-              Syötettyäsi asetukset Nightscout-sovelluksille data alkaa virrata sovellusten ja
-              Omatietovarannon välillä. Voit nyt kirjautua ulos palvelusta <strong>Poistu</strong>
-              -valinnan avulla.
+              Voit käyttää luomaasi käyttäjätunnusta ja salasanaa <a
+              href="#SensotrendUploader">Sensotrend Uploader</a> - ja <a
+              href="#SensotrendMobileMedtronicUploader">Sensotrend Mobile Medtronic Uploader</a> -
+              sovellusten kanssa.
+            </p>
+            <p>
+              Voit nyt kirjautua ulos palvelusta <strong>Poistu</strong>-valinnan avulla.
             </p>
 
             <h3 id="settings">Asetusten muokkaaminen</h3>
@@ -223,7 +265,7 @@ class Instructions extends Component {
               <li>
                 <figure>
                   <figcaption>
-                    Päädyttyäsi takaisin Nightscout Connect -näkymään,
+                    Päädyttyäsi takaisin Sensotrend Connect -näkymään,
                       valitse <strong>Asetukset</strong>.
                     </figcaption>
                   <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
@@ -234,7 +276,7 @@ class Instructions extends Component {
                   <figcaption>
                     Asetukset-näkymässä pääset vaihtamaan rekisteröimääsi sähköpostiosoitetta ja
                     asetuksiasi postin käyttämiseksi.
-                    </figcaption>
+                  </figcaption>
                   <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={preferencesImage} />
                 </figure>
               </li>
@@ -257,9 +299,9 @@ class Instructions extends Component {
               <li>
                 <figure>
                   <figcaption>
-                    Päädyttyäsi takaisin Nightscout Connect -näkymään,
-                      valitse <strong>Asetukset</strong>.
-                    </figcaption>
+                    Päädyttyäsi takaisin Sensotrend Connect -näkymään,
+                    valitse <strong>Asetukset</strong>.
+                  </figcaption>
                   <img alt="Ruutukaappaus palvelun päänäkymästä" src={settingsImage} />
                 </figure>
               </li>
@@ -267,8 +309,8 @@ class Instructions extends Component {
                 <figure>
                   <figcaption>
                     Asetukset-näkymässä valitse <strong>Poista tili</strong> ja vahvista
-                      valintasi.
-                    </figcaption>
+                    valintasi.
+                  </figcaption>
                   <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={removeImage} />
                 </figure>
               </li>
@@ -285,8 +327,8 @@ class Instructions extends Component {
           <div className="container">
             <h2>Osallistu palvelun kehitykseen</h2>
             <p>Tätä palvelua kehitetään avoimena lähdekoodina ja olet erittäin tervetullut
-              osallistumaan kehitykseen GitHubissa. Ks. <a
-                href="https://github.com/Sensotrend/nightscout-fi">nightscout-fi</a>.
+              osallistumaan kehitykseen <a
+                href="https://github.com/Sensotrend/nightscout-fi">GitHubissa</a>.
             </p>
           </div>
         </section>
@@ -304,10 +346,10 @@ class Instructions extends Component {
             <div>
               <img src={ceImage} alt="CE" />
               <p>
-                Nightscout Connect on luokan I lääkinnällinen laite. Ks. <a
+                Sensotrend Connect on luokan I lääkinnällinen laite. Ks. <a
                   href={`${
                     process.env.PUBLIC_URL
-                    }/EU_Declaration_of_Conformity_-_Nightscout_Connect.pdf`}>
+                    }/EU_Declaration_of_Conformity_-_Sensotrend_Connect.pdf`}>
                   vaatimustenmukaisuusvakuutus
                 </a>.
               </p>

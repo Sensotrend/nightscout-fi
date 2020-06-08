@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import ParallaxBase from './ParallaxBase';
 import ParallaxGroup from './ParallaxGroup';
@@ -25,6 +25,7 @@ class ParallaxComponent extends Component {
     this.state = defaultState;
   }
 
+  /*
   componentDidUpdate() {
     const height = getBaseLayerSize();
     if (height && height !==  this.state.backLayerHeight) {
@@ -42,10 +43,18 @@ class ParallaxComponent extends Component {
       });
     }
   }
+  */
 
   render() {
     const { background, children, header } = this.props;
     const { backLayerHeight } = this.state;
+    return (
+      <Fragment>
+        {header}
+        {children}
+      </Fragment>
+    );
+    /*
     return (
       <ParallaxBase>
         <ParallaxGroup>
@@ -59,6 +68,7 @@ class ParallaxComponent extends Component {
         </ParallaxGroup>
       </ParallaxBase>
     );
+    */
   }
 }
 

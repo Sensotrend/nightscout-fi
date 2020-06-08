@@ -1,52 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import qrcode from 'qrcode';
 import Octicon, { CloudDownload, Gear } from '@githubprimer/octicons-react';
 
 import ActionsMenu from '../Actions/ActionsMenu';
 import ParallaxComponent from '../Parallax/ParallaxComponent';
 
-const Settings = ({ config }) => {
-  const apiUrl = `https://${config.secret}@${config.api}`;
-  const data = { rest: { endpoint: [apiUrl] } };
-  const dataString = JSON.stringify(data);
-  const [qrImage, setQrImage] = useState(undefined);
-
-  useEffect(() => {
-    qrcode.toDataURL(dataString, {}, (err, url) => {
-      console.log('QR code creation', { err, url });
-      setQrImage(url);
-    });
-  }, [dataString]);
-
+const Settings = () => {
   return (
     <main id="settings">
       <ParallaxComponent>
         <section id="nightscout">
           <div className="container">
-            <table>
-              <caption>
-                Voit liittää Nightscout-sovelluksia Omatietovaranto-tiliisi näillä asetuksilla:
-                </caption>
-              <tbody>
-                <tr>
-                  <th>API SECRET</th>
-                  <td>{config.secret}</td>
-                </tr>
-                <tr>
-                  <th>REST API osoite</th>
-                  <td>{apiUrl}</td>
-                </tr>
-                {qrImage && (
-                  <tr>
-                    <th>QR-koodi</th>
-                    <td><img src={qrImage} alt={dataString} /></td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-            <p>Käsittele osoitetta huolellisesti, ettei kukaan ulkopuolinen pääse käsiksi
-              tietoihisi.</p>
+            <p>Sensotrend-tilisi on luotu ja sähökpostiosoitteesi on vahvistettu!</p>
+            <h4>Lataa Sensotrend Uploader -sovellus</h4>
+            (Windows Marketplace -linkki)
+            <br />
+            (App Store -linkki)
+            <ul>
+              <li>Lataa asennusohjelma Windows -käyttöjärjestelmälle</li>
+              <li>Lataa asennusohjelma Mac OSX -käyttöjärjestelmälle</li>
+              <li>Lataa asennusohjelma Linux -käyttöjärjestelmälle</li>
+            </ul>
+            <h4>Lataa Sensotrend Mobile Medtronic Uploader -sovellus</h4>
+            (Google Play -linkki)
           </div>
         </section>
         <section id='info'>

@@ -23,6 +23,11 @@ class Login extends Component {
               <p>Lue lisää <a href="instructions">ohjeet-sivulta</a>.</p>
             </div>
           </section>
+          <section id="prompt">
+            <div className="container">
+              <p>Aloita palvelun käyttö kirjautumalla Omatietovarantoon.</p>
+            </div>
+          </section>
         </ParallaxComponent>
         <div id="login">
           <ActionsMenu>
