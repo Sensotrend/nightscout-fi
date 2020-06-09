@@ -187,7 +187,7 @@ class Instructions extends Component {
 
             <h3 id="onboarding">Palvelun käyttöönotto</h3>
             <p>
-              Palvelun käyttöönottoon liittyy 5 vaihetta:
+              Palvelun käyttöönottoon liittyy 3 vaihetta:
             </p>
             <ol>
               <li id="signin">
@@ -220,7 +220,7 @@ class Instructions extends Component {
               <li>
                 <figure>
                   <figcaption>
-                    Salli Nightscout.fi-sovelluksen lukea ja kirjoittaa tietoja puolestasi
+                    Salli Sensotrend Connect -sovelluksen lukea ja kirjoittaa tietoja puolestasi
                     Omatietovarantoon.
                     </figcaption>
                   <img alt="Ruutukaappaus Omatietovarannon luvituksesta" src={consentImage} />
@@ -236,15 +236,10 @@ class Instructions extends Component {
                   <img alt="Ruutukaappaus sähköpostiosoitteen kysymisestä" src={emailRegImage} />
                 </figure>
               </li>
-              <li>
-                <figure>
-                  <figcaption>
-                    Vahvistettuasi sähköpostiosoitteesi tunnuksesi on aktivoitu
-                  </figcaption>
-                  <img alt="Ruutukaappaus palvelun näkymästä" src={credentialsImage} />
-                </figure>
-              </li>
             </ol>
+            <p>
+              Vahvistettuasi sähköpostiosoitteesi tunnuksesi on aktivoitu.
+            </p>
             <p>
               Voit käyttää luomaasi käyttäjätunnusta ja salasanaa <a
               href="#SensotrendUploader">Sensotrend Uploader</a> - ja <a
