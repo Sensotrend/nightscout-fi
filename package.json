@@ -97,7 +97,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "_postinstall": "react-scripts build",
+    "postinstall": "react-scripts build",
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon esmloader.js",
     "pm2_test": "env-cmd ./my.env pm2 start pm2_dev_config.yaml ",
