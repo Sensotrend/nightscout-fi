@@ -1,4 +1,4 @@
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 import envModule from '../lib/env';
 
 const env = envModule();
