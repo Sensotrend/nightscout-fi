@@ -1,7 +1,7 @@
 import nsfi from '../lib/server.js';
 
 import request from 'supertest';
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 import _FHIRClient from '../lib/FHIRClient';
 import { exist } from '../node_modules/should/should.js';
 
