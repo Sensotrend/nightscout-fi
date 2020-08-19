@@ -80,6 +80,7 @@ const ProtectedRoute = ({
   config,
   ...rest
 }) => {
+  console.log('Route config', {config});
   return (
     <Route
       {...rest}
@@ -114,6 +115,7 @@ class Routes extends Component {
     this.props = props;
   }
 
+<<<<<<< HEAD
   getConfig(){
 
     fetch(`${server}/fiphr/config`, fetchConfig)
@@ -143,6 +145,18 @@ class Routes extends Component {
             config: undefined,
             logout: true,
           });
+=======
+  componentDidMount() {
+    fetch(`https://${server}/fiphr/config`, fetchConfig)
+      .then(res => {
+        switch (res.status) {
+          case 200: return res.json();
+          case 204: return {};
+          default:
+            const error = new Error('Unable to load user config');
+            error.response = res;
+            throw error;
+>>>>>>> Continue enabling SSL on localhost
         }
       });
     })
