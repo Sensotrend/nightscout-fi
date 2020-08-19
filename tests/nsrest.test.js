@@ -144,11 +144,11 @@ describe('NS_REST_API & FHIRClient test', function () {
       }];
 
       await request(nsfi)
-      .post('/api/v1/entries')
-      .send(ns_sample)
-      .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-      .expect('Content-Type', /json/)
-      .expect(200);
+         .post('/api/v1/entries')
+         .send(ns_sample)
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
       
       await request(nsfi)
          .get('/api/v1/entries?count=1&find\[date\]\[\$eq\]=1550143851509')
@@ -186,13 +186,24 @@ describe('NS_REST_API & FHIRClient test', function () {
          {"device":"xDrip-LimiTTer","date":1584976556551,"dateString":"2020-03-23T17:15:56.551+0200","sgv":45,"delta":-11.067,"direction":"SingleDown","type":"sgv","filtered":53764.70185,"unfiltered":53764.70185,"rssi":100,"noise":1,"sysTime":"2020-03-23T17:15:56.551+0200"}
       ];
 
+      const now = new Date().getTime();
+      ns_sample.forEach((s, i) => {
+         const time = new Date(now - (ns_sample.length - i) * 300000);
+         s.date = time.getTime();
+         s.dateString = time.toISOString();
+         s.sysTime = time.toISOString();
+      })
+
+
       await request(nsfi)
-      .post('/api/v1/entries')
-      .send(ns_sample)
-      .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-      .expect('Content-Type', /json/)
-      .expect(200);
-      
+         .post('/api/v1/entries')
+         .send(ns_sample)
+         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect('Content-Type', /json/)
+         .expect(200);
+
+      console.log('SENT SAMPLE XXXXXXXXXXXXXXXXX', ns_sample);
+         
       await request(nsfi)
          .get('/api/v1/entries/sgv.json?count=6') // This is what the Nightscout OSX menubar app queries for
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
