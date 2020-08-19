@@ -1,9 +1,12 @@
 {
   "client_id": "31436f8a-3204-4288-abc0-3ad297fecec1",
+  "registration_access_token": "eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiIzMTQzNmY4YS0zMjA0LTQyODgtYWJjMC0zYWQyOTdmZWNlYzEiLCJpc3MiOiJodHRwczpcL1wvZmhpcnNhbmRib3gyLWF1dGgua2FudGEuZmlcL3Boci1hdXRoc2VydmVyLXNhbmRib3hcLyIsImlhdCI6MTU5MTY0Mjk4MiwianRpIjoiODgyOGJmZDAtMzIxNS00YjU2LWJjOGUtMmQ3NDhhZjYxNWE2In0.mpDRcS4D3orvFvmDgWNVTjqJaPjyty0i-zzqhEnExu4EVwczBuKJ632tcN1XHaakBNtc4CICiCJdMawCg5uUTjzE3NnIo2V4_twj1SEkW7rRJU-nREey9LPfqIRphdFpsenJjUSyrQK-4N_ESYreNTZXDXH31Uy4QFTrk4G62ow",
   "client_secret": "W2YRCmwk1QVl5Z3oHEEarVT-tbfcbF3sHap-fcKgfCIlx3jQ7V0sfA8mKbR-JHCGR2w7reKYfhoFArG20nTBBw",
   "redirect_uris": [
     "https://localhost:1300/auth/kanta/callback",
-    "http://localhost:1300/auth/kanta/callback"
+    "https://dev.sensotrend.fi/auth/kanta/callback",
+    "http://localhost:1300/auth/kanta/callback",
+    "https://test.sensotrend.fi/auth/kanta/callback"
   ],
   "client_name": "Sensotrend Connect Sandbox",
   "client_uri": "https://connect.sensotrend.fi/",
@@ -46,11 +49,10 @@
   "software_id": null,
   "software_version": null,
   "code_challenge_method": null,
-  "registration_access_token": "eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiIzMTQzNmY4YS0zMjA0LTQyODgtYWJjMC0zYWQyOTdmZWNlYzEiLCJpc3MiOiJodHRwczpcL1wvZmhpcnNhbmRib3gyLWF1dGgua2FudGEuZmlcL3Boci1hdXRoc2VydmVyLXNhbmRib3hcLyIsImlhdCI6MTU5MTY0Mjk4MiwianRpIjoiODgyOGJmZDAtMzIxNS00YjU2LWJjOGUtMmQ3NDhhZjYxNWE2In0.mpDRcS4D3orvFvmDgWNVTjqJaPjyty0i-zzqhEnExu4EVwczBuKJ632tcN1XHaakBNtc4CICiCJdMawCg5uUTjzE3NnIo2V4_twj1SEkW7rRJU-nREey9LPfqIRphdFpsenJjUSyrQK-4N_ESYreNTZXDXH31Uy4QFTrk4G62ow",
   "registration_client_uri": "https://fhirsandbox2-auth.kanta.fi/phr-authserver-sandbox/register/31436f8a-3204-4288-abc0-3ad297fecec1",
+  "client_secret_expires_at": 0,
+  "client_id_issued_at": 1591642982,
   "softwareId": null,
   "softwareVersion": null,
-  "token_endpoint_auth_signing_alg": null,
-  "client_secret_expires_at": 0,
-  "client_id_issued_at": 1591642982
+  "token_endpoint_auth_signing_alg": null
 }
