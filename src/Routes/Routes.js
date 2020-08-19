@@ -113,7 +113,7 @@ class Routes extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://${server}/fiphr/config`, fetchConfig)
+    fetch(`${server}/fiphr/config`, fetchConfig)
       .then(res => {
         switch (res.status) {
           case 200: return res.json();
