@@ -1,9 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-import ParallaxBase from './ParallaxBase';
-import ParallaxGroup from './ParallaxGroup';
-import ParallaxLayer, { back, base } from './ParallaxLayer';
-
 import Header from '../Header/Header';
 import './parallax.scss';
 
@@ -25,50 +21,14 @@ class ParallaxComponent extends Component {
     this.state = defaultState;
   }
 
-  /*
-  componentDidUpdate() {
-    const height = getBaseLayerSize();
-    if (height && height !==  this.state.backLayerHeight) {
-      this.setState({
-        backLayerHeight: height,
-      });
-    }
-  }
-
-  componentDidMount() {
-    const height = getBaseLayerSize();
-    if (height && height !==  this.state.backLayerHeight) {
-      this.setState({
-        backLayerHeight: height,
-      });
-    }
-  }
-  */
-
   render() {
-    const { background, children, header } = this.props;
-    const { backLayerHeight } = this.state;
+    const { children, header } = this.props;
     return (
       <Fragment>
         {header}
         {children}
       </Fragment>
     );
-    /*
-    return (
-      <ParallaxBase>
-        <ParallaxGroup>
-          <ParallaxLayer layer={back} height={backLayerHeight}>
-            {background}
-          </ParallaxLayer>
-          <ParallaxLayer layer={base}>
-            {header}
-            {children}
-          </ParallaxLayer>
-        </ParallaxGroup>
-      </ParallaxBase>
-    );
-    */
   }
 }
 
