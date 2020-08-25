@@ -7,7 +7,6 @@ import { loginEnabled } from '../Login/Login';
 import auth2Image from '../tunnistautuminen-2.png';
 import consentImage from '../luvitus.png';
 import emailRegImage from '../rekisteröityminen.png';
-import credentialsImage from '../tunnukset.png';
 import settingsImage from '../asetukset.png';
 import preferencesImage from '../muokkaus.png';
 import removeImage from '../lopetus.png';

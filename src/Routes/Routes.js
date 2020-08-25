@@ -16,7 +16,6 @@ import Index from '../Index/Index';
 import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
-import NSConsent from '../NSConsent/NSConsent';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
