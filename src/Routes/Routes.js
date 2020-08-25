@@ -16,10 +16,13 @@ import Index from '../Index/Index';
 import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
+<<<<<<< HEAD
 
 import CareLink from '../CareLink/CareLink';
 import Clarity from '../Clarity/Clarity';
 import LogOutSite from '../Logout/LogOutSite';
+=======
+>>>>>>> Fix eslint warnings
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
