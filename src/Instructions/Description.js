@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import SizeBar from '../SizeBar/SizeBar';
+import SizeBar from '../SideBar/SideBar';
 
 
 export const DescriptionText = () => (
