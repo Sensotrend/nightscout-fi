@@ -149,14 +149,17 @@ class Instructions extends Component {
                 mobiilisovellus, joka siirtää tiedot Medtronicin Minimed 640G - ja 670G
                 -insuliinipumppujärjestelmistä USB-OTG-tiedonsiirtokaapelin avulla.
               </p>
+              <p>
+                Sovellus julkaistaan piakkoin Google Play Storessa. Lisäämme linkin tänne heti kun sovellus on julkaistu.
+              </p>
             </article>
           </div>
         </section>
         <section id="data">
           <div className="container">
-            <h2>Palvelun tukemat tietomuodot</h2>
+            <h2>Palvelun välittämät tiedot</h2>
             <p>
-              Sensotrend Connect välittää tällä hetkellä Omatietovarantoon verensokeritiedot,
+              Sensotrend Connect kirjoittaa tällä hetkellä Omatietovarantoon verensokeritiedot,
               hiilihydraattiarviot ja insuliiniannokset.
             </p>
             <p>
@@ -169,21 +172,6 @@ class Instructions extends Component {
         <section id="usage">
           <div className="container">
             <h2>Käyttöohjeet</h2>
-            <p>
-              Tietoa Nightscout sovelluksista löytyy osoitteesta <a
-                href="http://www.nightscout.info/">nightscout.info</a> sekä esimerkiksi
-              suomenkielisestä <a
-                href="https://www.facebook.com/groups/nightscoutsuomi/">Facebook-ryhmästä</a>.
-            </p>
-            <p>
-              Seuratessasi näitä ohjeita huomaathan, että Nightscout.fi-palvelua käyttäessäsi sinun
-              ei tarvitse luoda itsellesi GitHub-tiliä eikä pystyttää Nightscout-palvelua Herokuun,
-              vaan Nightscout.fi-palvelu hoitaa tämän osuuden kokonaisuudesta. Sen sijaan sinun
-              täytyy edelleen asentaa kaikki älypuhelimiin ja älykelloihin tarvittavat sovellukset
-              niiden ohjeiden mukaisesti. Näiden sovellusten tarvitsemat <code>REST API
-              URL</code> ja <code>API_SECRET</code> -asetukset saat tästä Nightscout.fi-palvelusta.
-            </p>
-
             <h3 id="onboarding">Palvelun käyttöönotto</h3>
             <p>
               Palvelun käyttöönottoon liittyy 3 vaihetta:
@@ -205,7 +193,7 @@ class Instructions extends Component {
                           <s>Aloita kirjautumalla Omatietovarantoon.</s>
                           <p>
                             <em>
-                              Palvelu on vielä kehityskäytössä ja julkinen sisäänkirjautuminen on
+                              HUOM! Palvelu on vielä kehityskäytössä ja julkinen sisäänkirjautuminen on
                               poistettu käytöstä. Voit kuitenkin tutustua käyttöönoton vaiheisin
                               alla.
                             </em>
@@ -230,12 +218,22 @@ class Instructions extends Component {
                   <figcaption>
                     Syötä käyttäjätunnukseksesi sähköpostiosoitteesi, jota käytämme myös
                     tarvittaessa ollaksemme yhteydessä sinuun, esimerkiksi vakavan virhetilanteen
-                    tai tietovuodon yhteydessä. Syötä myös haluamasi salasana.
+                    tai tietovuodon yhteydessä. Syötä myös itse valitsemasi salasana.
                     </figcaption>
                   <img alt="Ruutukaappaus sähköpostiosoitteen kysymisestä" src={emailRegImage} />
                 </figure>
               </li>
             </ol>
+            <p>
+              Saat seuraavaksi sähköpostiisi viestin, jossa pyydetään varmistamaan osoite. Pyydämme
+              tätä varmistaaksemme, että osoite on kirjoitettu oikein ja että lähettämämme viestit
+              tulevat tarvittaessa perille.
+            </p>
+            <p>
+              Vahvisteta osoitteesi klikkaamalla viestissä olevaa linkkiä. Tällöin selaimesi
+              pitäisi tuoda sinut takaisin palveluun. Mikäli näin ei käy, voit kopioida osoitteen
+              sähköpostista selaimesi osoiteriville. 
+            </p>
             <p>
               Vahvistettuasi sähköpostiosoitteesi tunnuksesi on aktivoitu.
             </p>
@@ -269,7 +267,7 @@ class Instructions extends Component {
                 <figure>
                   <figcaption>
                     Asetukset-näkymässä pääset vaihtamaan rekisteröimääsi sähköpostiosoitetta ja
-                    asetuksiasi postin käyttämiseksi.
+                    salasanaasi sekä asetuksiasi postin käyttämiseksi.
                   </figcaption>
                   <img alt="Ruutukaappaus palvelun Asetukset-näkymästä" src={preferencesImage} />
                 </figure>
@@ -283,7 +281,6 @@ class Instructions extends Component {
               osoitteeseen vahvistusviesti, jossa olevaa linkkiä klikkaamalla uusi osoite
               aktivoituu. Siihen asti edellinen vahvistettu osoite pysyy voimassa.
             </p>
-
             <h3 id="remove">Palvelun käytön lopettaminen</h3>
             <p>
               Voit koska tahansa lopettaa palvelun käytön ja poistaa kaikki tietosi palvelusta.
@@ -352,8 +349,8 @@ class Instructions extends Component {
               <img src={manufacturerImage} alt="Valmistaja" />
               <address>
                 Sensotrend Oy<br />
-                Koulukatu 16 B 41<br />
-                33200 Tampere<br />
+                Tampellan esplanadi 19 A 55<br />
+                33180 Tampere<br />
               </address>
             </div>
           </div>
