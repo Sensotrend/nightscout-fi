@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import SizeBar from '../SizeBar/SizeBar';
+
 
 export const DescriptionText = () => (
   <Fragment>
@@ -24,7 +26,9 @@ class Description extends Component {
     return (
       <Fragment>
         <section id="nightscout">
+        
           <div className="container">
+            <SizeBar />
             <h2>Diabetesdata Omatietovarantoon</h2>
             <DescriptionText />
           </div>
