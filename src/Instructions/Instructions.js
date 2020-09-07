@@ -144,7 +144,14 @@ class Instructions extends Component {
               niiden ohjeiden mukaisesti. Näiden sovellusten tarvitsemat <code>REST API
               URL</code> ja <code>API_SECRET</code> -asetukset saat tästä Nightscout.fi-palvelusta.
             </p>
-
+            <p>
+              Toisaalta Nightscout Connect -palvelun käyttö on mahdollista myös oman Herokussa,
+              Azuressa tai omalla palvelimella toimivan Nightscout-asennuksen rinnalla. Useat
+              Nightscout-sovellukset mahdollistavat datan lähettämisen useaan paikkaan
+              (tyypillisesti kirjoittamalla useampi API URL peräkkäin välilyönnillä erotettuina).
+              Voit siis jatkaa olemassa olevan Nightscout-asennuksesi käyttöä ja sen lisäksi
+              kerryttää tietoja Omatietovarantoon.
+            </p>
             <h3 id="onboarding">Palvelun käyttöönotto</h3>
             <p>
               Palvelun käyttöönottoon liittyy 5 vaihetta:
