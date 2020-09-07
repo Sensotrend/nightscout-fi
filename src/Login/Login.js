@@ -6,12 +6,6 @@ import ActionsMenu from '../Actions/ActionsMenu';
 import Description from '../Instructions/Description';
 import ParallaxComponent from '../Parallax/ParallaxComponent';
 
-export const loginEnabled = (
-  (document.location.hostname.indexOf('test') === 0) ||
-  (document.location.hostname.indexOf('dev') === 0) ||
-  (document.location.hostname.indexOf('localhost') === 0)
-);
-
 class Login extends Component {
   render() {
     return (
@@ -26,17 +20,10 @@ class Login extends Component {
         </ParallaxComponent>
         <div id="login">
           <ActionsMenu>
-            {loginEnabled
-              ? (
-                <a href={`${server}/fiphr/launch`} className="success">
-                  <Octicon icon={CloudUpload} verticalAlign="middle" size="medium" />
-                  <span>Kirjaudu</span>
-                </a>
-              )
-              : (
-                <p>Palvelu on vielä kehityksen alla, sisäänkirjautuminen on toistaiseksi kytketty pois päältä.</p>
-              )
-            }
+            <a href={`${server}/fiphr/launch`} className="success">
+              <Octicon icon={CloudUpload} verticalAlign="middle" size="medium" />
+              <span>Kirjaudu</span>
+            </a>
           </ActionsMenu>
         </div>
       </Fragment>
