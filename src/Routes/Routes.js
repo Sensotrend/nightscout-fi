@@ -24,6 +24,9 @@ import LogOutSite from '../Logout/LogOutSite';
 =======
 >>>>>>> Fix eslint warnings
 
+import CareLink from '../CareLink/CareLink';
+import Clarity from '../Clarity/Clarity';
+
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
 
@@ -234,6 +237,10 @@ class SensotrendConnect extends Component {
           })} />)}
         />
         <Route path="/privacy" component={Privacy} />
+
+        <Route path="/carelink" component={CareLink} />
+
+        <Route path="/clarity" component={Clarity} />
         
         <ProtectedRoute
           path="/carelink"
