@@ -20,4 +20,16 @@
   margin: 0px !important;
   margin-top: 10px !important;
   padding-left: 4px !important;
+  font-size: inherit !important;
+}
+
+.careLinkSubmitButton {
+  font-size: medium;
+  width: 200px;
+  height: 26px;
+}
+
+.errorMessageStyle {
+  color: red;
+  font-size: 18px;
 }
