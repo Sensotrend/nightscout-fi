@@ -19,6 +19,7 @@ import Privacy from '../Privacy/Privacy';
 
 import CareLink from '../CareLink/CareLink';
 import Clarity from '../Clarity/Clarity';
+import LogOutSite from '../Logout/LogOutSite';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
@@ -86,7 +87,7 @@ const ProtectedRoute = ({
         ? <Comp {...cProps} {...componentProps} />
         : <Redirect
           to={{
-            pathname: '/index',
+            pathname: (config.stateStatusInfo.site_name === 'loginIn') ? '/index' : `/${config.stateStatusInfo.site_name}`,
             state: { from: cProps.location },
           }}
         />
@@ -143,6 +144,7 @@ class Routes extends Component {
             });
           }
         });
+        console.log(this.state.config.stateStatusInfo.site_name);
       })
       .catch(error => {
         console.error(error);
@@ -227,6 +229,9 @@ class SensotrendConnect extends Component {
           component={EmailRequest}
           componentProps={{ config }}
         />
+
+        <Route path="/logOutSite" component={LogOutSite} />
+
         <Redirect from="/" to="/index" />
       </Switch>
       <Footer />

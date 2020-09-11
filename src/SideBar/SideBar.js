@@ -6,7 +6,7 @@ class SizeBar extends Component {
         return(
             <Fragment>
             <div className="sideBar">
-                { true === true ? <div className="sideBarElement"><a href={`${server}/fiphr/launch/carelink`}>CareLink</a></div> : null}
+                { process.env.CARELINK_ACTIVATE_LINK !== '' ? <div className="sideBarElement"><a href={`${server}/fiphr/launch/carelink`}>CareLink</a></div> : null}
                 { true === false ? <div className="sideBarElement"><a href="clarity">Clarity</a></div> : null}
             </div>
             </Fragment>

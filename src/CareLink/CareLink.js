@@ -8,6 +8,7 @@ import '../CareLink/carelink.scss';
 
 class CareLink extends Component {
 
+    _timerData = null;
     
     constructor(props){
         super(props);
@@ -15,12 +16,15 @@ class CareLink extends Component {
             careLinkUserName: '',
             careLinkPassword: '',
             information: false,
-            save: false
+            save: false,
+            redirectCounter: 0
         }
+
+       
     }
   
     componentDidMount(){
-    
+        this._timerData = null;
         fetch(`${server}/carelink/v1/user`,{
             ...fetchConfig,
             method: 'POST',
@@ -33,6 +37,10 @@ class CareLink extends Component {
             this.setState({ careLinkUserName: handledData.userName, careLinkPassword: handledData.userPassword})
         }).catch(error => { console.log(error) });
 
+    }
+
+    componentWillUnmount(){
+        clearInterval(this._timerData);
     }
 
     render(){
@@ -75,6 +83,14 @@ class CareLink extends Component {
                             this.setState({save:true});
                             setTimeout(() => {
                                 this.setState({save:false});
+                                this._timerData = setInterval(() => {
+                                    this.setState({redirectCounter: this.state.redirectCounter + 1 });
+                                    
+                                    if( this.state.redirectCounter >= 10){
+                                        this.props.history.push('/logOutSite');
+                                    }
+
+                                }, 1000);
                             },9000)
                             console.log('Done');
                           });
@@ -99,9 +115,10 @@ class CareLink extends Component {
                              <div><ErrorMessage  name="careLinkPassword" component="div" className="errorMessageStyle" /></div>
                         </div>
                         <div className="spacing"  >
-                            <button type="submit" className="careLinkSubmitButton" >Tallenna</button>
+                            <button type="submit" disabled={ this.state.redirectCounter > 0 ? true : false} className="careLinkSubmitButton" >Tallenna</button>
                             { this.state.save && <div>Tietosi on tallennettu onnistuneesti! <br /> Huom! Tietosi kopioituvat nyt automaattisesti omatietovarantoon</div>}
                         </div>
+                    {this.state.redirectCounter > 0 && <div>{this.state.redirectCounter}... 10 sekunnin kuluttua ohjataan uloskirjautumiseen</div>}
                     </div>
                 </Form>
                 </Formik>
