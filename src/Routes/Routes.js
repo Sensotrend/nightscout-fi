@@ -114,45 +114,51 @@ class Routes extends Component {
     this.props = props;
   }
 
-  componentDidMount() {
+  getConfig(){
+
     fetch(`${server}/fiphr/config`, fetchConfig)
-      .then(res => {
-        switch (res.status) {
-          case 200: return res.json();
-          case 204: return {};
-          default:
-            const error = new Error('Unable to load user config');
-            error.response = res;
-            throw error;
-        }
-      })
-      .then(json => {
-        this.setState({
-          initializing: false,
-          config: json,
-        });
-        initIdleTimeCallback(() => {
-          const { config } = this.state;
-          if (config.email || config.status) {
-            // user has logged in...
-            // eslint-disable-next-line no-console
-            console.log('Logout after inactivity'); // TODO: translate
-            this.setState({
-              initializing: false,
-              config: undefined,
-              logout: true,
-            });
-          }
-        });
-        console.log(this.state.config.stateStatusInfo.site_name);
-      })
-      .catch(error => {
-        console.error(error);
-        this.setState({
-          initializing: false,
-          error,
-        });
+    .then(res => {
+      switch (res.status) {
+        case 200: return res.json();
+        case 204: return {};
+        default:
+          const error = new Error('Unable to load user config');
+          error.response = res;
+          throw error;
+      }
+    })
+    .then(json => {
+      this.setState({
+        initializing: false,
+        config: json,
       });
+      initIdleTimeCallback(() => {
+        const { config } = this.state;
+        if (config.email || config.status) {
+          // user has logged in...
+          // eslint-disable-next-line no-console
+          console.log('Logout after inactivity'); // TODO: translate
+          this.setState({
+            initializing: false,
+            config: undefined,
+            logout: true,
+          });
+        }
+      });
+    })
+    .catch(error => {
+      console.error(error);
+      this.setState({
+        initializing: false,
+        error,
+      });
+    });
+
+  }
+
+  componentDidMount() {
+   this.getConfig();
+   console.log('ladattu....');
   }
 
   render() {
@@ -164,7 +170,8 @@ class Routes extends Component {
     return (
       <Router>
         <Route>
-          <SensotrendConnect config={config} state={this.state} />
+          <SensotrendConnect config={config} state={this.state} renderData={ () => { 
+            this.getConfig()}  } />
         </Route>
       </Router>
     );
@@ -174,10 +181,8 @@ class Routes extends Component {
 class SensotrendConnect extends Component {
 
   render() {
-
   const { config, state } = this.props;
   const { logout } = state;
-
   return (
     <Router basename={base} forceRefresh={!supportsHistory}>
       <Route
@@ -230,7 +235,18 @@ class SensotrendConnect extends Component {
           componentProps={{ config }}
         />
 
-        <Route path="/logOutSite" component={LogOutSite} />
+        <Route path="/logOutSite" render={ props => <LogOutSite callback={() => { 
+          
+          this.props.renderData();
+
+          this.setState({
+            config: undefined,
+            logout: false,
+          });
+
+          props.history.push("/"); 
+        }
+        } /> }  />
 
         <Redirect from="/" to="/index" />
       </Switch>
