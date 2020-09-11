@@ -16,16 +16,10 @@ import Index from '../Index/Index';
 import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
-<<<<<<< HEAD
 
 import CareLink from '../CareLink/CareLink';
 import Clarity from '../Clarity/Clarity';
 import LogOutSite from '../Logout/LogOutSite';
-=======
->>>>>>> Fix eslint warnings
-
-import CareLink from '../CareLink/CareLink';
-import Clarity from '../Clarity/Clarity';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
@@ -86,6 +80,7 @@ const ProtectedRoute = ({
   config,
   ...rest
 }) => {
+  console.log('Route config', {config});
   return (
     <Route
       {...rest}
@@ -120,7 +115,6 @@ class Routes extends Component {
     this.props = props;
   }
 
-<<<<<<< HEAD
   getConfig(){
 
     fetch(`${server}/fiphr/config`, fetchConfig)
@@ -150,18 +144,6 @@ class Routes extends Component {
             config: undefined,
             logout: true,
           });
-=======
-  componentDidMount() {
-    fetch(`${server}/fiphr/config`, fetchConfig)
-      .then(res => {
-        switch (res.status) {
-          case 200: return res.json();
-          case 204: return {};
-          default:
-            const error = new Error('Unable to load user config');
-            error.response = res;
-            throw error;
->>>>>>> Continue enabling SSL on localhost
         }
       });
     })
@@ -237,15 +219,6 @@ class SensotrendConnect extends Component {
           })} />)}
         />
         <Route path="/privacy" component={Privacy} />
-        
-        <ProtectedRoute
-          path="/carelink"
-          config={config}
-          component={CareLink}
-          componentProps={{ config }}
-        />
-
-        <Route path="/clarity" component={Clarity} />
         
         <ProtectedRoute
           path="/carelink"
