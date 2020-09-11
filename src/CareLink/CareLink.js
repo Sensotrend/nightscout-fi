@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { fetchConfig } from '../Routes/Routes';
 import { server } from '../Api/Api';
-import axios from 'axios';
 import '../CareLink/carelink.scss';
 
 
@@ -21,10 +20,19 @@ class CareLink extends Component {
     }
   
     componentDidMount(){
-      axios.post(`${server}/carelink/v1/user`)
-      .then( response => {
-            this.setState({ careLinkUserName: response.data.userName, careLinkPassword: response.data.userPassword})})
-      .catch( error => { console.log(error) });
+    
+        fetch(`${server}/carelink/v1/user`,{
+            ...fetchConfig,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then( handledData => {
+            this.setState({ careLinkUserName: handledData.userName, careLinkPassword: handledData.userPassword})
+        }).catch(error => { console.log(error) });
+
     }
 
     render(){

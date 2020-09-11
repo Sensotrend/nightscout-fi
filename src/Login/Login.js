@@ -33,7 +33,7 @@ class Login extends Component {
           <ActionsMenu>
             {loginEnabled
               ? (
-                <a href={`${server}/fiphr/launch`} className="success">
+                <a href={`${server}/fiphr/launch/loginIn`} className="success">
                   <Octicon icon={CloudUpload} verticalAlign="middle" size="medium" />
                   <span>Kirjaudu</span>
                 </a>
