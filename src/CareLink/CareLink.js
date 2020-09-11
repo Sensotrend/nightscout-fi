@@ -47,6 +47,7 @@ class CareLink extends Component {
         return (
         <>
             <section id="nightscout">
+            <div className="header">Sensotrend</div>
             <div className="container">
                 <div>
                 <h2>Kirjaudu Carelink palveluun:</h2>
@@ -82,7 +83,6 @@ class CareLink extends Component {
                           }).then(() => {
                             this.setState({save:true});
                             setTimeout(() => {
-                                this.setState({save:false});
                                 this._timerData = setInterval(() => {
                                     this.setState({redirectCounter: this.state.redirectCounter + 1 });
                                     
@@ -103,23 +103,24 @@ class CareLink extends Component {
                 >
                 <Form>
                    <div>
-                        <div className="spacing">
-                            <div>Käyttäjänimi</div>
-                            <div><Field type="text" placeholder="Syötä käyttäjätunnus" className="userNameInput" id="careLinkUserName" name="careLinkUserName"></Field></div>
-                            <div><ErrorMessage  name="careLinkUserName" component="div" className="errorMessageStyle" /></div>
-                            {this.state.information && <div>Oletko varma, että haluat tallentaa uuden käyttäjänimen?, jos olet niin paina tallenna.</div>}
-                        </div>
-                        <div  className="spacing">
-                            <div>Salasana</div>
-                             <div ><Field type="password" placeholder="Syötä salasana" className="passwordInput" id="careLinkPassword" name="careLinkPassword"></Field></div>
-                             <div><ErrorMessage  name="careLinkPassword" component="div" className="errorMessageStyle" /></div>
-                        </div>
-                        <div className="spacing"  >
-                            <button type="submit" disabled={ this.state.redirectCounter > 0 ? true : false} className="careLinkSubmitButton" >Tallenna</button>
-                            { this.state.save && <div>Tietosi on tallennettu onnistuneesti! <br /> Huom! Tietosi kopioituvat nyt automaattisesti omatietovarantoon</div>}
+                            <div className="spacing">
+                                <div>Käyttäjänimi</div>
+                                <div><Field type="text" placeholder="Syötä käyttäjätunnus" className="userNameInput" id="careLinkUserName" name="careLinkUserName"></Field></div>
+                                <div><ErrorMessage  name="careLinkUserName" component="div" className="errorMessageStyle" /></div>
+                                {this.state.information && <div>Oletko varma, että haluat tallentaa uuden käyttäjänimen?, jos olet niin paina tallenna.</div>}
+                            </div>
+                            <div  className="spacing">
+                                <div>Salasana</div>
+                                <div ><Field type="password" placeholder="Syötä salasana" className="passwordInput" id="careLinkPassword" name="careLinkPassword"></Field></div>
+                                <div><ErrorMessage  name="careLinkPassword" component="div" className="errorMessageStyle" /></div>
+                            </div>
+                            <div className="spacing"  >
+                                <button type="submit" disabled={ this.state.redirectCounter > 0 || this.state.save === true ? true : false} className="careLinkSubmitButton" >Tallenna</button>
+                                { this.state.save && this.state.redirectCounter === 0 && <div>Tietosi on tallennettu onnistuneesti! <br /> Huom! Tietosi kopioituvat nyt automaattisesti omatietovarantoon</div>}
+                            </div>
                         </div>
                     {this.state.redirectCounter > 0 && <div>{this.state.redirectCounter}... 10 sekunnin kuluttua ohjataan uloskirjautumiseen</div>}
-                    </div>
+                   
                 </Form>
                 </Formik>
                 <h3>Kirjautumalla CareLink palveluun annat SensoTrend palvelulle oikeudet tuoda tiedot omatietovarastoon.  </h3>
