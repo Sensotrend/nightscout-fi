@@ -237,8 +237,13 @@ class SensotrendConnect extends Component {
           })} />)}
         />
         <Route path="/privacy" component={Privacy} />
-
-        <Route path="/carelink" component={CareLink} />
+        
+        <ProtectedRoute
+          path="/carelink"
+          config={config}
+          component={CareLink}
+          componentProps={{ config }}
+        />
 
         <Route path="/clarity" component={Clarity} />
         
