@@ -14,10 +14,37 @@
   background-color: transparent;
   position: absolute;
   left: 5%;
-  top: 13.5%;
   font-size: 16px;
+  width: 30px;
+  display: inline-block;
+  z-index: 10;
+  margin-top: 14px;
 }
 
 .sideBar .sideBarElement {
   padding-bottom: 5px;
+}
+
+.sideBar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: underline;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+
+.sideBar a:hover {
+  color: blue;
+}
+
+#nightscout {
+  margin-left: 120px;
+}
+
+#ohjeet {
+  margin-left: 120px;
+}
+
+#prompt {
+  margin-left: 120px;
 }

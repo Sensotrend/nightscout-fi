@@ -25,10 +25,24 @@ class Login extends Component {
         </ParallaxComponent>
         <div id="login">
           <ActionsMenu>
+<<<<<<< HEAD
             <a href={`${server}/fiphr/launch`} className="success">
               <Octicon icon={CloudUpload} verticalAlign="middle" size="medium" />
               <span>Kirjaudu</span>
             </a>
+=======
+            {loginEnabled
+              ? (
+                <a href={`${server}/fiphr/launch/loginIn`} className="success">
+                  <Octicon icon={CloudUpload} verticalAlign="middle" size="medium" />
+                  <span>Kirjaudu</span>
+                </a>
+              )
+              : (
+                <p>Palvelu on vielä kehityksen alla, sisäänkirjautuminen on toistaiseksi kytketty pois päältä.</p>
+              )
+            }
+>>>>>>> Edit layout and add new state model
           </ActionsMenu>
         </div>
       </Fragment>
