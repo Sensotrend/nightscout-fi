@@ -225,7 +225,7 @@ describe.skip('NS_REST_API & FHIRClient test', function () {
       await request(nsfi)
          .post('/api/v1/entries')
          .send(ns_sample)
-         .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .set({ 'api-secret': u2.site_secret, 'Accept': 'application/json' })
          .expect('Content-Type', /json/)
          .expect(200);
          
@@ -238,7 +238,7 @@ describe.skip('NS_REST_API & FHIRClient test', function () {
          .then(response => {
             console.log('response.body', response.body);
             response.body.length.should.equal(6);
-            response.body[0].date.should.be.a.Number().above(response.body[1].date).and.equal(1584976556551);
+            response.body[0].date.should.be.a.Number().above(response.body[1].date);
          });
    });
 
