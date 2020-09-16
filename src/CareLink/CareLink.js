@@ -72,34 +72,33 @@ class CareLink extends Component {
                           return errors;
                       }}
                       onSubmit={async values => {
-                    if( ( values.careLinkUserName === this.state.careLinkUserName ) || this.state.information ){
-                        this.setState({information: false, save: false}); 
-                        await fetch(`${server}/carelink/v1/user/save`, {
-                            ...fetchConfig,
-                            method: 'POST',
-                            body: JSON.stringify(values),
-                          }).catch((error) => {
-                            console.error(error);
-                          }).then(() => {
-                            this.setState({save:true});
-                            setTimeout(() => {
-                                this._timerData = setInterval(() => {
-                                    this.setState({redirectCounter: this.state.redirectCounter + 1 });
-                                    
-                                    if( this.state.redirectCounter >= 10){
-                                        this.props.history.push('/logOutSite');
-                                    }
+                        if( values.careLinkUserName === this.state.careLinkUserName || this.state.careLinkUserName === undefined || this.state.information ){
+                            this.setState({information: false, save: false}); 
+                            await fetch(`${server}/carelink/v1/user/save`, {
+                                ...fetchConfig,
+                                method: 'POST',
+                                body: JSON.stringify(values),
+                            }).catch((error) => {
+                                console.error(error);
+                            }).then(() => {
+                                this.setState({save:true});
+                            // setTimeout(() => {
+                                //    this._timerData = setInterval(() => {
+                                //       this.setState({redirectCounter: this.state.redirectCounter + 1 });
+                                        
+                                        //if( this.state.redirectCounter >= 10){
+                                        //    this.props.history.push('/logOutSite');
+                                        //}
 
-                                }, 1000);
-                            },9000)
-                            console.log('Done');
-                          });
-                          this.state.careLinkUserName = values.careLinkUserName;
-                    }else{
-                           this.setState({information: true});   
-                    }
-
-                      }}
+                            //     }, 1000);
+                            // },9000)
+                                console.log('Done');
+                            });
+                            this.state.careLinkUserName = values.careLinkUserName;
+                        }else{
+                            this.setState({information: true});   
+                        }
+                    }}
                 >
                 <Form>
                    <div>
@@ -115,7 +114,7 @@ class CareLink extends Component {
                                 <div><ErrorMessage  name="careLinkPassword" component="div" className="errorMessageStyle" /></div>
                             </div>
                             <div className="spacing"  >
-                                <button type="submit" disabled={ this.state.redirectCounter > 0 || this.state.save === true ? true : false} className="careLinkSubmitButton" >Tallenna</button>
+                                <button type="submit" disabled={ this.state.redirectCounter > 0  ? true : false} className="careLinkSubmitButton" >Tallenna</button>
                                 { this.state.save && this.state.redirectCounter === 0 && <div>Tietosi on tallennettu onnistuneesti! <br /> Huom! Tietosi kopioituvat nyt automaattisesti omatietovarantoon</div>}
                             </div>
                         </div>
