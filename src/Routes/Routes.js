@@ -87,7 +87,7 @@ const ProtectedRoute = ({
         ? <Comp {...cProps} {...componentProps} />
         : <Redirect
           to={{
-            pathname: (config.stateStatusInfo.site_name === 'loginIn') ? '/index' : `/${config.stateStatusInfo.site_name}`,
+            pathname: (typeof(config) !== 'undefined') ? (config.stateStatusInfo.site_name === 'loginIn') ? '/index' : `/${config.stateStatusInfo.site_name}` : '/logout',
             state: { from: cProps.location },
           }}
         />
