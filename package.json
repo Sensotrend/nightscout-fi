@@ -17,6 +17,7 @@
     "babel-eslint": "^10.1.0",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.19.0",
+    "bson": "^4.1.0",
     "concurrently": "^4.1.2",
     "connect-mongo": "^3.2.0",
     "cookie-session": "^2.0.0-rc.1",
@@ -35,6 +36,10 @@
 <<<<<<< HEAD
     "lodash": "^4.17.20",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    "minimed-connect-to-nightscout": "git://github.com/saukk900/minimed-connect-to-nightscout#add_node_version",
+>>>>>>> Add own service and tempstroage to moving data personal data warehouse
     "moment": "^2.26.0",
     "mongoose": "^5.9.18",
 =======
@@ -65,8 +70,7 @@
     "typescript": "^3.9.5",
     "uuid": "^3.4.0",
     "winston": "^3.2.1",
-    "yargs": "^12.0.5",
-    "minimed-connect-to-nightscout": "git://github.com/saukk900/minimed-connect-to-nightscout#add_node_version"
+    "yargs": "^12.0.5"
   },
   "optionalDependencies": {
     "fsevents": "^1.2.9"
@@ -115,6 +119,7 @@
     "postinstall": "react-scripts build",
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon esmloader.js",
+    "fiphr_service": "env-cmd ./my.env forever start --minUptime 2000 --spinSleepTime 2000 ./forever/development.json",
     "client": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "ui": "react-scripts start",
