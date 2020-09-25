@@ -1,6 +1,14 @@
-{
-  "uid": "fiphr_service",
-  "max": 7,
-  "append": true,
-  "script": "./lib/ChildProcess/esmTransferMeasurementToFIPHR.js"
-}
+[
+  {
+    "uid": "fiphr_service",
+    "max": 7,
+    "append": true,
+    "script": "./lib/ChildProcess/esmTransferMeasurementToFIPHR.js"
+  },
+  {
+    "uid": "fiphr_service2",
+    "max": 7,
+    "append": true,
+    "script": "./lib/ChildProcess/esmTransferMeasurementToFIPHR.js"
+  }
+]
