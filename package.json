@@ -100,7 +100,11 @@
     "postinstall": "react-scripts build",
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon esmloader.js",
+<<<<<<< HEAD
     "pm2_test": "env-cmd ./my.env pm2 start pm2_dev_config.yaml ",
+=======
+    "fiphr_service": "forever stopall & env-cmd ./my.env forever start --minUptime 2000 --spinSleepTime 2000 ./forever/development.json",
+>>>>>>> Add new features and auto start up when using npm run or yarn command
     "client": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "dev_with_fiphr_service": "npm run fiphr_service & npm run dev",
