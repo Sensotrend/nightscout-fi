@@ -3,7 +3,6 @@ import React, { Component, Fragment } from 'react';
 import Description from './Description';
 import Header from '../Header/Header';
 import { server } from '../Api/Api';
-import { loginEnabled } from '../Login/Login';
 import auth2Image from '../tunnistautuminen-2.png';
 import consentImage from '../luvitus.png';
 import emailRegImage from '../rekisteröityminen.png';
@@ -22,7 +21,7 @@ class Instructions extends Component {
         <Header />
         <section id="version">
           <div className="container">
-            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 8.6.2020</small></p>
+            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 7.9.2020</small></p>
           </div>
         </section>
         <Description />
@@ -183,7 +182,14 @@ class Instructions extends Component {
               niiden ohjeiden mukaisesti. Näiden sovellusten tarvitsemat <code>REST API
               URL</code> ja <code>API_SECRET</code> -asetukset saat tästä Nightscout.fi-palvelusta.
             </p>
-
+            <p>
+              Toisaalta Nightscout Connect -palvelun käyttö on mahdollista myös oman Herokussa,
+              Azuressa tai omalla palvelimella toimivan Nightscout-asennuksen rinnalla. Useat
+              Nightscout-sovellukset mahdollistavat datan lähettämisen useaan paikkaan
+              (tyypillisesti kirjoittamalla useampi API URL peräkkäin välilyönnillä erotettuina).
+              Voit siis jatkaa olemassa olevan Nightscout-asennuksesi käyttöä ja sen lisäksi
+              kerryttää tietoja Omatietovarantoon.
+            </p>
             <h3 id="onboarding">Palvelun käyttöönotto</h3>
             <p>
               Palvelun käyttöönottoon liittyy 3 vaihetta:
@@ -192,26 +198,13 @@ class Instructions extends Component {
               <li id="signin">
                 <figure>
                   <figcaption>
-                    {loginEnabled
-                      ? (
-                        <Fragment>
-                          Aloita <a href={`${server}/fiphr/launch`} target="_blank"
-                            rel="noopener noreferrer">kirjautumalla Omatietovarantoon</a>.
-
-                        </Fragment>
-                      )
-                      : (
-                        <Fragment>
-                          <s>Aloita kirjautumalla Omatietovarantoon.</s>
-                          <p>
-                            <em>
-                              Palvelu on vielä kehityskäytössä ja julkinen sisäänkirjautuminen on
-                              poistettu käytöstä. Voit kuitenkin tutustua käyttöönoton vaiheisin
-                              alla.
-                            </em>
-                          </p>
-                        </Fragment>
-                      )}
+                    <Fragment>
+                      Aloita <a
+                        href={`${server}/fiphr/launch`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >kirjautumalla Omatietovarantoon</a>.
+                    </Fragment>
                   </figcaption>
                   <img alt="Ruutukaappaus vahvasta tunnistautumisesta" src={auth2Image} />
                 </figure>
