@@ -26,34 +26,34 @@ class Privacy extends Component {
               </p>
               <p>
                 Keräämme seuraavia tietoja:
-                <ul>
-                  <li>
-                    Sähköpostiosoitteesi palvelun käyttöön liittyvistä poikkeustilanteista
-                    (esimerkiksi palvelun virheellisen toiminnan aiheuttama vaaratilanne tai
-                    tietovuoto) ilmoittamiseen.
-                  </li>
-                  <li>
-                    Internet-palvelimen tekniset lokit palvelun toiminnan luotettavuuden
-                    seuraamiseksi ja mahdollisten virhetilanteiden selvittämiseksi.
-                  </li>
-                  <li>
-                    Käyttöavain (access token), joka luodaan Omatietovarannon liitosprosessissa ja
-                    jonka avulla tietoa voidaan kirjoittaa Omatietovarantoon ja lukea sieltä.
-                  </li>
-                  <li>
-                    Mahdollinen vikatilanneilmoituslupa, mikäli olet sen erikseen antanut, sekä
-                    luvan myöntämisen ajankohta, palvelun vikatilanteista ilmoittamista varten.
-                  </li>
-                  <li>
-                    Mahdollinen viestintälupa, mikäli olet sen erikseen antanut, sekä luvan
-                    myöntämisen ajankohta, kyselyihin ja viestintään palvelun toiminnallisuuden,
-                    asiakaspalvelun ja liiketoiminnan kehittämiseen sekä muihin vastaaviin
-                    käyttötarkoituksiin.
-                  </li>
-                  <li>Mahdolliset muut itsesi erikseen antaman suostumuksesi perusteella kerättävät
-                    tiedot.</li>
-                </ul>
               </p>
+              <ul>
+                <li>
+                  Sähköpostiosoitteesi palvelun käyttöön liittyvistä poikkeustilanteista
+                  (esimerkiksi palvelun virheellisen toiminnan aiheuttama vaaratilanne tai
+                  tietovuoto) ilmoittamiseen.
+                  </li>
+                <li>
+                  Internet-palvelimen tekniset lokit palvelun toiminnan luotettavuuden
+                  seuraamiseksi ja mahdollisten virhetilanteiden selvittämiseksi.
+                  </li>
+                <li>
+                  Käyttöavain (access token), joka luodaan Omatietovarannon liitosprosessissa ja
+                  jonka avulla tietoa voidaan kirjoittaa Omatietovarantoon ja lukea sieltä.
+                  </li>
+                <li>
+                  Mahdollinen vikatilanneilmoituslupa, mikäli olet sen erikseen antanut, sekä
+                  luvan myöntämisen ajankohta, palvelun vikatilanteista ilmoittamista varten.
+                  </li>
+                <li>
+                  Mahdollinen viestintälupa, mikäli olet sen erikseen antanut, sekä luvan
+                  myöntämisen ajankohta, kyselyihin ja viestintään palvelun toiminnallisuuden,
+                  asiakaspalvelun ja liiketoiminnan kehittämiseen sekä muihin vastaaviin
+                  käyttötarkoituksiin.
+                  </li>
+                <li>Mahdolliset muut itsesi erikseen antaman suostumuksesi perusteella kerättävät
+                    tiedot.</li>
+              </ul>
 
               <h2 id="miksikeraammetietoja">Miksi keräämme tietoja?</h2>
               <p>
@@ -74,11 +74,11 @@ class Privacy extends Component {
               <h2 id="automaattinentietojenkeraaminen">Automaattinen tietojen kerääminen</h2>
               <p>
                 Tiedot, joita keräämme automaattisesti:
-      				  <ul>
-                  <li>Internet-palvelimen tekniset lokit</li>
-                  <li>Käyttöavaimet (access token)</li>
-                </ul>
               </p>
+              <ul>
+                <li>Internet-palvelimen tekniset lokit</li>
+                <li>Käyttöavaimet (access token)</li>
+              </ul>
 
               <h2 id="mitenvarmistammehenkilotiedontietosuojan">
                 Miten varmistamme henkilötiedon tietosuojan?
@@ -107,7 +107,7 @@ class Privacy extends Component {
               <p>Sensotrend Oy, 2606155-7, Koulukatu 16 B 41, 33200 Tampere.</p>
               <p>
                 Tietosuojavastaava Hannu Hyttinen, <a
-                href="mailto:privacy@sensotrend.com">privacy@sensotrend.com</a>.
+                  href="mailto:privacy@sensotrend.com">privacy@sensotrend.com</a>.
               </p>
 
               <h2 id="muutoksetjapaivitykset">Muutokset ja päivitykset</h2>

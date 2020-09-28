@@ -178,6 +178,35 @@ form td input ~ div {
   color: red;
 }
 
+section#productinfo div p,
+section#productinfo div address {
+  margin: 0 0 0 2em;
+  font-size: 75%;
+  vertical-align: baseline;
+}
+
+section#productinfo div div p,
+section#productinfo div div address {
+  display: inline-block;
+}
+
+section#productinfo > div > div > p {
+  margin-bottom: 1em;
+}
+
+
+section#productinfo address {
+  font-style: normal;
+}
+
+section#productinfo img {
+  display: inline-block;
+  min-height: 5mm;
+  width: 1.8em;
+  clear: both;
+  margin-top: 1em;
+}
+
 @media screen and (max-width: $breakpoint-width), screen and (orientation: portrait) {
   h1 {
     text-align: center;
