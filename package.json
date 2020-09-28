@@ -1,10 +1,14 @@
 {
   "name": "nightscout-fhir-connect",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "version": "1.4.0-beta",
 =======
   "version": "1.3.17-beta",
 >>>>>>> Allow setting the scope in env vars
+=======
+  "version": "2.0.0-alpha",
+>>>>>>> Bump version
   "description": "Nightscout REST API provider for FHIR PHRs",
   "repository": "https://github.com/sensotrend/nightscout-fi",
   "dependencies": {
