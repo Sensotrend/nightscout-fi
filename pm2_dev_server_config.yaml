@@ -1,0 +1,24 @@
+apps:
+  - script: esmloader.js
+    name: 'server'
+    watch: true
+    env:
+      NODE_ENV: development
+    env_production:
+      NODE_ENV: production
+  - script: ./lib/ChildProcess/esmTransferMeasurementToFIPHR.js
+    name: 'fiphr_services'
+    watch: true
+    max_memory_restart: '400M'
+    env:
+      NODE_ENV: development
+    env_production:
+      NODE_ENV: production
+  - script: ./lib/ChildProcess/esmTransferMeasurementToFIPHR.js
+    name: 'fiphr_services_2'
+    max_memory_restart: '400M'
+    watch: true
+    env:
+      NODE_ENV: development
+    env_production:
+      NODE_ENV: production
