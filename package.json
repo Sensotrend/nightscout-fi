@@ -128,6 +128,7 @@
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon esmloader.js",
     "fiphr_service": "forever stopall & env-cmd ./my.env forever start --minUptime 2000 --spinSleepTime 2000 ./forever/development.json",
+    "fiphr_service_jelastic": "forever stopall & env-cmd ./my.env forever start --minUptime 2000 --spinSleepTime 2000 forever.json",
     "client": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "dev_with_fiphr_service": "npm run fiphr_service & npm run dev",
