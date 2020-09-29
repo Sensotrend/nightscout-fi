@@ -133,6 +133,7 @@
     "dev_with_fiphr_service": "npm run fiphr_service & npm run dev",
     "ui": "react-scripts start",
     "start": "react-scripts build && env-cmd ./my.env node esmloader.js",
+    "_start": "react-scripts build && forever stop esmloader.js && env-cmd ./my.env forever start esmloader.js && forever logs -f esmloader.js",
     "test": "env-cmd ./test.env react-scripts test --env=jsdom && env-cmd ./test.env mocha --exit --timeout 8000 --require esm tests/*.test.js",
     "coverage": "env-cmd ./test.env nyc mocha --exit --timeout 8000 --require esm tests/*.test.js",
     "coverage-html": "rm -rf .nyc_output && npm run-script coverage && nyc report --reporter html && nyc report --reporter text-lcov > coverage/codecov.log"
