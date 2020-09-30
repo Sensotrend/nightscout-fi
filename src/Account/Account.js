@@ -107,28 +107,6 @@ class Account extends Component {
                     &nbsp;
                   </div>
                 </section>
-                <section id='secrets'>
-                  <div className="container">
-                    <h2>Tilin asetukset</h2>
-                    <table>
-                      <caption>
-                        Voit liittää Nightscout-sovelluksia Omatietovaranto-tiliisi näillä asetuksilla:
-                        </caption>
-                      <tbody>
-                        <tr>
-                          <th>API SECRET</th>
-                          <td>{config.secret}</td>
-                        </tr>
-                        <tr>
-                          <th>REST API osoite</th>
-                          <td>{`https://${config.secret}@${config.api}`}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <p>Mikäli tahdot vaihtaa API SECRET -tunnuksesi, voit poistaa tilisi ja luoda
-                      uuden tilin samoilla sähköpostiasetuksilla.</p>
-                  </div>
-                </section>
               </ParallaxComponent>
               <ActionsMenu>
                 {sent

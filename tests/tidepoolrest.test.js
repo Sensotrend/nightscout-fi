@@ -7,16 +7,14 @@ import { exist } from '../node_modules/should/should.js';
 
 const env = nsfi.env;
 const Auth = env.userProvider;
-const siteid = 'foo';
-const pw = 'bar';
+const pw = uuidv4();
 
 const fhirserver = "http://hapi.fhir.org/baseDstu3";
 const FHIRClient = _FHIRClient(fhirserver, {env});
 
 const UUID = uuidv4();
 
-const d = new Date();
-const tokenExpiryTimeInFuture = new Date (d.getTime() + 100000);
+const tokenExpiryTimeInFuture = new Date(new Date().getTime() + 10000000);
 
 const testPatient = {
    "resourceType": "Patient",
@@ -41,7 +39,7 @@ describe('Tidepool API testing', function () {
          console.log('CREATING PATIENT');
          const results = await FHIRClient.createRecords(testPatient);
          patient = results.records[0];
-
+         console.log('CREATED PATIENT ' + JSON.stringify(patient));
       } catch (error) {
          console.error(error);
          false.should.equal(true);
@@ -50,14 +48,15 @@ describe('Tidepool API testing', function () {
 
    it('should authenticate over Tidepool API and upload a CGM record', async function () {
 
-      let u = await Auth.createUser(patient.id, siteid, pw, tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
+      let u = await Auth.createUser(patient.id, 'access_token', 'refresh_token', tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
 
       u.email = "foo@bar.com";
+      u.password = Auth.sha1(pw);
 
       try {
          await u.save();
       } catch (error) {
-         console.log('error');
+         console.error(error);
       }
 
       console.log('User for Tidepool API TEST', u);
@@ -87,7 +86,7 @@ describe('Tidepool API testing', function () {
 
       let results = await request(nsfi)
          .post('/tpapi/auth/login')
-         .auth(u.email, u.site_secret)
+         .auth(u.email, pw)
          .expect('Content-Type', /json/)
          .expect(200);
 
@@ -110,9 +109,10 @@ describe('Tidepool API testing', function () {
 
    it('should authenticate over Tidepool API and upload pump data as a dataset', async function () {
 
-      let u = await Auth.createUser(patient.id, siteid, pw, tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
+      let u = await Auth.createUser(patient.id, 'access_token', 'refresh_token', tokenExpiryTimeInFuture); // sub, access_token, refresh_token,token_expiry_date
 
       u.email = "foo@bar.com";
+      u.password = Auth.sha1(pw);
 
       try {
          await u.save();
@@ -178,7 +178,7 @@ describe('Tidepool API testing', function () {
 
       let results = await request(nsfi)
          .post('/tpapi/auth/login')
-         .auth(u.email, u.site_secret)
+         .auth(u.email, pw)
          .expect('Content-Type', /json/)
          .expect(200); // .expect('Content-Type', /json/)
 

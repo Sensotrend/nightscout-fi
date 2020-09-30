@@ -5,7 +5,7 @@ class Header extends Component {
     return (
       <header>
         <div className="container">
-          <h1 id='maintitle'><img src="/nightscout.png" alt="" />Nightscout Connect</h1>
+          <h1 id='maintitle'>Sensotrend Connect</h1>
         </div>
       </header>
     );

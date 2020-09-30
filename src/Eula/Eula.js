@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import Header from '../Header/Header';
+import { DescriptionText } from '../Instructions/Description';
 
 class Eula extends Component {
   render() {
@@ -13,11 +14,7 @@ class Eula extends Component {
               <h2 id="kayttoehdot">Käyttöehdot</h2>
               <small>Päivitetty 30.12.2019</small>
               <h3 id="palvelunkuvaus">Palvelun kuvaus</h3>
-              <p>Nightscout Connect -palvelu mahdollistaa tietojen tallentamisen avoimen
-                lähdekoodin kehittäjäyhteisön Nightscout-sovelluksista Omakannan
-                Omatietovarantoon.</p>
-              <p>Palvelun avulla Nightscout-sovellusten käyttöönotto on helpompaa, kun niiden
-                palvelinsovellusta ei tarvitse enää toteuttaa itse.</p>
+              <DescriptionText />
               <p>Palvelun käyttö ei korvaa tavanomaista terveytesi seurantaa tai terveydenhuollon
                 ammattilaisen apua. Palvelun käsittelemistä tiedoista saattaa olla hyötyä
                 havaintojen tekemisessä ja hoitotulosten analysoinnissa, mutta tietojen

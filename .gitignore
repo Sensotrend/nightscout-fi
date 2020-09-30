@@ -66,3 +66,6 @@ typings/
 
 # OSX directory information
 .DS_Store
+
+#yarn lock 
+yarn.lock

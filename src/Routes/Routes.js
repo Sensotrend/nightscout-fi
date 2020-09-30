@@ -16,7 +16,10 @@ import Index from '../Index/Index';
 import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
 import Privacy from '../Privacy/Privacy';
-import NSConsent from '../NSConsent/NSConsent';
+
+import CareLink from '../CareLink/CareLink';
+import Clarity from '../Clarity/Clarity';
+import LogOutSite from '../Logout/LogOutSite';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
@@ -77,6 +80,7 @@ const ProtectedRoute = ({
   config,
   ...rest
 }) => {
+  console.log('Route config', {config});
   return (
     <Route
       {...rest}
@@ -84,7 +88,7 @@ const ProtectedRoute = ({
         ? <Comp {...cProps} {...componentProps} />
         : <Redirect
           to={{
-            pathname: '/index',
+            pathname: (typeof(config) !== 'undefined') ? (config.stateStatusInfo.site_name === 'loginIn') ? '/index' : `/${config.stateStatusInfo.site_name}` : '/logout',
             state: { from: cProps.location },
           }}
         />
@@ -92,21 +96,6 @@ const ProtectedRoute = ({
     />
   );
 };
-
-const renderMergedProps = (component, ...rest) => {
-  const finalProps = Object.assign({}, ...rest);
-  return (
-    React.createElement(component, finalProps)
-  );
-}
-
-const PropsRoute = ({ component, ...rest }) => {
-  return (
-    <Route {...rest} render={routeProps => {
-      return renderMergedProps(component, routeProps, rest);
-    }}/>
-  );
-}
 
 class Routes extends Component {
   constructor(props) {
@@ -126,44 +115,51 @@ class Routes extends Component {
     this.props = props;
   }
 
-  componentDidMount() {
+  getConfig(){
+
     fetch(`${server}/fiphr/config`, fetchConfig)
-      .then(res => {
-        switch (res.status) {
-          case 200: return res.json();
-          case 204: return {};
-          default:
-            const error = new Error('Unable to load user config');
-            error.response = res;
-            throw error;
-        }
-      })
-      .then(json => {
-        this.setState({
-          initializing: false,
-          config: json,
-        });
-        initIdleTimeCallback(() => {
-          const { config } = this.state;
-          if (config.email || config.status) {
-            // user has logged in...
-            // eslint-disable-next-line no-console
-            console.log('Logout after inactivity'); // TODO: translate
-            this.setState({
-              initializing: false,
-              config: undefined,
-              logout: true,
-            });
-          }
-        });
-      })
-      .catch(error => {
-        console.error(error);
-        this.setState({
-          initializing: false,
-          error,
-        });
+    .then(res => {
+      switch (res.status) {
+        case 200: return res.json();
+        case 204: return {};
+        default:
+          const error = new Error('Unable to load user config');
+          error.response = res;
+          throw error;
+      }
+    })
+    .then(json => {
+      this.setState({
+        initializing: false,
+        config: json,
       });
+      initIdleTimeCallback(() => {
+        const { config } = this.state;
+        if (config.email || config.status) {
+          // user has logged in...
+          // eslint-disable-next-line no-console
+          console.log('Logout after inactivity'); // TODO: translate
+          this.setState({
+            initializing: false,
+            config: undefined,
+            logout: true,
+          });
+        }
+      });
+    })
+    .catch(error => {
+      console.error(error);
+      this.setState({
+        initializing: false,
+        error,
+      });
+    });
+
+  }
+
+  componentDidMount() {
+   this.getConfig();
+   console.log('ladattu....');
   }
 
   render() {
@@ -174,24 +170,20 @@ class Routes extends Component {
 
     return (
       <Router>
-       <Switch>
-         <Route path="/nsconsent/" component={NSConsent} />
-         <PropsRoute path="/" component = {NSFi}
-            state={this.state}
-            render={props => <NSFi {...props} config={config} />}/>
-       </Switch>
+        <Route>
+          <SensotrendConnect config={config} state={this.state} renderData={ () => { 
+            this.getConfig()}  } />
+        </Route>
       </Router>
-    )
-  
+    );
   }
 }
 
-class NSFi extends Component {
+class SensotrendConnect extends Component {
 
   render() {
-
-  const { config, logout } = this.props.state;
-
+  const { config, state } = this.props;
+  const { logout } = state;
   return (
     <Router basename={base} forceRefresh={!supportsHistory}>
       <Route
@@ -221,7 +213,7 @@ class NSFi extends Component {
         />
         <Route
           path="/logout"
-          render={(props) => (<Logout callback={() => this.setState({
+          render={() => (<Logout callback={() => this.setState({
             config: undefined,
             logout: false,
           })} />)}
@@ -229,11 +221,34 @@ class NSFi extends Component {
         <Route path="/privacy" component={Privacy} />
         
         <ProtectedRoute
+          path="/carelink"
+          config={config}
+          component={CareLink}
+          componentProps={{ config }}
+        />
+
+        <Route path="/clarity" component={Clarity} />
+        
+        <ProtectedRoute
           path="/registration"
           config={config}
           component={EmailRequest}
           componentProps={{ config }}
         />
+
+        <Route path="/logOutSite" render={ props => <LogOutSite callback={() => { 
+          
+          this.props.renderData();
+
+          this.setState({
+            config: undefined,
+            logout: false,
+          });
+
+          props.history.push("/"); 
+        }
+        } /> }  />
+
         <Redirect from="/" to="/index" />
       </Switch>
       <Footer />
