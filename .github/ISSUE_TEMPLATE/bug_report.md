@@ -21,7 +21,10 @@ When creating a report, please fill in parts 1 and 2 with as much information as
 [If applicable, add screenshots to help explain the problem.]
 
 **System information:**
-[If applicable, write the system information here.]
+- **Sensotrend Uploader version:** [for example 2.33.0-beta]
+- **Device used as a data source:** [for example FreeSyle Libre or CareSens Dual using Bluetooth]
+- **Operation system and version:** [for example Win10, or MacOS Catalina, or Linux Ubuntu 20.04]
+- **Possible other system information:**
 
 ### 2. Requirements and dependencies 
 **Known requirements for**
@@ -37,7 +40,7 @@ When creating a report, please fill in parts 1 and 2 with as much information as
 **Target schedule of the correction:** 
 
 ### 3.1. OWASP top 10
-[https://github.com/OWASP/www-project-top-ten/blob/master/index.md](url)
+[https://github.com/OWASP/www-project-top-ten/blob/master/index.md](https://github.com/OWASP/www-project-top-ten/blob/master/index.md)
 - [ ] **1 Injection** - [comments]
 - [ ] **2 Broken Authentication** - [comments]
 - [ ] **3 Sensitive Data Exposure** - [comments]

@@ -26,7 +26,7 @@ When creating a request, please fill in parts 1 and 2 with as much information a
 **Target schedule:** 
 
 ### 3.1 OWASP top 10
-[https://github.com/OWASP/www-project-top-ten/blob/master/index.md](url)
+[https://github.com/OWASP/www-project-top-ten/blob/master/index.md](https://github.com/OWASP/www-project-top-ten/blob/master/index.md)
 - [ ] **1 Injection** - [comments]
 - [ ] **2 Broken Authentication** - [comments]
 - [ ] **3 Sensitive Data Exposure** - [comments]
