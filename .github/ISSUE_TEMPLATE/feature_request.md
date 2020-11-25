@@ -1,5 +1,5 @@
 ---
-name: 💡 Other request
+name: 💡 Feature or improvement request
 about: Add a feature or improvement request
 title: ''
 labels: 'evaluation needed'
@@ -40,6 +40,12 @@ When creating a request, please fill in parts 1 and 2 with as much information a
 
 ### 4. Verification
 **Verification plan:**
-**Verification date:**
+To be verifified by following steps:
+
+1. [Test step 1]
+2. [Test step 2]
+
 **Verification results:**
+- [ ] 1. Pass/Fail (SW version, date)
+- [ ] 2. Pass/Fail (SW version, date)
 
