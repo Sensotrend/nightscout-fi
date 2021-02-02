@@ -1,4 +1,4 @@
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 import envModule from '../lib/env';
 //import skipService from '../lib/RecordSkipManager';
 import should from 'should';
