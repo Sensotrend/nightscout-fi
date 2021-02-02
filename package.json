@@ -1,6 +1,6 @@
 {
   "name": "nightscout-fhir-connect",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Nightscout REST API provider for FHIR PHRs",
   "repository": "https://github.com/sensotrend/nightscout-fi",
   "dependencies": {
@@ -31,7 +31,7 @@
     "morgan": "^1.9.1",
     "nanoid": "^3.1.20",
     "node-cache": "^5.1.2",
-    "node-sass": "^5.0.0",
+    "node-sass": "^4.14.1",
     "nodemon": "^2.0.7",
     "openid-client": "^4.4.0",
     "promise-parallel-throttle": "^3.3.0",
