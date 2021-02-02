@@ -1,7 +1,8 @@
-import uuidv4 from 'uuid/v4';
-import _FHIRClient from '../lib/FHIRClient';
+import { v4 as uuidv4 } from 'uuid';
 
+import _FHIRClient from '../lib/FHIRClient';
 import envModule from '../lib/env';
+
 const env = envModule();
 
 const URL = "http://hapi.fhir.org/baseDstu3";
