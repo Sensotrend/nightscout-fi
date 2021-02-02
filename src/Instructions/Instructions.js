@@ -22,7 +22,7 @@ class Instructions extends Component {
         <Header />
         <section id="version">
           <div className="container">
-            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 7.9.2020</small></p>
+            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 2.2.2021</small></p>
           </div>
         </section>
         <Description />
@@ -309,8 +309,8 @@ class Instructions extends Component {
               <img src={manufacturerImage} alt="Valmistaja" />
               <address>
                 Sensotrend Oy<br />
-                Koulukatu 16 B 41<br />
-                33200 Tampere<br />
+                Tampellan esplanadi 19 A 55<br />
+                33180 Tampere<br />
               </address>
             </div>
           </div>

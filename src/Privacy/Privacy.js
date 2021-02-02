@@ -11,7 +11,7 @@ class Privacy extends Component {
           <section>
             <div className="container">
               <h2 id="tietosuoja">Tietosuoja</h2>
-              <small>Päivitetty 30.12.2019</small>
+              <small>Päivitetty 2.2.2021</small>
               <p>
                 Tällä sivulla kerromme, miten ja miksi keräämme Sinua koskevia tietoja Nightscout
                 Connect -palvelun käyttäjänä ja miten huolehdimme yksityisyydestäsi
@@ -104,7 +104,7 @@ class Privacy extends Component {
               </p>
 
               <h2 id="yhteystiedot">Yhteystiedot</h2>
-              <p>Sensotrend Oy, 2606155-7, Koulukatu 16 B 41, 33200 Tampere.</p>
+              <p>Sensotrend Oy, 2606155-7, Tampellan esplanadi 19 A 55, 33180 Tampere.</p>
               <p>
                 Tietosuojavastaava Hannu Hyttinen, <a
                   href="mailto:privacy@sensotrend.com">privacy@sensotrend.com</a>.
