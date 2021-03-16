@@ -1,6 +1,6 @@
 {
   "name": "nightscout-fhir-connect",
-  "version": "1.4.8",
+  "version": "1.4.10",
   "description": "Nightscout REST API provider for FHIR PHRs",
   "repository": "https://github.com/sensotrend/nightscout-fi",
   "dependencies": {
@@ -22,7 +22,6 @@
     "fhir-kit-client": "git://github.com/mrinnetmaki/fhir-kit-client.git#error-handling",
     "formik": "^2.2.6",
     "fs-extra": "^9.1.0",
-    "fsevents": "^1.2.9",
     "jose": "^3.5.4",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
