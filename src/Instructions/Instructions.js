@@ -106,6 +106,10 @@ class Instructions extends Component {
                 <a href="http://stephenblackwasalreadytaken.github.io/NightWatch/"
                   target="_blank" rel="noopener noreferrer">Nightwatch</a> v2.0.4_2: tiedon
                   näyttäminen</li>
+              <li>
+                <a href="http://tomato.cool/"
+                target="_blank" rel="noopener noreferrer">Tomato App</a>, versio 3.0.6: tiedon tallentaminen
+              </li>
             </ul>
             <p>
               Nightscout-sovellusten ekosysteemi on varsin kirjava ja palvelu saattaa toimia tai
