@@ -22,7 +22,7 @@ class Instructions extends Component {
         <Header />
         <section id="version">
           <div className="container">
-            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 24.3.2021</small></p>
+            <p><small>Versio {process.env.REACT_APP_VERSION}, päivitetty 8.4.2021</small></p>
           </div>
         </section>
         <Description />
@@ -109,6 +109,10 @@ class Instructions extends Component {
               <li>
                 <a href="http://tomato.cool/"
                 target="_blank" rel="noopener noreferrer">Tomato App</a>, versio 3.0.6: tiedon tallentaminen
+              </li>
+              <li>
+                <a href="https://happybob.app/"
+                target="_blank" rel="noopener noreferrer">Happy Bob App</a>, versio 1.4.4: tiedon tallentaminen
               </li>
             </ul>
             <p>
