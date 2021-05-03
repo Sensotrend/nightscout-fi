@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-When creating a report, please fill in parts 1 and 2 with as much information as possible. A good problem description is most important for us. Other fields are optional information that will help us resolve the problem as quickly as possible.
+When creating a report, please fill in part 1 with as much information as possible. A good description is most important for us. Other fields are optional information that will help us resolve the issue as quickly as possible.
 
 ### 1. Bug/complaint report 
 
@@ -23,20 +23,18 @@ When creating a report, please fill in parts 1 and 2 with as much information as
 **System information:**
 [Write possible system information here.]
 
-### 2. Requirements and dependencies 
-**Known requirements for**
-- **functional:** 
-- **performance:** 
-- **usability:** 
-- **safety:** 
+### 2. Analysis:
+_(Mandatory fields for complaints and nonconformities. Please add 'None' if nothing else can be filled.)_
+**Root cause of the issue** (ref. 13485 chapter 8.5.2 clause b):
+**Actions needed to ensure that the issue do not recur** (ref. 13485 chapter 8.5.2 clause c):
+**Impacts of the correction on medical device safety and performance** (ref. 13485 chapter 8.5.2 clause e):
+**Affects on the ability to meet applicable regulatory** (ref. 13485 chapter 8.5.2 clause e):
 
-**Dependencies on other parts of the SW:**
+### 3. Action/implementation details:
+**Action/correction plan:**  
+**Target schedule:** 
 
-### 3. Implementation details
-**Correction plan:**  
-**Target schedule of the correction:** 
-
-### 3.1. OWASP top 10
+### 3.1. OWASP top 10 (for software changes only):
 [https://github.com/OWASP/www-project-top-ten/blob/master/index.md](https://github.com/OWASP/www-project-top-ten/blob/master/index.md)
 - [ ] **1 Injection** - [comments]
 - [ ] **2 Broken Authentication** - [comments]
@@ -49,21 +47,14 @@ When creating a report, please fill in parts 1 and 2 with as much information as
 - [ ] **9 Using Components with Known Vulnerabilities** - [comments]
 - [ ] **10 Insufficient Logging & Monitoring** - [comments]
 
-### 3.2. **Analysis:** 
-_(Mandatory fields for complaints and nonconformities. Please add 'None' if nothing else can be filled.)_
-**Root cause of the issue:**
-**Actions needed to ensure that the issue do not recur:**
-**Impacts of the correction on medical device safety and performance:**
-**Affects to the ability to meet applicable regulatory:**
-
-### 4. Verification
+### 4. Verification (for software changes only):
 **Verification plan:**
-To be verifified by following steps:
+To be verified by following steps:
 
 1. [Test step 1]
 2. [Test step 2]
 
 **Verification results:**
-- [ ] 1. Pass/Fail (SW version, date)
-- [ ] 2. Pass/Fail (SW version, date)
+- [ ] 1. Pass/Fail (your name, SW version, date)
+- [ ] 2. Pass/Fail (your name, SW version, date)
 
