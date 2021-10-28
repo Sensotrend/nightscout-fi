@@ -91,14 +91,20 @@ describe('NS_REST_API & FHIRClient test', function () {
          .post('/api/v1/entries')
          .send(ns_sample)
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
+         .expect(200)
          .expect('Content-Type', /json/)
-         .expect(200);
+         /*
+         .then(response => {
+            console.log('First entries response: ', response);
+         })
+         */
+         ;
 
       await request(nsfi)
          .get('/api/v1/entries')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             console.log('response.body', response.body);
             response.body[0].date.should.equal(now.valueOf());
@@ -147,14 +153,14 @@ describe('NS_REST_API & FHIRClient test', function () {
          .post('/api/v1/entries')
          .send(ns_sample)
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200)
+         .expect('Content-Type', /json/);
       
       await request(nsfi)
          .get('/api/v1/entries?count=1&find\[date\]\[\$eq\]=1550143851509')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             console.log('response.body', response.body);
             response.body[0].date.should.equal(1550143851509);
@@ -226,15 +232,15 @@ describe('NS_REST_API & FHIRClient test', function () {
          .post('/api/v1/entries')
          .send(ns_sample)
          .set({ 'api-secret': u2.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200)
+         .expect('Content-Type', /json/);
       
       await request(nsfi)
          // .get('/api/v1/entries/sgv.json?count=6') // This is what the Nightscout OSX menubar app queries for
          .get('/api/v1/entries/sgv.json?count=6&find\[date\]\[\$gt\]=1584971679000')
          .set({ 'api-secret': u2.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             console.log('response.body', response.body);
             response.body.length.should.equal(6);
@@ -269,14 +275,14 @@ describe('NS_REST_API & FHIRClient test', function () {
          .post('/api/v1/treatments')
          .send(ns_sample)
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200)
+         .expect('Content-Type', /json/);
 
       await request(nsfi)
          .get('/api/v1/treatments')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             console.log('response to /treatment query', response.body);
             response.body[0].date.should.equal(now.valueOf());
@@ -308,14 +314,14 @@ describe('NS_REST_API & FHIRClient test', function () {
          .post('/api/v1/treatments')
          .send(ns_sample)
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200)
+         .expect('Content-Type', /json/);
 
       await request(nsfi)
          .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$gt\]=2019-01-01T11%3A30%3A17.694Z&find\[created_at\]\[\$lt\]=2019-05-01T11%3A30%3A17.694Z')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             response.body[0].date.should.equal(1554106889000);
             response.body[0].carbs.should.equal(20);
@@ -325,8 +331,8 @@ describe('NS_REST_API & FHIRClient test', function () {
       await request(nsfi)
          .get('/api/v1/treatments?count=10\&find\[created_at\]\[\$lt\]=2019-01-01T11%3A30%3A17.694Z')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             console.log('response.body', response.body);
             response.body.length.should.equal(0);
@@ -339,8 +345,8 @@ describe('NS_REST_API & FHIRClient test', function () {
 
       await request(nsfi)
          .get('/api/v1/verifyauth')
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             response.body.message.should.equal("UNAUTHORIZED");
          });
@@ -348,8 +354,8 @@ describe('NS_REST_API & FHIRClient test', function () {
       await request(nsfi)
          .get('/api/v1/verifyauth')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
          .expect(200)
+         .expect('Content-Type', /json/)
          .then(response => {
             response.body.message.should.equal("OK");
          });
@@ -363,8 +369,8 @@ describe('NS_REST_API & FHIRClient test', function () {
          .post('/api/v1/devicestatus')
          .send({ device: "testDevice", status: 1 })
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200)
+         .expect('Content-Type', /json/);
    });
 
    it('should provide the /status API', async function () {
@@ -374,8 +380,8 @@ describe('NS_REST_API & FHIRClient test', function () {
       await request(nsfi)
          .get('/api/v1/status')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200)
+         .expect('Content-Type', /json/);
    });
 
 
@@ -386,7 +392,7 @@ describe('NS_REST_API & FHIRClient test', function () {
       await request(nsfi)
          .get('/api/v1/pebble')
          .set({ 'api-secret': u.site_secret, 'Accept': 'application/json' })
-         .expect('Content-Type', /json/)
-         .expect(200);
+         .expect(200)
+         .expect('Content-Type', /json/);
    });
 });
