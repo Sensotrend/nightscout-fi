@@ -90,11 +90,15 @@
     "node": "^12.2.0",
     "npm": "6.x"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "scripts": {
     "build": "react-scripts build",
     "server": "env-cmd ./my.env nodemon esmloader.js",
     "client": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "lint": "./node_modules/eslint/bin/eslint.js src/",
     "prestart": "react-scripts build",
     "start": "node esmloader.js",
     "test": "env-cmd ./test.env react-scripts test --env=jsdom && env-cmd ./test.env mocha --exit --timeout 8000 --require esm tests/*.test.js",
