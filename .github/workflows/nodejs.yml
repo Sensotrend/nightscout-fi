@@ -23,11 +23,12 @@ jobs:
       run: |
         npm ci
         npm run build
-        npm test
       env:
         CI: true
     - name: record code quality results with eslint
       run: npm run lint
+    - name: run tests and record test coverage
+      run: npm run coverage
     - name: record dependency safety check with npm audit
       run: |
         npm audit --production
