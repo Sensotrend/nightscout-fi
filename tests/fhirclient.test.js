@@ -5,7 +5,7 @@ import envModule from '../lib/env';
 
 const env = envModule();
 
-const URL = "http://hapi.fhir.org/baseDstu3";
+const URL = env.FHIRServer;
 const FHIRClient = _FHIRClient(URL, {env});
 
 const UUID = uuidv4();

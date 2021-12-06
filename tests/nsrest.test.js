@@ -10,7 +10,7 @@ const Auth = env.userProvider;
 const siteid = 'foo';
 const pw = 'bar';
 
-const fhirserver = "http://hapi.fhir.org/baseDstu3";
+const fhirserver = env.FHIRServer;
 const FHIRClient = _FHIRClient(fhirserver, { env });
 
 const UUID = uuidv4();
