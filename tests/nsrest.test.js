@@ -10,7 +10,7 @@ const Auth = env.userProvider;
 const siteid = 'foo';
 const pw = 'bar';
 
-const fhirserver = "http://hapi.fhir.org/baseDstu3";
+const fhirserver = env.FHIRServer;
 const FHIRClient = _FHIRClient(fhirserver, { env });
 
 const UUID = uuidv4();
@@ -35,7 +35,7 @@ const d2 = new Date(d.getTime() + 100000);
 
 let patient;
 
-describe('NS_REST_API & FHIRClient test', function () {
+describe.skip('NS_REST_API & FHIRClient test', function () {
 
    it('should create a sample patient and data to FHIR sandbox', async function () {
       try {

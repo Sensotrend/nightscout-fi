@@ -1,0 +1,31 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Create mongoDB Docker container
+      run: sudo docker run -d -p 27017:27017 mongo:latest        
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run build
+      env:
+        CI: true
+    - name: record code quality results with eslint
+      run: npm run lint
+    - name: run tests and record test coverage
+      run: npm run coverage
