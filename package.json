@@ -28,7 +28,7 @@
     "moment": "^2.24.0",
     "mongoose": "^5.13.12",
     "morgan": "^1.9.1",
-    "nanoid": "^3.1.30",
+    "nanoid": "^3.1.31",
     "node-cache": "^5.1.2",
     "node-sass": "^6.0.1",
     "openid-client": "^4.9.1",
