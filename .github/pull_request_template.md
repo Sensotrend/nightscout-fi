@@ -23,14 +23,14 @@ _Instruction: Remove bullet, which is not the analysis result._
 _Instruction: Check that the OWASP top 10 have been taken into account._
 
 [https://github.com/OWASP/www-project-top-ten/blob/master/index.md](https://github.com/OWASP/www-project-top-ten/blob/master/index.md)
-- [ ] **1 Injection** - [comments]
-- [ ] **2 Broken Authentication** - [comments]
-- [ ] **3 Sensitive Data Exposure** - [comments]
-- [ ] **4 XML External Entities (XXE)** - [comments]
-- [ ] **5 Broken Access Control** - [comments]
-- [ ] **6 Security Misconfiguration** - [comments]
-- [ ] **7 Cross-Site Scripting XSS** - [comments]
-- [ ] **8 Insecure Deserialization** - [comments]
-- [ ] **9 Using Components with Known Vulnerabilities** - [comments]
-- [ ] **10 Insufficient Logging & Monitoring** - [comments]
+- [ ] **A01:2021-Broken Access Control** - [comments]
+- [ ] **A02:2021-Cryptographic Failures** - [comments]
+- [ ] **A03:2021-Injection** - [comments]
+- [ ] **A04:2021-Insecure Design** - [comments]
+- [ ] **A05:2021-Security Misconfiguration** - [comments]
+- [ ] **A06:2021-Vulnerable and Outdated Components** - [comments]
+- [ ] **A07:2021-Identification and Authentication Failures** - [comments]
+- [ ] **A08:2021-Software and Data Integrity Failures** - [comments]
+- [ ] **A09:2021-Security Logging and Monitoring Failures** - [comments]
+- [ ] **A10:2021-Server-Side Request Forgery** - [comments]
 
