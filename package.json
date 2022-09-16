@@ -22,7 +22,7 @@
     "fhir-kit-client": "^1.8.0",
     "formik": "^2.2.9",
     "fs-extra": "^10.0.0",
-    "jose": "^4.1.2",
+    "jose": "^4.9.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "moment": "^2.24.0",
