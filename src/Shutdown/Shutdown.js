@@ -36,17 +36,19 @@ class Shutdown extends Component {
           </div>
         </section>
         <section id="nightscout-connect-video">
-        <div className="container">
-            <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/3rNMwO_KU1I"
-              title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+          <div className="container">
+            <div className="video">
+              <iframe width="100%" src="https://www.youtube-nocookie.com/embed/3rNMwO_KU1I"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
           </div>
         </section>
         <section id="reasons">
           <div className="container">
             <h2>Palvelun loppumisen syyt</h2>
-            <p>Nyt palvelun toiminta on siis kuitenkin lakkaamassa. Avaamme tässä tilanteen
+            <p>Nyt palvelun toiminta on siis kuitenkin päättymässä. Avaamme tässä tilanteen
               taustoja. Lopuksi kerromme, mitä tämä tarkoittaa palvelun nykyisille käyttäjille.</p>
             <p>Syy sille, miksi palvelun toiminta loppuu juuri nyt on se, että äskettäin voimaan
               tullut asiakastietolaki ja sitä täydentävät THL:n määräykset asettavat uusia
@@ -117,7 +119,7 @@ class Shutdown extends Component {
               työvaiheita. Kymmenet tuhannet ei-tekniset ihmiset ovat kuitenkin tässä onnistuneet,
               eli pelko pois. Tukea saa tarvittaessa Facebookin vertaistukiryhmistä. Tämä tapa on
               ennen ollu ilmainen, mutta Herokusta poistui vastikään ilmaiskäytön mahdollisuus.
-              Arviot Nightscout-käytön maksullisuudesta ovat n. 5 € / kk.</p>
+              Arvio Nightscout-käytön kuluista maksullisessa Herokussa on n. 5 € / kk.</p>
             <p>Toinen vaihtoehto on käyttää palveluita, jotka tarjoavat Nightscout-ympäristön
               palveluna, samaan tapaan kuin Nightscout Connect tarjosi. Tällaisia palveluita ovat
               ainakin <a href="https://t1pal.com/">T1Pal</a> ja <a
@@ -141,8 +143,8 @@ class Shutdown extends Component {
             <p>Erityisen suuret kiitokset Sosiaali- ja terveysministeriölle rohkeasta kokeilusta
               sekä Omatietovarannon edistämisen että etenkin suunnittelukilpailun osalta. Te
               mahdollistitte tämän palvelun syntymisen ja toimimisen tähän saakka. Jos ei mitään
-              yritä, ei voi onnistuakaan. Toisaalta on hyvä huomata koska on yritetty riittävästi
-              ja luovuttaa. Tämä hetki tuli meidän palvelumme osalta eteen nyt.</p>
+              yritä, ei voi onnistuakaan. Toisaalta on hyvä huomata, milloin on yritetty riittävästi
+              ja on aika luovuttaa. Tämä hetki tuli meidän palvelumme osalta eteen nyt.</p>
             <p>Aivan erityinen kiitos kuuluu tietysti Nightscout-yhteisölle, jonka luomat
               sovellukset jatkossakin helpottavat elämää diabeteksen kanssa ja jonka aktiivisuus ja
               anna hyvän kiertää -asenne luovat kaikesta huolimatta uskoa tulevaisuuteen!</p>

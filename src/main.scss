@@ -63,6 +63,20 @@ aside,
   margin: auto;
 }
 
+.container .video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;  
+}
+
+.container .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 p.ingress {
   font-size: larger;
   font-style: italic;
