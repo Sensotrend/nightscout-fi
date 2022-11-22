@@ -10,19 +10,49 @@
       lähdekoodin kehittäjäyhteisön Nightscout-sovellukset Omakannan Omatietovarantoon.
       v%REACT_APP_VERSION%">
   <meta name="author" content="Sensotrend Oy">
+  <style>
+    aside {
+      margin-top: 1em !important;
+      margin-bottom: 2em !important;
+      padding: 2em;
+      border: 4px solid red;
+      background-color: white;
+      color: black !important;
+    }
+    aside a {
+      display: block;
+      margin-top: 1em;
+      /*
+      color: inherit !important;
+      */
+    }
+  </style>
   <title>Nightscout Connect</title>
 </head>
 <body>
   <noscript>
-      <div class="dark header">
-          <div class="container">
-            <h1><img src="nightscout.png" />Nightscout Connect</h1>
-          </div>
-        </div>
-      <div class="dark">
+    <style>
+      body {
+        padding: 1em;
+        max-width: 35em;
+        margin: auto;
+      }
+      img {
+        display: block;
+        height: 120px;
+      }
+    </style>
+    <aside class="warning"><strong>Nightscout Connect -palvelun toiminta loppuu
+    lähitulevaisuudessa!</strong> <a href="shutdown.html">Lue lisää!</a></aside>
+    <div class="dark header">
       <div class="container">
-        <p>Nightscout Connect on Kanta-palveluihin kytketty palvelu,
-          jonka avulla Nightscout-sovelluksia voi käyttää <a
+        <h1><img src="nightscout.png" />Nightscout Connect</h1>
+      </div>
+    </div>
+    <div class="dark">
+      <div class="container">
+        <p>Nightscout Connect on Kanta-palveluihin kytketty palvelu jonka avulla
+          Nightscout-sovelluksia voi käyttää <a
           href="https://www.kanta.fi/web/guest/hyvinvointitiedot">Omatietovarannon</a> kanssa.</p>
         <p>Nightscout-sovellukset ovat avoimen lähdekoodin kehittäjäyhteisön luomia sovelluksia.
           Sovellusten tarkoitus on helpottaa elämää diabeteksen kanssa. Nämä sovellukset eivät
