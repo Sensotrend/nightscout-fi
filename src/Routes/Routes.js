@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Link,
   Redirect,
   Route,
   BrowserRouter as Router,
@@ -11,12 +12,13 @@ import Deleted from '../Account/Deleted';
 import { server } from '../Api/Api';
 import EmailRequest from '../EmailVerification/EmailRequest';
 import Eula from '../Eula/Eula';
+import Footer from '../Footer/Footer';
 import Instructions from '../Instructions/Instructions';
 import Index from '../Index/Index';
-import Footer from '../Footer/Footer';
 import Logout from '../Logout/Logout';
-import Privacy from '../Privacy/Privacy';
 import NSConsent from '../NSConsent/NSConsent';
+import Privacy from '../Privacy/Privacy';
+import Shutdown from '../Shutdown/Shutdown';
 
 const base = process.env.PUBLIC_URL;
 const supportsHistory = 'pushState' in window.history;
@@ -194,6 +196,12 @@ class NSFi extends Component {
 
   return (
     <Router basename={base} forceRefresh={!supportsHistory}>
+        <aside class="warning">
+          <strong>Nightscout Connect -palvelun toiminta loppuu lähitulevaisuudessa!</strong>
+          {' '}
+          <Link to="/shutdown">Lue lisää!</Link>
+        </aside>
+
       <Route
         render={props => {
           if (logout && props.location.pathname !== '/logout') {
@@ -227,6 +235,8 @@ class NSFi extends Component {
           })} />)}
         />
         <Route path="/privacy" component={Privacy} />
+        <Route path="/shutdown" component={Shutdown} />
+        <Redirect from="/shutdown.html" to="/shutdown" />
         
         <ProtectedRoute
           path="/registration"
