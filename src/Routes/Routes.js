@@ -196,12 +196,13 @@ class NSFi extends Component {
 
   return (
     <Router basename={base} forceRefresh={!supportsHistory}>
-        <aside class="warning">
-          <strong>Nightscout Connect -palvelun toiminta loppuu lähitulevaisuudessa!</strong>
-          {' '}
-          <Link to="/shutdown">Lue lisää!</Link>
-        </aside>
-
+      {/*
+      <aside class="warning">
+        <strong>Nightscout Connect -palvelun toiminta loppuu lähitulevaisuudessa!</strong>
+        {' '}
+        <Link to="/shutdown">Lue lisää!</Link>
+      </aside>
+      */}
       <Route
         render={props => {
           if (logout && props.location.pathname !== '/logout') {
