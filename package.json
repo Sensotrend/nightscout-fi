@@ -7,7 +7,7 @@
     "@awaitjs/express": "^0.9.0",
     "@githubprimer/octicons-react": "^8.5.0",
     "@sendgrid/mail": "^7.5.0",
-    "ajv": "^8.6.0",
+    "ajv": "^8.12.0",
     "async-csv": "^2.1.3",
     "axios": "^0.24.0",
     "basic-auth": "^2.0.1",
@@ -22,7 +22,7 @@
     "fhir-kit-client": "^1.8.0",
     "formik": "^2.2.9",
     "fs-extra": "^10.0.0",
-    "jose": "^4.1.2",
+    "jose": "^4.11.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "moment": "^2.24.0",
@@ -38,7 +38,7 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
-    "sensotrend-converter": "https://github.com/Sensotrend/sensotrend-converter.git#nightscout",
+    "sensotrend-converter": "git+https://github.com/Sensotrend/sensotrend-converter.git#nightscout",
     "simple-oauth2": "^4.2.0",
     "uuid": "^8.3.2",
     "winston": "^3.2.1",
@@ -56,7 +56,7 @@
     "nyc": "^15.1.0",
     "should": "^13.2.3",
     "source-map-support": "^0.5.20",
-    "supertest": "^6.1.6"
+    "supertest": "^6.3.3"
   },
   "esm": {
     "cjs": true,
