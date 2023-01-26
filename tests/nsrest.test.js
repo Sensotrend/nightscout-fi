@@ -35,7 +35,7 @@ const d2 = new Date(d.getTime() + 100000);
 
 let patient;
 
-describe.skip('NS_REST_API & FHIRClient test', function () {
+describe('NS_REST_API & FHIRClient test', function () {
 
    it('should create a sample patient and data to FHIR sandbox', async function () {
       try {
