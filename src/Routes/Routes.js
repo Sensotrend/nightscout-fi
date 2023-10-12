@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Link,
   Redirect,
   Route,
   BrowserRouter as Router,
@@ -188,67 +189,74 @@ class Routes extends Component {
 }
 
 class NSFi extends Component {
-
   render() {
 
-  const { config, logout } = this.props.state;
+    const { config, logout } = this.props.state;
 
-  return (
-    <Router basename={base} forceRefresh={!supportsHistory}>
-        <aside class="warning">
-          <strong>Nightscout Connect -palvelun toiminta loppuu lähitulevaisuudessa!</strong>
-          {' '}
-          <Link to="/shutdown">Lue lisää!</Link>
-        </aside>
-
-      <Route
-        render={props => {
-          if (logout && props.location.pathname !== '/logout') {
-            return <Redirect to="/logout" />;
-          }
-          return null;
-        }}
-      />
-      <Switch>
-        <ProtectedRoute
-          path="/account"
-          config={config}
-          component={Account}
-          componentProps={{ config }}
-        />
-        <Route path="/deleted" component={Deleted} />
-        <Route path="/eula" component={Eula} />
+    return (
+      <Router basename={base} forceRefresh={!supportsHistory}>
         <Route
-          path="/index"
-          render={props => <Index {...props} config={config} />}
+          render={props => {
+            if (props.location.pathname !== '/shutdown') {
+              return (
+                <aside class="warning">
+                  <strong>Nightscout Connect -palvelun toiminta loppuu
+                  lähitulevaisuudessa!</strong>
+                  {' '}
+                  <Link to="/shutdown">Lue lisää!</Link>
+                </aside>
+              );
+            }
+            return null;
+          }}
         />
         <Route
-          path="/instructions"
-          render={props => <Instructions {...props} config={config} />}
+          render={props => {
+            if (logout && props.location.pathname !== '/logout') {
+              return <Redirect to="/logout" />;
+            }
+            return null;
+          }}
         />
-        <Route
-          path="/logout"
-          render={(props) => (<Logout callback={() => this.setState({
-            config: undefined,
-            logout: false,
-          })} />)}
-        />
-        <Route path="/privacy" component={Privacy} />
-        <Route path="/shutdown" component={Shutdown} />
-        <Redirect from="/shutdown.html" to="/shutdown" />
-        
-        <ProtectedRoute
-          path="/registration"
-          config={config}
-          component={EmailRequest}
-          componentProps={{ config }}
-        />
-        <Redirect from="/" to="/index" />
-      </Switch>
-      <Footer />
-    </Router>
-  );
-}
+        <Switch>
+          <ProtectedRoute
+            path="/account"
+            config={config}
+            component={Account}
+            componentProps={{ config }}
+          />
+          <Route path="/deleted" component={Deleted} />
+          <Route path="/eula" component={Eula} />
+          <Route
+            path="/index"
+            render={props => <Index {...props} config={config} />}
+          />
+          <Route
+            path="/instructions"
+            render={props => <Instructions {...props} config={config} />}
+          />
+          <Route
+            path="/logout"
+            render={(props) => (<Logout callback={() => this.setState({
+              config: undefined,
+              logout: false,
+            })} />)}
+          />
+          <Route path="/privacy" component={Privacy} />
+          <Route path="/shutdown" component={Shutdown} />
+          <Redirect from="/shutdown.html" to="/shutdown" />
+          <ProtectedRoute
+            path="/registration"
+            config={config}
+            component={EmailRequest}
+            componentProps={{ config }}
+          />
+          <Redirect from="/" to="/index" />
+        </Switch>
+        <Footer />
+      </Router>
+    );
+  }
 }
 
 export default Routes;
