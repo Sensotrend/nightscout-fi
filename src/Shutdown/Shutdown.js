@@ -20,8 +20,9 @@ class Shutdown extends Component {
             <h2>Mikä Nightscout Connect?</h2>
             <p>Nightscout on avoimen lähdekoodin kehittäjäyhteisö, joka kehittää innovatiivisia
               palveluita verensokerin etäseurantaan ja jopa automatisoituun insuliinin annosteluun.
-              Yhteisössä on satoja sovelluskehittäjiä ja tuhansia vapaaehtoisia, jotka parantavat
-              palveluiden käyttöohjeita ja auttavat toisia ihmisiä palveluiden käyttöönotossa.</p>
+              Yhteisössä on satoja sovelluskehittäjiä ja tuhansia vapaaehtoisia, jotka luovat ja
+              hiovat palveluiden käyttöohjeita ja auttavat toisia ihmisiä palveluiden
+              käyttöönotossa.</p>
             <p>Nightscout Connect -palvelun idea oli tarjota Nightscout-rajapinta
               Kanta-järjestelmän Omatietovarannon yhteydessä. Tällöin palvelun käyttöönotto
               helpottuu, kun sovelluksia käyttävän ihmisen tai perheen ei enää tarvitse pystyttää
@@ -74,14 +75,14 @@ class Shutdown extends Component {
               tavalla helpota tietojen jakamista terveydenhuollon ammattilaisten kanssa -
               pikemminkin vain hankaloittaa sitä.</p>
             <p>Verensokerin etäseurantapalvelusta hyötyvät kaikkein eniten diabetesta sairastavien
-              lasten perheet ja nämä perheet olivat alusta saakka meille tärkein kohderyhmä.
+              lasten perheet, ja nämä perheet olivat alusta saakka meille tärkein kohderyhmä.
               Kilpailutyössämme ja sen jälkeisissä sopimusneuvotteluissa nostimme esiin suurimpana
               riskinä sen, että Omatietovarannossa ei tuolloin ollut mahdollista käsitellä lasten
               tietoja. Kaikki osapuolet pitivät tuolloin kuitenkin selvyytenä sitä, että tuo
               ominaisuus on tulossa ja kyse oli vain toteutuksen aikataulusta. Nyt on jo ilmeistä,
               että Kelalla ei ole mitään aikomusta ainakaan lähitulevaisuudessa laajentaa
               Omatietovarannon käyttöä kattamaan pienten lasten tietoja, vaan Omatietovarantoon voi
-              perustaa tilin ainoastaan henkilölle, jolla on omat henkilökohtaiset sähköiset
+              perustaa tilin ainoastaan henkilölle, jolla on omat sähköiset
               tunnistautumisvälineet.</p>
             <p>Kaikki muukin kehitys Omatietovarannossa on ollut hyvin hidasta ja tuskallista.
               Tarjolla on ollut vain keppiä, eikä lainkaan porkkanaa. Mikäli tilanne muuttuu
@@ -104,14 +105,14 @@ class Shutdown extends Component {
               6/2021</a> mukaiset vaatimukset tulevat voimaan viimeistään 1.12.2023, johon mennessä
               kaikkien tuotantokäytössä toimivien hyvinvointisovellusten on suoritettava hyväksytty
               sertifiointi ja rekisteröinti.</q></p>
-            <p>Emme siis noista yllä mainituista syistä ole suorittamassa tuota vaadittua
-              sertifiointia nightscout.fi-palvelulle.
+            <p>Emme siis noista yllä mainituista syistä aio suorittaa tuota vaadittua sertifiointia
+              nightscout.fi-palvelulle.
             </p>
             <p>Näillä näkymin jätämme palvelun edelleen näkyviin, mutta katkaisemme tietojen
               siirtämisen Omatietovarantoon.</p>
-            <p>Mitään tietoja ei tämän johdosta varsinaisesti katoa. Omatietovarantoon
-              jo tallentuneet tiedot tulevat säilymään siellä. Samoin Nightscout Connect -palveluun
-              tallennetut yhteystiedot pysyvät palvelussa tallessa. Mutta tietoja ei enää siirry
+            <p>Mitään tietoja ei tässä yhteydessä katoa. Omatietovarantoon jo tallentuneet tiedot
+              tulevat säilymään siellä. Samoin Nightscout Connect -palveluun tallennetut
+              yhteystiedot pysyvät palvelussa tallessa. Mutta tietoja ei enää siirry
               Nightscout-sovelluksista Omatietovarantoon eikä Omatietovarannosta
               Nightscout-sovelluksiin. Käyttämäsi Nightscout-sovellukset ilmoittavat tiedonsirron
               virheistä omilla tavoillaan.</p>
@@ -127,13 +128,13 @@ class Shutdown extends Component {
             <p>Kun Omatietovarantoa ei enää voi käyttää tietojen tallentamiseen ja jakamiseen,
               Nightscout-palvelulle tarvitaan erillinen asennus. </p>
             <p>Perinteisesti jokainen palvelua käyttävä ihminen tai perhe on tehnyt oman ja itse
-              ylläpitämänsä asennuksen, esimerkiksi Heroku-ympäristöön. Tämä onnistuu suoraan
-              <a href="https://github.com/nightscout/cgm-remote-monitor#user-content-nightscout-web-monitor-aka-cgm-remote-monitor">koodin
+              ylläpitämänsä asennuksen, esimerkiksi Heroku-ympäristöön. Tämä onnistuu suoraan <a
+              href="https://github.com/nightscout/cgm-remote-monitor#user-content-nightscout-web-monitor-aka-cgm-remote-monitor">koodin
               versionhallintajärjestelmästä</a> Deploy to Heroku-nappulan kautta. Tämä menetelmä
               edellyttää rekisteröitymistä useampaan eri palveluun ja jonkin verran eri
               työvaiheita. Kymmenet tuhannet ei-tekniset ihmiset ovat kuitenkin tässä onnistuneet,
               eli pelko pois. Tukea saa tarvittaessa Facebookin vertaistukiryhmistä. Tämä tapa on
-              ennen ollu ilmainen, mutta Herokusta poistui vastikään ilmaiskäytön mahdollisuus.
+              ennen ollut ilmainen, mutta Herokusta poistui vastikään ilmaiskäytön mahdollisuus.
               Arvio Nightscout-käytön kuluista maksullisessa Herokussa on
               n.&nbsp;5&nbsp;€&nbsp;/&nbsp;kk.</p>
             <p>Toinen vaihtoehto on käyttää palveluita, jotka tarjoavat Nightscout-ympäristön
