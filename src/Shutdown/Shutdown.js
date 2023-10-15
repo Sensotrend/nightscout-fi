@@ -12,7 +12,7 @@ class Shutdown extends Component {
             <h1>Palvelun tarina päättyy</h1>
             <p className="ingress">Nightscout Connect -palvelu on mahdollistanut
               Nightscout-sovellusten käytön Kanta-järjestelmän Omatietovarannon yhteydessä.
-              Palvelun toiminta kuitenkin loppuu lähitulevaisuudessa.</p>
+              Palvelun toiminta kuitenkin loppuu 30.11.2023.</p>
           </div>
         </section>
         <section id="nightscout-connect">
@@ -20,8 +20,9 @@ class Shutdown extends Component {
             <h2>Mikä Nightscout Connect?</h2>
             <p>Nightscout on avoimen lähdekoodin kehittäjäyhteisö, joka kehittää innovatiivisia
               palveluita verensokerin etäseurantaan ja jopa automatisoituun insuliinin annosteluun.
-              Yhteisössä on satoja sovelluskehittäjiä ja tuhansia vapaaehtoisia, jotka parantavat
-              palveluiden käyttöohjeita ja auttavat toisia ihmisiä palveluiden käyttöönotossa.</p>
+              Yhteisössä on satoja sovelluskehittäjiä ja tuhansia vapaaehtoisia, jotka luovat ja
+              hiovat palveluiden käyttöohjeita ja auttavat toisia ihmisiä palveluiden
+              käyttöönotossa.</p>
             <p>Nightscout Connect -palvelun idea oli tarjota Nightscout-rajapinta
               Kanta-järjestelmän Omatietovarannon yhteydessä. Tällöin palvelun käyttöönotto
               helpottuu, kun sovelluksia käyttävän ihmisen tai perheen ei enää tarvitse pystyttää
@@ -55,71 +56,87 @@ class Shutdown extends Component {
               vaatimuksia Omatietovarantoon liittyville sovelluksille. Näitä uusia vaatimuksia ovat
               esimerkiksi saavutettavuusselvitykset ja tietoturvallisuuden auditointi ulkopuolisen
               tahon toimesta. Sekä saavutettavuus että tietoturva ovat kiistatta tärkeitä asioita,
-              jotka kaikkien verkkopalveluiden täytyy hoitaa kuntoon. Uudet määräykset keskittyvät
-              lähinnä siihen, kuinka nämä asiat dokumentoidaan ulkopuolisille ja varmennetaan
-              ulkopuolisten toimijoiden toimesta. Tämän dokumentaation tuottaminen aiheuttaisi
-              paljon uutta työtä ja lisäksi pelkistä auditointimaksuistakin kertyy vähintään
-              viisinumeroinen summa.</p>
+              jotka kaikkien verkkopalveluiden täytyy hoitaa kuntoon. Uudet määräykset kuitenkin
+              keskittyvät lähinnä siihen, kuinka nämä asiat dokumentoidaan ulkopuolisille ja
+              varmennetaan ulkopuolisten toimijoiden toimesta. Tämän dokumentaation tuottaminen
+              aiheuttaisi paljon uutta työtä ja lisäksi pelkistä auditointimaksuistakin kertyy
+              vähintään viisinumeroinen summa.</p>
             <p>Suurempi syy palvelun toiminnan loppumiselle, ja pääasiallinen syy sille, että emme
               lähde täyttämään uusia vaatimuksia on kuitenkin se, että Omatietovaranto
               palveluympäristönä on ollut meille massiivinen pettymys ja ylipäätäänkin kiistatta
               katastrofaalinen epäonnistuminen.</p>
             <p>Omatietovarannon oli tarkoitus toimia ekosysteeminä, jossa kansalainen voi
-              hallinnoida itse tuottamiaan terveys- ja hyvinvointitietoja ja jonka avulla
-              kansalainen voi jakaa tietoja eri hyvinvointisovellusten kesken ja myös
-              terveydenhuollon ammattilaisille. Nyt, lähes seitsemän vuotta palvelun lanseeraamisen
-              jälkeen palveluun on liittyneenä neljä eri sovellusta. Kaksi niistä (Nightscout
-              Connect ja Sensotrend Connect) ovat saman sovellustoimittajan toteuttamia. Eri
-              toimittajien sovellukset eivät millään tavoin jaa tietoja keskenään, eikä
-              Omatietovaranto millään tavalla helpota tietojen jakamista terveydenhuollon
-              ammattilaisten kanssa - pikemminkin vain hankaloittaa sitä.</p>
+              hallinnoida itse tuottamiaan terveys- ja hyvinvointitietoja ja jonka avulla hän voi
+              jakaa tietoja eri hyvinvointisovellusten kesken ja myös terveydenhuollon
+              ammattilaisille. Nyt, lähes seitsemän vuotta palvelun lanseeraamisen jälkeen
+              palveluun on liittyneenä neljä eri sovellusta. Kaksi niistä (Nightscout Connect ja
+              Sensotrend Connect) ovat saman sovellustoimittajan toteuttamia. Eri toimittajien
+              sovellukset eivät millään tavoin jaa tietoja keskenään, eikä Omatietovaranto millään
+              tavalla helpota tietojen jakamista terveydenhuollon ammattilaisten kanssa -
+              pikemminkin vain hankaloittaa sitä.</p>
             <p>Verensokerin etäseurantapalvelusta hyötyvät kaikkein eniten diabetesta sairastavien
-              lasten perheet ja nämä perheet olivat alusta saakka meille tärkein kohderyhmä.
+              lasten perheet, ja nämä perheet olivat alusta saakka meille tärkein kohderyhmä.
               Kilpailutyössämme ja sen jälkeisissä sopimusneuvotteluissa nostimme esiin suurimpana
               riskinä sen, että Omatietovarannossa ei tuolloin ollut mahdollista käsitellä lasten
               tietoja. Kaikki osapuolet pitivät tuolloin kuitenkin selvyytenä sitä, että tuo
               ominaisuus on tulossa ja kyse oli vain toteutuksen aikataulusta. Nyt on jo ilmeistä,
-              että Kelalla ei ole mitään aikomusta laajentaa Omatietovarannon käyttöä kattamaan
-              pienten lasten tietoja, vaan Omatietovarantoon voi perustaa tilin ainoastaan
-              henkilölle, jolla on omat henkilökohtaiset sähköiset tunnistautumisvälineet.</p>
+              että Kelalla ei ole mitään aikomusta ainakaan lähitulevaisuudessa laajentaa
+              Omatietovarannon käyttöä kattamaan pienten lasten tietoja, vaan Omatietovarantoon voi
+              perustaa tilin ainoastaan henkilölle, jolla on omat sähköiset
+              tunnistautumisvälineet.</p>
             <p>Kaikki muukin kehitys Omatietovarannossa on ollut hyvin hidasta ja tuskallista.
-              Mikäli tilanne muuttuu tulevaisuudessa, voimme edelleen harkita palvelun uudelleen
-              aktivointia. Mutta tällä hetkellä mikään ei viittaa siihen, että Omatietovarannosta
-              tulisi hyvinvointisovelluksille elinkelpoinen ekosysteemi.</p>
+              Tarjolla on ollut vain keppiä, eikä lainkaan porkkanaa. Mikäli tilanne muuttuu
+              tulevaisuudessa, voimme edelleen harkita palvelun uudelleen aktivointia. Mutta tällä
+              hetkellä mikään ei viittaa siihen, että Omatietovarannosta tulisi
+              hyvinvointisovelluksille elinkelpoinen ekosysteemi.</p>
           </div>
         </section>
         <section id="effects">
           <div className="container">
             <h2>Mitä tämä tarkoittaa käytännössä?</h2>
-            <p>Tämä ei ole meillekään vielä täysin selvää. THL:n määräyksessä Omatietovarantoon
-              liittyneille sovelluksille asetetaan uusien vaatimusten täyttämiselle määräaika
-              1.1.2023, <q
-              cite="https://thl.fi/documents/920442/2816495/THL_maarays_6_2021_hyvinvointisovellusten_vaatimukset.pdf/7efc2543-1093-43b6-9509-c9bdfeee40c7?t=1645085233307">johon
-              mennessä sille on suoritettava tämän määräyksen mukainen sertifiointi ja
-              rekisteröinti.</q> Meillä ei kuitenkaan ole tarkempaa tietoa siitä, pitäisikö meidän
-              jotenkin purkaa tuo liitos ja kuinka se tapahtuisi, vai huolehtiiko Omatietovaranto
-              siitä, että palvelu ei enää toimi.</p>
-            <p>Mitään tietoja ei varsinaisesti katoa. Omatietovarantoon jo tallentuneet tiedot
+            <p>Käytännössä tämän palvelun toiminta lakkaa.</p>
+            <p>THL:n <a
+              href="https://thl.fi/documents/920442/2816495/THL_maarays_1-2023_Omatietovarantoon_hyvaksyttyjen_hyvinvointisovellusten_sertifioinnista.pdf/044d0dc7-1bf0-bd55-c224-c116de754979">määräys
+              1/2023 omatietovarantoon aiemmilla hyväksymiskriteereillä hyväksyttyjen
+              hyvinvointisovellusten sertifioinnista</a> sanoo, että <q
+              cite="https://thl.fi/documents/920442/2816495/THL_maarays_1-2023_Omatietovarantoon_hyvaksyttyjen_hyvinvointisovellusten_sertifioinnista.pdf/044d0dc7-1bf0-bd55-c224-c116de754979">määräyksen
+              kohteena olevissa hyvinvointisovelluksissa <a
+              href="https://thl.fi/documents/920442/2816495/THL_maarays_6_2021_hyvinvointisovellusten_vaatimukset.pdf/7efc2543-1093-43b6-9509-c9bdfeee40c7">määräyksen
+              6/2021</a> mukaiset vaatimukset tulevat voimaan viimeistään 1.12.2023, johon mennessä
+              kaikkien tuotantokäytössä toimivien hyvinvointisovellusten on suoritettava hyväksytty
+              sertifiointi ja rekisteröinti.</q></p>
+            <p>Emme siis noista yllä mainituista syistä aio suorittaa tuota vaadittua sertifiointia
+              nightscout.fi-palvelulle.
+            </p>
+            <p>Näillä näkymin jätämme palvelun edelleen näkyviin, mutta katkaisemme tietojen
+              siirtämisen Omatietovarantoon.</p>
+            <p>Mitään tietoja ei tässä yhteydessä katoa. Omatietovarantoon jo tallentuneet tiedot
               tulevat säilymään siellä. Samoin Nightscout Connect -palveluun tallennetut
-              yhteystiedot pysyvät palvelussa tallessa.</p>
-            <p>Käsityksemme mukaan tietojen siirto kuitenkin lakkaa toimimasta. Tämä tarkoittaa,
-              että joko heti ensi vuoden alusta tai jonakin ajankohtana sen jälkeen tiedot eivät
-              enää siirry Nightscout-sovelluksista Omatietovarantoon eivätkä Omatietovarannosta
-              Nightscout-sovelluksiin.</p>
+              yhteystiedot pysyvät palvelussa tallessa. Mutta tietoja ei enää siirry
+              Nightscout-sovelluksista Omatietovarantoon eikä Omatietovarannosta
+              Nightscout-sovelluksiin. Käyttämäsi Nightscout-sovellukset ilmoittavat tiedonsirron
+              virheistä omilla tavoillaan.</p>
+            <p>Saatamme myöhemmin vielä muokata palvelua ja lanseerata sen uudelleen eri
+              toiminta-ajatuksella. Kuulemme tähän liittyen mielellämme kaikkia ajatuksia! Ole
+              ihmeessä yhteydessä, <a
+              href="mailto:info@sensotrend.com">info@sensotrend.com</a>.</p>
           </div>
         </section>
         <section id="todo">
           <div className="container">
             <h2>Kuinka Nightscout-sovellusten käyttöä voi jatkaa?</h2>
             <p>Kun Omatietovarantoa ei enää voi käyttää tietojen tallentamiseen ja jakamiseen,
-              Nightscout-sovelluksille tarvitaan erillinen asennus. </p>
-            <p>Perinteisesti asennus on tehty Heroku-ympäristöön. Tämä onnistuu suoraan koodin
-              versionhallintajärjestelmästä Deploy to Heroku-nappulan kautta. Tämä menetelmä
+              Nightscout-palvelulle tarvitaan erillinen asennus. </p>
+            <p>Perinteisesti jokainen palvelua käyttävä ihminen tai perhe on tehnyt oman ja itse
+              ylläpitämänsä asennuksen, esimerkiksi Heroku-ympäristöön. Tämä onnistuu suoraan <a
+              href="https://github.com/nightscout/cgm-remote-monitor#user-content-nightscout-web-monitor-aka-cgm-remote-monitor">koodin
+              versionhallintajärjestelmästä</a> Deploy to Heroku-nappulan kautta. Tämä menetelmä
               edellyttää rekisteröitymistä useampaan eri palveluun ja jonkin verran eri
               työvaiheita. Kymmenet tuhannet ei-tekniset ihmiset ovat kuitenkin tässä onnistuneet,
               eli pelko pois. Tukea saa tarvittaessa Facebookin vertaistukiryhmistä. Tämä tapa on
-              ennen ollu ilmainen, mutta Herokusta poistui vastikään ilmaiskäytön mahdollisuus.
-              Arvio Nightscout-käytön kuluista maksullisessa Herokussa on n. 5 € / kk.</p>
+              ennen ollut ilmainen, mutta Herokusta poistui vastikään ilmaiskäytön mahdollisuus.
+              Arvio Nightscout-käytön kuluista maksullisessa Herokussa on
+              n.&nbsp;5&nbsp;€&nbsp;/&nbsp;kk.</p>
             <p>Toinen vaihtoehto on käyttää palveluita, jotka tarjoavat Nightscout-ympäristön
               palveluna, samaan tapaan kuin Nightscout Connect tarjosi. Tällaisia palveluita ovat
               ainakin <a href="https://t1pal.com/">T1Pal</a> ja <a
@@ -127,10 +144,16 @@ class Shutdown extends Component {
               Nightscout-asennuksen käyttöönotto on helpompaa, mutta edellyttää joko englannin tai
               saksan kielen taitoa. Myös näillä palveluilla on pieni kuukausittainen
               käyttömaksu.</p>
+            <p>Sekä oman Nightscout-asennuksen pystytyksestä että Nightscout-palveluiden käytöstä
+              voi keskustella esimerkiksi Facebook-ryhmässä <a
+              href="https://www.facebook.com/groups/372238109638225">Nightscout Suomi (Finland)
+              Virallinen</a>.
+            </p>
             <p>Mikäli olet jakanut tietojasi terveydenhuollon ammattilaiselle Omatietovarannosta
               Sensotrend Connect - tai Sensotrend Dashboard -sovellusten kautta, tämä on
               mahdollista myös jatkossa, suoraan Nightscout-palvelustasi. Liitä vain Nightscout
-              tietolähteeksi Sensotrend Dashboard -sovelluksessa.</p>
+              tietolähteeksi <a href="https://www.sensotrend.fi/dashboard/">Sensotrend Dashboard
+              -sovelluksessa</a>.</p>
           </div>
         </section>
         <section id="thankyou">
@@ -148,6 +171,7 @@ class Shutdown extends Component {
             <p>Aivan erityinen kiitos kuuluu tietysti Nightscout-yhteisölle, jonka luomat
               sovellukset jatkossakin helpottavat elämää diabeteksen kanssa ja jonka aktiivisuus ja
               anna hyvän kiertää -asenne luovat kaikesta huolimatta uskoa tulevaisuuteen!</p>
+            <p><i>- Sensotrendin tiimi</i></p>
           </div>
         </section>
         <section />

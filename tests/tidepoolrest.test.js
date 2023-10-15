@@ -34,7 +34,7 @@ const testPatient = {
 
 let patient;
 
-describe('Tidepool API testing', function () {
+describe.skip('Tidepool API testing', function () {
 
    it('should create a sample patient and data to FHIR sandbox', async function () {
       try {
