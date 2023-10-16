@@ -37,6 +37,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0",
+    "react-scripts": "^4.0.3",
     "sensotrend-converter": "git+https://github.com/Sensotrend/sensotrend-converter.git#nightscout",
     "simple-oauth2": "^4.2.0",
     "uuid": "^8.3.2",
@@ -53,7 +54,6 @@
     "mocha": "^8.4.0",
     "nodemon": "^2.0.14",
     "nyc": "^15.1.0",
-    "react-scripts": "^4.0.3",
     "should": "^13.2.3",
     "source-map-support": "^0.5.20",
     "supertest": "^6.3.3"
@@ -85,10 +85,6 @@
     "require": [
       "esm"
     ]
-  },
-  "engines": {
-    "node": "^12.2.0",
-    "npm": "6.x"
   },
   "eslintConfig": {
     "extends": "react-app"
