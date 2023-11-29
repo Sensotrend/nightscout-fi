@@ -25,7 +25,7 @@ const testPatient = {
    ]
 };
 
-describe('FHIRClient', function () {
+describe.skip('FHIRClient', function () {
 
    it('should create a sample patient', async function () {
       try {

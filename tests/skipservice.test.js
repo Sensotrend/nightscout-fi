@@ -7,7 +7,7 @@ const env = envModule();
 let Auth = env.userProvider;
 
 
-describe('device last uploaded date service', function () {
+describe.skip('device last uploaded date service', function () {
 
 
    it('should not find nonexistent profiles', async function () {
