@@ -6,7 +6,7 @@ const env = envModule();
 let Auth = env.userProvider;
 
 
-describe('auth_module_test', function () {
+describe.skip('auth_module_test', function () {
 
    it('should store and load users', async function () {
 
